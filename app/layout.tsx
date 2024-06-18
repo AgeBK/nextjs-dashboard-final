@@ -1,23 +1,28 @@
-import '@/app/ui/global.css';
-import { inter } from '@/app/ui/fonts';
-import { Metadata } from 'next';
+import { Providers } from './providers';
+import type { Metadata } from 'next';
+// import Container from "./container/Container";
+// import { Inter } from "next/font/google";
+import './globals.css';
+
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s | Acme Dashboard',
-    default: 'Acme Dashboard',
-  },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+  title: ' AK Fine Wines - The biggest range at the best prices guaranteed!!',
+  description:
+    'AK Fine Wines - All of your fine wine needs at the best prices guaranteed!! Extensive range of White/Red/Sparking wines from around Australia and New Zealand',
 };
+
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
-    </html>
+    <Providers>
+      <html lang="en">
+        {/* <body className={inter.className}> */}
+        <body>{children}</body>
+      </html>
+    </Providers>
   );
 }

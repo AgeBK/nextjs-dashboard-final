@@ -1,0 +1,27 @@
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  text-align: left;
+  padding: 5px;
+  background-color: #000;
+  border-radius: 6px;
+}
+
+.table header {
+  background-color: #000;
+  color: #fff;
+}
+
+.row {
+  display: table-row;
+}
+
+.col {
+  display: table-cell;
+  padding: 5px;
+}

@@ -1,0 +1,35 @@
+.container {
+  max-width: 400px;
+  background-color: #333;
+  color: #fff;
+}
+
+.sideNav {
+  min-width: 180px;
+  background-color: #333;
+  /* color: #888; */
+  padding: 30px 20px;
+}
+
+.sideNav h1 {
+  font-size: 24px;
+  font-family: cursive;
+  padding: 20px 0;
+  color: #000;
+}
+
+.sideNav li a {
+  padding: 10px;
+  cursor: pointer;
+  display: block;
+  color: #888;
+}
+
+/* .sideNav a {
+  color: #888;
+} */
+
+.sideNav li a:hover {
+  background-color: #555;
+  color: #fff;
+}

@@ -1,7 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* TODO */
 input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;

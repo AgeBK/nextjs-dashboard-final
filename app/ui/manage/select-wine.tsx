@@ -1,0 +1,95 @@
+'use client';
+
+import React, { useState } from 'react';
+import { categoryArr, red, white, sparkling } from '@/app/lib/appData.json';
+import { DataProps } from '@/app/lib/definitions';
+import styles from '@/app/_assets/css/Select.module.css';
+import stylesEdit from '@/app/_assets/css/manage/Form.module.css';
+
+type ddlWineItemsProps = {
+  ddlWineItems: DataProps;
+};
+
+const SelectWine = ({ ddlWineItems }: ddlWineItemsProps) => {
+  const { category, packaging, region, variety } = ddlWineItems;
+  const [wineCategory, setWineCategory] = useState(category);
+  // const [wineVariety, setWineVariety] = useState(variety);
+  let varietyArr: string[] = [];
+
+  const handleCatChange = (e: any) => {
+    setWineCategory(e.target.value);
+    // setWineVariety('');
+  };
+
+  // const handleVarChange = (e: any) => {
+  //   setWineVariety(e.target.value);
+  // };
+
+  switch (wineCategory) {
+    case 'Red':
+      varietyArr = red;
+      break;
+    case 'White':
+      varietyArr = white;
+      break;
+    case 'Sparkling':
+      varietyArr = sparkling;
+      break;
+    default:
+      break;
+  }
+
+  return (
+    <>
+      <div>
+        <span className={stylesEdit.key}>
+          Category
+          <span className={stylesEdit.required}>*</span>
+        </span>
+        <label htmlFor="category" id="lblCategory">
+          <select
+            id="category"
+            name="category"
+            onChange={handleCatChange}
+            className={styles.select}
+            aria-labelledby="lblCategory"
+            defaultValue={ddlWineItems.category}
+            required
+          >
+            <option value="">-- Select Category --</option>
+            {categoryArr.map((val: string) => (
+              <option value={val} key={val}>
+                {val}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <span className={stylesEdit.key}>
+          Variety
+          <span className={stylesEdit.required}>*</span>
+        </span>
+        <label htmlFor="variety" id="lblVariety">
+          <select
+            id="variety"
+            name="variety"
+            className={styles.select}
+            aria-labelledby="lblVariety"
+            defaultValue={ddlWineItems.variety}
+            required
+          >
+            <option value="">-- Select Variety --</option>
+            {varietyArr.map((val: string) => (
+              <option value={val} key={val}>
+                {val}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+    </>
+  );
+};
+
+export default SelectWine;

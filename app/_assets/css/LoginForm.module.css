@@ -1,0 +1,89 @@
+.login {
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  background-color: #000;
+  background-image: linear-gradient(to right, #000, #222);
+}
+
+.login form {
+  text-align: center;
+  margin-top: 100px;
+  border: 1px solid #000;
+  max-width: 450px;
+  margin: 100px auto;
+  padding: 60px 30px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.formCont {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 50px;
+}
+
+.hdr {
+  margin-bottom: 20px;
+}
+
+.msg {
+  margin-bottom: 40px;
+}
+
+.inputField {
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.inputField input {
+  padding: 13px 13px 13px 30px; /* font-size: 18px; */
+  background-color: #f6f6f6;
+  border: 0;
+  color: #d3d3d3;
+}
+
+.inputField label {
+  display: block;
+}
+
+.inputField svg {
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  text-align: center;
+}
+
+.loginBtn {
+  background-color: #000;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px 83px;
+  margin-top: 20px;
+  background-image: linear-gradient(to right, #000, #222);
+}
+
+/* .fourThree {
+  background-image: url("https://i.stack.imgur.com/viNrB.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  max-width: 1400px;
+
+}
+
+.text {
+  text-align: center;
+  color: white;
+} */
+
+/* .login img {
+  max-width: 450px;
+  max-height: 300px;
+  width: 100%;
+} */

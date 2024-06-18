@@ -1,0 +1,25 @@
+.hdr {
+  margin-bottom: 10px;
+}
+
+.rating {
+  background-repeat: no-repeat;
+  color: transparent;
+}
+
+.rating3 {
+  background-image: url(/assets/img/bg/3star.jpg);
+}
+
+.rating4 {
+  background-image: url(/assets/img/bg/4star.jpg);
+}
+
+.rating5 {
+  background-image: url(/assets/img/bg/5star.jpg);
+}
+
+.ratingManage {
+  background: none;
+  color: inherit;
+}

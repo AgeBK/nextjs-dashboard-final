@@ -1,0 +1,39 @@
+.carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 1400px;
+  overflow: hidden;
+  justify-content: start;
+  position: relative;
+}
+
+.itemInner {
+  border: 1px solid #d3d3d3;
+}
+
+.arrow {
+  position: absolute;
+  z-index: 1;
+  top: 48%;
+  cursor: pointer;
+  opacity: 0.2;
+}
+
+.arrow button:disabled {
+  display: none;
+}
+
+.arrowLeft {
+  left: 15px;
+}
+
+.arrowRight {
+  right: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .carouselPaging input[type="radio"] {
+    height: 16px;
+    width: 16px;
+  }
+}
