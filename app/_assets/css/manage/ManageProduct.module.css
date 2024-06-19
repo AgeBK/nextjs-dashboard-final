@@ -1,10 +1,10 @@
 .prodCont {
   padding: 20px;
-  /* background-color: rgb(172 215 249) */
 }
 
 .hdr {
   padding: 10px;
   background-color: #333;
   color: #000;
+  text-transform: capitalize;
 }

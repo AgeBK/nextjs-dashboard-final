@@ -1,53 +1,35 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useFormState } from 'react-dom';
-import { deleteProduct } from '@/app/lib/actions';
-import ExclamationCircle from '@/app/svg/exclamation-circle';
+import React from 'react';
+import Link from 'next/link';
 import { Button } from '../button';
 import Img from '../image';
+import ExclamationCircle from '@/app/svg/exclamation-circle';
 import styles from '@/app/_assets/css/manage/ModalDelete.module.css';
-import { useRouter } from 'next/navigation';
 
-// const initialState = {
-//   message: '',
-// };
+type ModalDeleteProps = {
+  id: string;
+  name: string;
+  initialState: any;
+  setShowModal: (show: boolean) => void;
+};
 
 export default function ModalDelete({
   id,
   name,
   initialState,
   setShowModal,
-  setDeleteResult,
-}) {
-  const [state, dispatch] = useFormState(deleteProduct, id, initialState);
-  const router = useRouter();
-
-  console.log(state);
-
+}: ModalDeleteProps) {
   const handleClick = (e: React.MouseEvent<Element, MouseEvent>) => {
     setShowModal(false);
   };
 
-  const test = async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    // alert('test');
-
-    // setShowModal(false);
-
-    dispatch();
-
-    // setDeleteResult(state.message);
-    // console.log(state?.message);
-  };
-
   return (
     <div className={styles.modalCont}>
-      <p aria-live="polite" className={styles.error} role="status">
+      {/* <p aria-live="polite" className={styles.error} role="status">
         {state?.message}
-      </p>
-      <form className={styles.modal}>
+      </p> */}
+      <div className={styles.modal}>
         <div className={styles.exclamation}>
           <ExclamationCircle css="exclamation" />
         </div>
@@ -66,28 +48,30 @@ export default function ModalDelete({
               {id}
             </div>
           </div>
-          <Button css="modal" onClick={handleClick}>
-            <span className="cancel">Cancel</span>
-            <Img
-              imageSrc={`icons/xCircle.svg`}
-              imageStyle="modal"
-              imageAlt="cancel"
-              imageWidth={16}
-              imageHeight={16}
-            />
-          </Button>
-          <Button css="modal" onClick={test}>
-            <span>Delete</span>
-            <Img
-              imageSrc={`icons/trash.svg`}
-              imageStyle="modal"
-              imageAlt="delete"
-              imageWidth={16}
-              imageHeight={16}
-            />
-          </Button>
+          <div className={styles.actions}>
+            <Link href="/manage" className={styles.cancel}>
+              <span>Cancel </span>
+              <Img
+                imageSrc={`icons/xCircle.svg`}
+                imageStyle=""
+                imageAlt="cancel"
+                imageWidth={24}
+                imageHeight={24}
+              />
+            </Link>
+            <Button css="delete" type="submit">
+              <span>Delete </span>
+              <Img
+                imageSrc={`icons/trash.svg`}
+                imageStyle="" // TODO:
+                imageAlt="save"
+                imageWidth={24}
+                imageHeight={24}
+              />
+            </Button>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

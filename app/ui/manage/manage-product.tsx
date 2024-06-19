@@ -1,22 +1,22 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useFormState } from 'react-dom';
+import SelectWine from '@/app/ui/manage/select-wine';
+import SelectLists from '@/app/ui/manage/select-list';
+import ManageProductActions from './manage-product-actions';
+import ManageDBMessages from './manage-db-messages';
+import ModalDelete from './modal-delete';
 import { isRequired } from '@/app/lib/appData.json';
 import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 import { DataProps, FormStateProps } from '@/app/lib/definitions';
-import SelectWine from '@/app/ui/manage/select-wine';
-import SelectLists from '@/app/ui/manage/select-list';
-import { useFormState } from 'react-dom';
-import ManageProductActions from './manage-product-actions';
 import styles from '@/app/_assets/css/manage/Form.module.css';
-import ManageDBMessages from './manage-db-messages';
-import ModalDelete from './modal-delete';
 
-type ProductProps = {
+type ManageProductProps = {
   product: DataProps;
   action: string;
-  ddlWineItems: DataProps;
-  ddlItems: DataProps;
+  ddlWineItems: { [k: string]: string | number };
+  ddlItems: { [k: string]: string | number };
 };
 
 const initialState: FormStateProps = { message: null, errors: {} };
@@ -26,11 +26,12 @@ export default function ManageProduct({
   action,
   ddlWineItems,
   ddlItems,
-}: ProductProps) {
+}: ManageProductProps) {
   const [showModal, setShowModal] = useState(false);
-  const { id } = product;
+  const isDelete = action === 'delete';
+  const { id, name } = product;
+  let currentActionFn: any;
 
-  let currentActionFn = null;
   switch (action) {
     case 'add':
       currentActionFn = addProduct;
@@ -44,15 +45,9 @@ export default function ManageProduct({
     default:
       break;
   }
+
   const [state, dispatch] = useFormState(currentActionFn, initialState);
-  console.log(product);
-  // TODO: Got wierd error msg, ratings average with lachlan ridge 9190970
-  // TODO: some of the price inputs aren't type number?
-
-  // const checkMin = (key: string) =>
-  //   key === 'price_normal' || key === 'price_current' ? 1 : 0;
-
-  const test = (e) => {
+  const enableModal = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();
     setShowModal(true);
   };
@@ -77,22 +72,22 @@ export default function ManageProduct({
               type={dataType}
               defaultValue={value}
               aria-labelledby={`lbl${key}`}
-              disabled={key === 'id' && value}
+              disabled={(key === 'id' && value) || isDelete}
               required={isReq}
             />
           </div>
         );
       })}
-      <SelectWine ddlWineItems={ddlWineItems} />
-      <SelectLists obj={ddlItems} />
-      <ManageProductActions isDelete={action === 'delete'} test={test} />
+      <SelectWine ddlWineItems={ddlWineItems} isDelete={isDelete} />
+      <SelectLists obj={ddlItems} isDelete={isDelete} />
+      <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
       <ManageDBMessages initialState={state} />
       {showModal && (
         <ModalDelete
           id={id}
           name={name}
           initialState={initialState}
-          // setShowModal={setShowModal}
+          setShowModal={setShowModal}
         />
       )}
     </form>

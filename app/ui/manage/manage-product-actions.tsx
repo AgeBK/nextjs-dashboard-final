@@ -1,20 +1,32 @@
 import React from 'react';
-import { Button } from '@/app/ui/button';
+import { Button } from '../button';
 import Link from 'next/link';
 import Img from '../image';
 import styles from '@/app/_assets/css/manage/ManageProductActions.module.css';
 
+type ManageProductActionsProps = {
+  isDelete: boolean;
+  enableModal: (e: React.MouseEvent<Element, MouseEvent>) => void;
+};
+
 const ManageProductActions = ({
   isDelete,
-  test,
-}: {
-  isDelete: boolean;
-  setShowModal: () => void;
-}) => {
+  enableModal,
+}: ManageProductActionsProps) => {
   return (
     <>
+      <Link href="/manage" className={styles.cancel}>
+        <span>Cancel </span>
+        <Img
+          imageSrc={`icons/xCircle.svg`}
+          imageStyle="campaignMii"
+          imageAlt="cancel"
+          imageWidth={24}
+          imageHeight={24}
+        />
+      </Link>
       {isDelete ? (
-        <Button css="delete" onClick={test}>
+        <Button css="delete" onClick={enableModal}>
           <span>Delete </span>
           <Img
             imageSrc={`icons/trash.svg`}
@@ -36,17 +48,6 @@ const ManageProductActions = ({
           />
         </Button>
       )}
-
-      <Link href="/manage" className={styles.cancel}>
-        <span>Cancel </span>
-        <Img
-          imageSrc={`icons/xCircle.svg`}
-          imageStyle="campaignMii"
-          imageAlt="cancel"
-          imageWidth={24}
-          imageHeight={24}
-        />
-      </Link>
     </>
   );
 };

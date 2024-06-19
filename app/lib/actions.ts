@@ -183,8 +183,6 @@ export async function updateProduct(
       WHERE id = ${id}
     `;
   } catch (error) {
-    console.log('error: ' + error);
-    // If a database error occurs, return a more specific error.
     return {
       message: 'Database Error: Failed to update Product Table.' + error,
     };
@@ -195,23 +193,13 @@ export async function updateProduct(
 }
 
 export async function deleteProduct(id: string, prevState: { message: any }) {
-  console.log('Delete Product');
-  console.log('id: ' + id);
-  console.log(typeof id);
-
   try {
-    console.log('try');
-
     await sql`DELETE FROM products WHERE id = ${id}`;
-    console.log('DELETED PRODUCT: ' + id);
   } catch (error) {
-    console.log('DELETE PRODUCT error: ' + error);
     return {
-      errors: `Database Error: Failed to delete product ${id} from the Product Table. ${error}`,
       message: `Database Error: Failed to delete product ${id} from the Product Table. ${error}`,
     };
   }
-
   revalidatePath('/manage');
   redirect('/manage');
 }

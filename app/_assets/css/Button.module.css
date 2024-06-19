@@ -202,13 +202,23 @@
   background-color: #d3d3d3;
 }
 
-.save {
+.save,
+.delete,
+.cancel {
   font-size: 20px;
   display: flex;
   border: 1px solid #888;
   padding: 5px 15px;
   margin: 0 5px;
-  background-color: #008000;
+  border: 2px solid #008000;
+}
+
+.delete {
+  border: 2px solid #f00;
+}
+
+.cancel {
+  border: 2px solid #888;
 }
 
 .save span {

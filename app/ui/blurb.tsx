@@ -1,14 +1,15 @@
-import { memo } from "react"; // TODO:
-import { KeyStringProps } from "@/app/lib/definitions";
-import { blurb } from "@/app/lib/appData.json";
-import { deHyphenate } from "@/app/lib/utils";
-import styles from "@/app/_assets/css/Blurb.module.css";
+import { memo } from 'react'; // TODO:
+import { KeyStringProps } from '@/app/lib/definitions';
+import { blurb } from '@/app/lib/appData.json';
+import { deHyphenate } from '@/app/lib/utils';
+import styles from '@/app/_assets/css/Blurb.module.css';
 
 type BlurbProps = {
   urlCategory: string;
   variety?: string;
 };
 
+// TODO: NOT WORKING
 export const Blurb = ({ urlCategory, variety }: BlurbProps) => {
   const synopsis: KeyStringProps = blurb;
   // use header provided (custom header) or just dehypenate URL params
@@ -20,7 +21,7 @@ export const Blurb = ({ urlCategory, variety }: BlurbProps) => {
   const wineBlurb =
     (variety && synopsis[variety]) || // some wines have a specific variety blurb (sub-category)
     synopsis[urlCategory] || // some have a specific category blurb
-    synopsis["generic"]; // some have a generic blurb
+    synopsis['generic']; // some have a generic blurb
 
   return (
     <section className={styles.categoryBlurb}>

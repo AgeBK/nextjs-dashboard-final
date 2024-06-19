@@ -1,12 +1,7 @@
-/* .modalOuter {
-  height: 100vh;
-} */
-
 .modalCont {
   position: fixed;
   top: 0;
   left: 0;
-  /* padding: 25%; */
   border: 2px solid #000;
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -34,17 +29,33 @@
   text-align: left;
 }
 
-.modalCont button:first-of-type {
-  background-color: #d3d3d3;
-}
-
-.modalCont button:nth-of-type(2) {
-  background-color: #f00;
-}
-
-.error {
-  border: 1px solid red;
+.modal b {
+  margin-top: 10px;
   display: inline-block;
-  padding: 15px;
-  background: #fff;
+}
+
+.modal button {
+  display: inline-block;
+}
+
+.modal a {
+  font-size: 20px;
+  display: flex;
+  border: 2px solid #888;
+  padding: 5px 15px;
+  margin: 0 5px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.actions img {
+  vertical-align: bottom;
+}
+
+.actions span {
+  margin-right: 5px;
+  display: inline-block;
 }

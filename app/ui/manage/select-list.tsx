@@ -1,14 +1,14 @@
 import React from 'react';
-import { DataProps } from '@/app/lib/definitions';
 import { region, packaging } from '@/app/lib/appData.json';
 import stylesEdit from '@/app/_assets/css/manage/Form.module.css';
 import styles from '@/app/_assets/css/Select.module.css';
 
 type ddlWineItemsProps = {
-  obj: DataProps;
+  obj: { [k: string]: string | number };
+  isDelete: boolean;
 };
 
-const SelectLists = ({ obj }: ddlWineItemsProps) => {
+const SelectLists = ({ obj, isDelete }: ddlWineItemsProps) => {
   const arrList = [region, packaging];
   return (
     <>
@@ -27,6 +27,7 @@ const SelectLists = ({ obj }: ddlWineItemsProps) => {
                 aria-labelledby="lblSort"
                 defaultValue={value}
                 required
+                disabled={isDelete}
               >
                 <option value="">-- Select {key} --</option>
                 {arrList[i].map((val: string) => (

@@ -14,8 +14,8 @@ export default function ManageDBMessages({ initialState }: initialStateProps) {
     <div aria-live="polite" className={styles.error} role="status">
       <div className={styles.message}>{initialState?.message}</div>
       <ul>
-        {initialState &&
-          Object.entries(initialState?.errors).map(([key, val], i) => (
+        {initialState.errors &&
+          Object.entries(initialState.errors).map(([key, val], i) => (
             <li key={i}>
               <b>{key.replaceAll('_', ' ')}</b> - {val?.toString()}
             </li>
