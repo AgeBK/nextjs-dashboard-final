@@ -1,7 +1,7 @@
-import {Button} from "@/app/ui/button";
-import { pageSizes } from "@/app/lib/appData.json";
-import { PagingProps } from "../lib/definitions";
-import styles from "@/app/_assets/css/ResultsPP.module.css";
+import { Button } from '@/app/ui/button';
+import data from '@/app/lib/appData.json';
+import { PagingProps } from '../lib/definitions';
+import styles from '@/app/_assets/css/ResultsPP.module.css';
 
 type ReslutPPProps = {
   paging: PagingProps;
@@ -9,6 +9,8 @@ type ReslutPPProps = {
 };
 
 const ResultsPP = ({ paging, updatePaging }: ReslutPPProps) => {
+  const { pageSizes } = data;
+
   const handleClick = ({
     currentTarget: { textContent },
   }: React.MouseEvent<Element, MouseEvent>) => {

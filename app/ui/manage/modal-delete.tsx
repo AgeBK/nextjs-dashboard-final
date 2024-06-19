@@ -14,21 +14,9 @@ type ModalDeleteProps = {
   setShowModal: (show: boolean) => void;
 };
 
-export default function ModalDelete({
-  id,
-  name,
-  initialState,
-  setShowModal,
-}: ModalDeleteProps) {
-  const handleClick = (e: React.MouseEvent<Element, MouseEvent>) => {
-    setShowModal(false);
-  };
-
+export default function ModalDelete({ id, name }: ModalDeleteProps) {
   return (
     <div className={styles.modalCont}>
-      {/* <p aria-live="polite" className={styles.error} role="status">
-        {state?.message}
-      </p> */}
       <div className={styles.modal}>
         <div className={styles.exclamation}>
           <ExclamationCircle css="exclamation" />
@@ -53,7 +41,6 @@ export default function ModalDelete({
               <span>Cancel </span>
               <Img
                 imageSrc={`icons/xCircle.svg`}
-                imageStyle=""
                 imageAlt="cancel"
                 imageWidth={24}
                 imageHeight={24}
@@ -63,7 +50,6 @@ export default function ModalDelete({
               <span>Delete </span>
               <Img
                 imageSrc={`icons/trash.svg`}
-                imageStyle="" // TODO:
                 imageAlt="save"
                 imageWidth={24}
                 imageHeight={24}

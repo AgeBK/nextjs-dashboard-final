@@ -1,11 +1,11 @@
-import { useSelector, useDispatch } from "react-redux";
-import { selectCart, increment, decrement } from "../../slices/cartSlice";
-import CartPrice from "./cart-price";
-import CartItemSaving from "./cart-item-savings";
-import Img from "../image";
-import Button from "../button";
-import { CartProps, AddToCartProps } from "@/app/lib/definitions";
-import styles from "@/app/_assets/css/CartItem.module.css";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCart, increment, decrement } from '../../slices/cartSlice';
+import CartPrice from './cart-price';
+import CartItemSaving from './cart-item-savings';
+import Img from '../image';
+import { Button } from '../button';
+import { CartProps, AddToCartProps } from '@/app/lib/definitions';
+import styles from '@/app/_assets/css/CartItem.module.css';
 
 const CartItem = () => {
   const cart: CartProps = useSelector(selectCart);
@@ -31,7 +31,7 @@ const CartItem = () => {
         quantity,
         deal,
         discountCode,
-      })
+      }),
     );
   };
 
@@ -59,7 +59,6 @@ const CartItem = () => {
               <div className={styles.cartImg}>
                 <Img
                   imageSrc={`wine/${id}.jpg`}
-                  imageStyle="cartOpen"
                   imageAlt={name}
                   imageWidth={20}
                   imageHeight={80}
@@ -104,7 +103,6 @@ const CartItem = () => {
                 >
                   <Img
                     imageSrc={`btn/remove.png`}
-                    imageStyle="cartOpenBtn"
                     imageAlt={name}
                     imageWidth={30}
                     imageHeight={30}
@@ -125,7 +123,7 @@ const CartItem = () => {
               />
             </div>
           </li>
-        )
+        ),
       )}
     </ul>
   );

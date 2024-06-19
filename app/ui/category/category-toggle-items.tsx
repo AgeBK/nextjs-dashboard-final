@@ -1,5 +1,5 @@
-import Button from "@/app/ui/button";
-import styles from "@/app/_assets/css/CategoryToggleItems.module.css";
+import { Button } from '@/app/ui/button';
+import styles from '@/app/_assets/css/CategoryToggleItems.module.css';
 
 type CategoryToggleItemsProps = {
   togglePageItems: () => void;
@@ -13,7 +13,7 @@ const CategoryToggleItems = ({
   return (
     <div className={styles.smlScreen}>
       <Button css="filters" onClick={togglePageItems}>
-        {isItems ? "X" : "Filters"}
+        {isItems ? 'X' : 'Filters'}
       </Button>
     </div>
   );

@@ -37,7 +37,6 @@ export default function ManageProducts({ props }: ManageProductsProps) {
         >
           <Img
             imageSrc={`icons/eye.svg`}
-            imageStyle=""
             imageAlt="view"
             imageWidth={24}
             imageHeight={24}
@@ -46,7 +45,6 @@ export default function ManageProducts({ props }: ManageProductsProps) {
         <Link href={`/manage/edit/${id}`}>
           <Img
             imageSrc={`icons/pencil.svg`}
-            imageStyle=""
             imageAlt="edit"
             imageWidth={24}
             imageHeight={24}
@@ -55,7 +53,6 @@ export default function ManageProducts({ props }: ManageProductsProps) {
         <Link href={`/manage/delete/${id}`}>
           <Img
             imageSrc={`icons/trash.svg`}
-            imageStyle=""
             imageAlt="edit"
             imageWidth={24}
             imageHeight={24}

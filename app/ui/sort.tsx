@@ -1,6 +1,6 @@
-import { ChangeEvent } from "react";
-import { sortNameArr } from "@/app/lib/appData.json";
-import styles from "@/app/_assets/css/Sort.module.css";
+import { ChangeEvent } from 'react';
+import data from '@/app/lib/appData.json';
+import styles from '@/app/_assets/css/Sort.module.css';
 
 type SortProps = {
   sortName: string;
@@ -8,6 +8,8 @@ type SortProps = {
 };
 
 function Sort({ sortName, setSortName }: SortProps) {
+  const { sortNameArr } = data;
+
   const handleSelect = ({
     target: { value },
   }: ChangeEvent<HTMLSelectElement>) => setSortName(value);

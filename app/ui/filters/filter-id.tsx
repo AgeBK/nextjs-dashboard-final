@@ -2,8 +2,8 @@
 
 import React, { ChangeEvent, useState } from 'react';
 import { WineFilterProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/manage/Form.module.css';
 import { Button } from '../button';
+import styles from '@/app/_assets/css/manage/Form.module.css';
 
 const FilterId = ({ updateFilters, filters }: WineFilterProps) => {
   const [value, setValue] = useState('');

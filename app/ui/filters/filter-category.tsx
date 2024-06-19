@@ -1,9 +1,11 @@
 import { ChangeEvent } from 'react';
-import { categoryArr } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
 import styles from '@/app/_assets/css/FilterCategory.module.css';
 
 const CategoryFilter = ({ updateFilters, filters }: WineFilterProps) => {
+  const { categoryArr } = data;
+
   const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
     updateFilters({ category: value });
   const arr = categoryArr;

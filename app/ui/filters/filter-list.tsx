@@ -5,25 +5,8 @@ import PriceFilter from './filter-price';
 import RatingFilter from './filter-rating';
 import VarietyFilter from './filter-variety';
 import RegionFilter from './filter-region';
-import { signOut } from '@/auth';
-import { DataProps, FilterProps } from '@/app/lib/definitions';
+import { FilterListProps } from '@/app/lib/definitions';
 import styles from '@/app/_assets/css/FilterList.module.css';
-
-type FilterListProps = {
-  currentData: DataProps[];
-  filters: FilterProps;
-  urlVariety?: string;
-  isManage: boolean;
-  updateFilters: (filters: {
-    searchId?: string;
-    searchStr?: string;
-    category?: string;
-    variety?: string;
-    price?: string;
-    rating?: string;
-    // id?: string;
-  }) => void;
-};
 
 const FilterList = ({
   currentData,
@@ -52,27 +35,12 @@ const FilterList = ({
     />,
   ];
 
-  const handleChange = ({
-    target: { id, value },
-  }: React.ChangeEvent<HTMLInputElement>) =>
-    updateFilters({ [id]: value.toLowerCase() });
-
   return (
     <section className={styles.container}>
-      {/* <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-      ></form> */}
-
       <div className={styles.hdrCont}>
         <h2 className={styles.hdr}>{isManage ? 'Filter' : 'Refine:'}</h2>
       </div>
-
       <ul className={styles.filterList}>
-        {/* <ul role="radiogroup"> */}
-
         {isManage && (
           <>
             <li>
@@ -88,11 +56,7 @@ const FilterList = ({
         })}
         {isManage && (
           <li>
-            <CategoryFilter
-              updateFilters={updateFilters}
-              filters={filters}
-              // currentData={currentData}
-            />
+            <CategoryFilter updateFilters={updateFilters} filters={filters} />
           </li>
         )}
         {!urlVariety && (

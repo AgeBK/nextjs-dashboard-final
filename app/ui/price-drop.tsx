@@ -1,26 +1,27 @@
-import Link from "next/link";
-import { numberToWord } from "@/app/lib/appData.json";
-import styles from "@/app/_assets/css/PriceDrop.module.css";
+import Link from 'next/link';
+import data from '@/app/lib/appData.json';
+import styles from '@/app/_assets/css/PriceDrop.module.css';
 
 type PriceDropProps = {
   calloutText: string | undefined;
 };
 
 const PriceDrop = ({ calloutText }: PriceDropProps) => {
+  const { numberToWord } = data;
   const numToWord: { [key: number]: string } = numberToWord;
   let arr: string[] = [];
-  let amount: string = "";
+  let amount: string = '';
   let price: number = 0;
   let isTenPercent: boolean = false;
   let priceDropLink: JSX.Element | null = null;
 
   if (calloutText) {
-    if (calloutText.includes("for")) {
+    if (calloutText.includes('for')) {
       // 2 for and 10 for deals
-      arr = calloutText.split(" ");
+      arr = calloutText.split(' ');
       amount = numToWord[Number(arr[0])];
-      price = parseInt(arr[2].replace("$", ""), 10);
-    } else if (calloutText.startsWith("10%")) {
+      price = parseInt(arr[2].replace('$', ''), 10);
+    } else if (calloutText.startsWith('10%')) {
       isTenPercent = true;
     }
   }

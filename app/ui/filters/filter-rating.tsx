@@ -1,12 +1,13 @@
-import styles from '@/app/_assets/css/FilterRating.module.css';
-import { ratingArr, ratingArrManage } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
+import styles from '@/app/_assets/css/FilterRating.module.css';
 
 const FilterRating = ({
   filters,
   updateFilters,
   isManage,
 }: WineFilterProps) => {
+  const { ratingArr, ratingArrManage } = data;
   const handleChange = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => updateFilters({ rating: value });

@@ -1,11 +1,12 @@
 'use client';
+
 import { useEffect, useState, useMemo, useRef, Suspense } from 'react';
 import {
   sortCategoryPageData,
   filterCategoryPageData,
   hyphenate,
 } from '@/app/lib/utils';
-import { MAX_SMALLSCREEN, pagingSettings } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 import CategoryList from './category-list';
 import CategoryHeader from './category-header';
 import CategoryToggleItems from './category-toggle-items';
@@ -13,7 +14,7 @@ import CategoryPaging from './category-paging';
 import CategoryNoResults from './category-no-results';
 import FilterList from '../filters/filter-list';
 import usePageWidth from '@/app/hooks/usePageWidth';
-import { Blurb } from '@/app/ui/blurb';
+import Blurb from '@/app/ui/blurb';
 import {
   CategoryMainProps,
   DataProps,
@@ -32,28 +33,22 @@ export default function CategoryMain({
   urlVariety,
   isManage,
 }: CategoryMainProps) {
+  const { MAX_SMALLSCREEN, pagingSettings } = data;
   const [sortName, setSortName] = useState<string>('');
   const [filters, setFilters] = useState<FilterProps>({});
   const [paging, setPaging] = useState<PagingProps>(pagingSettings);
   const [isShowItems, setIsShowItems] = useState<boolean>(false);
   // const isSmallScreen: boolean = usePageWidth(MAX_SMALLSCREEN);
-  const isSmallScreen: boolean = false;
+  const isSmallScreen: boolean = false; // TODO: ??
   const dataRef = useRef<DataProps[]>([]);
   const didMount = useRef<boolean>(false);
   const isSmallScreenShowItems = isSmallScreen && isShowItems;
   let strHeader = '';
 
-  // if (arr && urlCategory && dataRef.current.length === 0) {
   if (arr && dataRef.current.length === 0) {
-    // TODO: looks sus??
-    // TODO: do I need data check above?
     const variety = filters.variety || urlVariety;
-    // const [arr, header] = catPageData(data, urlCategory, variety);
     dataRef.current = arr;
-    // strHeader = header as string;
   }
-
-  console.log(arr.find((val) => val.id === null));
 
   useEffect(() => {
     if (didMount.current) {
@@ -111,11 +106,10 @@ export default function CategoryMain({
 
   return (
     <>
-      {/* <Blurb
-          urlCategory={urlCategory}
-          variety={urlVariety || hyphenate(filters.variety)}
-          header={strHeader}
-        /> */}
+      <Blurb
+        urlCategory={urlCategory}
+        variety={urlVariety || hyphenate(filters.variety)}
+      />
       {isSmallScreen && (
         <CategoryToggleItems
           togglePageItems={togglePageItems}

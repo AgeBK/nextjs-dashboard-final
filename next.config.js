@@ -1,13 +1,13 @@
 module.exports = {
-    async redirects() {
-      return [
-        {
-          source: '/manage/delete',
-          destination: '/manage',
-          permanent: true,
-        },
-      ]
-    },
-  }
+  async redirects() {
+    return [
+      {
+        source: '/manage/delete',
+        destination: '/manage',
+        permanent: true,
+      },
+    ];
+  },
+};
 
-  // TODO: ?? above isn't standard
+// TODO: ?? above isn't standard

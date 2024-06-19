@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import { categoryArr, red, white, sparkling } from '@/app/lib/appData.json';
 import styles from '@/app/_assets/css/Select.module.css';
+import { KeyStringProps } from '@/app/lib/definitions';
 import stylesEdit from '@/app/_assets/css/manage/Form.module.css';
 
 type ddlWineItemsProps = {
-  ddlWineItems: { [k: string]: string | number };
+  ddlWineItems: KeyStringProps;
   isDelete: boolean;
 };
 

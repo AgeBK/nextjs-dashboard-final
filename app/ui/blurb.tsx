@@ -1,17 +1,15 @@
+'use client';
+
 import { memo } from 'react'; // TODO:
-import { KeyStringProps } from '@/app/lib/definitions';
-import { blurb } from '@/app/lib/appData.json';
+import { BlurbProps, KeyStringProps } from '@/app/lib/definitions';
+import data from '@/app/lib/appData.json';
 import { deHyphenate } from '@/app/lib/utils';
 import styles from '@/app/_assets/css/Blurb.module.css';
 
-type BlurbProps = {
-  urlCategory: string;
-  variety?: string;
-};
-
-// TODO: NOT WORKING
-export const Blurb = ({ urlCategory, variety }: BlurbProps) => {
+export default function Blurb({ urlCategory, variety }: BlurbProps) {
+  const { blurb } = data;
   const synopsis: KeyStringProps = blurb;
+
   // use header provided (custom header) or just dehypenate URL params
   const hdr =
     // header ||
@@ -29,4 +27,4 @@ export const Blurb = ({ urlCategory, variety }: BlurbProps) => {
       <div className={styles.blurb}>{wineBlurb}</div>
     </section>
   );
-};
+}

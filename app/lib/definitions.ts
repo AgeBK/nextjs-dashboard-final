@@ -40,11 +40,11 @@ export type AddToCartProps = {
   id: string;
   name: string;
   brand: string;
-  shortName: string;
+  short_name: string;
   price: number;
   quantity: number;
   deal?: DealProps;
-  discountCode?: string;
+  discountCode?: string; // TODO: 
 };
 
 export type CartItemProps = {
@@ -120,6 +120,7 @@ export type FilterProps = {
 export interface WineFilterProps {
   updateFilters: (filters: FilterProps) => void;
   filters: FilterProps;
+  isManage?: boolean;
 }
 
 export type Customer = {
@@ -203,4 +204,24 @@ export type InvoiceForm = {
 export type FormStateProps = {
   message: string | null;
   errors: Record<string, any>;
+};
+
+export type BlurbProps = {
+  urlCategory: string;
+  variety?: string;
+};
+
+export type FilterListProps = {
+  currentData: DataProps[];
+  filters: FilterProps;
+  urlVariety?: string;
+  isManage: boolean;
+  updateFilters: (filters: {
+    searchId?: string;
+    searchStr?: string;
+    category?: string;
+    variety?: string;
+    price?: string;
+    rating?: string;
+  }) => void;
 };

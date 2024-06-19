@@ -1,5 +1,5 @@
-import {Button} from '@/app/ui/button';
-import { pillsArr } from '@/app/lib/appData.json';
+import { Button } from '@/app/ui/button';
+import data from '@/app/lib/appData.json';
 import { FilterProps, KeyBooleanProps } from '../lib/definitions';
 import styles from '@/app/_assets/css/Pills.module.css';
 
@@ -9,6 +9,7 @@ type PillsProps = {
 };
 
 export default function Pills({ filters, removeFilters }: PillsProps) {
+  const { pillsArr } = data;
   const isRegionChecked = (regionObj: KeyBooleanProps) =>
     Object.values(regionObj).some((val) => val);
 

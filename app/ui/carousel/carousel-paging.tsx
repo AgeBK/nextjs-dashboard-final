@@ -1,6 +1,6 @@
-import { MAX_CAROUSEL_PRODUCTS } from "@/app/lib/appData.json";
-import {Button} from "@/app/ui/button";
-import styles from "@/app/_assets/css/CarouselPaging.module.css";
+import data from '@/app/lib/appData.json';
+import { Button } from '@/app/ui/button';
+import styles from '@/app/_assets/css/CarouselPaging.module.css';
 
 type CarouselPagingProps = {
   items: number;
@@ -16,6 +16,7 @@ const CarouselPaging = ({
   handleClick,
 }: CarouselPagingProps) => {
   if (items) {
+    const { MAX_CAROUSEL_PRODUCTS } = data;
     const html: Array<JSX.Element> = [];
     const totalPages = Math.ceil(MAX_CAROUSEL_PRODUCTS / items);
     for (let i = 0; i < totalPages; i++) {
@@ -31,7 +32,7 @@ const CarouselPaging = ({
             onChange={(e) => setPageIndex(Number(e.target.value))}
             checked={i === pageIndex}
           />
-        </span>
+        </span>,
       );
     }
     return (

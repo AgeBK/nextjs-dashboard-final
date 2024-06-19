@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { imgPath } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 // import styles from "@/app/_assets/css/Image.module.css";
 
 type ImgProps = {
@@ -17,6 +17,7 @@ const Img = ({
   imageWidth,
   imageHeight,
 }: ImgProps) => {
+  const { imgPath } = data;
   return (
     <Image
       className=""

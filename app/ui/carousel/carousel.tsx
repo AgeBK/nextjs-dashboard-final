@@ -1,22 +1,22 @@
-"use client";
-import { useState, useEffect, useRef, useCallback } from "react";
-import ProductItem from "@/app/ui/product/product-item";
-import CarouselPaging from "@/app/ui/carousel/carousel-paging";
-import {Button} from "@/app/ui/button";
-import Img from "@/app/ui/image";
-import {
-  SIX_CAROUSEL_ITEMS,
-  FOUR_CAROUSEL_ITEMS,
-  THREE_CAROUSEL_ITEMS,
-  TWO_CAROUSEL_ITEMS,
-  ONE_CAROUSEL_ITEM,
-} from "@/app/lib/appData.json";
-import { DataProps } from "../../lib/definitions";
-import styles from "@/app/_assets/css/Carousel.module.css";
+'use client';
+
+import { useState, useEffect, useRef, useCallback } from 'react';
+import ProductItem from '@/app/ui/product/product-item';
+import CarouselPaging from '@/app/ui/carousel/carousel-paging';
+import { Button } from '@/app/ui/button';
+import Img from '@/app/ui/image';
+import data from '@/app/lib/appData.json';
+import { DataProps } from '../../lib/definitions';
+import styles from '@/app/_assets/css/Carousel.module.css';
 
 export default function Carousel({ arr }: { arr: DataProps[] }) {
-  // console.log("Carousel");
-  // console.log(arr);
+  const {
+    SIX_CAROUSEL_ITEMS,
+    FOUR_CAROUSEL_ITEMS,
+    THREE_CAROUSEL_ITEMS,
+    TWO_CAROUSEL_ITEMS,
+    ONE_CAROUSEL_ITEM,
+  } = data;
 
   const [pageIndex, setPageIndex] = useState<number>(0);
   const [items, setItems] = useState<number>(0);
@@ -51,8 +51,8 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
   useEffect(() => {
     calculateItems();
     if (window) {
-      window.addEventListener("resize", calculateItems);
-      return () => window.removeEventListener("resize", calculateItems);
+      window.addEventListener('resize', calculateItems);
+      return () => window.removeEventListener('resize', calculateItems);
     }
   }, [calculateItems]);
 
@@ -93,7 +93,7 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
               promotion_callout_text,
               promotion_discount_code,
             },
-            ind
+            ind,
           ) => {
             if (ind >= pageIndex * items && ind < pageIndex * items + items) {
               return (
@@ -116,13 +116,13 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
                     promotion_discount_code,
                   }}
                   key={id}
-                  css={"carouselItems" + items}
+                  css={'carouselItems' + items}
                 />
               );
             }
 
             return null;
-          }
+          },
         )}
         <div className={`${styles.arrow} ${styles.arrowRight}`}>
           <Button

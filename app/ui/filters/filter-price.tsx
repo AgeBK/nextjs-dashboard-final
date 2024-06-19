@@ -1,9 +1,11 @@
 import { ChangeEvent } from 'react';
-import styles from '@/app/_assets/css/FilterPrice.module.css';
-import { priceArr } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
+import styles from '@/app/_assets/css/FilterPrice.module.css';
 
 const FilterPrice = ({ updateFilters, filters }: WineFilterProps) => {
+  const { priceArr } = data;
+
   const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
     updateFilters({ price: value });
   const arr: TextValueArrProps[] = priceArr;
