@@ -1,52 +1,52 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import {Button} from "@/app/ui/button";
-import AddToCart from "@/app/ui/add-to-cart";
-import Img from "@/app/ui/image";
-import { checkDeals } from "@/app/lib/utils";
-import styles from "@/app/_assets/css/ProductCart.module.css";
+import { useState } from 'react';
+import { Button } from '@/app/ui/button';
+import AddToCart from '@/app/ui/add-to-cart';
+import Img from '@/app/ui/image';
+import { checkDeals } from '@/app/lib/utils';
+import styles from '@/app/_assets/css/product/ProductCart.module.css';
 
 type ProductCartProps = {
   id: string;
   name: string;
   brand: string;
-  shortName: string;
-  twoFor: number;
-  tenFor: number;
-  percentOff: number;
+  short_name: string;
+  price_two_for: number;
+  price_ten_for: number;
+  price_percent_off: number;
   current: number;
   packaging: string;
-  calloutText?: string;
-  discountCode?: string;
+  promotion_callout_text?: string;
+  promotion_discount_code?: string;
 };
 
 const ProductCart = ({
   id,
   name,
   brand,
-  shortName,
-  twoFor,
-  tenFor,
-  percentOff,
+  short_name,
+  price_two_for,
+  price_ten_for,
+  price_percent_off,
   current,
   packaging,
-  calloutText,
-  discountCode,
+  promotion_callout_text,
+  promotion_discount_code,
 }: ProductCartProps) => {
   const [count, setCount] = useState<number>(1);
-  const isBottle = packaging === "Bottle";
+  const isBottle = packaging === 'Bottle';
 
   const handleCount = (e: React.MouseEvent<Element, MouseEvent>) => {
     const { textContent } = e.currentTarget;
-    if (textContent === "+") {
+    if (textContent === '+') {
       setCount(count + 1);
     } else {
       setCount(count - 1);
     }
   };
 
-  const deal = checkDeals(twoFor, tenFor, percentOff);
+  const deal = checkDeals(price_two_for, price_ten_for, price_percent_off);
 
   return (
     <div className={styles.cartTableCont}>
@@ -80,16 +80,16 @@ const ProductCart = ({
             id={id}
             name={name}
             brand={brand}
-            shortName={shortName}
+            short_name={short_name}
             price={current}
             quantity={count}
             deal={deal}
-            discountCode={discountCode}
+            promotion_discount_code={promotion_discount_code}
           />
         </div>
       </div>
-      {twoFor || tenFor || percentOff ? (
-        <div className={styles.cartTwoFor}>{calloutText}</div>
+      {price_two_for || price_ten_for || price_percent_off ? (
+        <div className={styles.cartprice_two_for}>{promotion_callout_text}</div>
       ) : null}
     </div>
   );

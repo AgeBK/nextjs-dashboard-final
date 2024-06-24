@@ -6,7 +6,7 @@ import RatingFilter from './filter-rating';
 import VarietyFilter from './filter-variety';
 import RegionFilter from './filter-region';
 import { FilterListProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/FilterList.module.css';
+import styles from '@/app/_assets/css/filter/FilterList.module.css';
 
 const FilterList = ({
   currentData,
@@ -45,7 +45,7 @@ const FilterList = ({
           <>
             <li>
               <IdFilter filters={filters} updateFilters={updateFilters} />
-            </li>{' '}
+            </li>
             <li>
               <SearchFilter filters={filters} updateFilters={updateFilters} />
             </li>

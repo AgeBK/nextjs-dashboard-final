@@ -1,15 +1,15 @@
-import { useState, ChangeEvent, KeyboardEvent } from "react";
-import { useDispatch } from "react-redux";
-import { applyDiscountCode } from "../../slices/cartSlice";
-import CartItem from "./cart-item";
-import {Button} from "../button";
-import styles from "@/app/_assets/css/CartOpen.module.css";
+import { useState, ChangeEvent, KeyboardEvent } from 'react';
+import { useDispatch } from 'react-redux';
+import { applyDiscountCode } from '../../slices/cartSlice';
+import CartItem from './cart-item';
+import { Button } from '../button';
+import styles from '@/app/_assets/css/cart/CartOpen.module.css';
 
 type CartOpenProps = {
   totalPrice: number;
   totalQty: number;
   handleClose: () => void;
-  discountCode: string;
+  promotion_discount_code: string;
   setDiscountCode: (code: string) => void;
 };
 
@@ -17,14 +17,14 @@ const CartOpen = ({
   totalPrice,
   totalQty,
   handleClose,
-  discountCode,
+  promotion_discount_code,
   setDiscountCode,
 }: CartOpenProps) => {
   const dispatch = useDispatch();
   const [codeEntered, setCodeEntered] = useState(false);
 
   const handleKeyDown = ({ key }: KeyboardEvent<HTMLInputElement>) => {
-    if (key === "Enter") {
+    if (key === 'Enter') {
       dispatchDiscountCode();
     } else if (codeEntered === true) {
       setCodeEntered(false);
@@ -36,7 +36,7 @@ const CartOpen = ({
 
   const dispatchDiscountCode = () => {
     setCodeEntered(true);
-    dispatch(applyDiscountCode(discountCode));
+    dispatch(applyDiscountCode(promotion_discount_code));
   };
 
   return (
@@ -49,14 +49,14 @@ const CartOpen = ({
         </Button>
       </div>
       <CartItem />
-      <div className={styles.discountCode}>
+      <div className={styles.promotion_discount_code}>
         <input
           className={styles.inputCode}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           type="text"
           placeholder="Enter promo/discount code here"
-          value={discountCode}
+          value={promotion_discount_code}
         />
         <Button css="discount" onClick={dispatchDiscountCode}>
           Apply

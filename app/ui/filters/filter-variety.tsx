@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 import { WineFilterProps, KeyNumberProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/FilterVariety.module.css';
+import styles from '@/app/_assets/css/filter/FilterVariety.module.css';
 
 interface VarietyFilterProps extends WineFilterProps {
   currentData: { category: string; variety: string }[];

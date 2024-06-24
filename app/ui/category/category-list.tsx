@@ -3,7 +3,7 @@ import ProductItem from '@/app/ui/product/product-item';
 import ManageProducts from '../manage/manage-products';
 import ManageHeader from '../manage/manage-header';
 import { DataProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/CategoryList.module.css';
+import styles from '@/app/_assets/css/category/CategoryList.module.css';
 import Loading from '../loading';
 
 type CategoryListProps = {

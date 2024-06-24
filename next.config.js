@@ -1,13 +1,4 @@
-module.exports = {
-  async redirects() {
-    return [
-      {
-        source: '/manage/delete',
-        destination: '/manage',
-        permanent: true,
-      },
-    ];
-  },
-};
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
 
-// TODO: ?? above isn't standard
+module.exports = nextConfig;

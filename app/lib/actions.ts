@@ -14,7 +14,7 @@ const gt0 = z
 const nonNeg = z.coerce.number().nonnegative();
 
 const FormSchema = z.object({
-  id: z.string().min(5, { message: 'Id Must be 5 or more characters long' }),
+  id: z.string().min(5, { message: 'Id must be 5 or more characters long' }),
   brand: minStr1,
   name: minStr1,
   short_name: minStr1,
@@ -35,8 +35,10 @@ const FormSchema = z.object({
   unit_of_measure_label: z.string(),
 });
 
-const validateFormData = (formData: FormData, isEdit: boolean) => {
-  const Schema = isEdit ? UpdateSchema : FormSchema;
+const UpdateSchema = FormSchema.omit({ id: true });
+
+const validateFormData = (Schema: any, formData: FormData) => {
+  // const Schema = isEdit ? UpdateSchema : FormSchema;
   return Schema.safeParse({
     id: formData.get('id'),
     brand: formData.get('brand'),
@@ -60,15 +62,11 @@ const validateFormData = (formData: FormData, isEdit: boolean) => {
   });
 };
 
-const UpdateSchema = FormSchema.omit({ id: true });
-
 export async function addProduct(
   prevState: { message: any; errors: any },
   formData: FormData,
 ) {
-  console.log('add Product');
-
-  const validatedFields = validateFormData(formData, false);
+  const validatedFields = validateFormData(FormSchema, formData);
 
   if (!validatedFields.success) {
     return {
@@ -77,8 +75,27 @@ export async function addProduct(
     };
   }
 
-  const data = validatedFields.data;
-  console.log(data);
+  const {
+    id,
+    brand,
+    name,
+    short_name,
+    category,
+    variety,
+    region,
+    packaging,
+    volume_ml,
+    promotion_callout_text,
+    promotion_discount_code,
+    price_normal,
+    price_current,
+    price_two_for,
+    price_ten_for,
+    price_percent_off,
+    ratings_total,
+    ratings_average,
+    unit_of_measure_label,
+  } = validatedFields.data;
 
   // Insert data into the database
   try {
@@ -105,37 +122,35 @@ export async function addProduct(
         "unit_of_measure_label" )
 
         VALUES(
-          ${data.id}, 
-          ${data.category},
-          ${data.variety},
-          ${data.name},
-          ${data.short_name},
-          ${data.brand},         
-          ${data.region},
-          ${data.packaging},
-          ${data.promotion_callout_text},
-          ${data.promotion_discount_code} ,
-          ${data.volume_ml},
-          ${data.price_normal},
-          ${data.price_current},
-          ${data.price_two_for},
-          ${data.price_ten_for},
-          ${data.price_percent_off},
-          ${data.ratings_total},
-          ${data.ratings_average},
-          ${data.unit_of_measure_label}
+          ${id}, 
+          ${category},
+          ${variety},
+          ${name},
+          ${short_name},
+          ${brand},         
+          ${region},
+          ${packaging},
+          ${promotion_callout_text},
+          ${promotion_discount_code} ,
+          ${volume_ml},
+          ${price_normal},
+          ${price_current},
+          ${price_two_for},
+          ${price_ten_for},
+          ${price_percent_off},
+          ${ratings_total},
+          ${ratings_average},
+          ${unit_of_measure_label}
         )
     `;
   } catch (error) {
-    console.log('error: ' + error);
-
+    console.log('Failed to add new product: ' + error);
     return {
-      message: 'Database Error: Failed to update Product Table.' + error,
+      message: 'Database Error - Failed to add new product:' + error,
       errors: JSON.parse(JSON.stringify(error)),
     };
   }
 
-  // Revalidate the cache for the invoices page and redirect the user.
   revalidatePath('/manage');
   redirect('/manage');
 }
@@ -145,10 +160,7 @@ export async function updateProduct(
   prevState: { message: any },
   formData: FormData,
 ) {
-  console.log('updateProduct: ' + id);
-
-  const validatedFields = validateFormData(formData, true);
-
+  const validatedFields = validateFormData(UpdateSchema, formData);
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
@@ -156,35 +168,55 @@ export async function updateProduct(
     };
   }
 
-  const data = validatedFields.data;
-  console.log(data); // TODO: destructure
+  const {
+    brand,
+    name,
+    short_name,
+    category,
+    variety,
+    region,
+    packaging,
+    volume_ml,
+    promotion_callout_text,
+    promotion_discount_code,
+    price_normal,
+    price_current,
+    price_two_for,
+    price_ten_for,
+    price_percent_off,
+    ratings_total,
+    ratings_average,
+    unit_of_measure_label,
+  } = validatedFields.data;
   // Insert data into the database
   try {
     await sql`
       UPDATE products
-        SET brand = ${data.brand},
-        name = ${data.name},
-        short_name = ${data.short_name},
-        category = ${data.category},
-        variety = ${data.variety},
-        region = ${data.region},
-        packaging = ${data.packaging},
-        volume_ml = ${data.volume_ml},
-        promotion_callout_text = ${data.promotion_callout_text},
-        promotion_discount_code = ${data.promotion_discount_code} ,
-        price_normal = ${data.price_normal},
-        price_current = ${data.price_current},
-        price_two_for = ${data.price_two_for},
-        price_ten_for = ${data.price_ten_for},
-        price_percent_off = ${data.price_percent_off},
-        ratings_total = ${data.ratings_total},
-        ratings_average = ${data.ratings_average},
-        unit_of_measure_label = ${data.unit_of_measure_label}
+        SET brand = ${brand},
+        name = ${name},
+        short_name = ${short_name},
+        category = ${category},
+        variety = ${variety},
+        region = ${region},
+        packaging = ${packaging},
+        volume_ml = ${volume_ml},
+        promotion_callout_text = ${promotion_callout_text},
+        promotion_discount_code = ${promotion_discount_code} ,
+        price_normal = ${price_normal},
+        price_current = ${price_current},
+        price_two_for = ${price_two_for},
+        price_ten_for = ${price_ten_for},
+        price_percent_off = ${price_percent_off},
+        ratings_total = ${ratings_total},
+        ratings_average = ${ratings_average},
+        unit_of_measure_label = ${unit_of_measure_label}
       WHERE id = ${id}
     `;
   } catch (error) {
+    console.log('Failed to update product: ' + error);
     return {
-      message: 'Database Error: Failed to update Product Table.' + error,
+      message: 'Database Error - Failed to update product:' + error,
+      errors: JSON.parse(JSON.stringify(error)),
     };
   }
 
@@ -196,8 +228,10 @@ export async function deleteProduct(id: string, prevState: { message: any }) {
   try {
     await sql`DELETE FROM products WHERE id = ${id}`;
   } catch (error) {
+    console.log('Failed to delete product: ' + error);
     return {
-      message: `Database Error: Failed to delete product ${id} from the Product Table. ${error}`,
+      message: 'Database Error - Failed to delete product:' + error,
+      errors: JSON.parse(JSON.stringify(error)),
     };
   }
   revalidatePath('/manage');

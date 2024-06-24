@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useMemo, useRef, Suspense } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react'; // TODO:
 import {
   sortCategoryPageData,
   filterCategoryPageData,
@@ -21,12 +21,9 @@ import {
   FilterProps,
   PagingProps,
 } from '@/app/lib/definitions';
-import header from '../header';
-import Loading from '../loading';
-const variety = '';
-let products: DataProps[] = [];
-import styles from '@/app/_assets/css/Category.module.css';
+import styles from '@/app/_assets/css/category/Category.module.css';
 
+// TODO: check loading states ??
 export default function CategoryMain({
   arr,
   urlCategory,
@@ -38,12 +35,10 @@ export default function CategoryMain({
   const [filters, setFilters] = useState<FilterProps>({});
   const [paging, setPaging] = useState<PagingProps>(pagingSettings);
   const [isShowItems, setIsShowItems] = useState<boolean>(false);
-  // const isSmallScreen: boolean = usePageWidth(MAX_SMALLSCREEN);
-  const isSmallScreen: boolean = false; // TODO: ??
+  const isSmallScreen: boolean = usePageWidth(MAX_SMALLSCREEN);
   const dataRef = useRef<DataProps[]>([]);
   const didMount = useRef<boolean>(false);
   const isSmallScreenShowItems = isSmallScreen && isShowItems;
-  let strHeader = '';
 
   if (arr && dataRef.current.length === 0) {
     const variety = filters.variety || urlVariety;
@@ -73,7 +68,7 @@ export default function CategoryMain({
       }
     }
     return arr;
-  }, [filters, sortName]);
+  }, [filters, sortName, pagingSettings]);
 
   const pagedData = currentData.slice(
     (paging.page - 1) * paging.pageSize,
@@ -106,10 +101,13 @@ export default function CategoryMain({
 
   return (
     <>
-      <Blurb
-        urlCategory={urlCategory}
-        variety={urlVariety || hyphenate(filters.variety)}
-      />
+      {!isManage && (
+        <Blurb
+          urlCategory={urlCategory}
+          variety={urlVariety || hyphenate(filters.variety)}
+        />
+      )}
+
       {isSmallScreen && (
         <CategoryToggleItems
           togglePageItems={togglePageItems}
@@ -145,10 +143,7 @@ export default function CategoryMain({
             />
             {currentData.length > 0 ? (
               <>
-                {/* <Suspense fallback={<Loading />}> */}
                 <CategoryList arr={pagedData} isManage={isManage} />
-                {/* </Suspense> */}
-
                 <CategoryPaging
                   currentData={currentData}
                   paging={paging}

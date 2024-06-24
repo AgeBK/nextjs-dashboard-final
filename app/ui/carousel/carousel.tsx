@@ -7,7 +7,7 @@ import { Button } from '@/app/ui/button';
 import Img from '@/app/ui/image';
 import data from '@/app/lib/appData.json';
 import { DataProps } from '../../lib/definitions';
-import styles from '@/app/_assets/css/Carousel.module.css';
+import styles from '@/app/_assets/css/carousel/Carousel.module.css';
 
 export default function Carousel({ arr }: { arr: DataProps[] }) {
   const {

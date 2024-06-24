@@ -1,23 +1,23 @@
-import WineBlurb from "@/app/ui/wine-blurb";
-import ProductRating from "@/app/ui/product-rating";
-import ProductCart from "@/app/ui/product-cart";
-import Img from "@/app/ui/image";
-import styles from "@/app/_assets/css/ProductDetails.module.css";
+import WineBlurb from '@/app/ui/wine-blurb';
+import ProductRating from '@/app/ui/product-rating';
+import ProductCart from '@/app/ui/product-cart';
+import Img from '@/app/ui/image';
+import styles from '@/app/_assets/css/product/ProductDetails.module.css';
 
 type ProductDetailsProps = {
   id: string;
   name: string;
   brand: string;
-  shortName: string;
+  short_name: string;
   average: number;
   total: number;
-  twoFor: number;
-  tenFor: number;
-  percentOff: number;
+  price_two_for: number;
+  price_ten_for: number;
+  price_percent_off: number;
   current: number;
   packaging: string;
-  calloutText?: string;
-  discountCode?: string;
+  promotion_callout_text?: string;
+  promotion_discount_code?: string;
   urlCategory?: string;
   urlVariety?: string;
   // isSmallScreen: boolean; // TODO:??
@@ -27,21 +27,21 @@ const ProductDetails = ({
   id,
   brand,
   name,
-  shortName,
+  short_name,
   average,
   total,
-  twoFor,
-  tenFor,
-  percentOff,
+  price_two_for,
+  price_ten_for,
+  price_percent_off,
   current,
   packaging,
-  calloutText,
-  discountCode,
+  promotion_callout_text,
+  promotion_discount_code,
   urlCategory,
   urlVariety,
 }: // isSmallScreen,
 ProductDetailsProps) => {
-  const isBottle = packaging === "Bottle";
+  const isBottle = packaging === 'Bottle';
 
   return (
     <section className={styles.productCont}>
@@ -49,7 +49,7 @@ ProductDetailsProps) => {
         <Img
           imageSrc={`wine/${id}.jpg`}
           imageStyle={
-            packaging === "Bottle" ? "productMain" : "productMainCask"
+            packaging === 'Bottle' ? 'productMain' : 'productMainCask'
           }
           imageAlt={name}
           imageWidth={isBottle ? 120 : 339}
@@ -58,7 +58,7 @@ ProductDetailsProps) => {
       </div>
       <div className={styles.productMeta}>
         <h1 className={styles.brand}>{brand}</h1>
-        <h2 className={styles.shortName}>{shortName}</h2>
+        <h2 className={styles.short_name}>{short_name}</h2>
         <WineBlurb urlCategory={urlCategory} urlVariety={urlVariety} />
         <ProductRating average={average} total={total} />
         {/* {!isSmallScreen && ( */}
@@ -66,14 +66,14 @@ ProductDetailsProps) => {
           id={id}
           name={name}
           brand={brand}
-          shortName={shortName}
-          twoFor={twoFor}
-          tenFor={tenFor}
-          percentOff={percentOff}
+          short_name={short_name}
+          price_two_for={price_two_for}
+          price_ten_for={price_ten_for}
+          price_percent_off={price_percent_off}
           current={current}
           packaging={packaging}
-          calloutText={calloutText}
-          discountCode={discountCode}
+          promotion_callout_text={promotion_callout_text}
+          promotion_discount_code={promotion_discount_code}
         />
         {/* )} */}
       </div>

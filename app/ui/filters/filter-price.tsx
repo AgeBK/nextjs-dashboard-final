@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import data from '@/app/lib/appData.json';
 import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/FilterPrice.module.css';
+import styles from '@/app/_assets/css/filter/FilterPrice.module.css';
 
 const FilterPrice = ({ updateFilters, filters }: WineFilterProps) => {
   const { priceArr } = data;

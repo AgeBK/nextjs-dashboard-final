@@ -343,7 +343,7 @@ export async function fetchProductsById(query: string) {
   }
 }
 
-export async function fetchProductsByDealTwoForPrice(price: number) {
+export async function fetchProductsByDealprice_two_forPrice(price: number) {
   noStore();
 
   try {
@@ -362,7 +362,7 @@ export async function fetchProductsByDealTwoForPrice(price: number) {
   }
 }
 
-export async function fetchProductsByDealTenForPrice(price: number) {
+export async function fetchProductsByDealprice_ten_forPrice(price: number) {
   noStore();
 
   try {
@@ -442,7 +442,7 @@ export async function fetchProductsByVariety(
   }
 }
 
-export async function fetchProductsTwoForDeals() {
+export async function fetchProductsprice_two_forDeals() {
   noStore();
 
   try {
@@ -461,7 +461,7 @@ export async function fetchProductsTwoForDeals() {
   }
 }
 
-export async function fetchProductsTenPercentOff() {
+export async function fetchProductsTenprice_percent_off() {
   noStore();
 
   try {
@@ -497,7 +497,7 @@ export async function fetchProductsTenAndLess() {
   }
 }
 
-export async function fetchProductsTenFor100() {
+export async function fetchProductsprice_ten_for100() {
   noStore();
 
   try {

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { hyphenate } from '../../lib/utils';
-import styles from '@/app/_assets/css/ProductInfo.module.css';
+import styles from '@/app/_assets/css/product/ProductInfo.module.css';
 
 type ProductInfoProps = {
   id: string;
@@ -11,7 +11,7 @@ type ProductInfoProps = {
   unitOfMeasureLabel: string;
   current: number;
   normal: number;
-  shortName: string;
+  short_name: string;
   urlCategory?: string;
 };
 
@@ -24,7 +24,7 @@ const ProductInfo = ({
   unitOfMeasureLabel,
   current,
   normal,
-  shortName,
+  short_name,
   urlCategory,
 }: ProductInfoProps) => {
   return (
@@ -77,7 +77,7 @@ const ProductInfo = ({
         <li>
           <span>Organic</span>
           <span>
-            {shortName.toLowerCase().includes('organic') ? 'Yes' : 'No'}
+            {short_name.toLowerCase().includes('organic') ? 'Yes' : 'No'}
           </span>
         </li>
         <li>

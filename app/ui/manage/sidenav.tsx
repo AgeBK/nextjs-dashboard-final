@@ -34,6 +34,9 @@ export default function SideNav() {
           <li>
             <Link href="/manage">Reports</Link>
           </li>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
         </ul>
         <Logout />
       </div>

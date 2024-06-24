@@ -1,7 +1,7 @@
-import { ChangeEvent } from "react";
-import styles from "@/app/_assets/css/FilterPriceServer.module.css";
-import { priceArr } from "@/app/lib/appData.json";
-import { WineFilterProps, TextValueArrProps } from "@/app/lib/definitions";
+import { ChangeEvent } from 'react';
+import styles from '@/app/_assets/css/filter/FilterPriceServer.module.css';
+import { priceArr } from '@/app/lib/appData.json';
+import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
 
 const FilterPriceServer = ({ updateFilters, filters }: WineFilterProps) => {
   const handleChange = ({

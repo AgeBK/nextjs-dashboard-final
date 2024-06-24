@@ -5,7 +5,7 @@
 }
 
 .categoryBlurb {
-  background-image: url(/tenFor100.jpg);
+  background-image: url(/price_ten_for100.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   color: hsl(0, 0%, 100%);
@@ -72,7 +72,7 @@
   border: 5px solid white;
 }
 
-.campaignMini .twoForBlurb {
+.campaignMini .price_two_forBlurb {
   font-size: 1.2rem;
   color: #fff;
 }
@@ -123,6 +123,6 @@
   }
 
   .categoryBlurb {
-    background-image: url(/tenFor100Sml1.jpg);
+    background-image: url(/price_ten_for100Sml1.jpg);
   }
 }

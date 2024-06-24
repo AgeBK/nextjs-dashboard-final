@@ -3,15 +3,15 @@ import { MAX_CAROUSEL_PRODUCTS } from './appData.json';
 import { DataProps, FilterProps } from './definitions';
 import {
   fetchProductsByCat,
-  fetchProductsByDealTwoForPrice,
-  fetchProductsByDealTenForPrice,
+  fetchProductsByDealprice_two_forPrice,
+  fetchProductsByDealprice_ten_forPrice,
   fetchProductsOnSpecial,
   fetchProductsBySearchTerm,
   fetchProductsByVariety,
-  fetchProductsTwoForDeals,
-  fetchProductsTenPercentOff,
+  fetchProductsprice_two_forDeals,
+  fetchProductsTenprice_percent_off,
   fetchProductsTenAndLess,
-  fetchProductsTenFor100,
+  fetchProductsprice_ten_for100,
   fetchProductsPriceDrop,
 } from '@/app/lib/data';
 
@@ -104,7 +104,7 @@ const catPageData = async (arg1: string, arg2?: string) => {
     arg1 !== 'two-for-deals'
   ) {
     const price = Number(arg1.split('-')[2]);
-    arr = await fetchProductsByDealTwoForPrice(price);
+    arr = await fetchProductsByDealprice_two_forPrice(price);
     // header = `2 for $${price}`;
   } else if (arg1.startsWith('search')) {
     const searchTerm = arg1.split('=')[1];
@@ -115,11 +115,11 @@ const catPageData = async (arg1: string, arg2?: string) => {
   } else {
     switch (arg1) {
       case 'two-for-deals':
-        arr = await fetchProductsTwoForDeals();
+        arr = await fetchProductsprice_two_forDeals();
         // header = "2 for Deals";
         break;
       case 'ten-percent-off':
-        arr = await fetchProductsTenPercentOff();
+        arr = await fetchProductsTenprice_percent_off();
         // header = "10% OFF";
         break;
       case 'ten-and-less':
@@ -127,7 +127,7 @@ const catPageData = async (arg1: string, arg2?: string) => {
         // header = "$10 and less";
         break;
       case 'ten-for-100':
-        arr = await fetchProductsTenFor100();
+        arr = await fetchProductsprice_ten_for100();
         // header = "10 for $100";
         break;
       case 'price-drop':
@@ -193,14 +193,18 @@ const deHyphenate = (text: string) =>
 //   return randomProducts(products);
 // };
 
-const checkDeals = (twoFor?: number, tenFor?: number, percentOff?: number) => {
+const checkDeals = (
+  price_two_for?: number,
+  price_ten_for?: number,
+  price_percent_off?: number,
+) => {
   let deal = {};
-  if (twoFor) {
-    deal = { twoFor };
-  } else if (tenFor) {
-    deal = { tenFor };
-  } else if (percentOff) {
-    deal = { percentOff };
+  if (price_two_for) {
+    deal = { price_two_for };
+  } else if (price_ten_for) {
+    deal = { price_ten_for };
+  } else if (price_percent_off) {
+    deal = { price_percent_off };
   }
   return deal;
 };
@@ -211,24 +215,24 @@ const checkDeals = (twoFor?: number, tenFor?: number, percentOff?: number) => {
 //   },
 //   "two-for-deals": (all: DataProps[]) => {
 //     return all.filter(
-//       ({ promotion: { calloutText } }) =>
-//         calloutText && calloutText.startsWith("2 for")
+//       ({ promotion: { promotion_callout_text } }) =>
+//         promotion_callout_text && promotion_callout_text.startsWith("2 for")
 //     );
 //   },
 //   "ten-percent-off": (all: DataProps[]) => {
 //     return all.filter(
-//       ({ promotion: { calloutText } }) =>
-//         calloutText && calloutText.startsWith("10% OFF")
+//       ({ promotion: { promotion_callout_text } }) =>
+//         promotion_callout_text && promotion_callout_text.startsWith("10% OFF")
 //     );
 //   },
 //   "ten-and-less": (all: DataProps[]) => {
 //     return all.filter(({ price: { current } }) => current <= 10);
 //   },
 //   "ten-for-100": (all: DataProps[]) => {
-//     return all.filter(({ price: { tenFor } }) => tenFor === 100);
+//     return all.filter(({ price: { price_ten_for } }) => price_ten_for === 100);
 //   },
 //   "two-for-price": (all: DataProps[], price: number) => {
-//     return all.filter(({ price: { twoFor } }) => twoFor === price);
+//     return all.filter(({ price: { price_two_for } }) => price_two_for === price);
 //   },
 //   variety: (all: DataProps[], variety: string) => {
 //     return all.filter(

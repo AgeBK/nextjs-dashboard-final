@@ -1,4 +1,4 @@
-import styles from "@/app/_assets/css/CartPrice.module.css";
+import styles from '@/app/_assets/css/cart/CartPrice.module.css';
 
 type CartPriceProps = {
   price: number;

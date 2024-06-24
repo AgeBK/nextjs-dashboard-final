@@ -1,6 +1,10 @@
-import { ChangeEvent } from "react";
-import styles from "@/app/_assets/css/FilterRegion.module.css";
-import { DataProps, KeyNumberProps, WineFilterProps } from "@/app/lib/definitions";
+import { ChangeEvent } from 'react';
+import styles from '@/app/_assets/css/filter/FilterRegion.module.css';
+import {
+  DataProps,
+  KeyNumberProps,
+  WineFilterProps,
+} from '@/app/lib/definitions';
 
 interface RegionFilterProps extends WineFilterProps {
   currentData: DataProps[];
@@ -19,7 +23,7 @@ const FilterRegion = ({
   }, {} as KeyNumberProps);
 
   const sortedArr = Object.entries(currentRegions).sort(
-    ([, a], [, b]) => b - a
+    ([, a], [, b]) => b - a,
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,8 +38,8 @@ const FilterRegion = ({
     <>
       <h3 className={styles.hdr}>Region:</h3>
       {sortedArr.length > 0 ? (
-      <ul role="radiogroup">
-      {sortedArr.map(([reg, amount]) => (
+        <ul role="radiogroup">
+          {sortedArr.map(([reg, amount]) => (
             <li key={reg}>
               <input
                 type="checkbox"

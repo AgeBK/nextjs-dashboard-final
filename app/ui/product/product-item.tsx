@@ -4,7 +4,7 @@ import AddToCart from '@/app/ui/add-to-cart';
 import Img from '@/app/ui/image';
 import PriceDrop from '@/app/ui/price-drop';
 import Price from '@/app/ui/price';
-import styles from '@/app/_assets/css/ProductItem.module.css';
+import styles from '@/app/_assets/css/product/ProductItem.module.css';
 import { DealProps } from '@/app/lib/definitions';
 
 type ProductItemProps = {
@@ -59,7 +59,7 @@ const ProductItem = ({ props, css }: ProductItemProps) => {
   return (
     <div className={`${styles.product} ${css ? styles[css] : ''}`} key={id}>
       {promotion_callout_text || onSpecial ? (
-        <PriceDrop calloutText={promotion_callout_text} />
+        <PriceDrop promotion_callout_text={promotion_callout_text} />
       ) : null}
       <Link
         href={`/${category.toLowerCase()}/${hyphenate(
@@ -98,7 +98,7 @@ const ProductItem = ({ props, css }: ProductItemProps) => {
           price={price_current}
           quantity={1}
           deal={deal}
-          discountCode={promotion_discount_code}
+          promotion_discount_code={promotion_discount_code}
         />
       </div>
     </div>

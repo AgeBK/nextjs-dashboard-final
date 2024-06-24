@@ -5,7 +5,7 @@ import CartItemSaving from './cart-item-savings';
 import Img from '../image';
 import { Button } from '../button';
 import { CartProps, AddToCartProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/CartItem.module.css';
+import styles from '@/app/_assets/css/cart/CartItem.module.css';
 
 const CartItem = () => {
   const cart: CartProps = useSelector(selectCart);
@@ -19,7 +19,7 @@ const CartItem = () => {
     price,
     quantity,
     deal,
-    discountCode,
+    promotion_discount_code,
   }: AddToCartProps) => {
     dispatch(
       increment({
@@ -30,7 +30,7 @@ const CartItem = () => {
         price,
         quantity,
         deal,
-        discountCode,
+        promotion_discount_code,
       }),
     );
   };
@@ -51,7 +51,7 @@ const CartItem = () => {
             price,
             deal,
             dealPrice,
-            discountCode,
+            promotion_discount_code,
           },
         ]) => (
           <li className={styles.itemCont} key={id} value={name}>
@@ -86,7 +86,7 @@ const CartItem = () => {
                           price,
                           quantity: 1,
                           deal,
-                          discountCode,
+                          promotion_discount_code,
                         });
                       }}
                       css="cartAdd"

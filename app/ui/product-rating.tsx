@@ -1,5 +1,5 @@
-import Img from "@/app/ui/image";
-import styles from "@/app/_assets/css/ProductRating.module.css";
+import Img from '@/app/ui/image';
+import styles from '@/app/_assets/css/product/ProductRating.module.css';
 
 type ProductRatingProps = {
   average: number;

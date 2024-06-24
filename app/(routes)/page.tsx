@@ -1,20 +1,20 @@
-import Link from "next/link";
-import Img from "../ui/image";
-import Carousel from "../ui/carousel/carousel";
-import HomeHero from "../ui/home-hero";
-import { Suspense } from "react";
-import Loading from "../ui/loading";
-import { fetchCarouselProducts } from "../lib/data";
-import { CampainMiniProps, DataProps } from "../lib/definitions";
-import { campaingMini } from "../lib/appData.json";
-import styles from "./page.module.css";
+import Link from 'next/link';
+import Img from '../ui/image';
+import Carousel from '../ui/carousel/carousel';
+import HomeHero from '../ui/home-hero';
+import { Suspense } from 'react';
+import Loading from '../ui/loading';
+import { fetchCarouselProducts } from '../lib/data';
+import { CampainMiniProps, DataProps } from '../lib/definitions';
+import { campaingMini } from '../lib/appData.json';
+import styles from './page.module.css';
 
-import usePageWidth from "../hooks/usePageWidth";
-import useSize from "../hooks/useSetPath";
-import Image from "next/image";
+import usePageWidth from '../hooks/usePageWidth';
+import useSize from '../hooks/useSetPath';
+import Image from 'next/image';
 
 export default async function Home() {
-  console.log("Home");
+  console.log('Home');
   // console.log(usePageWidth);
   // console.log(useSize);
   // const windowsize = useSize();
@@ -54,8 +54,8 @@ export default async function Home() {
               <div className={styles.offer} key={id}>
                 <Link href={link}>
                   <h3 className={styles.hdr}>{hdr}</h3>
-                  <div className={styles.twoForBlurb}>{blurb1}</div>
-                  <div className={styles.twoForBlurb}>{blurb2}</div>
+                  <div className={styles.price_two_forBlurb}>{blurb1}</div>
+                  <div className={styles.price_two_forBlurb}>{blurb2}</div>
                   <Img
                     imageSrc={imgSrc}
                     imageStyle="campaignMini"
@@ -66,7 +66,7 @@ export default async function Home() {
                   <h3 className={styles.shopNow}>SHOP NOW</h3>
                 </Link>
               </div>
-            )
+            ),
           )}
         </div>
         <div className={styles.campaign}>

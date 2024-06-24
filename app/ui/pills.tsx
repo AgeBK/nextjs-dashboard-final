@@ -15,11 +15,17 @@ export default function Pills({ filters, removeFilters }: PillsProps) {
 
   const html = pillsArr.reduce((acc: JSX.Element[], val: string) => {
     const currentFilter = filters[val as keyof FilterProps];
+
     if (currentFilter) {
+      console.log(currentFilter);
+      console.log(typeof currentFilter);
+
       // for region filter, check object for true values
       const regionFilter =
         typeof currentFilter === 'object' && isRegionChecked(currentFilter);
-      if (currentFilter.length || regionFilter) {
+      const otherFilters =
+        typeof currentFilter === 'string' && currentFilter.length > 0;
+      if (otherFilters || regionFilter) {
         acc = [
           ...acc,
           <Button css="pills" onClick={() => removeFilters(val)} key={val}>

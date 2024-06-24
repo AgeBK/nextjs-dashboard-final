@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import styles from "@/app/_assets/css/HomeHero.module.css";
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from '@/app/_assets/css/HomeHero.module.css';
 
 export default function HomeHero() {
   return (
@@ -16,7 +16,7 @@ export default function HomeHero() {
             alt="Ten for $100"
             width={1400}
             height={420}
-            layout="responsive"
+            className={styles.img}
           />
         </picture>
       </Link>

@@ -1,5 +1,5 @@
-import Img from "../image";
-import styles from "@/app/_assets/css/CartClosed.module.css";
+import Img from '../image';
+import styles from '@/app/_assets/css/cart/CartClosed.module.css';
 
 type CartClosedProps = {
   totalPrice: number;
@@ -8,13 +8,13 @@ type CartClosedProps = {
 
 const CartClosed = ({ totalPrice, totalQty }: CartClosedProps) => {
   const notEmpty: boolean = totalQty > 0 && totalPrice > 0;
-  const cartImage: string = notEmpty ? "cartNotEmpty" : "cartEmpty";
+  const cartImage: string = notEmpty ? 'cartNotEmpty' : 'cartEmpty';
 
   return (
     <div className={styles.cartClosedCont}>
       <span
         className={`${styles.cartClosedQty} ${
-          totalQty ? styles.cartClosedContQty : ""
+          totalQty ? styles.cartClosedContQty : ''
         }`}
       >
         {totalQty}

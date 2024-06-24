@@ -1,6 +1,6 @@
 import data from '@/app/lib/appData.json';
 import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/FilterRating.module.css';
+import styles from '@/app/_assets/css/filter/FilterRating.module.css';
 
 const FilterRating = ({
   filters,

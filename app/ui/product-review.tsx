@@ -1,6 +1,6 @@
-import { reviews, productSource } from "@/app/lib/appData.json";
-import styles from "@/app/_assets/css/ProductReview.module.css";
-import { KeyStringProps, ProductReviewProps } from "../lib/definitions";
+import { reviews, productSource } from '@/app/lib/appData.json';
+import styles from '@/app/_assets/css/product/ProductReview.module.css';
+import { KeyStringProps, ProductReviewProps } from '../lib/definitions';
 const review: KeyStringProps = reviews;
 
 const ProductReview = ({ urlCategory, variety }: ProductReviewProps) => {
@@ -11,7 +11,7 @@ const ProductReview = ({ urlCategory, variety }: ProductReviewProps) => {
       <div
         className={styles.source}
         dangerouslySetInnerHTML={{
-          __html: productSource.replace("[variety]", variety),
+          __html: productSource.replace('[variety]', variety),
         }}
       ></div>
     </div>

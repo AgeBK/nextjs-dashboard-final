@@ -11,11 +11,11 @@ const AddToCart = ({
   id,
   name,
   brand,
-  shortName,
+  short_name,
   price,
   quantity,
   deal,
-  discountCode,
+  promotion_discount_code,
 }: AddToCartProps) => {
   const [itemId, setItemId] = useState('');
   const dispatch = useDispatch();
@@ -29,11 +29,11 @@ const AddToCart = ({
         id,
         name,
         brand,
-        shortName,
+        short_name,
         price,
         quantity,
         deal,
-        discountCode,
+        promotion_discount_code,
       }),
     );
   };

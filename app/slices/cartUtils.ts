@@ -1,17 +1,17 @@
 const checkDiscountCode = (cart: CartProps, promotionCode: string) => {
   Object.values(cart).forEach((cartItem) => {
-    const { price, discountCode, deal } = cartItem;
-    if (discountCode && deal) {
-      const { percentOff } = deal;
+    const { price, promotion_discount_code, deal } = cartItem;
+    if (promotion_discount_code && deal) {
+      const { price_percent_off } = deal;
       if (
-        percentOff &&
-        discountCode.toLowerCase() === promotionCode.toLowerCase()
+        price_percent_off &&
+        promotion_discount_code.toLowerCase() === promotionCode.toLowerCase()
       ) {
         cartItem.dealPrice = Number(
-          ((price / 100) * (100 - percentOff)).toFixed(2)
+          ((price / 100) * (100 - price_percent_off)).toFixed(2),
         );
       } else if (
-        discountCode.toLowerCase() !== promotionCode.toLowerCase() &&
+        promotion_discount_code.toLowerCase() !== promotionCode.toLowerCase() &&
         cartItem.dealPrice
       ) {
         delete cartItem.dealPrice;
@@ -26,7 +26,7 @@ const checkMultiBuys = (
   cart: CartProps,
   deal: KeyNumberProps,
   isRemove: boolean,
-  items: number
+  items: number,
 ) => {
   const dealType = Object.keys(deal)[0];
   const dealPrice = Object.values(deal)[0];
