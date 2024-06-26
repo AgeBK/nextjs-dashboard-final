@@ -39,11 +39,12 @@ export default function CategoryMain({
   const dataRef = useRef<DataProps[]>([]);
   const didMount = useRef<boolean>(false);
   const isSmallScreenShowItems = isSmallScreen && isShowItems;
+  dataRef.current = arr;
 
-  if (arr && dataRef.current.length === 0) {
-    const variety = filters.variety || urlVariety;
-    dataRef.current = arr;
-  }
+  // if (arr && dataRef.current.length === 0) {
+  //  const variety = filters.variety || urlVariety;
+  //  dataRef.current = arr;
+  // }
 
   useEffect(() => {
     if (didMount.current) {

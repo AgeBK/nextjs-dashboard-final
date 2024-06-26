@@ -1,22 +1,14 @@
 import Image from 'next/image';
 import data from '@/app/lib/appData.json';
+import { ImgProps } from '../lib/definitions';
 // import styles from "@/app/_assets/css/Image.module.css";
 
-type ImgProps = {
-  imageSrc: string;
-  // imageStyle: keyof typeof styles;
-  imageAlt: string;
-  imageWidth: number;
-  imageHeight: number;
-};
-
-const Img = ({
-  imageSrc,
-  // imageStyle, // TODO: am i using?
+export default function Img({
+  imageSrc, // TODO: make imgSrc etc, shorter
   imageAlt,
   imageWidth,
   imageHeight,
-}: ImgProps) => {
+}: ImgProps) {
   const { imgPath } = data;
   return (
     <Image
@@ -25,9 +17,7 @@ const Img = ({
       alt={imageAlt}
       width={imageWidth}
       height={imageHeight}
-      priority // TODO: ?
+      // priority // TODO: ?
     />
   );
-};
-
-export default Img;
+}

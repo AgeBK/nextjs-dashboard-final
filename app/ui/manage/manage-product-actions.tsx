@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../button';
+import Button from '../button';
 import Link from 'next/link';
 import Img from '../image';
 import styles from '@/app/_assets/css/manage/ManageProductActions.module.css';

@@ -1,4 +1,4 @@
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import styles from '@/app/_assets/css/category/CategoryToggleItems.module.css';
 
 type CategoryToggleItemsProps = {

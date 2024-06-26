@@ -1,4 +1,4 @@
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import data from '@/app/lib/appData.json';
 import { PagingProps } from '../lib/definitions';
 import styles from '@/app/_assets/css/ResultsPP.module.css';

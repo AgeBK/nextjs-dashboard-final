@@ -12,6 +12,7 @@
   min-width: 170px;
   position: relative;
   text-align: center;
+  min-height:375px; 
 }
 
 .product:hover {

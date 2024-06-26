@@ -1,9 +1,15 @@
 import { ChangeEvent } from 'react';
-import { WineFilterProps, KeyNumberProps } from '@/app/lib/definitions';
+import {
+  WineFilterProps,
+  KeyNumberProps,
+  DataProps,
+} from '@/app/lib/definitions';
+import { filterCategoryPageData } from '@/app/lib/utils';
+import Button from '../button';
 import styles from '@/app/_assets/css/filter/FilterVariety.module.css';
 
 interface VarietyFilterProps extends WineFilterProps {
-  currentData: { category: string; variety: string }[];
+  currentData: DataProps[];
 }
 
 const VarietyFilter = ({
@@ -11,10 +17,12 @@ const VarietyFilter = ({
   filters,
   currentData,
 }: VarietyFilterProps) => {
+  const filteredData = filterCategoryPageData(currentData, filters);
+
   const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
     updateFilters({ variety: value });
 
-  const varietys: KeyNumberProps = currentData.reduce(
+  const varietys: KeyNumberProps = filteredData.reduce(
     (acc, { category, variety }) => {
       if (!filters.category || filters.category === category)
         acc[variety] = (acc[variety] || 0) + 1;
@@ -41,9 +49,20 @@ const VarietyFilter = ({
                 className={styles.radio}
                 onChange={handleChange}
               />
+
               <label htmlFor={variety}>
                 {variety} <span className={styles.amount}> ({amount})</span>
               </label>
+              {filters.variety === variety && (
+                <span className={styles.remove}>
+                  <Button
+                    css="linkLight"
+                    onClick={() => updateFilters({ variety: '' })}
+                  >
+                    Clear
+                  </Button>
+                </span>
+              )}
             </li>
           ))}
         </ul>

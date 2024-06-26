@@ -1,14 +1,7 @@
 import Link from 'next/link';
-// import NavLinks from '@/app/ui/dashboard/nav-links';
-// import AcmeLogo from '@/app/ui/acme-logo';
-// import { PowerIcon } from '@heroicons/react/24/outline';
-import { signOut } from '@/auth';
-import { Dancing_Script } from 'next/font/google';
-
 import Img from '@/app/ui/image';
-import styles from '@/app/_assets/css/manage/SidneNav.module.css';
-
 import Logout from '../logout';
+import styles from '@/app/_assets/css/manage/SidneNav.module.css';
 
 export default function SideNav() {
   return (
@@ -17,7 +10,7 @@ export default function SideNav() {
         <h1 className={styles.hdr}>Admin Panel</h1>
         <Img
           imageSrc={`icons/settings.png`}
-          imageStyle="white"
+          // imageStyle="white"
           imageAlt="Admin Panel"
           imageWidth={128}
           imageHeight={128}

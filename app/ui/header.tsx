@@ -2,23 +2,18 @@ import Link from 'next/link';
 import AutoComplete from '@/app/ui/AutoComplete';
 import Nav from './nav';
 import Img from './image';
-import Cart from './cart/cart';
+import HeaderUserCart from './header-user-cart';
 import { fetchProducts } from '../lib/data';
 import { DataProps } from '../lib/definitions';
-// import { user } from "@heroicons/react/outline";
-// import { UserCircleIcon } from '@heroicons/react/24/outline';
-// import { UserCircleIcon } from "@heroicons/react/24/solid";
-import LoginLink from './login-link';
-
-import styles from '@/app/_assets/css/Header.module.css';
-import { signOut } from '@/auth';
 import { auth } from '../../auth';
+import styles from '@/app/_assets/css/Header.module.css';
 
 const Header = async () => {
   let products: DataProps[] = await fetchProducts();
   const session = await auth();
-  // console.log("HEADER ZZZ");
+  const name = session?.user?.name || null;
 
+  // TODO: remove when finished
   if (session?.user) {
     console.log(session);
 
@@ -33,8 +28,6 @@ const Header = async () => {
     console.log('NO SESSION');
   }
 
-  const test = session?.user?.name;
-
   return (
     <header className={styles.header}>
       <div className={styles.headerRow}>
@@ -42,7 +35,6 @@ const Header = async () => {
           <Link href="/">
             <Img
               imageSrc={'logos/AK.png'}
-              imageStyle="logo"
               imageAlt="AK Fine Wines"
               imageWidth={80}
               imageHeight={80}
@@ -52,25 +44,8 @@ const Header = async () => {
         <h1 className={styles.hdr}>
           AK <span>FINE WINES</span>
         </h1>
-
         <AutoComplete products={products} />
-        <div className={styles.userCont}>
-          {test ? (
-            <div className={styles.userName}>
-              {session?.user?.name?.substring(0, 1)}
-            </div>
-          ) : (
-            <div className={styles.userContainer}>
-              {/* <Link href="/login">
-                <UserCircleIcon className={styles.user} />
-              </Link> */}
-              <LoginLink />
-            </div>
-          )}
-          <div className={styles.cartCont}>
-            <Cart />
-          </div>
-        </div>
+        <HeaderUserCart name={name} />
       </div>
       <Nav />
     </header>

@@ -2,7 +2,7 @@ import { useState, ChangeEvent, KeyboardEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { applyDiscountCode } from '../../slices/cartSlice';
 import CartItem from './cart-item';
-import { Button } from '../button';
+import Button from '../button';
 import styles from '@/app/_assets/css/cart/CartOpen.module.css';
 
 type CartOpenProps = {

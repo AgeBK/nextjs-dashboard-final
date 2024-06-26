@@ -3,7 +3,7 @@ import { selectCart, increment, decrement } from '../../slices/cartSlice';
 import CartPrice from './cart-price';
 import CartItemSaving from './cart-item-savings';
 import Img from '../image';
-import { Button } from '../button';
+import Button from '../button';
 import { CartProps, AddToCartProps } from '@/app/lib/definitions';
 import styles from '@/app/_assets/css/cart/CartItem.module.css';
 

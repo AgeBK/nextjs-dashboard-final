@@ -15,16 +15,9 @@ export default async function Category({
   let products: DataProps[] = await catPageData(
     decodeURIComponent(urlCategory),
   );
-
-  // const strHeader = "";
   // TODO: check site semantics
   return (
     <article>
-      {/* <Blurb
-        urlCategory={urlCategory}
-        variety={urlVariety || hyphenate("")}
-        // header={strHeader}
-      /> */}
       <Suspense fallback={<Loading />}>
         <CategoryMain
           arr={products}

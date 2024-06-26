@@ -1,6 +1,6 @@
-import { signOut } from "@/auth";
-import { auth } from "../../auth"; // todo
-import styles from "@/app/_assets/css/Logout.module.css";
+import { signOut } from '@/auth';
+import { auth } from '../../auth';
+import styles from '@/app/_assets/css/Logout.module.css';
 
 export default async function Logout() {
   const session = await auth();
@@ -10,7 +10,7 @@ export default async function Logout() {
       {session?.user && (
         <form
           action={async () => {
-            "use server";
+            'use server';
             await signOut();
           }}
         >

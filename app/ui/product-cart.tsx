@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import AddToCart from '@/app/ui/add-to-cart';
 import Img from '@/app/ui/image';
 import { checkDeals } from '@/app/lib/utils';
@@ -58,7 +58,6 @@ const ProductCart = ({
           <div className={styles.packImg}>
             <Img
               imageSrc={isBottle ? `icons/wineSil.png` : `icons/barrelSil.png`}
-              imageStyle="packaging" // TODO: am i going to use?
               imageAlt={packaging}
               imageWidth={22}
               imageHeight={50}

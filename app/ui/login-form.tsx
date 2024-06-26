@@ -8,7 +8,7 @@
 // //   ExclamationCircleIcon,
 // // } from '@heroicons/react/24/outline';
 // // import { ArrowRightIcon } from '@heroicons/react/20/solid';
-// import { Button } from './button';
+// import Button from './button';
 // import { useFormState, useFormStatus } from 'react-dom';
 
 // export default function LoginForm() {

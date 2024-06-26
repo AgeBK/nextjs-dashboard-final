@@ -1,0 +1,128 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+/* .categoryBlurb {
+  background-image: url(/price_ten_for100.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: hsl(0, 0%, 100%);
+  margin-top: 0;
+  max-height: max-content;
+  padding: 30px 0;
+  text-align: center;
+} */
+
+.topOffers {
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
+.campaign {
+  background-color: #000;
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 15px;
+  background-image: url(/assets/img/bg/bgBlurb.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.campaign a,
+.campaignMini a {
+  color: #fff;
+}
+
+.campaign .toGood {
+  color: #fff;
+}
+
+.campaign .tenOff {
+  font-size: 4rem;
+}
+
+.shopNow {
+  font-size: 2rem;
+  margin: 15px 0;
+  border: 3px solid white;
+  display: inline-block;
+  padding: 5px 20px;
+  color: #fff;
+}
+
+.campaignMini {
+  display: flex;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.campaignMini .hdr {
+  font-size: 3rem;
+}
+
+.campaignMini > div {
+  flex: 1 1 0;
+  margin: 30px;
+  border: 5px solid white;
+}
+
+.campaignMini .price_two_forBlurb {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.slogan {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* .randomSpecials {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+} */
+
+@media screen and (max-width: 800px) {
+  .campaignMini {
+    flex-direction: column;
+  }
+
+  .topOffers {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 30px;
+    margin: 10px 0;
+  }
+
+  .campaign .tenOff {
+    font-size: 3rem;
+  }
+
+  .shopNow {
+    font-size: 1.6rem;
+    margin: 15px 0;
+    border: 3px solid white;
+    display: inline-block;
+    padding: 5px 20px;
+    color: #fff;
+  }
+
+  .campaignMini .hdr {
+    font-size: 2.2rem;
+  }
+
+  /* .categoryBlurb {
+    background-image: url(/price_ten_for100Sml1.jpg);
+  } */
+}

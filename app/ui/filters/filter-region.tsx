@@ -1,21 +1,16 @@
 import { ChangeEvent } from 'react';
+import { KeyNumberProps, RegionFilterProps } from '@/app/lib/definitions';
+import { filterCategoryPageData } from '@/app/lib/utils';
 import styles from '@/app/_assets/css/filter/FilterRegion.module.css';
-import {
-  DataProps,
-  KeyNumberProps,
-  WineFilterProps,
-} from '@/app/lib/definitions';
-
-interface RegionFilterProps extends WineFilterProps {
-  currentData: DataProps[];
-}
 
 const FilterRegion = ({
   updateFilters,
   filters,
   currentData,
 }: RegionFilterProps) => {
-  const currentRegions: KeyNumberProps = currentData.reduce((acc, val) => {
+  const filteredData = filterCategoryPageData(currentData, filters);
+
+  const currentRegions: KeyNumberProps = filteredData.reduce((acc, val) => {
     const r: string = val.region as string;
     if (!acc[r]) acc = { ...acc, [r]: 0 };
     acc[r] += 1;
@@ -57,7 +52,7 @@ const FilterRegion = ({
           ))}
         </ul>
       ) : (
-        <div className={styles.noResults}>No results</div>
+        <div className={styles.noResults}>No results</div> // TODO: apply No results to all filters
       )}
     </>
   );

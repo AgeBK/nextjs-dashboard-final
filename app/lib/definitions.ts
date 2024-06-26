@@ -74,6 +74,22 @@ export type CategoryMainProps = {
   isManage: boolean;
 };
 
+export type ButtonProps = {
+  children?: React.ReactNode;
+  onClick?: (e: React.MouseEvent<Element, MouseEvent>) => void;
+  css: string;
+  disabled?: boolean;
+  type?: 'submit' | 'reset' | 'button' | undefined;
+};
+
+export type ImgProps = {
+  imageSrc: string;
+  // imageStyle: keyof typeof styles;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+};
+
 export type CampainMiniProps = {
   id: number;
   link: string;
@@ -113,6 +129,10 @@ export type FilterProps = {
   rating?: string;
   region?: KeyBooleanProps;
 };
+
+export interface RegionFilterProps extends WineFilterProps {
+  currentData: DataProps[];
+}
 
 export type ManageFilterProps = {
   filters: FilterProps;

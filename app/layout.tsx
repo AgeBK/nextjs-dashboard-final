@@ -6,10 +6,17 @@ import './globals.css';
 
 // const inter = Inter({ subsets: ["latin"] });
 
+// export const metadata = {
+
+// };
+
 export const metadata: Metadata = {
   title: ' AK Fine Wines - The biggest range at the best prices guaranteed!!',
   description:
     'AK Fine Wines - All of your fine wine needs at the best prices guaranteed!! Extensive range of White/Red/Sparking wines from around Australia and New Zealand',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

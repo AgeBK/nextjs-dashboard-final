@@ -1,5 +1,5 @@
 import { DataProps, PagingProps } from '@/app/lib/definitions';
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import styles from '@/app/_assets/css/category/CategoryPageNumber.module.css';
 
 type PageNumberProps = {

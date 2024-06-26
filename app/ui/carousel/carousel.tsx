@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import ProductItem from '@/app/ui/product/product-item';
 import CarouselPaging from '@/app/ui/carousel/carousel-paging';
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import Img from '@/app/ui/image';
 import data from '@/app/lib/appData.json';
 import { DataProps } from '../../lib/definitions';
@@ -27,6 +27,7 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
     setPageIndex((prev: number) => prev + val);
 
   const calculateItems = useCallback((): void => {
+    // TODO:
     if (ref.current && ref.current.offsetWidth) {
       const {
         current: { offsetWidth },

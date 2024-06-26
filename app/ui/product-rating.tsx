@@ -6,8 +6,7 @@ type ProductRatingProps = {
   total: number;
 };
 
-const ProductRating = ({ average, total }: ProductRatingProps) => {
-  // TODO: use export function
+export default function ProductRating({ average, total }: ProductRatingProps) {
   const avg = Math.round(average);
   return (
     <>
@@ -15,7 +14,6 @@ const ProductRating = ({ average, total }: ProductRatingProps) => {
         <>
           <Img
             imageSrc={`bg/${avg}starLge.png`}
-            imageStyle=""
             imageAlt={`${avg} star rating`}
             imageHeight={32}
             imageWidth={avg * 32}
@@ -25,6 +23,4 @@ const ProductRating = ({ average, total }: ProductRatingProps) => {
       ) : null}
     </>
   );
-};
-
-export default ProductRating;
+}

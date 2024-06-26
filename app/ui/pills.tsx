@@ -1,4 +1,4 @@
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import data from '@/app/lib/appData.json';
 import { FilterProps, KeyBooleanProps } from '../lib/definitions';
 import styles from '@/app/_assets/css/Pills.module.css';
@@ -17,9 +17,6 @@ export default function Pills({ filters, removeFilters }: PillsProps) {
     const currentFilter = filters[val as keyof FilterProps];
 
     if (currentFilter) {
-      console.log(currentFilter);
-      console.log(typeof currentFilter);
-
       // for region filter, check object for true values
       const regionFilter =
         typeof currentFilter === 'object' && isRegionChecked(currentFilter);

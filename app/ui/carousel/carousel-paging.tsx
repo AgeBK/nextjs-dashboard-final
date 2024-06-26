@@ -1,5 +1,5 @@
 import data from '@/app/lib/appData.json';
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import styles from '@/app/_assets/css/carousel/CarouselPaging.module.css';
 
 type CarouselPagingProps = {

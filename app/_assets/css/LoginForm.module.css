@@ -50,7 +50,7 @@
   display: block;
 }
 
-.inputField svg {
+.inputField img {
   height: 18px;
   width: 18px;
   position: absolute;
@@ -67,23 +67,3 @@
   margin-top: 20px;
   background-image: linear-gradient(to right, #000, #222);
 }
-
-/* .fourThree {
-  background-image: url("https://i.stack.imgur.com/viNrB.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  max-width: 1400px;
-
-}
-
-.text {
-  text-align: center;
-  color: white;
-} */
-
-/* .login img {
-  max-width: 450px;
-  max-height: 300px;
-  width: 100%;
-} */

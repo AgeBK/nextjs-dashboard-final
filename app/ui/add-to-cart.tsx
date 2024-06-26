@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { increment } from '@/app/slices/cartSlice';
-import { Button } from './button';
+import Button from './button';
 import { AddToCartProps } from '../lib/definitions';
 import CartImage from './cart/cart-image';
 
