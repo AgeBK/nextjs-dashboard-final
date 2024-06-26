@@ -10,15 +10,19 @@ export const authConfig = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
+    // TODO: check this process at end
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      // console.log('isLoggedIn:' + isLoggedIn);
 
-      const isOnDashboard = nextUrl.pathname.startsWith('/manage');
-      //  console.log(isOnDashboard);
+      const isAdminPage = nextUrl.pathname.startsWith('/manage');
+      const isLoginPage = nextUrl.pathname.startsWith('/login');
+      const pathname = nextUrl.searchParams.get('callbackUrl') || '/';
 
-      if (isOnDashboard) {
-        //   console.log('isOnDashboard');
+      if (isLoginPage && isLoggedIn) {
+        return Response.redirect(new URL(pathname, nextUrl));
+      }
+
+      if (isAdminPage) {
         if (!isLoggedIn) {
           return Response.redirect(new URL('/login', nextUrl));
         }
