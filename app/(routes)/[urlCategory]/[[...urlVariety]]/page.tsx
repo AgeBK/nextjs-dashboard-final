@@ -1,4 +1,4 @@
-import { catPageData, hyphenate } from '@/app/lib/utils';
+import { fetchCategoryPageData, hyphenate } from '@/app/lib/utils';
 import CategoryMain from '@/app/ui/category/category-main';
 import { CategoryParamsProps, DataProps } from '@/app/lib/definitions';
 import Loading from '@/app/ui/loading';
@@ -12,9 +12,8 @@ import { Metadata } from 'next';
 export default async function Category({
   params: { urlCategory, urlVariety },
 }: CategoryParamsProps) {
-  let products: DataProps[] = await catPageData(
-    decodeURIComponent(urlCategory),
-  );
+  const variety = urlVariety ? urlVariety[0] : undefined;
+  let products: DataProps[] = await fetchCategoryPageData(urlCategory, variety);
   // TODO: check site semantics
   return (
     <article>

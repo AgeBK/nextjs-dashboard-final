@@ -14,9 +14,6 @@ export default async function Product({
   params: { urlCategory: string; urlVariety: string; urlId: string };
 }) {
   const product = await fetchProductsById(urlId);
-  // let carouselProducts: DataProps[] = await fetchCarouselProductsByVariety(
-  //   capitalizeFirstLetter(urlVariety),
-  // );
 
   if (product) {
     const {
@@ -68,20 +65,6 @@ export default async function Product({
             urlVariety={urlVariety}
             // isSmallScreen={isSmallScreen}
           />
-          {/* <ProductCart
-            id={id}
-            name={name}
-            brand={brand}
-            short_name={short_name}
-            packaging={packaging}
-            current={price_current}
-            price_two_for={price_two_for}
-            price_ten_for={price_ten_for}
-            price_percent_off={price_percent_off}
-            promotion_callout_text={promotion_callout_text}
-            promotion_discount_code={promotion_discount_code}
-          /> */}
-
           <ProductInfo
             id={id}
             category={category}

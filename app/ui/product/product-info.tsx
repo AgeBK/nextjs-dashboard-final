@@ -48,7 +48,7 @@ const ProductInfo = ({
         </li>
         <li>
           <span>Standard Drinks</span>
-          <span>8.3</span>
+          <span>7.4</span>
         </li>
         <li>
           <span>Packaging</span>

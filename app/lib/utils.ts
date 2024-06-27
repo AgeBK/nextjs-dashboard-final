@@ -9,6 +9,8 @@ import {
   fetchProductsTenAndLess,
   fetchProductsPriceTenFor100,
   fetchProductsPriceDrop,
+  fetchCarouselProductsByVariety,
+  fetchCarouselProducts,
 } from '@/app/lib/data';
 
 export const formatCurrency = (amount: number) => {
@@ -18,7 +20,7 @@ export const formatCurrency = (amount: number) => {
   });
 };
 
-const catPageData = async (arg1: string, arg2?: string) => {
+const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
   let arr: DataProps[] = [];
 
   if (
@@ -76,6 +78,16 @@ const catPageData = async (arg1: string, arg2?: string) => {
     }
   }
   return arr;
+};
+
+const fetchCarouselData = async (variety?: string) => {
+  let carouselProducts: DataProps[] = [];
+  if (variety) {
+    carouselProducts = await fetchCarouselProductsByVariety(variety);
+  } else {
+    carouselProducts = await fetchCarouselProducts();
+  }
+  return carouselProducts;
 };
 
 const capitalizeFirstLetter = (string: string) => {
@@ -150,7 +162,6 @@ const sortCategoryPageData = (arr: DataProps[], value: string) => {
 const filterCategoryPageData = (arr: DataProps[], filters: FilterProps) => {
   const { searchId, searchStr, category, variety, price, rating, region } =
     filters;
-  console.log(searchId);
 
   if (searchId) {
     arr = arr.filter(({ id }) => id.startsWith(searchId));
@@ -199,8 +210,9 @@ export {
   capitalizeFirstLetter,
   hyphenate,
   deHyphenate,
-  catPageData,
+  fetchCategoryPageData,
   checkDeals,
   sortCategoryPageData,
   filterCategoryPageData,
+  fetchCarouselData,
 };
