@@ -128,6 +128,8 @@ export type FilterProps = {
   variety?: string;
   rating?: string;
   region?: KeyBooleanProps;
+  searchId?: string;
+  searchStr?: string;
 };
 
 export interface RegionFilterProps extends WineFilterProps {
@@ -137,8 +139,6 @@ export interface RegionFilterProps extends WineFilterProps {
 export type ManageFilterProps = {
   filters: FilterProps;
   isManage?: boolean;
-  searchId?: string;
-  searchStr?: string;
 };
 
 export interface WineFilterProps {

@@ -1,11 +1,26 @@
 import { Suspense } from 'react';
 import Carousel from './carousel';
 import Loading from '../loading';
-import { fetchCarouselProducts } from '@/app/lib/data';
+import {
+  fetchCarouselProducts,
+  fetchCarouselProductsByVariety,
+} from '@/app/lib/data';
 import { DataProps } from '@/app/lib/definitions';
+import { capitalizeFirstLetter } from '@/app/lib/utils';
 
-export default async function CarouselMain() {
-  let products: DataProps[] = await fetchCarouselProducts(); // TODO: test for error
+export default async function CarouselMain({ variety }: { variety?: string }) {
+  console.log('CarouselMain');
+  console.log(variety);
+
+  // TODO: test for error
+  let products: DataProps[] = [];
+  if (variety) {
+    products = await fetchCarouselProductsByVariety(
+      capitalizeFirstLetter(variety),
+    );
+  } else {
+    products = await fetchCarouselProducts();
+  }
 
   if (products.length) {
     return (

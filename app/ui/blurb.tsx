@@ -1,6 +1,5 @@
 'use client';
 
-import { memo } from 'react'; // TODO:
 import { BlurbProps, KeyStringProps } from '@/app/lib/definitions';
 import data from '@/app/lib/appData.json';
 import { deHyphenate } from '@/app/lib/utils';

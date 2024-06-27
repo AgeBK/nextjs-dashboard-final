@@ -1,17 +1,12 @@
 import React from 'react';
-import {
-  fetchProductsById,
-  fetchCarouselProductsByVariety,
-} from '@/app/lib/data';
+import { fetchProductsById } from '@/app/lib/data';
 import BreadCrumb from '@/app/ui/bread-crumb';
 import ProductCart from '@/app/ui/product-cart';
 import ProductDetails from '@/app/ui/product-details';
 import ProductInfo from '@/app/ui/product/product-info';
 import ProductReview from '@/app/ui/product-review';
+import CarouselMain from '@/app/ui/carousel/carousel-main';
 import styles from '@/app/_assets/css/product/Product.module.css';
-import Carousel from '@/app/ui/carousel/carousel';
-import { capitalizeFirstLetter } from '@/app/lib/utils';
-import { DataProps } from '@/app/lib/definitions';
 
 export default async function Product({
   params: { urlCategory, urlVariety, urlId },
@@ -19,9 +14,9 @@ export default async function Product({
   params: { urlCategory: string; urlVariety: string; urlId: string };
 }) {
   const product = await fetchProductsById(urlId);
-  let carouselProducts: DataProps[] = await fetchCarouselProductsByVariety(
-    capitalizeFirstLetter(urlVariety),
-  );
+  // let carouselProducts: DataProps[] = await fetchCarouselProductsByVariety(
+  //   capitalizeFirstLetter(urlVariety),
+  // );
 
   if (product) {
     const {
@@ -102,7 +97,7 @@ export default async function Product({
           <ProductReview urlCategory={urlCategory} variety={variety} />
           <section className={styles.similar}>
             <h2>Similar Products:</h2>
-            <Carousel arr={carouselProducts} />
+            <CarouselMain variety={variety} />
           </section>
         </div>
       </article>

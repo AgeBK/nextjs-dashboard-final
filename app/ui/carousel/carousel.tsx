@@ -47,7 +47,14 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
       }
       if (currentItems !== items) setItems(currentItems);
     }
-  }, [items]);
+  }, [
+    items,
+    SIX_CAROUSEL_ITEMS,
+    FOUR_CAROUSEL_ITEMS,
+    THREE_CAROUSEL_ITEMS,
+    TWO_CAROUSEL_ITEMS,
+    ONE_CAROUSEL_ITEM,
+  ]);
 
   useEffect(() => {
     calculateItems();
@@ -68,7 +75,6 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
           >
             <Img
               imageSrc={`icons/arrowLeft.png`}
-              imageStyle="carousel"
               imageAlt="previous"
               imageHeight={30}
               imageWidth={30}
@@ -133,7 +139,6 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
           >
             <Img
               imageSrc={`icons/arrowRight.png`}
-              imageStyle="carousel"
               imageAlt="next"
               imageHeight={30}
               imageWidth={30}
