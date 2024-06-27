@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Img from "@/app/ui/image";
-import styles from "@/app/_assets/css/BreadCrumb.module.css";
+import Link from 'next/link';
+import Img from '@/app/ui/image';
+import styles from '@/app/_assets/css/BreadCrumb.module.css';
 
 type BreadCrumbProps = {
   urlCategory?: string;
@@ -22,18 +22,18 @@ const BreadCrumb = ({
   category,
   variety,
 }: BreadCrumbProps) => {
-  console.log("bread crumb");
+  console.log('bread crumb');
   console.log(urlCategory);
 
   return (
     <div className={styles.breadCrumb}>
       <Link href="/" className={styles.category}>
         <Img
-          imageSrc={`icons/home.png`}
+          imgSrc={`icons/home.png`}
           imageStyle=""
-          imageAlt="AK Fine Wines"
-          imageWidth={17}
-          imageHeight={14}
+          imgAlt="AK Fine Wines"
+          imgWidth={17}
+          imgHeight={14}
         />
         Home
       </Link>

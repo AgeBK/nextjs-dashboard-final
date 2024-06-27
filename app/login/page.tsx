@@ -21,10 +21,10 @@ export default function LoginForm() {
         <form action={dispatch}>
           {/* <img src="http://localhost:8080/assets/img/icons/wineSil.png" /> */}
           <Img
-            imageSrc="icons/wineSil.png"
-            imageAlt="AK Fine Wines"
-            imageWidth={38}
-            imageHeight={75}
+            imgSrc="icons/wineSil.png"
+            imgAlt="AK Fine Wines"
+            imgWidth={38}
+            imgHeight={75}
           />
           <h1 className={styles.hdr}>Login</h1>
           <div className={styles.msg}>
@@ -45,10 +45,10 @@ export default function LoginForm() {
                 />
               </label>
               <Img
-                imageSrc="icons/key.svg"
-                imageAlt="AK Fine Wines"
-                imageWidth={38}
-                imageHeight={75}
+                imgSrc="icons/key.svg"
+                imgAlt="AK Fine Wines"
+                imgWidth={38}
+                imgHeight={75}
               />
             </div>
             <br />
@@ -65,10 +65,10 @@ export default function LoginForm() {
                 />
               </label>
               <Img
-                imageSrc="icons/key.svg"
-                imageAlt="AK Fine Wines"
-                imageWidth={38}
-                imageHeight={75}
+                imgSrc="icons/key.svg"
+                imgAlt="AK Fine Wines"
+                imgWidth={38}
+                imgHeight={75}
               />
             </div>
           </div>
@@ -77,10 +77,10 @@ export default function LoginForm() {
             {errorMessage && (
               <>
                 <Img
-                  imageSrc="icons/exclamationCircle.svg"
-                  imageAlt="AK Fine Wines"
-                  imageWidth={38}
-                  imageHeight={75}
+                  imgSrc="icons/exclamationCircle.svg"
+                  imgAlt="AK Fine Wines"
+                  imgWidth={38}
+                  imgHeight={75}
                 />{' '}
                 <p>{errorMessage}</p>
               </>

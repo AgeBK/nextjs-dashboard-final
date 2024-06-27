@@ -74,10 +74,10 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
             disabled={pageIndex <= 0}
           >
             <Img
-              imageSrc={`icons/arrowLeft.png`}
-              imageAlt="previous"
-              imageHeight={30}
-              imageWidth={30}
+              imgSrc={`icons/arrowLeft.png`}
+              imgAlt="previous"
+              imgHeight={30}
+              imgWidth={30}
             />
           </Button>
         </div>
@@ -138,10 +138,10 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
             disabled={pageIndex >= totalPages}
           >
             <Img
-              imageSrc={`icons/arrowRight.png`}
-              imageAlt="next"
-              imageHeight={30}
-              imageWidth={30}
+              imgSrc={`icons/arrowRight.png`}
+              imgAlt="next"
+              imgHeight={30}
+              imgWidth={30}
             />
           </Button>
         </div>

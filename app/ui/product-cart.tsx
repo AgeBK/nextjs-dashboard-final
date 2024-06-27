@@ -57,10 +57,10 @@ const ProductCart = ({
           </div>
           <div className={styles.packImg}>
             <Img
-              imageSrc={isBottle ? `icons/wineSil.png` : `icons/barrelSil.png`}
-              imageAlt={packaging}
-              imageWidth={22}
-              imageHeight={50}
+              imgSrc={isBottle ? `icons/wineSil.png` : `icons/barrelSil.png`}
+              imgAlt={packaging}
+              imgWidth={22}
+              imgHeight={50}
             />
           </div>
         </div>

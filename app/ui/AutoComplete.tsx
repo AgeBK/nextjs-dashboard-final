@@ -1,23 +1,23 @@
-"use client";
-import { KeyboardEvent, SyntheticEvent, useState } from "react";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+'use client';
+import { KeyboardEvent, SyntheticEvent, useState } from 'react';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 // import { useNavigate } from "react-router-dom";
 // import { useGetWinesQuery } from "../../services/API";
-import { Autocomplete, TextField } from "@mui/material";
-import { createFilterOptions } from "@mui/material/Autocomplete";
-import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
+import { Autocomplete, TextField } from '@mui/material';
+import { createFilterOptions } from '@mui/material/Autocomplete';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 // import { hyphenate } from "../../data/utils";
-import { MAX_SMALLSCREEN } from "../lib/appData.json";
-import parse from "autosuggest-highlight/parse";
-import match from "autosuggest-highlight/match";
+import { MAX_SMALLSCREEN } from '../lib/appData.json';
+import parse from 'autosuggest-highlight/parse';
+import match from 'autosuggest-highlight/match';
 // import usePageWidth from "../../hooks/usePageWidth";
-import Img from "./image";
-import styles from "../_assets/css/AutoComplete.module.css";
-import { hyphenate } from "../lib/utils";
-import { fetchProducts } from "../lib/data";
-import { DataProps } from "../lib/definitions";
+import Img from './image';
+import styles from '../_assets/css/AutoComplete.module.css';
+import { hyphenate } from '../lib/utils';
+import { fetchProducts } from '../lib/data';
+import { DataProps } from '../lib/definitions';
 
 type ACDataProps = {
   name: string;
@@ -34,7 +34,7 @@ type ProductProps = {
 const AutoComplete = ({ products }: ProductProps) => {
   const [overlay, setOverlay] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>('');
   // const isPageWidth: boolean = usePageWidth(MAX_SMALLSCREEN);
   // const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ const AutoComplete = ({ products }: ProductProps) => {
     const ACData = products.map(
       ({ name, id, category, variety, packaging }: ACDataProps) => {
         return { name, id, category, variety, packaging };
-      }
+      },
     );
 
     const handleClick = (): void => setOverlay(true);
@@ -55,7 +55,7 @@ const AutoComplete = ({ products }: ProductProps) => {
 
     const handleChange = (
       _: SyntheticEvent<Element, Event>,
-      val: ACDataProps | null
+      val: ACDataProps | null,
     ): void => {
       if (val) {
         const { category, variety, id } = val;
@@ -78,11 +78,11 @@ const AutoComplete = ({ products }: ProductProps) => {
     const handleKeyDown = (
       e: KeyboardEvent<HTMLDivElement> & {
         defaultMuiPrevented?: boolean | undefined;
-      }
+      },
     ): void => {
       const { key } = e;
 
-      if (key === "Enter" && searchTerm) {
+      if (key === 'Enter' && searchTerm) {
         setOverlay(false);
         setOpen(false);
         replace(`/search=${searchTerm}`);
@@ -91,7 +91,7 @@ const AutoComplete = ({ products }: ProductProps) => {
 
     const handleInputChange = (
       _: SyntheticEvent<Element, Event>,
-      val: string
+      val: string,
     ): void => {
       setSearchTerm(val);
       if (val.length <= 1) {
@@ -101,7 +101,7 @@ const AutoComplete = ({ products }: ProductProps) => {
 
     return (
       <section className={styles.container}>
-        <div className={overlay ? styles.overlay : ""}></div>
+        <div className={overlay ? styles.overlay : ''}></div>
         <Autocomplete
           open={open}
           onChange={(e, value) => handleChange(e, value)}
@@ -109,7 +109,7 @@ const AutoComplete = ({ products }: ProductProps) => {
           onKeyDown={(e) => handleKeyDown(e)}
           getOptionLabel={(option: ACDataProps) => option.name}
           className={`${styles.autoComplete} ${
-            overlay ? styles.pageWidth : ""
+            overlay ? styles.pageWidth : ''
           }`}
           options={ACData}
           filterOptions={createFilterOptions({
@@ -126,13 +126,13 @@ const AutoComplete = ({ products }: ProductProps) => {
                 <div className={styles.itemCont}>
                   <div className={styles.itemImg}>
                     <Img
-                      imageSrc={`wine/${id}.jpg`}
+                      imgSrc={`wine/${id}.jpg`}
                       imageStyle={
-                        packaging === "Bottle" ? "acBottle" : "acCask"
+                        packaging === 'Bottle' ? 'acBottle' : 'acCask'
                       }
-                      imageAlt={name}
-                      imageWidth={20}
-                      imageHeight={60}
+                      imgAlt={name}
+                      imgWidth={20}
+                      imgHeight={60}
                     />
                   </div>
                   <div className={styles.itemLabel}>

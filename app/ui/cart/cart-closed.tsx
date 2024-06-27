@@ -20,11 +20,11 @@ const CartClosed = ({ totalPrice, totalQty }: CartClosedProps) => {
         {totalQty}
       </span>
       <Img
-        imageSrc={`icons/${cartImage}.png`}
+        imgSrc={`icons/${cartImage}.png`}
         imageStyle="cart"
-        imageAlt="cart"
-        imageWidth={30}
-        imageHeight={30}
+        imgAlt="cart"
+        imgWidth={30}
+        imgHeight={30}
       />
       {notEmpty && (
         <div className={styles.totalPrice}>${totalPrice.toFixed(2)}</div>

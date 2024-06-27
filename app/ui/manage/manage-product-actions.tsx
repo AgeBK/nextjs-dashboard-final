@@ -18,33 +18,33 @@ const ManageProductActions = ({
       <Link href="/manage" className={styles.cancel}>
         <span>Cancel </span>
         <Img
-          imageSrc={`icons/xCircle.svg`}
+          imgSrc={`icons/xCircle.svg`}
           imageStyle="campaignMii"
-          imageAlt="cancel"
-          imageWidth={24}
-          imageHeight={24}
+          imgAlt="cancel"
+          imgWidth={24}
+          imgHeight={24}
         />
       </Link>
       {isDelete ? (
         <Button css="delete" onClick={enableModal}>
           <span>Delete </span>
           <Img
-            imageSrc={`icons/trash.svg`}
+            imgSrc={`icons/trash.svg`}
             imageStyle="campaignMii" // TODO:
-            imageAlt="save"
-            imageWidth={24}
-            imageHeight={24}
+            imgAlt="save"
+            imgWidth={24}
+            imgHeight={24}
           />
         </Button>
       ) : (
         <Button css="save" type="submit">
           <span>Save </span>
           <Img
-            imageSrc={`icons/save.svg`}
+            imgSrc={`icons/save.svg`}
             imageStyle="campaignMii"
-            imageAlt="save"
-            imageWidth={24}
-            imageHeight={24}
+            imgAlt="save"
+            imgWidth={24}
+            imgHeight={24}
           />
         </Button>
       )}

@@ -13,10 +13,10 @@ export default function ProductRating({ average, total }: ProductRatingProps) {
       {avg > 2 ? (
         <>
           <Img
-            imageSrc={`bg/${avg}starLge.png`}
-            imageAlt={`${avg} star rating`}
-            imageHeight={32}
-            imageWidth={avg * 32}
+            imgSrc={`bg/${avg}starLge.png`}
+            imgAlt={`${avg} star rating`}
+            imgHeight={32}
+            imgWidth={avg * 32}
           />
           <div className={styles.totalRate}>{total} Reviews</div>
         </>

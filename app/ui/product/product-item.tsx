@@ -68,22 +68,22 @@ const ProductItem = ({ props, css }: ProductItemProps) => {
         className={styles.itemCont}
       >
         <Img
-          imageSrc={`wine/${id}.jpg`}
+          imgSrc={`wine/${id}.jpg`}
           imageStyle="campaignMini"
-          imageAlt={name}
-          imageWidth={packaging === 'Bottle' ? 40 : 100}
-          imageHeight={150}
+          imgAlt={name}
+          imgWidth={packaging === 'Bottle' ? 40 : 100}
+          imgHeight={150}
         />
         <div className={styles.productMeta}>
           <h2 className={styles.brand}>{brand}</h2>
           <h3 className={styles.short_name}>{short_name}</h3>
           {avg && avg > 2 ? (
             <Img
-              imageSrc={`bg/${avg}star.jpg`}
+              imgSrc={`bg/${avg}star.jpg`}
               imageStyle="block"
-              imageAlt={`${avg} star`}
-              imageWidth={avg * 15}
-              imageHeight={15}
+              imgAlt={`${avg} star`}
+              imgWidth={avg * 15}
+              imgHeight={15}
             />
           ) : null}
         </div>

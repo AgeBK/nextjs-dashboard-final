@@ -58,10 +58,10 @@ const CartItem = () => {
             <div className={styles.item}>
               <div className={styles.cartImg}>
                 <Img
-                  imageSrc={`wine/${id}.jpg`}
-                  imageAlt={name}
-                  imageWidth={20}
-                  imageHeight={80}
+                  imgSrc={`wine/${id}.jpg`}
+                  imgAlt={name}
+                  imgWidth={20}
+                  imgHeight={80}
                 />
               </div>
               <div className={styles.cartProd}>
@@ -102,10 +102,10 @@ const CartItem = () => {
                   css="noStyle"
                 >
                   <Img
-                    imageSrc={`btn/remove.png`}
-                    imageAlt={name}
-                    imageWidth={30}
-                    imageHeight={30}
+                    imgSrc={`btn/remove.png`}
+                    imgAlt={name}
+                    imgWidth={30}
+                    imgHeight={30}
                   />
                 </Button>
                 <CartPrice

@@ -9,11 +9,11 @@ export default function SideNav() {
       <Link href="/manage">
         <h1 className={styles.hdr}>Admin Panel</h1>
         <Img
-          imageSrc={`icons/settings.png`}
+          imgSrc={`icons/settings.png`}
           // imageStyle="white"
-          imageAlt="Admin Panel"
-          imageWidth={128}
-          imageHeight={128}
+          imgAlt="Admin Panel"
+          imgWidth={128}
+          imgHeight={128}
         />
       </Link>
       <div>

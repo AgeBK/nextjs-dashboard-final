@@ -4,19 +4,19 @@ import { ImgProps } from '../lib/definitions';
 // import styles from "@/app/_assets/css/Image.module.css";
 
 export default function Img({
-  imageSrc, // TODO: make imgSrc etc, shorter
-  imageAlt,
-  imageWidth,
-  imageHeight,
+  imgSrc, // TODO: make imgSrc etc, shorter
+  imgAlt,
+  imgWidth,
+  imgHeight,
 }: ImgProps) {
   const { imgPath } = data;
   return (
     <Image
       className=""
-      src={`${imgPath}${imageSrc}`}
-      alt={imageAlt}
-      width={imageWidth}
-      height={imageHeight}
+      src={`${imgPath}${imgSrc}`}
+      alt={imgAlt}
+      width={imgWidth}
+      height={imgHeight}
       // priority // TODO: ?
     />
   );

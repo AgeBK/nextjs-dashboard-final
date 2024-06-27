@@ -40,19 +40,19 @@ export default function ModalDelete({ id, name }: ModalDeleteProps) {
             <Link href="/manage" className={styles.cancel}>
               <span>Cancel </span>
               <Img
-                imageSrc={`icons/xCircle.svg`}
-                imageAlt="cancel"
-                imageWidth={24}
-                imageHeight={24}
+                imgSrc={`icons/xCircle.svg`}
+                imgAlt="cancel"
+                imgWidth={24}
+                imgHeight={24}
               />
             </Link>
             <Button css="delete" type="submit">
               <span>Delete </span>
               <Img
-                imageSrc={`icons/trash.svg`}
-                imageAlt="save"
-                imageWidth={24}
-                imageHeight={24}
+                imgSrc={`icons/trash.svg`}
+                imgAlt="save"
+                imgWidth={24}
+                imgHeight={24}
               />
             </Button>
           </div>

@@ -2,11 +2,11 @@ import Img from '../image';
 
 const CartImage = ({ itemAdded }: { itemAdded: boolean }) => (
   <Img
-    imageSrc={`icons/${itemAdded ? 'cartNotEmpty' : 'cartEmpty'}.svg`}
+    imgSrc={`icons/${itemAdded ? 'cartNotEmpty' : 'cartEmpty'}.svg`}
     imageStyle=""
-    imageAlt="cart"
-    imageWidth={20}
-    imageHeight={20}
+    imgAlt="cart"
+    imgWidth={20}
+    imgHeight={20}
   />
 );
 

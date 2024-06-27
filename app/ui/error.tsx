@@ -9,10 +9,10 @@ export default function Error() {
   return (
     <section className={styles.container}>
       <Img
-        imageSrc={'error/sad.png'}
-        imageAlt="error"
-        imageHeight={100}
-        imageWidth={100}
+        imgSrc={'error/sad.png'}
+        imgAlt="error"
+        imgHeight={100}
+        imgWidth={100}
       />
       <h2 className={styles.hdr}>
         <strong>Whoops!!</strong>

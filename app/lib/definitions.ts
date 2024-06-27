@@ -83,11 +83,11 @@ export type ButtonProps = {
 };
 
 export type ImgProps = {
-  imageSrc: string;
+  imgSrc: string;
   // imageStyle: keyof typeof styles;
-  imageAlt: string;
-  imageWidth: number;
-  imageHeight: number;
+  imgAlt: string;
+  imgWidth: number;
+  imgHeight: number;
 };
 
 export type CampainMiniProps = {

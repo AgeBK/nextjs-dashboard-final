@@ -36,26 +36,26 @@ export default function ManageProducts({ props }: ManageProductsProps) {
           )}/${id}`}
         >
           <Img
-            imageSrc={`icons/eye.svg`}
-            imageAlt="view"
-            imageWidth={24}
-            imageHeight={24}
+            imgSrc={`icons/eye.svg`}
+            imgAlt="view"
+            imgWidth={24}
+            imgHeight={24}
           />
         </Link>
         <Link href={`/manage/edit/${id}`}>
           <Img
-            imageSrc={`icons/pencil.svg`}
-            imageAlt="edit"
-            imageWidth={24}
-            imageHeight={24}
+            imgSrc={`icons/pencil.svg`}
+            imgAlt="edit"
+            imgWidth={24}
+            imgHeight={24}
           />
         </Link>
         <Link href={`/manage/delete/${id}`}>
           <Img
-            imageSrc={`icons/trash.svg`}
-            imageAlt="edit"
-            imageWidth={24}
-            imageHeight={24}
+            imgSrc={`icons/trash.svg`}
+            imgAlt="edit"
+            imgWidth={24}
+            imgHeight={24}
           />
         </Link>
       </div>

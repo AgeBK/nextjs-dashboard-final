@@ -46,11 +46,11 @@ export default async function Footer() {
         {arr.map((val, ind) => (
           <li key={ind}>
             <Img
-              imageSrc={`payment/${val}.jpg`}
+              imgSrc={`payment/${val}.jpg`}
               imageStyle="footer"
-              imageAlt={val}
-              imageWidth={48}
-              imageHeight={44}
+              imgAlt={val}
+              imgWidth={48}
+              imgHeight={44}
             />
           </li>
         ))}

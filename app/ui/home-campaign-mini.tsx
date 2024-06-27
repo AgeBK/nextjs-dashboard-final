@@ -23,10 +23,10 @@ export default function HomeCampaignMini() {
               <div className={styles.price_two_forBlurb}>{blurb1}</div>
               <div className={styles.price_two_forBlurb}>{blurb2}</div>
               <Img
-                imageSrc={imgSrc}
-                imageAlt={imgAlt}
-                imageWidth={227}
-                imageHeight={150}
+                imgSrc={imgSrc}
+                imgAlt={imgAlt}
+                imgWidth={227}
+                imgHeight={150}
               />
               <h3 className={styles.shopNow}>SHOP NOW</h3>
             </Link>

@@ -47,13 +47,13 @@ ProductDetailsProps) => {
     <section className={styles.productCont}>
       <div className={styles.productImg}>
         <Img
-          imageSrc={`wine/${id}.jpg`}
+          imgSrc={`wine/${id}.jpg`}
           imageStyle={
             packaging === 'Bottle' ? 'productMain' : 'productMainCask'
           }
-          imageAlt={name}
-          imageWidth={isBottle ? 120 : 339}
-          imageHeight={520}
+          imgAlt={name}
+          imgWidth={isBottle ? 120 : 339}
+          imgHeight={520}
         />
       </div>
       <div className={styles.productMeta}>

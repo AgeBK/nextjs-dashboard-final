@@ -34,10 +34,10 @@ const Header = async () => {
         <div className={styles.logo}>
           <Link href="/">
             <Img
-              imageSrc={'logos/AK.png'}
-              imageAlt="AK Fine Wines"
-              imageWidth={80}
-              imageHeight={80}
+              imgSrc={'logos/AK.png'}
+              imgAlt="AK Fine Wines"
+              imgWidth={80}
+              imgHeight={80}
             />
           </Link>
         </div>

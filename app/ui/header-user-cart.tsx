@@ -17,10 +17,10 @@ export default function HeaderUserCart({ name }: { name: string | null }) {
         <div className={styles.userContainer}>
           <Link href={`/login?callbackUrl=${pathname}`}>
             <Img
-              imageSrc={'icons/user.svg'}
-              imageAlt="Login"
-              imageWidth={24}
-              imageHeight={24}
+              imgSrc={'icons/user.svg'}
+              imgAlt="Login"
+              imgWidth={24}
+              imgHeight={24}
             />
           </Link>
         </div>
