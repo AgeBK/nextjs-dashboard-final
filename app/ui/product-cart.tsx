@@ -11,14 +11,15 @@ type ProductCartProps = {
   id: string;
   name: string;
   brand: string;
+  price_current: number;
   short_name: string;
   price_two_for: number;
   price_ten_for: number;
   price_percent_off: number;
-  current: number;
   packaging: string;
   promotion_callout_text?: string;
   promotion_discount_code?: string;
+  isCask: boolean;
 };
 
 const ProductCart = ({
@@ -26,16 +27,16 @@ const ProductCart = ({
   name,
   brand,
   short_name,
+  price_current,
   price_two_for,
   price_ten_for,
   price_percent_off,
-  current,
   packaging,
   promotion_callout_text,
   promotion_discount_code,
+  isCask,
 }: ProductCartProps) => {
   const [count, setCount] = useState<number>(1);
-  const isBottle = packaging === 'Bottle';
 
   const handleCount = (e: React.MouseEvent<Element, MouseEvent>) => {
     const { textContent } = e.currentTarget;
@@ -53,11 +54,11 @@ const ProductCart = ({
       <div className={styles.cartTable}>
         <div className={styles.cartBottle}>
           <div className={styles.price}>
-            ${current}/{packaging}
+            ${price_current}/{packaging}
           </div>
           <div className={styles.packImg}>
             <Img
-              imgSrc={isBottle ? `icons/wineSil.png` : `icons/barrelSil.png`}
+              imgSrc={isCask ? `icons/barrelSil.png` : `icons/wineSil.png`}
               imgAlt={packaging}
               imgWidth={22}
               imgHeight={50}
@@ -65,7 +66,7 @@ const ProductCart = ({
           </div>
         </div>
         <div className={styles.cartAmt}>
-          <div className={styles.totalPrice}>${current * count}</div>
+          <div className={styles.totalPrice}>${price_current * count}</div>
           <Button css="cartLge" onClick={handleCount} disabled={count < 2}>
             -
           </Button>
@@ -80,7 +81,7 @@ const ProductCart = ({
             name={name}
             brand={brand}
             short_name={short_name}
-            price={current}
+            price_current={price_current}
             quantity={count}
             deal={deal}
             promotion_discount_code={promotion_discount_code}

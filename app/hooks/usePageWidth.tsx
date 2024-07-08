@@ -1,10 +1,9 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 
 const usePageWidth = (threshold: number) => {
   const [isPageWidth, setIsPageWidth] = useState<boolean>(false);
-  // console.log("usePageWidth: " + isPageWidth);
-  // console.log(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
@@ -13,8 +12,6 @@ const usePageWidth = (threshold: number) => {
         if (isPageWidth !== pageWidth) {
           setIsPageWidth(pageWidth);
         }
-      } else {
-        console.log('NO Window');
       }
     };
 

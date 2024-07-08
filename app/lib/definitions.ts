@@ -41,7 +41,7 @@ export type AddToCartProps = {
   name: string;
   brand: string;
   short_name: string;
-  price: number;
+  price_current: number;
   quantity: number;
   deal?: DealProps;
   promotion_discount_code?: string; // TODO:
@@ -155,6 +155,11 @@ export type FormStateProps = {
 export type BlurbProps = {
   urlCategory: string;
   variety?: string;
+};
+
+export type CartQtyPriceProps = {
+  totalQty: number;
+  totalPrice: number;
 };
 
 export type FilterListProps = {

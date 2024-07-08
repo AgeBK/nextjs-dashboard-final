@@ -81,7 +81,7 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
             />
           </Button>
         </div>
-        {arr.map(
+        {arr?.map(
           (
             {
               id,

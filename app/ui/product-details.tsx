@@ -11,16 +11,16 @@ type ProductDetailsProps = {
   short_name: string;
   average: number;
   total: number;
+  price_current: number;
   price_two_for: number;
   price_ten_for: number;
   price_percent_off: number;
-  current: number;
   packaging: string;
   promotion_callout_text?: string;
   promotion_discount_code?: string;
   urlCategory?: string;
   urlVariety?: string;
-  // isSmallScreen: boolean; // TODO:??
+  isCask: boolean;
 };
 
 const ProductDetails = ({
@@ -30,29 +30,24 @@ const ProductDetails = ({
   short_name,
   average,
   total,
+  price_current,
   price_two_for,
   price_ten_for,
   price_percent_off,
-  current,
   packaging,
   promotion_callout_text,
   promotion_discount_code,
   urlCategory,
   urlVariety,
-}: // isSmallScreen,
-ProductDetailsProps) => {
-  const isBottle = packaging === 'Bottle';
-
+  isCask,
+}: ProductDetailsProps) => {
   return (
     <section className={styles.productCont}>
       <div className={styles.productImg}>
         <Img
-          imgSrc={`wine/${id}.jpg`}
-          imageStyle={
-            packaging === 'Bottle' ? 'productMain' : 'productMainCask'
-          }
+          imgSrc={`wine/${id}.jpg`}   
           imgAlt={name}
-          imgWidth={isBottle ? 120 : 339}
+          imgWidth={isCask ? 339 : 120}
           imgHeight={520}
         />
       </div>
@@ -61,21 +56,22 @@ ProductDetailsProps) => {
         <h2 className={styles.short_name}>{short_name}</h2>
         <WineBlurb urlCategory={urlCategory} urlVariety={urlVariety} />
         <ProductRating average={average} total={total} />
-        {/* {!isSmallScreen && ( */}
-        <ProductCart
-          id={id}
-          name={name}
-          brand={brand}
-          short_name={short_name}
-          price_two_for={price_two_for}
-          price_ten_for={price_ten_for}
-          price_percent_off={price_percent_off}
-          current={current}
-          packaging={packaging}
-          promotion_callout_text={promotion_callout_text}
-          promotion_discount_code={promotion_discount_code}
-        />
-        {/* )} */}
+        <div className={styles.cartCont}>
+          <ProductCart
+            id={id}
+            name={name}
+            brand={brand}
+            short_name={short_name}
+            price_two_for={price_two_for}
+            price_ten_for={price_ten_for}
+            price_percent_off={price_percent_off}
+            price_current={price_current}
+            packaging={packaging}
+            promotion_callout_text={promotion_callout_text}
+            promotion_discount_code={promotion_discount_code}
+            isCask={isCask}
+          />
+        </div>
       </div>
     </section>
   );

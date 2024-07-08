@@ -1,11 +1,16 @@
-// 'use client'; // TODO:
+'use client'; // TODO:
+
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Img from '@/app/ui/image';
-import { errorMsg } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 import styles from '@/app/_assets/css/Error.module.css';
 
 // TODO: not using??
 export default function Error() {
+  const { errorMsg } = data;
+  const pathname = usePathname();
+
   return (
     <section className={styles.container}>
       <Img
@@ -19,8 +24,8 @@ export default function Error() {
         <div>{errorMsg}</div>
       </h2>
       <div>Sorry for the inconvenience</div>
-      <Link href="/" className={styles.link}>
-        Back to homepage
+      <Link href={pathname} className={styles.link}>
+        Reload page
       </Link>
     </section>
   );

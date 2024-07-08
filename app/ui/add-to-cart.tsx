@@ -7,12 +7,14 @@ import Button from './button';
 import { AddToCartProps } from '../lib/definitions';
 import CartImage from './cart/cart-image';
 
+// TODO: what to do on full page refresh?
+
 const AddToCart = ({
   id,
   name,
   brand,
   short_name,
-  price,
+  price_current,
   quantity,
   deal,
   promotion_discount_code,
@@ -30,7 +32,7 @@ const AddToCart = ({
         name,
         brand,
         short_name,
-        price,
+        price_current,
         quantity,
         deal,
         promotion_discount_code,

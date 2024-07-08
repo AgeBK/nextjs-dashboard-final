@@ -36,11 +36,11 @@ export default async function Product({
       unit_of_measure_label,
     } = product;
 
+    const isCask = packaging === 'Cask';
+
     return (
       <article>
         <div className={styles.container}>
-          <h1>Product</h1>
-
           <BreadCrumb
             urlCategory={urlCategory}
             urlVariety={urlVariety}
@@ -53,7 +53,7 @@ export default async function Product({
             short_name={short_name}
             brand={brand}
             packaging={packaging}
-            current={price_current}
+            price_current={price_current}
             price_two_for={price_two_for}
             price_ten_for={price_ten_for}
             price_percent_off={price_percent_off}
@@ -63,8 +63,24 @@ export default async function Product({
             total={ratings_total}
             urlCategory={urlCategory}
             urlVariety={urlVariety}
-            // isSmallScreen={isSmallScreen}
+            isCask={isCask}
           />
+          <div className={styles.cartCont}>
+            <ProductCart
+              id={id}
+              name={name}
+              brand={brand}
+              short_name={short_name}
+              price_current={price_current}
+              price_two_for={price_two_for}
+              price_ten_for={price_ten_for}
+              price_percent_off={price_percent_off}
+              packaging={packaging}
+              promotion_callout_text={promotion_callout_text}
+              promotion_discount_code={promotion_discount_code}
+              isCask={isCask}
+            />
+          </div>
           <ProductInfo
             id={id}
             category={category}

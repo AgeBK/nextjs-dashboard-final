@@ -5,3 +5,9 @@
 .similar {
   margin-top: 50px;
 }
+
+@media screen and (min-width: 900px) {
+  .cartCont {
+    display: none;
+  }
+}

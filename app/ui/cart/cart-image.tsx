@@ -3,10 +3,10 @@ import Img from '../image';
 const CartImage = ({ itemAdded }: { itemAdded: boolean }) => (
   <Img
     imgSrc={`icons/${itemAdded ? 'cartNotEmpty' : 'cartEmpty'}.svg`}
-    imageStyle=""
+    // imageStyle="" // TODO:
     imgAlt="cart"
-    imgWidth={20}
-    imgHeight={20}
+    imgWidth={16}
+    imgHeight={16}
   />
 );
 
