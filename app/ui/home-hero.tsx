@@ -21,6 +21,7 @@ export default function HomeHero() {
               width={1400}
               height={420}
               className={styles.img}
+              priority={true}
             />
           </picture>
         </Link>

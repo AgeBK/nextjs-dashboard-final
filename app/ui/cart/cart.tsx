@@ -40,7 +40,7 @@ const Cart = () => {
             totalPrice={totalPrice}
             totalQty={totalQty}
             handleClose={handleClose}
-            promotion_discount_code={discountCode} // TODO: 
+            promotion_discount_code={discountCode}
             setDiscountCode={setDiscountCode}
           />
         ) : (

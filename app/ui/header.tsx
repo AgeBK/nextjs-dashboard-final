@@ -38,6 +38,7 @@ const Header = async () => {
               imgAlt="AK Fine Wines"
               imgWidth={80}
               imgHeight={80}
+              imgPriority={true}
             />
           </Link>
         </div>

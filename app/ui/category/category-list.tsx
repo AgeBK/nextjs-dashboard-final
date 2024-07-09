@@ -1,15 +1,9 @@
-import { Suspense } from 'react'; // TODO: look into this for loading
 import ProductItem from '@/app/ui/product/product-item';
 import ManageProducts from '../manage/manage-products';
 import ManageHeader from '../manage/manage-header';
-import { DataProps } from '@/app/lib/definitions';
+import { CategoryListProps } from '@/app/lib/definitions';
 import styles from '@/app/_assets/css/category/CategoryList.module.css';
 import Loading from '../loading';
-
-type CategoryListProps = {
-  arr: DataProps[];
-  isManage?: boolean;
-};
 
 export default function CategoryList({ arr, isManage }: CategoryListProps) {
   const style = isManage ? 'table' : 'categoryList';
@@ -19,7 +13,7 @@ export default function CategoryList({ arr, isManage }: CategoryListProps) {
     <div className={styles[style]}>
       {isManage && <ManageHeader />}
       {arr.map((val, ind) => (
-        <JSX props={val} key={ind} />
+        <JSX props={val} key={ind} ind={ind} />
       ))}
     </div>
   ) : (

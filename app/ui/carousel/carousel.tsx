@@ -123,6 +123,7 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
                     promotion_discount_code,
                   }}
                   key={id}
+                  ind={ind}
                   css={'carouselItems' + items}
                 />
               );

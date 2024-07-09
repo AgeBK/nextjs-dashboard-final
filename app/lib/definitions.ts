@@ -88,6 +88,7 @@ export type ImgProps = {
   imgAlt: string;
   imgWidth: number;
   imgHeight: number;
+  imgPriority?: boolean;
 };
 
 export type CampainMiniProps = {
@@ -175,4 +176,50 @@ export type FilterListProps = {
     price?: string;
     rating?: string;
   }) => void;
+};
+
+export type CategoryListProps = {
+  arr: DataProps[];
+  isManage?: boolean;
+};
+
+export type ProductDetailsProps = {
+  id: string;
+  name: string;
+  brand: string;
+  short_name: string;
+  average: number;
+  total: number;
+  price_current: number;
+  price_two_for: number;
+  price_ten_for: number;
+  price_percent_off: number;
+  packaging: string;
+  promotion_callout_text?: string;
+  promotion_discount_code?: string;
+  urlCategory?: string;
+  urlVariety?: string;
+  isCask: boolean;
+};
+
+export type ProductItemProps = {
+  props: {
+    id: string;
+    category: string;
+    variety: string;
+    name: string;
+    short_name: string;
+    brand: string;
+    packaging: string;
+    ratings_average: number;
+    price_current: number;
+    price_normal: number;
+    price_two_for?: number;
+    price_percent_off?: number;
+    price_ten_for?: number;
+    promotion_callout_text?: string;
+    promotion_discount_code?: string;
+  };
+  ind: number;
+  css?: string;
 };

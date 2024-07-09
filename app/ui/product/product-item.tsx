@@ -1,34 +1,14 @@
 import Link from 'next/link';
 import { hyphenate, checkDeals } from '@/app/lib/utils';
+import data from '@/app/lib/appData.json';
 import AddToCart from '@/app/ui/add-to-cart';
 import Img from '@/app/ui/image';
 import PriceDrop from '@/app/ui/price-drop';
 import Price from '@/app/ui/price';
+import { DealProps, ProductItemProps } from '@/app/lib/definitions';
 import styles from '@/app/_assets/css/product/ProductItem.module.css';
-import { DealProps } from '@/app/lib/definitions';
 
-type ProductItemProps = {
-  props: {
-    id: string;
-    category: string;
-    variety: string;
-    name: string;
-    short_name: string;
-    brand: string;
-    packaging: string;
-    ratings_average: number;
-    price_current: number;
-    price_normal: number;
-    price_two_for?: number;
-    price_percent_off?: number;
-    price_ten_for?: number;
-    promotion_callout_text?: string;
-    promotion_discount_code?: string;
-  };
-  css?: string;
-};
-
-const ProductItem = ({ props, css }: ProductItemProps) => {
+const ProductItem = ({ props, ind, css }: ProductItemProps) => {
   const {
     id,
     category,
@@ -55,6 +35,7 @@ const ProductItem = ({ props, css }: ProductItemProps) => {
   const onSpecial: number | null =
     price_current !== price_normal ? price_current : null;
   const avg = Math.round(ratings_average);
+  const { PRIORITY } = data;
 
   return (
     <div className={`${styles.product} ${css ? styles[css] : ''}`} key={id}>
@@ -69,10 +50,10 @@ const ProductItem = ({ props, css }: ProductItemProps) => {
       >
         <Img
           imgSrc={`wine/${id}.jpg`}
-          imageStyle="campaignMini"
           imgAlt={name}
           imgWidth={packaging === 'Bottle' ? 40 : 100}
           imgHeight={150}
+          imgPriority={ind < PRIORITY}
         />
         <div className={styles.productMeta}>
           <h2 className={styles.brand}>{brand}</h2>
@@ -80,10 +61,10 @@ const ProductItem = ({ props, css }: ProductItemProps) => {
           {avg && avg > 2 ? (
             <Img
               imgSrc={`bg/${avg}star.jpg`}
-              imageStyle="block"
               imgAlt={`${avg} star`}
               imgWidth={avg * 15}
               imgHeight={15}
+              imgPriority={ind < PRIORITY}
             />
           ) : null}
         </div>
@@ -95,7 +76,7 @@ const ProductItem = ({ props, css }: ProductItemProps) => {
           name={name}
           brand={brand}
           short_name={short_name}
-          price={price_current}
+          price_current={price_current}
           quantity={1}
           deal={deal}
           promotion_discount_code={promotion_discount_code}

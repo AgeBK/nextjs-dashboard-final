@@ -1,27 +1,9 @@
 import WineBlurb from '@/app/ui/wine-blurb';
-import ProductRating from '@/app/ui/product-rating';
-import ProductCart from '@/app/ui/product-cart';
+import ProductRating from './product-rating';
+import ProductCart from './product-cart';
 import Img from '@/app/ui/image';
+import { ProductDetailsProps } from '../../lib/definitions';
 import styles from '@/app/_assets/css/product/ProductDetails.module.css';
-
-type ProductDetailsProps = {
-  id: string;
-  name: string;
-  brand: string;
-  short_name: string;
-  average: number;
-  total: number;
-  price_current: number;
-  price_two_for: number;
-  price_ten_for: number;
-  price_percent_off: number;
-  packaging: string;
-  promotion_callout_text?: string;
-  promotion_discount_code?: string;
-  urlCategory?: string;
-  urlVariety?: string;
-  isCask: boolean;
-};
 
 const ProductDetails = ({
   id,
@@ -45,7 +27,7 @@ const ProductDetails = ({
     <section className={styles.productCont}>
       <div className={styles.productImg}>
         <Img
-          imgSrc={`wine/${id}.jpg`}   
+          imgSrc={`wine/${id}.jpg`}
           imgAlt={name}
           imgWidth={isCask ? 339 : 120}
           imgHeight={520}
