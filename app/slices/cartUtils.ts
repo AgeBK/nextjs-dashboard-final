@@ -1,3 +1,7 @@
+'use client';
+
+import { CartProps, KeyNumberProps } from '../lib/definitions';
+
 const checkDiscountCode = (cart: CartProps, promotionCode: string) => {
   Object.values(cart).forEach((cartItem) => {
     const { price, promotion_discount_code, deal } = cartItem;
@@ -48,4 +52,13 @@ const checkMultiBuys = (
   return cart;
 };
 
-export { checkDiscountCode, checkMultiBuys };
+const checkStorage = () => {
+  const storedCart = sessionStorage.getItem('AKWineCart');
+  return storedCart ? JSON.parse(storedCart) : {};
+};
+
+const storeCart = (cart: CartProps) => {
+  sessionStorage.setItem('AKWineCart', JSON.stringify(cart));
+};
+
+export { checkDiscountCode, checkMultiBuys, checkStorage, storeCart };

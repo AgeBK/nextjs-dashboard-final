@@ -1,4 +1,4 @@
-'use client'; // TODO:
+'use client';
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -6,7 +6,6 @@ import Img from '@/app/ui/image';
 import data from '@/app/lib/appData.json';
 import styles from '@/app/_assets/css/Error.module.css';
 
-// TODO: not using??
 export default function Error() {
   const { errorMsg } = data;
   const pathname = usePathname();

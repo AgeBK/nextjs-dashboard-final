@@ -2,20 +2,7 @@ import Link from 'next/link';
 import { hyphenate } from '../../lib/utils';
 import styles from '@/app/_assets/css/product/ProductInfo.module.css';
 
-type ProductInfoProps = {
-  id: string;
-  category: string;
-  variety: string;
-  brand: string;
-  packaging: string;
-  unitOfMeasureLabel: string;
-  current: number;
-  normal: number;
-  short_name: string;
-  urlCategory?: string;
-};
-
-const ProductInfo = ({
+export default function ProductInfo  ({
   id,
   category,
   variety,
@@ -26,7 +13,7 @@ const ProductInfo = ({
   normal,
   short_name,
   urlCategory,
-}: ProductInfoProps) => {
+}: ProductInfoProps)  {
   return (
     <section className={styles.info}>
       <h2 className={styles.infoHdr}>Product Information:</h2>
@@ -38,7 +25,6 @@ const ProductInfo = ({
           </span>
         </li>
         <li>
-          {/* // TODO: NOT WORKING */}
           <span>Style</span>
           <span>
             <Link href={`/${urlCategory}/${hyphenate(variety)}`}>
@@ -110,5 +96,3 @@ const ProductInfo = ({
     </section>
   );
 };
-
-export default ProductInfo;

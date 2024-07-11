@@ -101,17 +101,17 @@ const deHyphenate = (text: string) =>
   typeof text === 'string' && text.toLowerCase().replace(/-/gi, ' ');
 
 const checkDeals = (
-  price_two_for?: number,
-  price_ten_for?: number,
-  price_percent_off?: number,
+  price_two_for: number,
+  price_ten_for: number,
+  price_percent_off: number,
 ) => {
   let deal = {};
-  if (price_two_for) {
-    deal = { price_two_for };
-  } else if (price_ten_for) {
-    deal = { price_ten_for };
-  } else if (price_percent_off) {
-    deal = { price_percent_off };
+  if (Number(price_two_for)) {
+    deal = { price_two_for: Number(price_two_for) };
+  } else if (Number(price_ten_for)) {
+    deal = { price_ten_for: Number(price_ten_for) };
+  } else if (Number(price_percent_off)) {
+    deal = { price_percent_off: Number(price_percent_off) };
   }
   return deal;
 };

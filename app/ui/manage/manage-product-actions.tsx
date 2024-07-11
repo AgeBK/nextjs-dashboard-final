@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../button';
 import Link from 'next/link';
+import Button from '../button';
 import Img from '../image';
 import styles from '@/app/_assets/css/manage/ManageProductActions.module.css';
 
@@ -9,17 +9,16 @@ type ManageProductActionsProps = {
   enableModal: (e: React.MouseEvent<Element, MouseEvent>) => void;
 };
 
-const ManageProductActions = ({
+export default function ManageProductActions({
   isDelete,
   enableModal,
-}: ManageProductActionsProps) => {
+}: ManageProductActionsProps) {
   return (
     <>
       <Link href="/manage" className={styles.cancel}>
         <span>Cancel </span>
         <Img
           imgSrc={`icons/xCircle.svg`}
-          imageStyle="campaignMii"
           imgAlt="cancel"
           imgWidth={24}
           imgHeight={24}
@@ -30,7 +29,6 @@ const ManageProductActions = ({
           <span>Delete </span>
           <Img
             imgSrc={`icons/trash.svg`}
-            imageStyle="campaignMii" // TODO:
             imgAlt="save"
             imgWidth={24}
             imgHeight={24}
@@ -41,7 +39,6 @@ const ManageProductActions = ({
           <span>Save </span>
           <Img
             imgSrc={`icons/save.svg`}
-            imageStyle="campaignMii"
             imgAlt="save"
             imgWidth={24}
             imgHeight={24}
@@ -50,6 +47,4 @@ const ManageProductActions = ({
       )}
     </>
   );
-};
-
-export default ManageProductActions;
+}

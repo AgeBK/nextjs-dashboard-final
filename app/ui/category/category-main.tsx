@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useMemo, useRef } from 'react'; // TODO:
+import { useEffect, useState, useMemo, useRef } from 'react';
 import {
   sortCategoryPageData,
   filterCategoryPageData,
@@ -23,7 +23,6 @@ import {
 } from '@/app/lib/definitions';
 import styles from '@/app/_assets/css/category/Category.module.css';
 
-// TODO: check loading states ??
 export default function CategoryMain({
   arr,
   urlCategory,
@@ -40,11 +39,6 @@ export default function CategoryMain({
   const didMount = useRef<boolean>(false);
   const isSmallScreenShowItems = isSmallScreen && isShowItems;
   dataRef.current = arr;
-
-  // if (arr && dataRef.current.length === 0) {
-  //  const variety = filters.variety || urlVariety;
-  //  dataRef.current = arr;
-  // }
 
   useEffect(() => {
     if (didMount.current) {
@@ -160,64 +154,3 @@ export default function CategoryMain({
     </>
   );
 }
-
-// const test = arr.reduce((acc, val) => {
-//   let cat = 3;
-//   if (val.category === 'Red') {
-//     cat = 2;
-//   } else if (val.category === 'White') {
-//     cat = 1;
-//   }
-//   if (acc.indexOf(val.variety) === -1) {
-//     acc = [...acc, val.variety];
-//     test2.push([val.variety, cat]);
-//   }
-//   return acc;
-// }, []);
-// console.log('test');
-
-// console.log(test);
-// console.log(test2);
-
-// let a = [
-//   ['Pinot Noir', 2],
-//   ['Sauvignon Blanc', 1],
-//   ['Sem Sauv Blanc', 1],
-//   ['Cabernet Sauvignon', 2],
-//   ['Cabernet Merlot', 2],
-//   ['Chardonnay', 1],
-//   ['Blends', 2],
-//   ['Cask', 2],
-//   ['Shiraz', 2],
-//   ['Fortified', 2],
-//   ['Tempranillo', 2],
-//   ['Moscato', 1],
-//   ['Alternate', 1],
-//   ['Pinot Gris Grigio', 1],
-//   ['Cabernet Shiraz', 2],
-//   ['Sweet', 3],
-//   ['Sparkling White', 3],
-//   ['Merlot', 2],
-//   ['Sparkling Rose', 3],
-//   ['Shiraz Cabernet', 2],
-//   ['Sangiovese', 2],
-//   ['Riesling', 1],
-//   ['Semillon', 1],
-//   ['Prosecco', 3],
-//   ['Varieties', 2],
-//   ['Champagne', 3],
-//   ['Verdelho', 1],
-//   ['Cava', 3],
-//   ['Viognier', 1],
-//   ['Desert', 1],
-//   ['Red', 3],
-//   ['Other Blends', 1],
-//   ['Champagne Rose', 3],
-//   ['Lambrusco', 2],
-//   ['Chenin Blanc', 1],
-//   ['Grenache', 2],
-//   ['Other Varieties', 1],
-//   ['Malbec', 2],
-//   ['Petilant', 3],
-//   ['Prosecco Rose', 3],
-// ];

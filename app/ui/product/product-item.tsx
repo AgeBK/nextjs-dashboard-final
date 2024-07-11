@@ -32,8 +32,7 @@ const ProductItem = ({ props, ind, css }: ProductItemProps) => {
     price_ten_for,
     price_percent_off,
   );
-  const onSpecial: number | null =
-    price_current !== price_normal ? price_current : null;
+  const onSpecial = price_current !== price_normal;
   const avg = Math.round(ratings_average);
   const { PRIORITY } = data;
 
@@ -76,7 +75,7 @@ const ProductItem = ({ props, ind, css }: ProductItemProps) => {
           name={name}
           brand={brand}
           short_name={short_name}
-          price_current={price_current}
+          price={price_current}
           quantity={1}
           deal={deal}
           promotion_discount_code={promotion_discount_code}

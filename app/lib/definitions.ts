@@ -41,7 +41,7 @@ export type AddToCartProps = {
   name: string;
   brand: string;
   short_name: string;
-  price_current: number;
+  price: number;
   quantity: number;
   deal?: DealProps;
   promotion_discount_code?: string; // TODO:
@@ -104,6 +104,19 @@ export type CampainMiniProps = {
 export type ProductReviewProps = {
   urlCategory: string;
   variety: string;
+};
+
+type ProductInfoProps = {
+  id: string;
+  category: string;
+  variety: string;
+  brand: string;
+  packaging: string;
+  unitOfMeasureLabel: string;
+  current: number;
+  normal: number;
+  short_name: string;
+  urlCategory?: string;
 };
 
 export type User = {
@@ -214,12 +227,20 @@ export type ProductItemProps = {
     ratings_average: number;
     price_current: number;
     price_normal: number;
-    price_two_for?: number;
-    price_percent_off?: number;
-    price_ten_for?: number;
+    price_two_for: number;
+    price_percent_off: number;
+    price_ten_for: number;
     promotion_callout_text?: string;
     promotion_discount_code?: string;
   };
   ind: number;
   css?: string;
+};
+
+//RTK slice
+export type CartState = {
+  cart: CartProps;
+  price_two_forDeals: number[];
+  price_ten_forDeals: number;
+  promotionCode: string;
 };

@@ -1,9 +1,13 @@
 import { reviews, productSource } from '@/app/lib/appData.json';
+import { KeyStringProps, ProductReviewProps } from '../../lib/definitions';
 import styles from '@/app/_assets/css/product/ProductReview.module.css';
-import { KeyStringProps, ProductReviewProps } from '../lib/definitions';
-const review: KeyStringProps = reviews;
 
-const ProductReview = ({ urlCategory, variety }: ProductReviewProps) => {
+export default function ProductReview({
+  urlCategory,
+  variety,
+}: ProductReviewProps) {
+  const review: KeyStringProps = reviews;
+
   return (
     <div className={styles.reviews}>
       <h2>Product Review:</h2>
@@ -16,6 +20,4 @@ const ProductReview = ({ urlCategory, variety }: ProductReviewProps) => {
       ></div>
     </div>
   );
-};
-
-export default ProductReview;
+}
