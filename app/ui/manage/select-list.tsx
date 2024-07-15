@@ -1,8 +1,8 @@
 import React from 'react';
 import { region, packaging } from '@/app/lib/appData.json';
-import stylesEdit from '@/app/_assets/css/manage/Form.module.css';
+import stylesEdit from '@/app/assets/css/manage/Form.module.css';
 import { KeyStringProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/Select.module.css';
+import styles from '@/app/assets/css/Select.module.css';
 
 type ddlWineItemsProps = {
   obj: KeyStringProps;

@@ -11,10 +11,10 @@ import {
   CartItemProps,
   CartQtyPriceProps,
 } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/cart/Cart.module.css';
+import styles from '@/app/assets/css/cart/Cart.module.css';
 
 const Cart = () => {
-  const [discountCode, setDiscountCode] = useState<string>(''); // TODO: why here and not main, can't remember
+  const [discountCode, setDiscountCode] = useState<string>(''); // set here to keep value on cart closed
   const cart: CartProps = useSelector(selectCart);
   const [ref, isOpen, handleClose] = useCartState();
 
@@ -40,7 +40,7 @@ const Cart = () => {
             totalPrice={totalPrice}
             totalQty={totalQty}
             handleClose={handleClose}
-            promotion_discount_code={discountCode}
+            discountCode={discountCode}
             setDiscountCode={setDiscountCode}
           />
         ) : (

@@ -5,30 +5,12 @@ import Img from './image';
 import HeaderUserCart from './header-user-cart';
 import { fetchProducts } from '../lib/data';
 import { DataProps } from '../lib/definitions';
-import { auth } from '../../auth';
 import getUser from '@/getUser';
-import styles from '@/app/_assets/css/Header.module.css';
+import styles from '@/app/assets/css/Header.module.css';
 
 const Header = async () => {
-  let products: DataProps[] = await fetchProducts();
-  const session = await auth();
-  const name = session?.user?.name || null;
+  const products: DataProps[] = await fetchProducts();
   const user = await getUser();
-
-  // // TODO: remove when finished
-  // if (session?.user) {
-  //   console.log(session);
-
-  //   // TODO: Look into https://react.dev/reference/react/experimental_taintObjectReference
-  //   // filter out sensitive data before passing to client.
-  //   session.user = {
-  //     name: session.user.name,
-  //     email: session.user.email,
-  //     image: session.user.image,
-  //   };
-  // } else {
-  //   console.log('NO SESSION');
-  // }
 
   return (
     <header className={styles.header}>

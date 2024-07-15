@@ -1,14 +1,6 @@
 import { Providers } from './providers';
 import type { Metadata } from 'next';
-// import Container from "./container/Container";
-// import { Inter } from "next/font/google";
 import './globals.css';
-
-// const inter = Inter({ subsets: ["latin"] });
-
-// export const metadata = {
-
-// };
 
 export const metadata: Metadata = {
   title: ' AK Fine Wines - The biggest range at the best prices guaranteed!!',

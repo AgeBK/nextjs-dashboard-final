@@ -1,6 +1,6 @@
-import { blurb } from "@/app/lib/appData.json";
-import styles from "@/app/_assets/css/WineBlurb.module.css";
-import { KeyStringProps } from "../lib/definitions";
+import { blurb } from '@/app/lib/appData.json';
+import styles from '@/app/assets/css/WineBlurb.module.css';
+import { KeyStringProps } from '../lib/definitions';
 
 type WineBlurbProps = {
   urlCategory: string | undefined;
@@ -9,7 +9,7 @@ type WineBlurbProps = {
 
 const WineBlurb = ({ urlCategory, urlVariety }: WineBlurbProps) => {
   const wineData: KeyStringProps = blurb;
-  let synopsis = "";
+  let synopsis = '';
   if (urlVariety && wineData[urlVariety]) {
     synopsis = wineData[urlVariety];
   } else if (urlCategory && wineData[urlCategory]) {

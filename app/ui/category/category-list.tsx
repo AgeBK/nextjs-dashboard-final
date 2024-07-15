@@ -2,7 +2,7 @@ import ProductItem from '@/app/ui/product/product-item';
 import ManageProducts from '../manage/manage-products';
 import ManageHeader from '../manage/manage-header';
 import { CategoryListProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/category/CategoryList.module.css';
+import styles from '@/app/assets/css/category/CategoryList.module.css';
 import Loading from '../loading';
 
 export default function CategoryList({ arr, isManage }: CategoryListProps) {

@@ -1,6 +1,6 @@
 import { signOut } from '@/auth';
 import { auth } from '../../auth';
-import styles from '@/app/_assets/css/Logout.module.css';
+import styles from '@/app/assets/css/Logout.module.css';
 
 export default async function Logout() {
   const session = await auth();

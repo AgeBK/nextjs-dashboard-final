@@ -1,7 +1,7 @@
 import { FilterProps } from '@/app/lib/definitions';
 import Pills from '@/app/ui/pills';
 import Sort from '@/app/ui/sort';
-import styles from '@/app/_assets/css/category/CategoryHeader.module.css';
+import styles from '@/app/assets/css/category/CategoryHeader.module.css';
 
 type CategoryHeaderProps = {
   filters: FilterProps;

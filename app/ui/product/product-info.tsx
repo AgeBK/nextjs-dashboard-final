@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { hyphenate } from '../../lib/utils';
-import styles from '@/app/_assets/css/product/ProductInfo.module.css';
+import styles from '@/app/assets/css/product/ProductInfo.module.css';
 
-export default function ProductInfo  ({
+export default function ProductInfo({
   id,
   category,
   variety,
@@ -13,7 +13,7 @@ export default function ProductInfo  ({
   normal,
   short_name,
   urlCategory,
-}: ProductInfoProps)  {
+}: ProductInfoProps) {
   return (
     <section className={styles.info}>
       <h2 className={styles.infoHdr}>Product Information:</h2>
@@ -95,4 +95,4 @@ export default function ProductInfo  ({
       </ul>
     </section>
   );
-};
+}

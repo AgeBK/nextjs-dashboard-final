@@ -1,4 +1,4 @@
-import styles from '@/app/_assets/css/cart/CartItemSaving.module.css';
+import styles from '@/app/assets/css/cart/CartItemSaving.module.css';
 
 type ItemSavingsProps = {
   price: number;

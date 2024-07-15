@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormStateProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/manage/Form.module.css';
+import styles from '@/app/assets/css/manage/Form.module.css';
 
 type initialStateProps = {
   initialState: FormStateProps;

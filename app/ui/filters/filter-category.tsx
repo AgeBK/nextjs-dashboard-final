@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import data from '@/app/lib/appData.json';
-import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/filter/FilterCategory.module.css';
+import { WineFilterProps } from '@/app/lib/definitions';
+import styles from '@/app/assets/css/filter/FilterCategory.module.css';
 
 const CategoryFilter = ({ updateFilters, filters }: WineFilterProps) => {
   const { categoryArr } = data;

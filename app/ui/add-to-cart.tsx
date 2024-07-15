@@ -7,8 +7,6 @@ import Button from './button';
 import { AddToCartProps } from '../lib/definitions';
 import CartImage from './cart/cart-image';
 
-// TODO: what to do on full page refresh?
-
 const AddToCart = ({
   id,
   name,

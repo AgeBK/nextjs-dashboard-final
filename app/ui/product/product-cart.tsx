@@ -5,7 +5,7 @@ import Button from '@/app/ui/button';
 import AddToCart from '@/app/ui/add-to-cart';
 import Img from '@/app/ui/image';
 import { checkDeals } from '@/app/lib/utils';
-import styles from '@/app/_assets/css/product/ProductCart.module.css';
+import styles from '@/app/assets/css/product/ProductCart.module.css';
 
 type ProductCartProps = {
   id: string;

@@ -1,6 +1,6 @@
 import Img from '@/app/ui/image';
 import { paymentArr } from '@/app/lib/appData.json';
-// import styles from "@/app/_assets/css/Test.module.css";
+// import styles from "@/app/assets/css/Test.module.css";
 
 function Test() {
   const yr = new Date().getFullYear();

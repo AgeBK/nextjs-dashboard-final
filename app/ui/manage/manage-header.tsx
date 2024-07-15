@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/app/_assets/css/category/CategoryList.module.css';
+import styles from '@/app/assets/css/category/CategoryList.module.css';
 
 export default function ManageHeader() {
   return (

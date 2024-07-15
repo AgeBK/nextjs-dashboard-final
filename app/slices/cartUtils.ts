@@ -1,4 +1,4 @@
-'use client';
+// 'use client'; // TODO: check
 
 import { CartProps, KeyNumberProps } from '../lib/definitions';
 
@@ -53,7 +53,9 @@ const checkMultiBuys = (
 };
 
 const checkStorage = () => {
-  const storedCart = sessionStorage.getItem('AKWineCart');
+  const storedCart = sessionStorage
+    ? sessionStorage.getItem('AKWineCart')
+    : null;
   return storedCart ? JSON.parse(storedCart) : {};
 };
 

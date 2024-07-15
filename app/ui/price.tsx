@@ -1,4 +1,4 @@
-import styles from "@/app/_assets/css/Price.module.css";
+import styles from '@/app/assets/css/Price.module.css';
 
 type PriceProps = {
   current: number;

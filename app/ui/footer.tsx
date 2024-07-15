@@ -3,7 +3,7 @@ import { paymentArr } from '@/app/lib/appData.json';
 import { signOut } from '@/auth';
 import { auth } from '../../auth';
 import Logout from './logout';
-import styles from '@/app/_assets/css/Footer.module.css';
+import styles from '@/app/assets/css/Footer.module.css';
 import Link from 'next/link';
 
 export default async function Footer() {

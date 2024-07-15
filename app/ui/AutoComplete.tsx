@@ -14,7 +14,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 // import usePageWidth from "../../hooks/usePageWidth";
 import Img from './image';
-import styles from '../_assets/css/AutoComplete.module.css';
+import styles from '../assets/css/AutoComplete.module.css';
 import { hyphenate } from '../lib/utils';
 import { fetchProducts } from '../lib/data';
 import { DataProps } from '../lib/definitions';

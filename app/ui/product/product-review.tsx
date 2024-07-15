@@ -1,6 +1,6 @@
 import { reviews, productSource } from '@/app/lib/appData.json';
 import { KeyStringProps, ProductReviewProps } from '../../lib/definitions';
-import styles from '@/app/_assets/css/product/ProductReview.module.css';
+import styles from '@/app/assets/css/product/ProductReview.module.css';
 
 export default function ProductReview({
   urlCategory,

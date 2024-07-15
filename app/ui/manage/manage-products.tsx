@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { hyphenate } from '@/app/lib/utils';
 import Img from '@/app/ui/image';
-import styles from '@/app/_assets/css/manage/ManageProducts.module.css';
+import styles from '@/app/assets/css/manage/ManageProducts.module.css';
 
 type ManageProductsProps = {
   props: {

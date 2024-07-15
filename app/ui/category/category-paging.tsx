@@ -1,6 +1,6 @@
 import CategoryPageNumber from '@/app/ui/category/category-page-number';
 import ResultsPP from '@/app/ui/resultspp';
-import styles from '@/app/_assets/css/category/CategoryPaging.module.css';
+import styles from '@/app/assets/css/category/CategoryPaging.module.css';
 import { DataProps, PagingProps } from '@/app/lib/definitions';
 
 type CategoryPagingProps = {

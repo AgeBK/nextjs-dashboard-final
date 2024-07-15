@@ -7,7 +7,7 @@ import Button from '@/app/ui/button';
 import Img from '@/app/ui/image';
 import data from '@/app/lib/appData.json';
 import { DataProps } from '../../lib/definitions';
-import styles from '@/app/_assets/css/carousel/Carousel.module.css';
+import styles from '@/app/assets/css/carousel/Carousel.module.css';
 
 export default function Carousel({ arr }: { arr: DataProps[] }) {
   const {
@@ -27,7 +27,6 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
     setPageIndex((prev: number) => prev + val);
 
   const calculateItems = useCallback((): void => {
-    // TODO:
     if (ref.current && ref.current.offsetWidth) {
       const {
         current: { offsetWidth },

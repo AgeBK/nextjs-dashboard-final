@@ -13,7 +13,6 @@ export const authConfig = {
     // TODO: check this process at end
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-
       const isAdminPage = nextUrl.pathname.startsWith('/manage');
       const isLoginPage = nextUrl.pathname.startsWith('/login');
       const pathname = nextUrl.searchParams.get('callbackUrl') || '/';
@@ -27,7 +26,6 @@ export const authConfig = {
           return Response.redirect(new URL('/login', nextUrl));
         }
         return true;
-        // return false; // Redirect unauthenticated users to login page
       }
       return true;
     },

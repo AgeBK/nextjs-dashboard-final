@@ -1,5 +1,5 @@
 import Img from '../image';
-import styles from '@/app/_assets/css/cart/CartClosed.module.css';
+import styles from '@/app/assets/css/cart/CartClosed.module.css';
 
 type CartClosedProps = {
   totalPrice: number;

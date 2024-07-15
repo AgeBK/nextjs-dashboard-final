@@ -6,7 +6,7 @@ import {
 } from '@/app/lib/definitions';
 import { filterCategoryPageData } from '@/app/lib/utils';
 import Button from '../button';
-import styles from '@/app/_assets/css/filter/FilterVariety.module.css';
+import styles from '@/app/assets/css/filter/FilterVariety.module.css';
 
 interface VarietyFilterProps extends WineFilterProps {
   currentData: DataProps[];

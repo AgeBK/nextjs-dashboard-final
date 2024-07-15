@@ -6,7 +6,7 @@ import Img from '@/app/ui/image';
 import PriceDrop from '@/app/ui/price-drop';
 import Price from '@/app/ui/price';
 import { DealProps, ProductItemProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/product/ProductItem.module.css';
+import styles from '@/app/assets/css/product/ProductItem.module.css';
 
 const ProductItem = ({ props, ind, css }: ProductItemProps) => {
   const {

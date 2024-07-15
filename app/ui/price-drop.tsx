@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import data from '@/app/lib/appData.json';
-import styles from '@/app/_assets/css/PriceDrop.module.css';
+import styles from '@/app/assets/css/PriceDrop.module.css';
 
 type PriceDropProps = {
   promotion_callout_text: string | undefined;

@@ -1,7 +1,7 @@
 import Button from '@/app/ui/button';
 import data from '@/app/lib/appData.json';
 import { FilterProps, KeyBooleanProps } from '../lib/definitions';
-import styles from '@/app/_assets/css/Pills.module.css';
+import styles from '@/app/assets/css/Pills.module.css';
 
 type PillsProps = {
   filters: FilterProps;

@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 import data from '@/app/lib/appData.json';
-import styles from '@/app/_assets/css/Sort.module.css';
+import styles from '@/app/assets/css/Sort.module.css';
 
 type SortProps = {
   sortName: string;

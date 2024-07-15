@@ -1,5 +1,5 @@
 import SideNav from '@/app/ui/manage/sidenav';
-import styles from '@/app/_assets/css/manage/ManageLayout.module.css';
+import styles from '@/app/assets/css/manage/ManageLayout.module.css';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

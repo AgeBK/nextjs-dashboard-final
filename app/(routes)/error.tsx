@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Img from '@/app/ui/image';
 import data from '@/app/lib/appData.json';
-import styles from '@/app/_assets/css/Error.module.css';
+import styles from '@/app/assets/css/Error.module.css';
 
 export default function Error() {
   const { errorMsg } = data;

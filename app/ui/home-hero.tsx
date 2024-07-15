@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '@/app/_assets/css/HomeHero.module.css';
+import styles from '@/app/assets/css/HomeHero.module.css';
 
 export default function HomeHero() {
   return (

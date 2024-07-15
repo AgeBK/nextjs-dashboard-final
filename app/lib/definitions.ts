@@ -44,7 +44,7 @@ export type AddToCartProps = {
   price: number;
   quantity: number;
   deal?: DealProps;
-  promotion_discount_code?: string; // TODO:
+  promotion_discount_code?: string;
 };
 
 export type CartItemProps = {

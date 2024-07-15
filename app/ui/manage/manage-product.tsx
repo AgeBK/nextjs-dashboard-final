@@ -10,7 +10,7 @@ import ModalDelete from './modal-delete';
 import { isRequired } from '@/app/lib/appData.json';
 import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 import { DataProps, FormStateProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/manage/Form.module.css';
+import styles from '@/app/assets/css/manage/Form.module.css';
 
 type ManageProductProps = {
   product: DataProps;

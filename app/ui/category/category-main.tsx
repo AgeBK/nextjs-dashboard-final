@@ -21,7 +21,7 @@ import {
   FilterProps,
   PagingProps,
 } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/category/Category.module.css';
+import styles from '@/app/assets/css/category/Category.module.css';
 
 export default function CategoryMain({
   arr,

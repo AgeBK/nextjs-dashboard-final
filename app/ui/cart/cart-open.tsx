@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { applyDiscountCode } from '../../slices/cartSlice';
 import CartItem from './cart-item';
 import Button from '../button';
-import styles from '@/app/_assets/css/cart/CartOpen.module.css';
+import styles from '@/app/assets/css/cart/CartOpen.module.css';
 
 type CartOpenProps = {
   totalPrice: number;
   totalQty: number;
   handleClose: () => void;
-  promotion_discount_code: string;
+  discountCode: string;
   setDiscountCode: (code: string) => void;
 };
 
@@ -17,7 +17,7 @@ const CartOpen = ({
   totalPrice,
   totalQty,
   handleClose,
-  promotion_discount_code,
+  discountCode,
   setDiscountCode,
 }: CartOpenProps) => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const CartOpen = ({
 
   const dispatchDiscountCode = () => {
     setCodeEntered(true);
-    dispatch(applyDiscountCode(promotion_discount_code));
+    dispatch(applyDiscountCode(discountCode));
   };
 
   return (
@@ -49,14 +49,14 @@ const CartOpen = ({
         </Button>
       </div>
       <CartItem />
-      <div className={styles.promotion_discount_code}>
+      <div className={styles.discountCode}>
         <input
           className={styles.inputCode}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           type="text"
           placeholder="Enter promo/discount code here"
-          value={promotion_discount_code}
+          value={discountCode}
         />
         <Button css="discount" onClick={dispatchDiscountCode}>
           Apply

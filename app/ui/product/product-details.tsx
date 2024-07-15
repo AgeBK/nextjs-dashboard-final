@@ -3,7 +3,7 @@ import ProductRating from './product-rating';
 import ProductCart from './product-cart';
 import Img from '@/app/ui/image';
 import { ProductDetailsProps } from '../../lib/definitions';
-import styles from '@/app/_assets/css/product/ProductDetails.module.css';
+import styles from '@/app/assets/css/product/ProductDetails.module.css';
 
 const ProductDetails = ({
   id,

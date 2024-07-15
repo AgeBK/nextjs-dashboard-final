@@ -10,7 +10,7 @@ import Img from '@/app/ui/image';
 // } from '@heroicons/react/24/outline';
 import Button from '@/app/ui/button';
 import { useFormState, useFormStatus } from 'react-dom';
-import styles from '@/app/_assets/css/LoginForm.module.css';
+import styles from '@/app/assets/css/LoginForm.module.css';
 
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);

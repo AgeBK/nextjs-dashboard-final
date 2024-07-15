@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Button from '../button';
 import Img from '../image';
-import styles from '@/app/_assets/css/manage/ManageProductActions.module.css';
+import styles from '@/app/assets/css/manage/ManageProductActions.module.css';
 
 type ManageProductActionsProps = {
   isDelete: boolean;

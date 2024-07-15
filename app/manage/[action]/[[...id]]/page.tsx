@@ -6,7 +6,7 @@ import {
   selectWineItems,
   productKeys,
 } from '@/app/lib/appData.json';
-import styles from '@/app/_assets/css/manage/ManageProduct.module.css';
+import styles from '@/app/assets/css/manage/ManageProduct.module.css';
 
 type PageProps = {
   params: {

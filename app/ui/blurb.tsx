@@ -3,7 +3,7 @@
 import { BlurbProps, KeyStringProps } from '@/app/lib/definitions';
 import data from '@/app/lib/appData.json';
 import { deHyphenate } from '@/app/lib/utils';
-import styles from '@/app/_assets/css/Blurb.module.css';
+import styles from '@/app/assets/css/Blurb.module.css';
 
 export default function Blurb({ urlCategory, variety }: BlurbProps) {
   const { blurb } = data;

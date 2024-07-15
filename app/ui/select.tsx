@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "@/app/_assets/css/Select.module.css";
+import React from 'react';
+import styles from '@/app/assets/css/Select.module.css';
 
 const SelectLists = ({ arr, key, value, handleChange }) => {
   return (

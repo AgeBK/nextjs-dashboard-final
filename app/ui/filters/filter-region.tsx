@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import { KeyNumberProps, RegionFilterProps } from '@/app/lib/definitions';
 import { filterCategoryPageData } from '@/app/lib/utils';
-import styles from '@/app/_assets/css/filter/FilterRegion.module.css';
+import styles from '@/app/assets/css/filter/FilterRegion.module.css';
 
 const FilterRegion = ({
   updateFilters,
@@ -52,7 +52,7 @@ const FilterRegion = ({
           ))}
         </ul>
       ) : (
-        <div className={styles.noResults}>No results</div> // TODO: apply No results to all filters
+        <div className={styles.noResults}>No results</div>
       )}
     </>
   );

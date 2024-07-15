@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Img from './image';
 import Cart from './cart/cart';
-import styles from '@/app/_assets/css/Header.module.css';
+import styles from '@/app/assets/css/Header.module.css';
 
 export default function HeaderUserCart({ user }: { user: string | null }) {
   const pathname = usePathname().substring(1);

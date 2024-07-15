@@ -6,7 +6,7 @@ import ProductDetails from '@/app/ui/product/product-details';
 import ProductInfo from '@/app/ui/product/product-info';
 import ProductReview from '@/app/ui/product/product-review';
 import CarouselMain from '@/app/ui/carousel/carousel-main';
-import styles from '@/app/_assets/css/product/Product.module.css';
+import styles from '@/app/assets/css/product/Product.module.css';
 
 export default async function Product({
   params: { urlCategory, urlVariety, urlId },

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Img from '@/app/ui/image';
 import Logout from '../logout';
-import styles from '@/app/_assets/css/manage/SidneNav.module.css';
+import styles from '@/app/assets/css/manage/SidneNav.module.css';
 
 export default function SideNav() {
   return (

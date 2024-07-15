@@ -6,7 +6,7 @@ import RatingFilter from './filter-rating';
 import VarietyFilter from './filter-variety';
 import RegionFilter from './filter-region';
 import { FilterListProps } from '@/app/lib/definitions';
-import styles from '@/app/_assets/css/filter/FilterList.module.css';
+import styles from '@/app/assets/css/filter/FilterList.module.css';
 
 const FilterList = ({
   currentData,

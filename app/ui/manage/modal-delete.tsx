@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Button from '../button';
 import Img from '../image';
 import ExclamationCircle from '@/app/svg/exclamation-circle';
-import styles from '@/app/_assets/css/manage/ModalDelete.module.css';
+import styles from '@/app/assets/css/manage/ModalDelete.module.css';
 
 type ModalDeleteProps = {
   id: string;

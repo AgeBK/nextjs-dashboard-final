@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '@/app/_assets/css/Home.module.css';
+import styles from '@/app/assets/css/Home.module.css';
 
 type HomeCampaignProps = {
   link: string;

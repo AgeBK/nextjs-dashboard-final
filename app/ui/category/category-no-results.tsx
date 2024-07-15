@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '@/app/_assets/css/category/CategoryNoResults.module.css';
+import styles from '@/app/assets/css/category/CategoryNoResults.module.css';
 
 const CategoryNoResults = ({ isManage }: { isManage: boolean }) => (
   <>
