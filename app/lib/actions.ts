@@ -245,9 +245,6 @@ export async function authenticate(
   formData: FormData,
 ) {
   try {
-    console.log('authenticate');
-    console.log(formData);
-
     await signIn('credentials', formData);
   } catch (error) {
     if (error instanceof AuthError) {

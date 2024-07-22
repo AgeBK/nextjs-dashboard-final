@@ -23,7 +23,6 @@ export async function fetchProducts() {
 }
 
 export async function fetchProductsByCat(query: string) {
-  console.log('fetchProductsByCat');
   noStore();
 
   try {
@@ -43,7 +42,6 @@ export async function fetchProductsByCat(query: string) {
 }
 
 export async function fetchProductsByCatAndPrice(query: string, price: number) {
-  console.log('fetchProductsByCat');
   noStore();
 
   try {
@@ -65,7 +63,6 @@ export async function fetchProductsByCatAndPrice(query: string, price: number) {
 
 export async function fetchProductsById(query: string) {
   noStore();
-  console.log('fetchProductsById');
 
   try {
     const data = await sql<DataProps>`
@@ -120,25 +117,6 @@ export async function fetchProductsPriceTwoFor(price: number) {
   }
 }
 
-// export async function fetchProductsByDealprice_ten_forPrice(price: number) {
-//   noStore();
-
-//   try {
-//     const data = await sql<DataProps>`
-//       SELECT *
-//       FROM products
-//       WHERE price_ten_for=${price}
-//       ORDER BY ratings_average DESC
-//       `;
-
-//     const products = data.rows;
-//     return products;
-//   } catch (err) {
-//     console.error('Database Error:', err);
-//     throw new Error('Failed to fetch products by deal and price.');
-//   }
-// }
-
 export async function fetchProductsOnSpecial() {
   noStore();
 
@@ -160,8 +138,6 @@ export async function fetchProductsOnSpecial() {
 
 export async function fetchProductsBySearchTerm(query: string) {
   noStore();
-
-  console.log(query);
 
   try {
     const data = await sql<DataProps>`
@@ -292,8 +268,6 @@ export async function fetchProductsPriceDrop() {
 
 export async function fetchCarouselProducts() {
   noStore();
-
-  console.log('fetchCarouselProducts');
 
   // fetch 12 random products that are on sale
   try {

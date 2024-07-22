@@ -1,19 +1,16 @@
 import React from 'react';
-import { region, packaging } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 import stylesEdit from '@/app/assets/css/manage/Form.module.css';
-import { KeyStringProps } from '@/app/lib/definitions';
+import { ddlWineItemsProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/Select.module.css';
 
-type ddlWineItemsProps = {
-  obj: KeyStringProps;
-  isDelete: boolean;
-};
-
-const SelectLists = ({ obj, isDelete }: ddlWineItemsProps) => {
+export default function SelectLists({ ddlWineItems, isDelete }: ddlWineItemsProps) {
+  const { region, packaging } = data;
   const arrList = [region, packaging];
+
   return (
     <>
-      {Object.entries(obj).map(([key, value], i: number) => {
+      {Object.entries(ddlWineItems).map(([key, value], i: number) => {
         return (
           <div key={key}>
             <span className={stylesEdit.key}>
@@ -43,6 +40,4 @@ const SelectLists = ({ obj, isDelete }: ddlWineItemsProps) => {
       })}
     </>
   );
-};
-
-export default SelectLists;
+}

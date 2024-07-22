@@ -59,7 +59,7 @@ const ProductCart = ({
           <div className={styles.packImg}>
             <Img
               imgSrc={isCask ? `icons/barrelSil.png` : `icons/wineSil.png`}
-              imgAlt={packaging}
+              imgAlt=""
               imgWidth={22}
               imgHeight={50}
             />
@@ -81,7 +81,7 @@ const ProductCart = ({
             name={name}
             brand={brand}
             short_name={short_name}
-            price_current={price_current}
+            price={price_current}
             quantity={count}
             deal={deal}
             promotion_discount_code={promotion_discount_code}

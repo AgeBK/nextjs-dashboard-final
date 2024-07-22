@@ -13,6 +13,8 @@
 
 .ak a {
   font-weight: bold;
+  display: inline-block;
+  margin: 0 5px;
 }
 
 .list {

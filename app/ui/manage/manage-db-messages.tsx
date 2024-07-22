@@ -1,15 +1,10 @@
 import React from 'react';
-import { FormStateProps } from '@/app/lib/definitions';
+import { ManageDBMessagesProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
-type initialStateProps = {
-  initialState: FormStateProps;
-};
-
-export default function ManageDBMessages({ initialState }: initialStateProps) {
-  console.log('ManageDBMessages');
-  console.log(initialState);
-
+export default function ManageDBMessages({
+  initialState,
+}: ManageDBMessagesProps) {
   return (
     <div aria-live="polite" className={styles.error} role="status">
       <div className={styles.message}>{initialState?.message}</div>

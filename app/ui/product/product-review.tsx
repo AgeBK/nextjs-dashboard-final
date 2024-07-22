@@ -1,4 +1,4 @@
-import { reviews, productSource } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 import { KeyStringProps, ProductReviewProps } from '../../lib/definitions';
 import styles from '@/app/assets/css/product/ProductReview.module.css';
 
@@ -6,12 +6,15 @@ export default function ProductReview({
   urlCategory,
   variety,
 }: ProductReviewProps) {
-  const review: KeyStringProps = reviews;
+  const {
+    reviews,
+    productSource,
+  }: { reviews: KeyStringProps; productSource: string } = data;
 
   return (
     <div className={styles.reviews}>
       <h2>Product Review:</h2>
-      {urlCategory && review[urlCategory]}
+      <div className={styles.review}>{urlCategory && reviews[urlCategory]}</div>
       <div
         className={styles.source}
         dangerouslySetInnerHTML={{

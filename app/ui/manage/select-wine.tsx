@@ -1,24 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import { categoryArr, red, white, sparkling } from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
+import { ddlWineItemsProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/Select.module.css';
-import { KeyStringProps } from '@/app/lib/definitions';
 import stylesEdit from '@/app/assets/css/manage/Form.module.css';
 
-type ddlWineItemsProps = {
-  ddlWineItems: KeyStringProps;
-  isDelete: boolean;
-};
-
 const SelectWine = ({ ddlWineItems, isDelete }: ddlWineItemsProps) => {
-  const { category, packaging, region, variety } = ddlWineItems;
+  const { category } = ddlWineItems;
   const [wineCategory, setWineCategory] = useState(category);
+  const { categoryArr, red, white, sparkling } = data;
   let varietyArr: string[] = [];
 
-  const handleCatChange = (e: any) => {
-    setWineCategory(e.target.value);
-  };
+  const handleChange = ({ target: { value } }: { target: { value: string } }) =>
+    setWineCategory(value);
 
   switch (wineCategory) {
     case 'Red':
@@ -45,7 +40,7 @@ const SelectWine = ({ ddlWineItems, isDelete }: ddlWineItemsProps) => {
           <select
             id="category"
             name="category"
-            onChange={handleCatChange}
+            onChange={handleChange}
             className={styles.select}
             aria-labelledby="lblCategory"
             defaultValue={ddlWineItems.category}

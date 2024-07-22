@@ -44,7 +44,7 @@ const CarouselPaging = ({
         >
           &lt;
         </Button>
-        {html}
+        <span role="radiogroup">{html}</span>
         <Button
           css="pageNumber"
           onClick={() => handleClick(1)}

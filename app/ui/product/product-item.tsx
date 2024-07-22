@@ -49,7 +49,7 @@ const ProductItem = ({ props, ind, css }: ProductItemProps) => {
       >
         <Img
           imgSrc={`wine/${id}.jpg`}
-          imgAlt={name}
+          imgAlt=""
           imgWidth={packaging === 'Bottle' ? 40 : 100}
           imgHeight={150}
           imgPriority={ind < PRIORITY}

@@ -1,45 +1,22 @@
 'use client';
+
 import { KeyboardEvent, SyntheticEvent, useState } from 'react';
-import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import useWindowDimensions from '../hooks/useWindowDimensions';
-// import { useNavigate } from "react-router-dom";
-// import { useGetWinesQuery } from "../../services/API";
+import { useRouter } from 'next/navigation';
 import { Autocomplete, TextField } from '@mui/material';
 import { createFilterOptions } from '@mui/material/Autocomplete';
+import { hyphenate } from '../lib/utils';
+import { ProductProps, ACDataProps } from '../lib/definitions';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-// import { hyphenate } from "../../data/utils";
-import { MAX_SMALLSCREEN } from '../lib/appData.json';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-// import usePageWidth from "../../hooks/usePageWidth";
 import Img from './image';
 import styles from '../assets/css/AutoComplete.module.css';
-import { hyphenate } from '../lib/utils';
-import { fetchProducts } from '../lib/data';
-import { DataProps } from '../lib/definitions';
-
-type ACDataProps = {
-  name: string;
-  id: string;
-  category: string;
-  variety: string;
-  packaging: string;
-};
-
-type ProductProps = {
-  products: DataProps[];
-};
 
 const AutoComplete = ({ products }: ProductProps) => {
   const [overlay, setOverlay] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  // const isPageWidth: boolean = usePageWidth(MAX_SMALLSCREEN);
-  // const navigate = useNavigate();
-
-  const searchParams = useSearchParams();
-  const pathname = usePathname(); // You can use Next.js's useRouter and usePathname hooks to update the URL
   const { replace } = useRouter();
 
   if (products) {
@@ -61,16 +38,6 @@ const AutoComplete = ({ products }: ProductProps) => {
         const { category, variety, id } = val;
         setOverlay(false);
         setOpen(false);
-        // navigate(`/${category.toLowerCase()}/${hyphenate(variety)}/${id}`);
-
-        // const params = new URLSearchParams(searchParams);
-        // params.set("page", "1");
-
-        // if (term) {
-        //   params.set("query", term);
-        // } else {
-        //   params.delete("query");
-        // }
         replace(`/${category.toLowerCase()}/${hyphenate(variety)}/${id}`);
       }
     };
@@ -127,9 +94,6 @@ const AutoComplete = ({ products }: ProductProps) => {
                   <div className={styles.itemImg}>
                     <Img
                       imgSrc={`wine/${id}.jpg`}
-                      imageStyle={
-                        packaging === 'Bottle' ? 'acBottle' : 'acCask'
-                      }
                       imgAlt={name}
                       imgWidth={20}
                       imgHeight={60}
@@ -153,7 +117,6 @@ const AutoComplete = ({ products }: ProductProps) => {
           }}
           renderInput={(params) => (
             <TextField
-              // label={isPageWidth ? "Search" : "What are you looking for?"}
               label="What are you looking for?"
               {...params}
               className={styles.tf}

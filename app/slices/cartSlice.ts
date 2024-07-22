@@ -2,13 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   checkDiscountCode,
   checkMultiBuys,
-  checkStorage,
   storeCart,
 } from './cartUtils';
-import { AddToCartProps, CartState } from '../lib/definitions';
+import { AddToCartProps, CartProps, CartState } from '../lib/definitions';
 
 const initialState: CartState = {
-  cart: checkStorage(),
+  cart: {},
   price_two_forDeals: [],
   price_ten_forDeals: 0,
   promotionCode: '',
@@ -117,10 +116,14 @@ export const cartSlice = createSlice({
       checkDiscountCode(state.cart, state.promotionCode);
       storeCart(state.cart);
     },
+    restoreCart: (state, action: PayloadAction<CartProps>) => {
+      state.cart = action.payload;
+    },
   },
 });
 
-export const { increment, decrement, applyDiscountCode } = cartSlice.actions;
+export const { increment, decrement, applyDiscountCode, restoreCart } =
+  cartSlice.actions;
 
 export const selectCart = (state: { cart: CartState }) => state.cart.cart;
 

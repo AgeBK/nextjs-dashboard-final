@@ -9,7 +9,7 @@ export default async function Page({
 }: CategoryParamsProps) {
   const variety = urlVariety ? urlVariety[0] : undefined;
   let products: DataProps[] = await fetchCategoryPageData(urlCategory, variety);
-  // TODO: check site semantics
+  // TODO: check every file for unused import etc
   return (
     <article>
       <Suspense fallback={<Loading />}>

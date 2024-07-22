@@ -1,6 +1,6 @@
 import { Providers } from './providers';
 import type { Metadata } from 'next';
-import './globals.css';
+import '@/app/assets/css/global.css';
 
 export const metadata: Metadata = {
   title: ' AK Fine Wines - The biggest range at the best prices guaranteed!!',
@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
-        {/* <body className={inter.className}> */}
         <body>{children}</body>
       </html>
     </Providers>

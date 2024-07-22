@@ -2,22 +2,15 @@
 
 import React, { useState } from 'react';
 import { useFormState } from 'react-dom';
+import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
+import { FormStateProps, ManageProductProps } from '@/app/lib/definitions';
 import SelectWine from '@/app/ui/manage/select-wine';
 import SelectLists from '@/app/ui/manage/select-list';
 import ManageProductActions from './manage-product-actions';
 import ManageDBMessages from './manage-db-messages';
 import ModalDelete from './modal-delete';
-import { isRequired } from '@/app/lib/appData.json';
-import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
-import { DataProps, FormStateProps } from '@/app/lib/definitions';
+import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/manage/Form.module.css';
-
-type ManageProductProps = {
-  product: DataProps;
-  action: string;
-  ddlWineItems: { [k: string]: string | number };
-  ddlItems: { [k: string]: string | number };
-};
 
 const initialState: FormStateProps = { message: null, errors: {} };
 
@@ -30,6 +23,7 @@ export default function ManageProduct({
   const [showModal, setShowModal] = useState(false);
   const isDelete = action === 'delete';
   const { id, name } = product;
+  const { isRequired } = data;
   let currentActionFn: any;
 
   switch (action) {
@@ -79,7 +73,7 @@ export default function ManageProduct({
         );
       })}
       <SelectWine ddlWineItems={ddlWineItems} isDelete={isDelete} />
-      <SelectLists obj={ddlItems} isDelete={isDelete} />
+      <SelectLists ddlWineItems={ddlItems} isDelete={isDelete} />
       <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
       <ManageDBMessages initialState={state} />
       {showModal && (

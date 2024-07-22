@@ -31,6 +31,7 @@ const ProductDetails = ({
           imgAlt={name}
           imgWidth={isCask ? 339 : 120}
           imgHeight={520}
+          imgPriority={true}
         />
       </div>
       <div className={styles.productMeta}>

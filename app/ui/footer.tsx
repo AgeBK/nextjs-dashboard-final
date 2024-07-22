@@ -1,39 +1,23 @@
+import Link from 'next/link';
+import data from '@/app/lib/appData.json';
 import Img from '@/app/ui/image';
-import { paymentArr } from '@/app/lib/appData.json';
-import { signOut } from '@/auth';
-import { auth } from '../../auth';
 import Logout from './logout';
 import styles from '@/app/assets/css/Footer.module.css';
-import Link from 'next/link';
 
-export default async function Footer() {
+export default function Footer() {
   const yr = new Date().getFullYear();
-  const arr: string[] = paymentArr;
-  const session = await auth();
-
-  // {
-  //   session?.user && (
-  //     <form
-  //       action={async () => {
-  //         'use server';
-  //         await signOut();
-  //       }}
-  //     >
-  //       <button>Sign Out</button>
-  //     </form>
-  //   );
-  // }
+  const { paymentArr } = data;
 
   return (
     <footer className={styles.container}>
       <div className={styles.ak}>
-        © {yr}{' '}
+        © {yr}
         <a
           href="https://github.com/AgeBK/ak-fine-wine-ts?tab=readme-ov-file#about"
           target="_blank"
         >
           AK Fine Wines
-        </a>{' '}
+        </a>
         All rights reserved.
         <div>
           <Logout />
@@ -43,11 +27,10 @@ export default async function Footer() {
         </div>
       </div>
       <ul className={styles.list}>
-        {arr.map((val, ind) => (
+        {paymentArr.map((val, ind) => (
           <li key={ind}>
             <Img
               imgSrc={`payment/${val}.jpg`}
-              imageStyle="footer"
               imgAlt={val}
               imgWidth={48}
               imgHeight={44}

@@ -27,31 +27,25 @@
 }
 
 .navItem .white {
-  background: center / cover no-repeat
-    url("https://cdn-icons-png.flaticon.com/128/11626/11626148.png");
+  background: center / cover no-repeat url('/assets/img/nav/whiteWine.png');
 }
 
 .navItem:hover .white {
-  background: center / cover no-repeat
-    url("https://cdn-icons-gif.flaticon.com/11626/11626148.gif");
+  background: center / cover no-repeat url('/assets/img/nav/whiteWine.gif');
 }
 
 .navItem .red {
-  background: center / cover no-repeat
-    url("https://cdn-icons-png.flaticon.com/128/11626/11626130.png");
+  background: center / cover no-repeat url('/assets/img/nav/redWine.png');
 }
 
 .navItem:hover .red {
-  background: center / cover no-repeat
-    url("https://cdn-icons-gif.flaticon.com/11626/11626130.gif");
+  background: center / cover no-repeat url('/assets/img/nav/redWine.gif');
 }
 
 .navItem .sparkling {
-  background: center / cover no-repeat
-    url("https://cdn-icons-png.flaticon.com/128/13121/13121461.png");
+  background: center / cover no-repeat url('/assets/img/nav/sparkling.png');
 }
 
 .navItem:hover .sparkling {
-  background: center / cover no-repeat
-    url("https://cdn-icons-gif.flaticon.com/13121/13121461.gif");
+  background: center / cover no-repeat url('/assets/img/nav/sparkling.gif');
 }

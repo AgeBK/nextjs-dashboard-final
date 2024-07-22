@@ -22,15 +22,12 @@ const BreadCrumb = ({
   category,
   variety,
 }: BreadCrumbProps) => {
-  console.log('bread crumb');
-  console.log(urlCategory);
 
   return (
     <div className={styles.breadCrumb}>
       <Link href="/" className={styles.category}>
         <Img
           imgSrc={`icons/home.png`}
-          imageStyle=""
           imgAlt="AK Fine Wines"
           imgWidth={17}
           imgHeight={14}

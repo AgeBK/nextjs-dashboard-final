@@ -3,6 +3,8 @@
 // For simplicity of teaching, we're manually defining these types.
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 
+import { ReactNode } from 'react';
+
 export type DataProps = {
   id: string;
   name: string;
@@ -106,7 +108,7 @@ export type ProductReviewProps = {
   variety: string;
 };
 
-type ProductInfoProps = {
+export type ProductInfoProps = {
   id: string;
   category: string;
   variety: string;
@@ -235,6 +237,43 @@ export type ProductItemProps = {
   };
   ind: number;
   css?: string;
+};
+
+export type ManageDBMessagesProps = {
+  initialState: FormStateProps;
+};
+
+export type WineBlurbProps = {
+  urlCategory: string | undefined;
+  urlVariety: string | undefined;
+};
+
+export type ContainerProps = {
+  children: ReactNode;
+};
+
+export type ddlWineItemsProps = {
+  ddlWineItems: { [k: string]: string | number };
+  isDelete: boolean;
+};
+
+export type ManageProductProps = {
+  product: DataProps;
+  action: string;
+  ddlWineItems: { [k: string]: string | number };
+  ddlItems: { [k: string]: string | number };
+};
+
+export type ACDataProps = {
+  name: string;
+  id: string;
+  category: string;
+  variety: string;
+  packaging: string;
+};
+
+export type ProductProps = {
+  products: ACDataProps[];
 };
 
 //RTK slice
