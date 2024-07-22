@@ -30,10 +30,6 @@
   background-color: #008000;
 }
 
-.cartAdded:hover {
-  background-color: #333;
-}
-
 .cart span,
 .cartAdded span {
   display: inline-block;

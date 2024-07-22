@@ -13,6 +13,10 @@ import styles from '@/app/assets/css/Header.module.css';
 export default function HeaderUserCart({ user }: { user: string | null }) {
   const dispatch = useDispatch();
   const pathname = usePathname().substring(1);
+  const loginUrl = '/login';
+
+  const getPath = () =>
+    pathname ? `${loginUrl}?callbackUrl=${pathname}` : loginUrl;
 
   useEffect(() => {
     const cart = sessionStorage.getItem('AKWineCart');
@@ -25,15 +29,17 @@ export default function HeaderUserCart({ user }: { user: string | null }) {
   return (
     <div className={styles.userCont}>
       {user ? (
-        <div className={styles.userName}>{user.substring(0, 1)}</div>
+        <div className={styles.user}>
+          <div className={styles.userCircle}>{user.substring(0, 1)}</div>
+        </div>
       ) : (
-        <div className={styles.userContainer}>
-          <Link href={`/login?callbackUrl=${pathname}`}>
+        <div className={styles.user}>
+          <Link href={getPath()}>
             <Img
               imgSrc={'icons/user.svg'}
               imgAlt="Login"
-              imgWidth={24}
-              imgHeight={24}
+              imgWidth={26}
+              imgHeight={26}
             />
           </Link>
         </div>
@@ -44,15 +50,3 @@ export default function HeaderUserCart({ user }: { user: string | null }) {
     </div>
   );
 }
-// function restoreCart(arg0: {
-//   id: any;
-//   name: void;
-//   brand: any;
-//   short_name: any;
-//   price: any;
-//   quantity: any;
-//   deal: any;
-//   promotion_discount_code: any;
-// }): any {
-//   throw new Error('Function not implemented.');
-// }

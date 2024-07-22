@@ -10,6 +10,7 @@ export default async function Page({
   const variety = urlVariety ? urlVariety[0] : undefined;
   let products: DataProps[] = await fetchCategoryPageData(urlCategory, variety);
   // TODO: check every file for unused import etc
+  // TODO: check mobile
   return (
     <article>
       <Suspense fallback={<Loading />}>
