@@ -9,6 +9,7 @@ import SelectLists from '@/app/ui/manage/select-list';
 import ManageProductActions from './manage-product-actions';
 import ManageDBMessages from './manage-db-messages';
 import ModalDelete from './modal-delete';
+import { Upload } from './upload';
 import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
@@ -76,6 +77,8 @@ export default function ManageProduct({
       <SelectLists ddlWineItems={ddlItems} isDelete={isDelete} />
       <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
       <ManageDBMessages initialState={state} />
+      {action === 'add' && <Upload />}
+
       {showModal && (
         <ModalDelete
           id={id}
