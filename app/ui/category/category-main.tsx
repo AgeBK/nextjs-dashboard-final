@@ -6,6 +6,12 @@ import {
   filterCategoryPageData,
   hyphenate,
 } from '@/app/lib/utils';
+import {
+  CategoryMainProps,
+  DataProps,
+  FilterProps,
+  PagingProps,
+} from '@/app/lib/definitions';
 import data from '@/app/lib/appData.json';
 import CategoryList from './category-list';
 import CategoryHeader from './category-header';
@@ -15,12 +21,7 @@ import CategoryNoResults from './category-no-results';
 import FilterList from '../filters/filter-list';
 import usePageWidth from '@/app/hooks/usePageWidth';
 import Blurb from '@/app/ui/blurb';
-import {
-  CategoryMainProps,
-  DataProps,
-  FilterProps,
-  PagingProps,
-} from '@/app/lib/definitions';
+
 import styles from '@/app/assets/css/category/Category.module.css';
 
 export default function CategoryMain({

@@ -64,3 +64,11 @@
 .codeEntered {
   text-align: center;
 }
+
+@media screen and (max-width: 460px) {
+  .cart {
+    width: 100%;
+    position: fixed;
+    top: 0;
+  }
+}

@@ -7,7 +7,7 @@ type SortProps = {
   setSortName: (name: string) => void;
 };
 
-function Sort({ sortName, setSortName }: SortProps) {
+export default function Sort({ sortName, setSortName }: SortProps) {
   const { sortNameArr } = data;
 
   const handleSelect = ({
@@ -36,4 +36,3 @@ function Sort({ sortName, setSortName }: SortProps) {
   );
 }
 
-export default Sort;

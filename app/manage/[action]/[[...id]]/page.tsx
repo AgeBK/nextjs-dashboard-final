@@ -1,11 +1,7 @@
 import ManageProduct from '../../../ui/manage/manage-product';
 import { DataProps } from '@/app/lib/definitions';
 import { fetchProductsById } from '@/app/lib/data';
-import {
-  selectItems,
-  selectWineItems,
-  productKeys,
-} from '@/app/lib/appData.json';
+import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/manage/ManageProduct.module.css';
 
 type PageProps = {
@@ -16,6 +12,7 @@ type PageProps = {
 };
 
 export default async function Page({ params: { action, id } }: PageProps) {
+  const { selectItems, selectWineItems, productKeys } = data;
   const product: DataProps = id
     ? await fetchProductsById(id[0])
     : { ...productKeys };

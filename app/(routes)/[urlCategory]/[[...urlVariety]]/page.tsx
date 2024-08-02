@@ -10,7 +10,8 @@ export default async function Page({
   const variety = urlVariety ? urlVariety[0] : undefined;
   let products: DataProps[] = await fetchCategoryPageData(urlCategory, variety);
   // TODO: check every file for unused import etc
-  // TODO: check mobile
+  // TODO: check mobile (header) / mobile category page, filter button doesn't load/ text in autoComplete doesn't change sometimes
+  // TODO: need image upload for manage
   return (
     <article>
       <Suspense fallback={<Loading />}>

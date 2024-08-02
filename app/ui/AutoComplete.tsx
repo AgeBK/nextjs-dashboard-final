@@ -2,10 +2,12 @@
 
 import { KeyboardEvent, SyntheticEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Autocomplete, TextField } from '@mui/material';
+import { Autocomplete, Chip, TextField } from '@mui/material';
 import { createFilterOptions } from '@mui/material/Autocomplete';
 import { hyphenate } from '../lib/utils';
 import { ProductProps, ACDataProps } from '../lib/definitions';
+import usePageWidth from '@/app/hooks/usePageWidth';
+import data from '@/app/lib/appData.json';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import parse from 'autosuggest-highlight/parse';
@@ -17,6 +19,9 @@ const AutoComplete = ({ products }: ProductProps) => {
   const [overlay, setOverlay] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const { MAX_SMALLSCREEN } = data;
+  const isPageWidth: boolean = usePageWidth(MAX_SMALLSCREEN);
+
   const { replace } = useRouter();
 
   if (products) {
@@ -89,23 +94,23 @@ const AutoComplete = ({ products }: ProductProps) => {
             const matches = match(name, inputValue);
             const parts = parse(name, matches);
             return (
-              <li key={id} {...props} className={styles.listItem}>
+              <li {...props} className={styles.listItem} key={id}>
                 <div className={styles.itemCont}>
                   <div className={styles.itemImg}>
                     <Img
                       imgSrc={`wine/${id}.jpg`}
                       imgAlt={name}
-                      imgWidth={20}
+                      imgWidth={packaging === 'Cask' ? 40 : 20}
                       imgHeight={60}
                     />
                   </div>
                   <div className={styles.itemLabel}>
                     {parts.map((part, index) => (
                       <span
-                        key={index}
                         style={{
                           fontWeight: part.highlight ? 700 : 400,
                         }}
+                        key={index}
                       >
                         {part.text}
                       </span>
@@ -115,13 +120,27 @@ const AutoComplete = ({ products }: ProductProps) => {
               </li>
             );
           }}
+          renderTags={(tagValue, getTagProps) => {
+            return tagValue.map((option, index) => (
+              <Chip
+                {...getTagProps({ index })}
+                label={option.id}
+                key={option.id}
+              />
+            ));
+          }}
           renderInput={(params) => (
             <TextField
-              label="What are you looking for?"
+              label={isPageWidth ? 'Search' : 'What are you looking for?'}
               {...params}
               className={styles.tf}
               onClick={handleClick}
               onBlur={handleBlur}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  paddingRight: '10px!important',
+                },
+              }}
               InputProps={{
                 ...params.InputProps,
                 endAdornment: (

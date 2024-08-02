@@ -3,7 +3,7 @@ import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/Nav.module.css';
 
 export default function Nav() {
-  const { categoryArr } = data; // TODO: undefined sometimes
+  const { categoryArr } = data;
 
   return (
     <nav>

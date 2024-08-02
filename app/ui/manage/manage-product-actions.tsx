@@ -5,13 +5,13 @@ import Img from '../image';
 import styles from '@/app/assets/css/manage/ManageProductActions.module.css';
 
 type ManageProductActionsProps = {
-  isDelete: boolean;
   enableModal: (e: React.MouseEvent<Element, MouseEvent>) => void;
+  isDelete: boolean;
 };
 
 export default function ManageProductActions({
-  isDelete,
   enableModal,
+  isDelete,
 }: ManageProductActionsProps) {
   return (
     <>

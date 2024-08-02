@@ -29,9 +29,7 @@ const Header = async () => {
         <h1 className={styles.hdr}>
           AK <span>FINE WINES</span>
         </h1>
-        <div className={styles.acDesk}>
-          <AutoComplete products={products} />
-        </div>
+        <AutoComplete products={products} />
         <HeaderUserCart user={user} />
       </div>
       <Nav />
