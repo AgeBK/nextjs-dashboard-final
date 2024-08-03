@@ -3,7 +3,7 @@
 // For simplicity of teaching, we're manually defining these types.
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 
-import { ReactNode } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 
 export type DataProps = {
   id: string;
@@ -274,6 +274,12 @@ export type ACDataProps = {
 
 export type ProductProps = {
   products: ACDataProps[];
+};
+
+export type InputFieldsProps = {
+  product: DataProps;
+  isDelete: boolean;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 //RTK slice

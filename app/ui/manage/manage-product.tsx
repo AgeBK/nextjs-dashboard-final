@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { useFormState } from 'react-dom';
 import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 import { FormStateProps, ManageProductProps } from '@/app/lib/definitions';
 import SelectWine from '@/app/ui/manage/select-wine';
 import SelectLists from '@/app/ui/manage/select-list';
+import InputFields from './input-fields';
 import ManageProductActions from './manage-product-actions';
 import ManageDBMessages from './manage-db-messages';
 import ModalDelete from './modal-delete';
 import { Upload } from './upload';
-import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
 const initialState: FormStateProps = { message: null, errors: {} };
@@ -22,9 +22,9 @@ export default function ManageProduct({
   ddlItems,
 }: ManageProductProps) {
   const [showModal, setShowModal] = useState(false);
+  const [productId, setProductId] = useState('');
   const isDelete = action === 'delete';
   const { id, name } = product;
-  const { isRequired } = data;
   let currentActionFn: any;
 
   switch (action) {
@@ -41,6 +41,13 @@ export default function ManageProduct({
       break;
   }
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // TODO: got variations of onChange, which is correct?
+    // {target: {valu, id}}  ??
+    const { value, id } = e.target;
+    id === 'id' && setProductId(value);
+  };
+
   const [state, dispatch] = useFormState(currentActionFn, initialState);
   const enableModal = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();
@@ -49,36 +56,16 @@ export default function ManageProduct({
 
   return (
     <form action={dispatch} className={styles.container}>
-      {Object.entries(product).map(([key, value]: [string, any], i) => {
-        const isReq = isRequired.includes(key);
-        const dataType = typeof value === 'number' ? 'number' : 'text';
-        return (
-          <div className={`${styles.item} ${styles[key]}`} key={key}>
-            <label htmlFor={key} id={`lbl${key}`}>
-              <span className={styles.key}>
-                {key.replaceAll('_', ' ')}{' '}
-                {isReq && <span className={styles.required}>*</span>}
-              </span>
-            </label>
-            <input
-              id={key}
-              name={key}
-              className={styles.input}
-              type={dataType}
-              defaultValue={value}
-              aria-labelledby={`lbl${key}`}
-              disabled={(key === 'id' && value) || isDelete}
-              required={isReq}
-            />
-          </div>
-        );
-      })}
+      <InputFields
+        product={product}
+        isDelete={isDelete}
+        handleChange={handleChange}
+      />
       <SelectWine ddlWineItems={ddlWineItems} isDelete={isDelete} />
       <SelectLists ddlWineItems={ddlItems} isDelete={isDelete} />
+      {action === 'add' && <Upload productId={productId} />}
       <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
       <ManageDBMessages initialState={state} />
-      {action === 'add' && <Upload />}
-
       {showModal && (
         <ModalDelete
           id={id}

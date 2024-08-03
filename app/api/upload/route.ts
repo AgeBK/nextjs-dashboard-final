@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
+//   'public/assets/img/wine', TODO:
 
-const UPLOAD_DIR = path.resolve(
-  process.env.ROOT_PATH ?? '',
-  'public/assets/img/wine',
-);
+const UPLOAD_DIR = path.resolve(process.env.ROOT_PATH ?? '', 'public');
 
 export const POST = async (req: NextRequest) => {
   const formData = await req.formData();
