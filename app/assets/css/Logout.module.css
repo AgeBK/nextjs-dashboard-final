@@ -4,5 +4,8 @@
 
 .logout {
   font-size: 12px;
-  color: #888;
+}
+
+.logout:hover {
+  color: #fff;
 }

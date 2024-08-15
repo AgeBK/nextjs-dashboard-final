@@ -1,7 +1,4 @@
-// This file contains type definitions for your data.
-// It describes the shape of the data, and what data type each property should accept.
-// For simplicity of teaching, we're manually defining these types.
-// However, these types are generated automatically if you're using an ORM such as Prisma.
+// data definitions
 
 import { ChangeEvent, ReactNode } from 'react';
 
@@ -72,7 +69,7 @@ export type CartProps = {
 export type CategoryMainProps = {
   arr: DataProps[];
   urlCategory: string;
-  urlVariety: string;
+  urlVariety: string | undefined;
   isManage: boolean;
 };
 
@@ -152,11 +149,6 @@ export interface RegionFilterProps extends WineFilterProps {
   currentData: DataProps[];
 }
 
-export type ManageFilterProps = {
-  filters: FilterProps;
-  isManage?: boolean;
-};
-
 export interface WineFilterProps {
   updateFilters: (filters: FilterProps) => void;
   filters: FilterProps;
@@ -166,6 +158,7 @@ export interface WineFilterProps {
 export type FormStateProps = {
   message: string | null;
   errors: Record<string, any>;
+  success: boolean | null;
 };
 
 export type BlurbProps = {
@@ -239,10 +232,6 @@ export type ProductItemProps = {
   css?: string;
 };
 
-export type ManageDBMessagesProps = {
-  initialState: FormStateProps;
-};
-
 export type WineBlurbProps = {
   urlCategory: string | undefined;
   urlVariety: string | undefined;
@@ -255,13 +244,6 @@ export type ContainerProps = {
 export type ddlWineItemsProps = {
   ddlWineItems: { [k: string]: string | number };
   isDelete: boolean;
-};
-
-export type ManageProductProps = {
-  product: DataProps;
-  action: string;
-  ddlWineItems: { [k: string]: string | number };
-  ddlItems: { [k: string]: string | number };
 };
 
 export type ACDataProps = {
@@ -280,6 +262,52 @@ export type InputFieldsProps = {
   product: DataProps;
   isDelete: boolean;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
+export type UploadProps = {
+  productId: string;
+  productAdded: boolean | null;
+};
+
+export type ManageDBMessagesProps = {
+  errorMessages: FormStateProps;
+};
+
+export type ManageProductProps = {
+  product: DataProps;
+  action: string;
+  ddlWineItems: { [k: string]: string | number };
+  ddlItems: { [k: string]: string | number };
+};
+
+export type ManagePageProps = {
+  params: {
+    action: string;
+    id: string;
+  };
+};
+
+export interface ManageImageProps extends UploadProps {
+  action: string;
+  packaging: string;
+  isDelete: boolean;
+}
+
+export type ManageProductsProps = {
+  props: {
+    id: string;
+    category: string;
+    variety: string;
+    name: string;
+    brand: string;
+    price_current: number;
+    price_normal: number;
+  };
+};
+
+export type ManageFilterProps = {
+  filters: FilterProps;
+  isManage?: boolean;
 };
 
 //RTK slice

@@ -10,18 +10,16 @@ export default function InputFields({
   handleChange,
 }: InputFieldsProps) {
   const { isRequired } = data;
-  // TODO: div styles are undefined undefined ? check other pages for this as well
   return (
     <>
       {Object.entries(product).map(([key, value]: [string, any], i) => {
         const isReq = isRequired.includes(key);
         const dataType = typeof value === 'number' ? 'number' : 'text';
         return (
-          // <div className={`${styles.item} ${styles[key]}`} key={key}>
           <div key={key}>
             <label htmlFor={key} id={`lbl${key}`}>
               <span className={styles.key}>
-                {key.replaceAll('_', ' ')}{' '}
+                {key.replaceAll('_', ' ')}
                 {isReq && <span className={styles.required}>*</span>}
               </span>
             </label>

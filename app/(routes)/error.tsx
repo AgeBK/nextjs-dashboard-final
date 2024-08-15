@@ -6,6 +6,7 @@ import Img from '@/app/ui/image';
 import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/Error.module.css';
 
+// TODO: test this, error.tsx
 export default function Error() {
   const { errorMsg } = data;
   const pathname = usePathname();

@@ -150,11 +150,18 @@ export async function addProduct(
     return {
       message: 'Database Error - Failed to add new product:' + error,
       errors: JSON.parse(JSON.stringify(error)),
+      // success: false,
     };
   }
 
-  revalidatePath('/manage');
-  redirect('/manage');
+  return {
+    // message: 'Successfully added product',
+    // errors: {},
+    success: true,
+  };
+
+  // revalidatePath('/manage');
+  // redirect('/manage');
 }
 
 export async function updateProduct(

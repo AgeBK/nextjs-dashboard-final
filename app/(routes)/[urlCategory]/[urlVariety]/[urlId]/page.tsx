@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchProductsById } from '@/app/lib/data';
+import { fetchProductById } from '@/app/lib/data';
 import BreadCrumb from '@/app/ui/bread-crumb';
 import ProductCart from '@/app/ui/product/product-cart';
 import ProductDetails from '@/app/ui/product/product-details';
@@ -13,7 +13,7 @@ export default async function Product({
 }: {
   params: { urlCategory: string; urlVariety: string; urlId: string };
 }) {
-  const product = await fetchProductsById(urlId);
+  const product = await fetchProductById(urlId);
 
   if (product) {
     const {

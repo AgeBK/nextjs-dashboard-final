@@ -7,6 +7,7 @@ export async function fetchProducts() {
   // Add noStore() here to prevent the response from being cached. (I think caching is good for AK Wines)
   // If you add new product and want it to show straight away, use noStore()
   noStore();
+  console.log(fetch);
 
   try {
     const data = await sql<DataProps>`
@@ -15,6 +16,7 @@ export async function fetchProducts() {
       `;
 
     const products = data.rows;
+    products.reverse();
     return products;
   } catch (err) {
     console.error('Database Error:', err);
@@ -61,7 +63,7 @@ export async function fetchProductsByCatAndPrice(query: string, price: number) {
   }
 }
 
-export async function fetchProductsById(query: string) {
+export async function fetchProductById(query: string) {
   noStore();
 
   try {
@@ -137,6 +139,9 @@ export async function fetchProductsOnSpecial() {
 }
 
 export async function fetchProductsBySearchTerm(query: string) {
+  console.log('fetchProductsBySearchTerm');
+  console.log(query);
+
   noStore();
 
   try {
@@ -147,6 +152,8 @@ export async function fetchProductsBySearchTerm(query: string) {
     `;
 
     const products = data.rows;
+    console.log(products);
+
     return products;
   } catch (err) {
     console.error('Database Error:', err);

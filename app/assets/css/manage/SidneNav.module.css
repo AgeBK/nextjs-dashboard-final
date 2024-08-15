@@ -1,13 +1,11 @@
 .container {
   max-width: 400px;
-  background-color: #333;
   color: #fff;
 }
 
 .sideNav {
   min-width: 180px;
-  background-color: #333;
-  /* color: #888; */
+  background-color: #555;
   padding: 30px 20px;
 }
 
@@ -22,14 +20,8 @@
   padding: 10px;
   cursor: pointer;
   display: block;
-  color: #888;
 }
 
-/* .sideNav a {
-  color: #888;
-} */
-
 .sideNav li a:hover {
-  background-color: #555;
   color: #fff;
 }

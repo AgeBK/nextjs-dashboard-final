@@ -4,16 +4,26 @@ import React, { ChangeEvent, useState } from 'react';
 import { useFormState } from 'react-dom';
 import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 import { FormStateProps, ManageProductProps } from '@/app/lib/definitions';
+import { hyphenate } from '@/app/lib/utils';
 import SelectWine from '@/app/ui/manage/select-wine';
 import SelectLists from '@/app/ui/manage/select-list';
 import InputFields from './input-fields';
 import ManageProductActions from './manage-product-actions';
 import ManageDBMessages from './manage-db-messages';
 import ModalDelete from './modal-delete';
-import { Upload } from './upload';
+import ManageImage from './manage-image';
+import Link from 'next/link';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
-const initialState: FormStateProps = { message: null, errors: {} };
+// TODO: capitalise error message
+// TODO: edit product, update image check?
+// TODO: warning for unused vars?
+
+const initialState: FormStateProps = {
+  message: null,
+  errors: {},
+  success: false,
+};
 
 export default function ManageProduct({
   product,
@@ -21,11 +31,16 @@ export default function ManageProduct({
   ddlWineItems,
   ddlItems,
 }: ManageProductProps) {
-  const [showModal, setShowModal] = useState(false);
-  const [productId, setProductId] = useState('');
-  const isDelete = action === 'delete';
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [productId, setProductId] = useState<string>('');
   const { id, name } = product;
-  let currentActionFn: any;
+  const { category, variety } = ddlWineItems;
+  const isDelete = action === 'delete';
+  const isAdd = action === 'add';
+  let currentActionFn: any = null;
+
+  console.log('ManageProduct');
+  console.log(product);
 
   switch (action) {
     case 'add':
@@ -41,39 +56,56 @@ export default function ManageProduct({
       break;
   }
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // TODO: got variations of onChange, which is correct?
-    // {target: {valu, id}}  ??
-    const { value, id } = e.target;
-    id === 'id' && setProductId(value);
-  };
-
   const [state, dispatch] = useFormState(currentActionFn, initialState);
+
+  const handleChange = ({
+    target: { value, id },
+  }: ChangeEvent<HTMLInputElement>) => id === 'id' && setProductId(value);
+
   const enableModal = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();
     setShowModal(true);
   };
 
   return (
-    <form action={dispatch} className={styles.container}>
-      <InputFields
-        product={product}
-        isDelete={isDelete}
-        handleChange={handleChange}
-      />
-      <SelectWine ddlWineItems={ddlWineItems} isDelete={isDelete} />
-      <SelectLists ddlWineItems={ddlItems} isDelete={isDelete} />
-      {action === 'add' && <Upload productId={productId} />}
-      <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
-      <ManageDBMessages initialState={state} />
-      {showModal && (
-        <ModalDelete
-          id={id}
-          name={name}
-          initialState={initialState}
-          setShowModal={setShowModal}
-        />
+    <>
+      {!isAdd && (
+        // TODO: component?
+        <Link
+          href={`/${String(category).toLowerCase()}/${hyphenate(
+            String(variety).toLowerCase(),
+          )}/${id}`}
+          target="_blank"
+        >
+          View product
+        </Link>
       )}
-    </form>
+      <form action={dispatch} className={styles.container}>
+        <InputFields
+          product={product}
+          isDelete={isDelete}
+          handleChange={handleChange}
+        />
+        <SelectWine ddlWineItems={ddlWineItems} isDelete={isDelete} />
+        <SelectLists ddlWineItems={ddlItems} isDelete={isDelete} />
+        <ManageImage
+          productId={productId || id}
+          packaging={ddlItems.packaging as string}
+          productAdded={state.success}
+          action={action}
+          isDelete={isDelete}
+        />
+        <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
+        <ManageDBMessages errorMessages={state} />
+        {showModal && (
+          <ModalDelete
+            id={id}
+            name={name}
+            initialState={initialState}
+            setShowModal={setShowModal}
+          />
+        )}
+      </form>
+    </>
   );
 }

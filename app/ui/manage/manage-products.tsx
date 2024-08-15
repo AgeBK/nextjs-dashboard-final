@@ -1,19 +1,8 @@
 import Link from 'next/link';
 import { hyphenate } from '@/app/lib/utils';
 import Img from '@/app/ui/image';
+import { ManageProductsProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/manage/ManageProducts.module.css';
-
-type ManageProductsProps = {
-  props: {
-    id: string;
-    category: string;
-    variety: string;
-    name: string;
-    brand: string;
-    price_current: number;
-    price_normal: number;
-  };
-};
 
 export default function ManageProducts({ props }: ManageProductsProps) {
   const { id, category, variety, name, brand, price_normal, price_current } =

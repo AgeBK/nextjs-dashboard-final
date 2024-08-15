@@ -3,7 +3,14 @@ import path from 'path';
 import fs from 'fs';
 //   'public/assets/img/wine', TODO:
 
-const UPLOAD_DIR = path.resolve(process.env.ROOT_PATH ?? '', 'public');
+const UPLOAD_DIR = path.resolve(
+  process.env.ROOT_PATH ?? '',
+  'public/assets/img/wine',
+);
+
+console.log('UPLOAD_DIR');
+console.log(process.env.ROOT_PATH);
+console.log(UPLOAD_DIR);
 
 export const POST = async (req: NextRequest) => {
   const formData = await req.formData();

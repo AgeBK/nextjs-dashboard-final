@@ -5,20 +5,20 @@ import CategoryMain from '@/app/ui/category/category-main';
 import Loading from '@/app/ui/loading';
 
 export default async function Page({
-  params: { urlCategory, urlVariety },
+  params: { urlCategory, urlVariety }, // TODO: why urlVariety array
 }: CategoryParamsProps) {
   const variety = urlVariety ? urlVariety[0] : undefined;
-  let products: DataProps[] = await fetchCategoryPageData(urlCategory, variety);
+  let products: DataProps[] = await fetchCategoryPageData(urlCategory, variety); // various db calls based on URL
   // TODO: check every file for unused import etc
   // TODO: check mobile (header) / mobile category page, filter button doesn't load/ text in autoComplete doesn't change sometimes
-  // TODO: need image upload for manage
+
   return (
     <article>
       <Suspense fallback={<Loading />}>
         <CategoryMain
           arr={products}
           urlCategory={urlCategory}
-          urlVariety={urlVariety}
+          urlVariety={variety}
           isManage={false}
         />
       </Suspense>

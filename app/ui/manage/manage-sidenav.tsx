@@ -3,17 +3,17 @@ import Img from '@/app/ui/image';
 import Logout from '../logout';
 import styles from '@/app/assets/css/manage/SidneNav.module.css';
 
-export default function SideNav() {
+export default function ManageSideNav() {
   return (
     <div className={styles.sideNav}>
       <Link href="/manage">
         <h1 className={styles.hdr}>Admin Panel</h1>
         <Img
           imgSrc={`icons/settings.png`}
-          // imageStyle="white"
           imgAlt="Admin Panel"
           imgWidth={128}
           imgHeight={128}
+          imgPriority={true}
         />
       </Link>
       <div>

@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { hyphenate, checkDeals } from '@/app/lib/utils';
+import { DealProps, ProductItemProps } from '@/app/lib/definitions';
 import data from '@/app/lib/appData.json';
 import AddToCart from '@/app/ui/add-to-cart';
 import Img from '@/app/ui/image';
 import PriceDrop from '@/app/ui/price-drop';
 import Price from '@/app/ui/price';
-import { DealProps, ProductItemProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/product/ProductItem.module.css';
 
-const ProductItem = ({ props, ind, css }: ProductItemProps) => {
+export default function ProductItem({ props, ind, css }: ProductItemProps) {
   const {
     id,
     category,
@@ -50,9 +50,9 @@ const ProductItem = ({ props, ind, css }: ProductItemProps) => {
         <Img
           imgSrc={`wine/${id}.jpg`}
           imgAlt=""
-          imgWidth={packaging === 'Bottle' ? 40 : 100}
+          imgWidth={packaging === 'Bottle' ? 38 : 100}
           imgHeight={150}
-          imgPriority={ind < PRIORITY}
+          imgPriority={ind < PRIORITY} // priority = max in view
         />
         <div className={styles.productMeta}>
           <h2 className={styles.brand}>{brand}</h2>
@@ -83,6 +83,4 @@ const ProductItem = ({ props, ind, css }: ProductItemProps) => {
       </div>
     </div>
   );
-};
-
-export default ProductItem;
+}

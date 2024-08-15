@@ -22,48 +22,14 @@ export const formatCurrency = (amount: number) => {
 
 const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
   let arr: DataProps[] = [];
-
-  if (
-    // filter by 2 for XX deals
-    arg1.startsWith('two-for') &&
-    arg1 !== 'two-for-deals'
-  ) {
-    const price = Number(arg1.split('-')[2]);
-    arr = await fetchProductsPriceTwoFor(price);
-  } else if (arg1.startsWith('search')) {
-    const searchTerm = arg1.split('=')[1];
-
-    arr = await fetchProductsBySearchTerm(searchTerm);
-  } else {
-    switch (arg1) {
-      case 'two-for-deals':
-        arr = await fetchProductsPriceTwoForDeals();
-        break;
-      case 'ten-percent-off':
-        arr = await fetchProductsPriceTenPercentOff();
-        break;
-      case 'ten-and-less':
-        arr = await fetchProductsTenAndLess();
-        break;
-      case 'ten-for-100':
-        arr = await fetchProductsPriceTenFor100();
-        break;
-      case 'price-drop':
-        arr = await fetchProductsPriceDrop();
-        break;
-      case 'white':
-      case 'red':
-      case 'sparkling':
-        arr = await fetchProductsByCat(capitalizeFirstLetter(arg1));
-        break;
-      default:
-        break;
-    }
-  }
+  // TODO: netlify version
+  console.log('fetchCategoryPageData');
+  console.log(arg1);
+  console.log(arg2);
 
   if (arg2) {
     switch (arg1) {
-      case 'search':
+      case 'search': // TODO:
         arr = await fetchProductsBySearchTerm(capitalizeFirstLetter(arg1));
         break;
       case 'white':
@@ -76,7 +42,47 @@ const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
       default:
         break;
     }
+  } else {
+    console.log('else');
+
+    if (
+      // filter by 2 for XX deals
+      arg1.startsWith('two-for') &&
+      arg1 !== 'two-for-deals'
+    ) {
+      const price = Number(arg1.split('-')[2]);
+      arr = await fetchProductsPriceTwoFor(price);
+    } else if (arg1.startsWith('search')) {
+      const searchTerm = arg1.replace('search%3D', ''); // TODO: search%3Dpenf
+      arr = await fetchProductsBySearchTerm(searchTerm);
+    } else {
+      switch (arg1) {
+        case 'two-for-deals':
+          arr = await fetchProductsPriceTwoForDeals();
+          break;
+        case 'ten-percent-off':
+          arr = await fetchProductsPriceTenPercentOff();
+          break;
+        case 'ten-and-less':
+          arr = await fetchProductsTenAndLess();
+          break;
+        case 'ten-for-100':
+          arr = await fetchProductsPriceTenFor100();
+          break;
+        case 'price-drop':
+          arr = await fetchProductsPriceDrop();
+          break;
+        case 'white':
+        case 'red':
+        case 'sparkling':
+          arr = await fetchProductsByCat(capitalizeFirstLetter(arg1));
+          break;
+        default:
+          break;
+      }
+    }
   }
+
   return arr;
 };
 
@@ -91,7 +97,10 @@ const fetchCarouselData = async (variety?: string) => {
 };
 
 const capitalizeFirstLetter = (string: string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  const words = string
+    .split(' ')
+    .map((val) => val.charAt(0).toUpperCase() + string.slice(1));
+  return words.join('');
 };
 
 const hyphenate = (text: string | undefined) =>
@@ -105,13 +114,16 @@ const checkDeals = (
   price_ten_for: number,
   price_percent_off: number,
 ) => {
+  const twoFor = Number(price_two_for);
+  const tenFor = Number(price_ten_for);
+  const percentOff = Number(price_percent_off);
   let deal = {};
-  if (Number(price_two_for)) {
-    deal = { price_two_for: Number(price_two_for) };
-  } else if (Number(price_ten_for)) {
-    deal = { price_ten_for: Number(price_ten_for) };
-  } else if (Number(price_percent_off)) {
-    deal = { price_percent_off: Number(price_percent_off) };
+  if (twoFor) {
+    deal = { price_two_for: twoFor };
+  } else if (tenFor) {
+    deal = { price_ten_for: tenFor };
+  } else if (percentOff) {
+    deal = { price_percent_off: percentOff };
   }
   return deal;
 };
@@ -206,6 +218,22 @@ const filterCategoryPageData = (arr: DataProps[], filters: FilterProps) => {
   return arr;
 };
 
+const validImage = async (url: string) => {
+  try {
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => resolve(url);
+      img.onerror = () => {
+        reject();
+      };
+    });
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 export {
   capitalizeFirstLetter,
   hyphenate,
@@ -215,4 +243,5 @@ export {
   sortCategoryPageData,
   filterCategoryPageData,
   fetchCarouselData,
+  validImage,
 };

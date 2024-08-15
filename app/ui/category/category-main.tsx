@@ -21,9 +21,9 @@ import CategoryNoResults from './category-no-results';
 import FilterList from '../filters/filter-list';
 import usePageWidth from '@/app/hooks/usePageWidth';
 import Blurb from '@/app/ui/blurb';
-
 import styles from '@/app/assets/css/category/Category.module.css';
 
+// used on Category and main Manage pages
 export default function CategoryMain({
   arr,
   urlCategory,
