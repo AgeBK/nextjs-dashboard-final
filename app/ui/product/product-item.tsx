@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { hyphenate, checkDeals } from '@/app/lib/utils';
 import { DealProps, ProductItemProps } from '@/app/lib/definitions';
 import data from '@/app/lib/appData.json';
-import AddToCart from '@/app/ui/add-to-cart';
-import Img from '@/app/ui/image';
-import PriceDrop from '@/app/ui/price-drop';
-import Price from '@/app/ui/price';
+import AddToCart from '../add-to-cart';
+import Img from '../image';
+import ImgFill from '../image-fill';
+import PriceDrop from '../price-drop';
+import Price from '../price';
 import styles from '@/app/assets/css/product/ProductItem.module.css';
 
 export default function ProductItem({ props, ind, css }: ProductItemProps) {
@@ -16,7 +17,6 @@ export default function ProductItem({ props, ind, css }: ProductItemProps) {
     name,
     short_name,
     brand,
-    packaging,
     ratings_average,
     price_normal,
     price_ten_for,
@@ -47,12 +47,11 @@ export default function ProductItem({ props, ind, css }: ProductItemProps) {
         )}/${id}`}
         className={styles.itemCont}
       >
-        <Img
+        <ImgFill
           imgSrc={`wine/${id}.jpg`}
           imgAlt=""
-          imgWidth={packaging === 'Bottle' ? 38 : 100}
-          imgHeight={150}
-          imgPriority={ind < PRIORITY} // priority = max in view
+          imgStyle="product130h"
+          imgPriority={ind < PRIORITY} // priority = max in view onload
         />
         <div className={styles.productMeta}>
           <h2 className={styles.brand}>{brand}</h2>

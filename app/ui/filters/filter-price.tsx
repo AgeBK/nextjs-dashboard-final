@@ -3,7 +3,10 @@ import data from '@/app/lib/appData.json';
 import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/filter/FilterPrice.module.css';
 
-const FilterPrice = ({ updateFilters, filters }: WineFilterProps) => {
+export default function FilterPrice({
+  updateFilters,
+  filters,
+}: WineFilterProps) {
   const { priceArr } = data;
 
   const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
@@ -33,6 +36,4 @@ const FilterPrice = ({ updateFilters, filters }: WineFilterProps) => {
       </ul>
     </>
   );
-};
-
-export default FilterPrice;
+}

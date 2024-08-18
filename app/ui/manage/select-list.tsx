@@ -1,6 +1,6 @@
 import React from 'react';
 import data from '@/app/lib/appData.json';
-import stylesEdit from '@/app/assets/css/manage/Form.module.css';
+import stylesForm from '@/app/assets/css/manage/Form.module.css';
 import { ddlWineItemsProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/Select.module.css';
 
@@ -13,9 +13,9 @@ export default function SelectLists({ ddlWineItems, isDelete }: ddlWineItemsProp
       {Object.entries(ddlWineItems).map(([key, value], i: number) => {
         return (
           <div key={key}>
-            <span className={stylesEdit.key}>
+            <span className={stylesForm.key}>
               {key}
-              <span className={stylesEdit.required}>*</span>
+              <span className={stylesForm.required}>*</span>
             </span>
             <label htmlFor={key} id={`lbl${key}`}>
               <select

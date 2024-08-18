@@ -3,11 +3,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { increment } from '@/app/slices/cartSlice';
-import Button from './button';
 import { AddToCartProps } from '../lib/definitions';
+import Button from './button';
 import CartImage from './cart/cart-image';
 
-const AddToCart = ({
+export default function AddToCart({
   id,
   name,
   brand,
@@ -16,7 +16,7 @@ const AddToCart = ({
   quantity,
   deal,
   promotion_discount_code,
-}: AddToCartProps) => {
+}: AddToCartProps) {
   const [itemId, setItemId] = useState('');
   const dispatch = useDispatch();
   const isAdded = itemId === id;
@@ -44,6 +44,4 @@ const AddToCart = ({
       <span>{id === itemId ? 'Item Added' : 'Add to cart'}</span>
     </Button>
   );
-};
-
-export default AddToCart;
+}

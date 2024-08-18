@@ -3,7 +3,7 @@ import { WineFilterProps } from '@/app/lib/definitions';
 import Button from '../button';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
-export default function FilterId({ updateFilters, filters }: WineFilterProps) {
+export default function FilterSearch({ updateFilters }: WineFilterProps) {
   const [value, setValue] = useState('');
   const handleChange = ({
     target: { value },

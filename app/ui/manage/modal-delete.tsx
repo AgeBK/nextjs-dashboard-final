@@ -5,14 +5,8 @@ import Link from 'next/link';
 import Button from '../button';
 import Img from '../image';
 import ExclamationCircle from '@/app/svg/exclamation-circle';
+import { ModalDeleteProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/manage/ModalDelete.module.css';
-
-type ModalDeleteProps = {
-  id: string;
-  name: string;
-  initialState: any;
-  setShowModal: (show: boolean) => void;
-};
 
 export default function ModalDelete({ id, name }: ModalDeleteProps) {
   return (

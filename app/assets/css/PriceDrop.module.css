@@ -10,6 +10,7 @@
   top: 5px;
   width: 50px;
   text-align: center;
+  z-index: 2;
 }
 
 .price_two_for {

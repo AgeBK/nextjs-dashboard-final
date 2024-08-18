@@ -24,7 +24,7 @@ export default function HeaderUserCart({ user }: { user: string | null }) {
       const cartObj: CartProps = JSON.parse(cart);
       dispatch(restoreCart(cartObj));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.userCont}>

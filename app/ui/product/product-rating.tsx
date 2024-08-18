@@ -1,10 +1,6 @@
+import { ProductRatingProps } from '@/app/lib/definitions';
 import Img from '@/app/ui/image';
 import styles from '@/app/assets/css/product/ProductRating.module.css';
-
-type ProductRatingProps = {
-  average: number;
-  total: number;
-};
 
 export default function ProductRating({ average, total }: ProductRatingProps) {
   const avg = Math.round(average);

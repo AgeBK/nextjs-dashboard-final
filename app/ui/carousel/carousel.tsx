@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { DataProps } from '../../lib/definitions';
 import ProductItem from '@/app/ui/product/product-item';
 import CarouselPaging from '@/app/ui/carousel/carousel-paging';
 import Button from '@/app/ui/button';
 import Img from '@/app/ui/image';
 import data from '@/app/lib/appData.json';
-import { DataProps } from '../../lib/definitions';
 import styles from '@/app/assets/css/carousel/Carousel.module.css';
 
 export default function Carousel({ arr }: { arr: DataProps[] }) {
@@ -61,6 +61,7 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
       window.addEventListener('resize', calculateItems);
       return () => window.removeEventListener('resize', calculateItems);
     }
+    return undefined;
   }, [calculateItems]);
 
   return (
@@ -123,7 +124,7 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
                   }}
                   key={id}
                   ind={ind}
-                  css={'carouselItems' + items}
+                  css={'productCarousel'}
                 />
               );
             }

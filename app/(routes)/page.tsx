@@ -6,7 +6,7 @@ import Loading from '../ui/loading';
 import HomeCampaignMini from '../ui/home-campaign-mini';
 import styles from '@/app/assets/css/Home.module.css';
 
-export default async function Page() {
+export default function Page() {
   return (
     <article>
       <HomeHero />

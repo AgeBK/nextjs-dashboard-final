@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCart, increment, decrement } from '../../slices/cartSlice';
+import { CartProps, AddToCartProps } from '@/app/lib/definitions';
 import CartPrice from './cart-price';
 import CartItemSaving from './cart-item-savings';
 import Img from '../image';
 import Button from '../button';
-import { CartProps, AddToCartProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/cart/CartItem.module.css';
 
-const CartItem = () => {
+export default function CartItem() {
   const cart: CartProps = useSelector(selectCart);
   const dispatch = useDispatch();
 
@@ -127,6 +127,4 @@ const CartItem = () => {
       )}
     </ul>
   );
-};
-
-export default CartItem;
+}

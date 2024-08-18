@@ -4,7 +4,6 @@ import React, { ChangeEvent, useState } from 'react';
 import { useFormState } from 'react-dom';
 import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 import { FormStateProps, ManageProductProps } from '@/app/lib/definitions';
-import { hyphenate } from '@/app/lib/utils';
 import SelectWine from '@/app/ui/manage/select-wine';
 import SelectLists from '@/app/ui/manage/select-list';
 import InputFields from './input-fields';
@@ -12,12 +11,12 @@ import ManageProductActions from './manage-product-actions';
 import ManageDBMessages from './manage-db-messages';
 import ModalDelete from './modal-delete';
 import ManageImage from './manage-image';
-import Link from 'next/link';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
-// TODO: capitalise error message
 // TODO: edit product, update image check?
-// TODO: warning for unused vars?
+// TODO: finish running lint
+// TODO: wave / console / terminal all pages
+// TODO: checked to modal
 
 const initialState: FormStateProps = {
   message: null,
@@ -34,13 +33,8 @@ export default function ManageProduct({
   const [showModal, setShowModal] = useState<boolean>(false);
   const [productId, setProductId] = useState<string>('');
   const { id, name } = product;
-  const { category, variety } = ddlWineItems;
   const isDelete = action === 'delete';
-  const isAdd = action === 'add';
   let currentActionFn: any = null;
-
-  console.log('ManageProduct');
-  console.log(product);
 
   switch (action) {
     case 'add':
@@ -58,6 +52,7 @@ export default function ManageProduct({
 
   const [state, dispatch] = useFormState(currentActionFn, initialState);
 
+  // product id used for image name when adding product
   const handleChange = ({
     target: { value, id },
   }: ChangeEvent<HTMLInputElement>) => id === 'id' && setProductId(value);
@@ -69,7 +64,7 @@ export default function ManageProduct({
 
   return (
     <>
-      {!isAdd && (
+      {/* {!isAdd && (
         // TODO: component?
         <Link
           href={`/${String(category).toLowerCase()}/${hyphenate(
@@ -79,7 +74,7 @@ export default function ManageProduct({
         >
           View product
         </Link>
-      )}
+      )} */}
       <form action={dispatch} className={styles.container}>
         <InputFields
           product={product}

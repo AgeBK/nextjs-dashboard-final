@@ -190,5 +190,6 @@
   "pillsArr": ["price", "rating", "category", "variety", "region"],
   "sortNameArr": ["Relevance", "A-Z", "Z-A", "$", "$$$", "Sale"],
   "paymentArr": ["amex", "applePay", "mc", "paypal", "visa", "zip", "afterPay"],
+  "paymentImgWidths": [33, 48, 48, 50, 48, 49, 54],
   "pageSizes": [20, 40, 60, 80]
 }

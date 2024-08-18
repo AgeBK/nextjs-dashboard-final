@@ -1,12 +1,6 @@
 import Link from 'next/link';
+import { HomeCampaignProps } from '../lib/definitions';
 import styles from '@/app/assets/css/Home.module.css';
-
-type HomeCampaignProps = {
-  link: string;
-  hdr: string;
-  text: string;
-  finePrint: string;
-};
 
 export default function HomeCampaign({
   link,

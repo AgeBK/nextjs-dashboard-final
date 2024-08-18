@@ -1,6 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { User, DataProps } from './definitions';
-import { formatCurrency } from './utils';
+import {  DataProps } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 
 export async function fetchProducts() {
@@ -139,9 +138,6 @@ export async function fetchProductsOnSpecial() {
 }
 
 export async function fetchProductsBySearchTerm(query: string) {
-  console.log('fetchProductsBySearchTerm');
-  console.log(query);
-
   noStore();
 
   try {
@@ -245,7 +241,7 @@ export async function fetchProductsPriceTenFor100() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE price_current <= 10 OR price_normal <= 10
+      WHERE price_ten_for = 100
       `;
 
     const products = data.rows;

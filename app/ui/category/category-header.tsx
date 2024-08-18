@@ -1,23 +1,15 @@
-import { FilterProps } from '@/app/lib/definitions';
+import { CategoryHeaderProps } from '@/app/lib/definitions';
 import Pills from '@/app/ui/pills';
 import Sort from '@/app/ui/sort';
 import styles from '@/app/assets/css/category/CategoryHeader.module.css';
 
-type CategoryHeaderProps = {
-  filters: FilterProps;
-  removeFilters: (name: string) => void;
-  dataLength: number;
-  sortName: string;
-  setSortName: (name: string) => void;
-};
-
-const CategoryHeader = ({
+export default function CategoryHeader({
   filters,
   removeFilters,
   dataLength,
   sortName,
   setSortName,
-}: CategoryHeaderProps) => {
+}: CategoryHeaderProps) {
   return (
     <div className={styles.detailsCont}>
       <Pills filters={filters} removeFilters={removeFilters} />
@@ -26,6 +18,4 @@ const CategoryHeader = ({
       <Sort sortName={sortName} setSortName={setSortName} />
     </div>
   );
-};
-
-export default CategoryHeader;
+}

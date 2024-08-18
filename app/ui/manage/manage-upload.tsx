@@ -44,8 +44,8 @@ export default function ManageUpload({ productId, productAdded }: UploadProps) {
       if (result.success) {
         console.log('ManageUpload image uploaded SUCCESS');
 
-        // window.location.href = '/manage';
-        // alert('Upload ok : ' + result.name);
+        window.location.href = '/manage';
+        alert('Upload ok : ' + result.name);
       } else {
         console.log('ManageUpload image uploaded FAILED');
 
@@ -58,10 +58,6 @@ export default function ManageUpload({ productId, productAdded }: UploadProps) {
     console.log('Upload Img valid');
     uploadImg();
   }
-  // else {
-  //   console.log('ERROR');
-  //   alert('ERROR');
-  // }
 
   return (
     <div>

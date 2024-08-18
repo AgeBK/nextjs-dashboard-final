@@ -1,13 +1,7 @@
 import Link from 'next/link';
 import Img from '@/app/ui/image';
+import { BreadCrumbProps } from '../lib/definitions';
 import styles from '@/app/assets/css/BreadCrumb.module.css';
-
-type BreadCrumbProps = {
-  urlCategory?: string;
-  urlVariety?: string;
-  category: string;
-  variety: string;
-};
 
 const Chevron = () => (
   <span className={styles.chevronCont}>
@@ -16,13 +10,12 @@ const Chevron = () => (
   </span>
 );
 
-const BreadCrumb = ({
+export default function BreadCrumb({
   urlCategory,
   urlVariety,
   category,
   variety,
-}: BreadCrumbProps) => {
-
+}: BreadCrumbProps) {
   return (
     <div className={styles.breadCrumb}>
       <Link href="/" className={styles.category}>
@@ -44,6 +37,4 @@ const BreadCrumb = ({
       </Link>
     </div>
   );
-};
-
-export default BreadCrumb;
+}

@@ -1,28 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import Button from '@/app/ui/button';
-import AddToCart from '@/app/ui/add-to-cart';
-import Img from '@/app/ui/image';
+import { ProductCartProps } from '@/app/lib/definitions';
 import { checkDeals } from '@/app/lib/utils';
+import Button from '../button';
+import AddToCart from '../add-to-cart';
+import Img from '../image';
 import styles from '@/app/assets/css/product/ProductCart.module.css';
 
-type ProductCartProps = {
-  id: string;
-  name: string;
-  brand: string;
-  price_current: number;
-  short_name: string;
-  price_two_for: number;
-  price_ten_for: number;
-  price_percent_off: number;
-  packaging: string;
-  promotion_callout_text?: string;
-  promotion_discount_code?: string;
-  isCask: boolean;
-};
-
-const ProductCart = ({
+export default function ProductCart({
   id,
   name,
   brand,
@@ -35,7 +21,7 @@ const ProductCart = ({
   promotion_callout_text,
   promotion_discount_code,
   isCask,
-}: ProductCartProps) => {
+}: ProductCartProps) {
   const [count, setCount] = useState<number>(1);
 
   const handleCount = (e: React.MouseEvent<Element, MouseEvent>) => {
@@ -93,6 +79,4 @@ const ProductCart = ({
       ) : null}
     </div>
   );
-};
-
-export default ProductCart;
+}

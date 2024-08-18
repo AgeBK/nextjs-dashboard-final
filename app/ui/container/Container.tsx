@@ -3,7 +3,7 @@ import Footer from '@/app/ui/footer';
 import { ContainerProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/Container.module.css';
 
-function Container({ children }: ContainerProps) {
+export default function Container({ children }: ContainerProps) {
   return (
     <div className={styles.container}>
       <Header />
@@ -12,4 +12,3 @@ function Container({ children }: ContainerProps) {
     </div>
   );
 }
-export default Container;

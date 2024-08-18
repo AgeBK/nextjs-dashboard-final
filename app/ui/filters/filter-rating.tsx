@@ -2,17 +2,17 @@ import data from '@/app/lib/appData.json';
 import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/filter/FilterRating.module.css';
 
-const FilterRating = ({
+export default function FilterRating({
   filters,
   updateFilters,
   isManage,
-}: WineFilterProps) => {
+}: WineFilterProps) {
   const { ratingArr, ratingArrManage } = data;
+  const arr: TextValueArrProps[] = isManage ? ratingArrManage : ratingArr;
+
   const handleChange = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => updateFilters({ rating: value });
-
-  const arr: TextValueArrProps[] = isManage ? ratingArrManage : ratingArr;
 
   return (
     <>
@@ -42,6 +42,4 @@ const FilterRating = ({
       </ul>
     </>
   );
-};
-
-export default FilterRating;
+}

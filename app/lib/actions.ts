@@ -6,6 +6,7 @@ import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { SchemaProps } from './definitions';
 
 const minStr1 = z
   .string()
@@ -39,7 +40,9 @@ const FormSchema = z.object({
 
 const UpdateSchema = FormSchema.omit({ id: true });
 
-const validateFormData = (Schema: any, formData: FormData) => {
+
+
+const validateFormData = (Schema: SchemaProps, formData: FormData) => {
   // const Schema = isEdit ? UpdateSchema : FormSchema;
   return Schema.safeParse({
     id: formData.get('id'),
@@ -166,7 +169,7 @@ export async function addProduct(
 
 export async function updateProduct(
   id: string,
-  prevState: { message: any },
+  prevState: { message: unknown },
   formData: FormData,
 ) {
   const validatedFields = validateFormData(UpdateSchema, formData);
@@ -248,7 +251,7 @@ export async function deleteProduct(id: string, prevState: { message: any }) {
 }
 
 export async function authenticate(
-  prevState: string | undefined,
+  // prevState: string | undefined,
   formData: FormData,
 ) {
   try {

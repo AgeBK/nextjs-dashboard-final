@@ -1,20 +1,14 @@
 import data from '@/app/lib/appData.json';
 import Button from '@/app/ui/button';
+import { CarouselPagingProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/carousel/CarouselPaging.module.css';
 
-type CarouselPagingProps = {
-  items: number;
-  pageIndex: number;
-  setPageIndex: (prev: number) => void;
-  handleClick: (prev: number) => void;
-};
-
-const CarouselPaging = ({
+export default function CarouselPaging({
   items,
   pageIndex,
   setPageIndex,
   handleClick,
-}: CarouselPagingProps) => {
+}: CarouselPagingProps) {
   if (items) {
     const { MAX_CAROUSEL_PRODUCTS } = data;
     const html: Array<JSX.Element> = [];
@@ -56,6 +50,4 @@ const CarouselPaging = ({
     );
   }
   return null;
-};
-
-export default CarouselPaging;
+}

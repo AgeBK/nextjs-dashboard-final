@@ -3,12 +3,12 @@ import AutoComplete from '@/app/ui/AutoComplete';
 import Nav from './nav';
 import Img from './image';
 import HeaderUserCart from './header-user-cart';
+import getUser from '@/getUser';
 import { fetchProducts } from '../lib/data';
 import { DataProps } from '../lib/definitions';
-import getUser from '@/getUser';
 import styles from '@/app/assets/css/Header.module.css';
 
-const Header = async () => {
+export default async function Header() {
   const products: DataProps[] = await fetchProducts();
   const user = await getUser();
 
@@ -35,6 +35,4 @@ const Header = async () => {
       <Nav />
     </header>
   );
-};
-
-export default Header;
+}

@@ -8,7 +8,7 @@ export default async function Page({
   params: { urlCategory, urlVariety }, // TODO: why urlVariety array
 }: CategoryParamsProps) {
   const variety = urlVariety ? urlVariety[0] : undefined;
-  let products: DataProps[] = await fetchCategoryPageData(urlCategory, variety); // various db calls based on URL
+  const products: DataProps[] = await fetchCategoryPageData(urlCategory, variety); // various db calls based on URL
   // TODO: check every file for unused import etc
   // TODO: check mobile (header) / mobile category page, filter button doesn't load/ text in autoComplete doesn't change sometimes
 

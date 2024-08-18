@@ -3,10 +3,13 @@
 import React, { useState } from 'react';
 import data from '@/app/lib/appData.json';
 import { ddlWineItemsProps } from '@/app/lib/definitions';
+import stylesForm from '@/app/assets/css/manage/Form.module.css';
 import styles from '@/app/assets/css/Select.module.css';
-import stylesEdit from '@/app/assets/css/manage/Form.module.css';
 
-const SelectWine = ({ ddlWineItems, isDelete }: ddlWineItemsProps) => {
+export default function SelectWine({
+  ddlWineItems,
+  isDelete,
+}: ddlWineItemsProps) {
   const { category } = ddlWineItems;
   const [wineCategory, setWineCategory] = useState(category);
   const { categoryArr, red, white, sparkling } = data;
@@ -32,9 +35,9 @@ const SelectWine = ({ ddlWineItems, isDelete }: ddlWineItemsProps) => {
   return (
     <>
       <div>
-        <span className={stylesEdit.key}>
+        <span className={stylesForm.key}>
           Category
-          <span className={stylesEdit.required}>*</span>
+          <span className={stylesForm.required}>*</span>
         </span>
         <label htmlFor="category" id="lblCategory">
           <select
@@ -57,9 +60,9 @@ const SelectWine = ({ ddlWineItems, isDelete }: ddlWineItemsProps) => {
         </label>
       </div>
       <div>
-        <span className={stylesEdit.key}>
+        <span className={stylesForm.key}>
           Variety
-          <span className={stylesEdit.required}>*</span>
+          <span className={stylesForm.required}>*</span>
         </span>
         <label htmlFor="variety" id="lblVariety">
           <select
@@ -82,6 +85,4 @@ const SelectWine = ({ ddlWineItems, isDelete }: ddlWineItemsProps) => {
       </div>
     </>
   );
-};
-
-export default SelectWine;
+}

@@ -1,18 +1,12 @@
-import { DataProps, PagingProps } from '@/app/lib/definitions';
+import { CategoryPageNumberProps } from '@/app/lib/definitions';
 import Button from '@/app/ui/button';
 import styles from '@/app/assets/css/category/CategoryPageNumber.module.css';
 
-type PageNumberProps = {
-  currentData: DataProps[];
-  paging: PagingProps;
-  updatePaging: (paging: PagingProps) => void;
-};
-
-function CategoryPageNumber({
+export default function CategoryPageNumber({
   currentData,
   paging,
   updatePaging,
-}: PageNumberProps) {
+}: CategoryPageNumberProps) {
   const { page, pageSize } = paging;
   const totalPages = Math.ceil(currentData.length / pageSize);
   const prevPage = page - 1;
@@ -55,4 +49,3 @@ function CategoryPageNumber({
   );
 }
 
-export default CategoryPageNumber;

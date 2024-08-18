@@ -5,7 +5,8 @@ import { WineFilterProps } from '@/app/lib/definitions';
 import Button from '../button';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
-const FilterId = ({ updateFilters, filters }: WineFilterProps) => {
+// used in manage page
+export default function FilterId({ updateFilters }: WineFilterProps) {
   const [value, setValue] = useState('');
   const handleChange = ({
     target: { value },
@@ -37,6 +38,4 @@ const FilterId = ({ updateFilters, filters }: WineFilterProps) => {
       </Button>
     </div>
   );
-};
-
-export default FilterId;
+}

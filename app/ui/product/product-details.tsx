@@ -1,11 +1,11 @@
-import WineBlurb from '@/app/ui/wine-blurb';
+import { ProductDetailsProps } from '../../lib/definitions';
+import WineBlurb from '../wine-blurb';
 import ProductRating from './product-rating';
 import ProductCart from './product-cart';
-import Img from '@/app/ui/image';
-import { ProductDetailsProps } from '../../lib/definitions';
+import ImgFill from './../image-fill';
 import styles from '@/app/assets/css/product/ProductDetails.module.css';
 
-const ProductDetails = ({
+export default function ProductDetails({
   id,
   brand,
   name,
@@ -22,15 +22,14 @@ const ProductDetails = ({
   urlCategory,
   urlVariety,
   isCask,
-}: ProductDetailsProps) => {
+}: ProductDetailsProps) {
   return (
     <section className={styles.productCont}>
       <div className={styles.productImg}>
-        <Img
+        <ImgFill
           imgSrc={`wine/${id}.jpg`}
           imgAlt={name}
-          imgWidth={isCask ? 339 : 120}
-          imgHeight={520}
+          imgStyle="product520h"
           imgPriority={true}
         />
       </div>
@@ -58,6 +57,4 @@ const ProductDetails = ({
       </div>
     </section>
   );
-};
-
-export default ProductDetails;
+}

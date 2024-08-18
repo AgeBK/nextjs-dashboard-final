@@ -3,13 +3,14 @@ import { KeyNumberProps, RegionFilterProps } from '@/app/lib/definitions';
 import { filterCategoryPageData } from '@/app/lib/utils';
 import styles from '@/app/assets/css/filter/FilterRegion.module.css';
 
-const FilterRegion = ({
+export default function FilterRegion({
   updateFilters,
   filters,
   currentData,
-}: RegionFilterProps) => {
+}: RegionFilterProps) {
   const filteredData = filterCategoryPageData(currentData, filters);
 
+  // display different wine regions and the number of each available
   const currentRegions: KeyNumberProps = filteredData.reduce((acc, val) => {
     const r: string = val.region as string;
     if (!acc[r]) acc = { ...acc, [r]: 0 };
@@ -56,6 +57,4 @@ const FilterRegion = ({
       )}
     </>
   );
-};
-
-export default FilterRegion;
+}

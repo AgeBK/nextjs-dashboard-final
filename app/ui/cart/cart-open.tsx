@@ -1,25 +1,18 @@
 import { useState, ChangeEvent, KeyboardEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { applyDiscountCode } from '../../slices/cartSlice';
+import { CartOpenProps } from '@/app/lib/definitions';
 import CartItem from './cart-item';
 import Button from '../button';
 import styles from '@/app/assets/css/cart/CartOpen.module.css';
 
-type CartOpenProps = {
-  totalPrice: number;
-  totalQty: number;
-  handleClose: () => void;
-  discountCode: string;
-  setDiscountCode: (code: string) => void;
-};
-
-const CartOpen = ({
+export default function CartOpen({
   totalPrice,
   totalQty,
   handleClose,
   discountCode,
   setDiscountCode,
-}: CartOpenProps) => {
+}: CartOpenProps) {
   const dispatch = useDispatch();
   const [codeEntered, setCodeEntered] = useState(false);
 
@@ -73,6 +66,4 @@ const CartOpen = ({
       </div>
     </section>
   );
-};
-
-export default CartOpen;
+}

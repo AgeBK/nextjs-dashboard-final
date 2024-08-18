@@ -1,9 +1,10 @@
 'use client';
 
-import data from '@/app/lib/appData.json';
 import { InputFieldsProps } from '@/app/lib/definitions';
+import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
+// loads textboxes on add/edit/delete manage page
 export default function InputFields({
   product,
   isDelete,
@@ -12,7 +13,7 @@ export default function InputFields({
   const { isRequired } = data;
   return (
     <>
-      {Object.entries(product).map(([key, value]: [string, any], i) => {
+      {Object.entries(product).map(([key, value]: [string, any]) => {
         const isReq = isRequired.includes(key);
         const dataType = typeof value === 'number' ? 'number' : 'text';
         return (

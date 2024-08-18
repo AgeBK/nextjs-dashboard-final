@@ -1,6 +1,7 @@
 // data definitions
 
 import { ChangeEvent, ReactNode } from 'react';
+import { z } from 'zod';
 
 export type DataProps = {
   id: string;
@@ -83,10 +84,17 @@ export type ButtonProps = {
 
 export type ImgProps = {
   imgSrc: string;
-  // imageStyle: keyof typeof styles;
   imgAlt: string;
   imgWidth: number;
   imgHeight: number;
+  imgPriority?: boolean;
+};
+
+export type ImgFillProps = {
+  imgSrc: string;
+  imgAlt: string;
+  // imageStyle: keyof typeof styles;
+  imgStyle: string;
   imgPriority?: boolean;
 };
 
@@ -98,6 +106,26 @@ export type CampainMiniProps = {
   blurb2: string;
   imgSrc: string;
   imgAlt: string;
+};
+
+export type ProductCartProps = {
+  id: string;
+  name: string;
+  brand: string;
+  price_current: number;
+  short_name: string;
+  price_two_for: number;
+  price_ten_for: number;
+  price_percent_off: number;
+  packaging: string;
+  promotion_callout_text?: string;
+  promotion_discount_code?: string;
+  isCask: boolean;
+};
+
+export type ProductRatingProps = {
+  average: number;
+  total: number;
 };
 
 export type ProductReviewProps = {
@@ -149,6 +177,10 @@ export interface RegionFilterProps extends WineFilterProps {
   currentData: DataProps[];
 }
 
+export interface VarietyFilterProps extends WineFilterProps {
+  currentData: DataProps[];
+}
+
 export interface WineFilterProps {
   updateFilters: (filters: FilterProps) => void;
   filters: FilterProps;
@@ -166,9 +198,41 @@ export type BlurbProps = {
   variety?: string;
 };
 
+export type CarouselPagingProps = {
+  items: number;
+  pageIndex: number;
+  setPageIndex: (prev: number) => void;
+  handleClick: (prev: number) => void;
+};
+
+export type CartClosedProps = {
+  totalPrice: number;
+  totalQty: number;
+};
+
 export type CartQtyPriceProps = {
   totalQty: number;
   totalPrice: number;
+};
+
+export type CartPriceProps = {
+  price: number;
+  dealPrice?: number;
+  quantity: number;
+};
+
+export type CartOpenProps = {
+  totalPrice: number;
+  totalQty: number;
+  handleClose: () => void;
+  discountCode: string;
+  setDiscountCode: (code: string) => void;
+};
+
+export type ItemSavingsProps = {
+  price: number;
+  dealPrice?: number;
+  quantity: number;
 };
 
 export type FilterListProps = {
@@ -189,6 +253,31 @@ export type FilterListProps = {
 export type CategoryListProps = {
   arr: DataProps[];
   isManage?: boolean;
+};
+
+export type CategoryHeaderProps = {
+  filters: FilterProps;
+  removeFilters: (name: string) => void;
+  dataLength: number;
+  sortName: string;
+  setSortName: (name: string) => void;
+};
+
+export type CategoryPageNumberProps = {
+  currentData: DataProps[];
+  paging: PagingProps;
+  updatePaging: (paging: PagingProps) => void;
+};
+
+export type CategoryPagingProps = {
+  currentData: DataProps[];
+  paging: PagingProps;
+  updatePaging: (paging: PagingProps) => void;
+};
+
+export type CategoryToggleItemsProps = {
+  togglePageItems: () => void;
+  isItems: boolean;
 };
 
 export type ProductDetailsProps = {
@@ -269,6 +358,18 @@ export type UploadProps = {
   productAdded: boolean | null;
 };
 
+export type ManageProductActionsProps = {
+  enableModal: (e: React.MouseEvent<Element, MouseEvent>) => void;
+  isDelete: boolean;
+};
+
+export type ModalDeleteProps = {
+  id: string;
+  name: string;
+  initialState: any;
+  setShowModal: (show: boolean) => void;
+};
+
 export type ManageDBMessagesProps = {
   errorMessages: FormStateProps;
 };
@@ -309,6 +410,89 @@ export type ManageFilterProps = {
   filters: FilterProps;
   isManage?: boolean;
 };
+
+export type BreadCrumbProps = {
+  urlCategory?: string;
+  urlVariety?: string;
+  category: string;
+  variety: string;
+};
+
+export type HomeCampaignProps = {
+  link: string;
+  hdr: string;
+  text: string;
+  finePrint: string;
+};
+
+export type SchemaProps = z.ZodObject<
+  Omit<
+    {
+      id: z.ZodString;
+      brand: z.ZodString;
+      name: z.ZodString;
+      short_name: z.ZodString;
+      category: z.ZodString;
+      variety: z.ZodString;
+      region: z.ZodString;
+      packaging: z.ZodString;
+      promotion_callout_text: z.ZodString;
+      promotion_discount_code: z.ZodString;
+      price_normal: z.ZodNumber;
+      price_current: z.ZodNumber;
+      volume_ml: z.ZodNumber;
+      price_two_for: z.ZodNumber;
+      price_ten_for: z.ZodNumber;
+      price_percent_off: z.ZodNumber;
+      ratings_total: z.ZodNumber;
+      ratings_average: z.ZodNumber;
+      unit_of_measure_label: z.ZodString;
+    },
+    'id'
+  >,
+  'strip',
+  z.ZodTypeAny,
+  {
+    brand: string;
+    name: string;
+    short_name: string;
+    category: string;
+    variety: string;
+    region: string;
+    packaging: string;
+    promotion_callout_text: string;
+    promotion_discount_code: string;
+    price_normal: number;
+    price_current: number;
+    volume_ml: number;
+    price_two_for: number;
+    price_ten_for: number;
+    price_percent_off: number;
+    ratings_total: number;
+    ratings_average: number;
+    unit_of_measure_label: string;
+  },
+  {
+    brand: string;
+    name: string;
+    short_name: string;
+    category: string;
+    variety: string;
+    region: string;
+    packaging: string;
+    promotion_callout_text: string;
+    promotion_discount_code: string;
+    price_normal: number;
+    price_current: number;
+    volume_ml: number;
+    price_two_for: number;
+    price_ten_for: number;
+    price_percent_off: number;
+    ratings_total: number;
+    ratings_average: number;
+    unit_of_measure_label: string;
+  }
+>;
 
 //RTK slice
 export type CartState = {

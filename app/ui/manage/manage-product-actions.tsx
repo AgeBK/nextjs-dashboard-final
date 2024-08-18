@@ -2,13 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import Button from '../button';
 import Img from '../image';
+import { ManageProductActionsProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/manage/ManageProductActions.module.css';
 
-type ManageProductActionsProps = {
-  enableModal: (e: React.MouseEvent<Element, MouseEvent>) => void;
-  isDelete: boolean;
-};
-
+// add/edit/delte buttons on main manage page
 export default function ManageProductActions({
   enableModal,
   isDelete,

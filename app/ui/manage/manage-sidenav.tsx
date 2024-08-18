@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Img from '@/app/ui/image';
+import Img from '../image';
 import Logout from '../logout';
 import styles from '@/app/assets/css/manage/SidneNav.module.css';
 

@@ -8,13 +8,13 @@ import RegionFilter from './filter-region';
 import { FilterListProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/filter/FilterList.module.css';
 
-const FilterList = ({
+export default function FilterList ({
   currentData,
   filters,
   urlVariety,
   updateFilters,
   isManage,
-}: FilterListProps) => {
+}: FilterListProps)  {
   const filterArr = [
     <PriceFilter
       updateFilters={updateFilters}
@@ -71,6 +71,4 @@ const FilterList = ({
       </ul>
     </section>
   );
-};
-
-export default FilterList;
+}

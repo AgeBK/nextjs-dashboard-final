@@ -1,19 +1,13 @@
+import { CategoryPagingProps } from '@/app/lib/definitions';
 import CategoryPageNumber from '@/app/ui/category/category-page-number';
 import ResultsPP from '@/app/ui/resultspp';
 import styles from '@/app/assets/css/category/CategoryPaging.module.css';
-import { DataProps, PagingProps } from '@/app/lib/definitions';
 
-type CategoryPagingProps = {
-  currentData: DataProps[];
-  paging: PagingProps;
-  updatePaging: (paging: PagingProps) => void;
-};
-
-const CategoryPaging = ({
+export default function CategoryPaging({
   currentData,
   paging,
   updatePaging,
-}: CategoryPagingProps) => {
+}: CategoryPagingProps) {
   return (
     <div className={styles.categoryPaging}>
       <div className={styles.pageNumCont}>
@@ -26,6 +20,4 @@ const CategoryPaging = ({
       <ResultsPP paging={paging} updatePaging={updatePaging} />
     </div>
   );
-};
-
-export default CategoryPaging;
+}

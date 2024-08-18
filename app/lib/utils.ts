@@ -39,6 +39,7 @@ const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
           capitalizeFirstLetter(arg1),
           capitalizeFirstLetter(arg2),
         );
+        break;
       default:
         break;
     }

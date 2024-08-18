@@ -1,17 +1,16 @@
+import { ItemSavingsProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/cart/CartItemSaving.module.css';
 
-type ItemSavingsProps = {
-  price: number;
-  dealPrice?: number;
-  quantity: number;
-};
-
-const CartItemSaving = ({ price, dealPrice, quantity }: ItemSavingsProps) =>
-  dealPrice ? (
+export default function CartItemSaving({
+  price,
+  dealPrice,
+  quantity,
+}: ItemSavingsProps) {
+  // show savings when discount code or 2 for deals
+  return dealPrice ? (
     <div className={styles.savings}>
       <span className={styles.triangle}></span>
       You save: ${((price - dealPrice) * quantity).toFixed(2)}
     </div>
   ) : null;
-
-export default CartItemSaving;
+}

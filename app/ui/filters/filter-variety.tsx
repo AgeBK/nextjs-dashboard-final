@@ -1,27 +1,20 @@
 import { ChangeEvent } from 'react';
-import {
-  WineFilterProps,
-  KeyNumberProps,
-  DataProps,
-} from '@/app/lib/definitions';
+import { KeyNumberProps, VarietyFilterProps } from '@/app/lib/definitions';
 import { filterCategoryPageData } from '@/app/lib/utils';
 import Button from '../button';
 import styles from '@/app/assets/css/filter/FilterVariety.module.css';
 
-interface VarietyFilterProps extends WineFilterProps {
-  currentData: DataProps[];
-}
-
-const VarietyFilter = ({
+export default function FilterVariety({
   updateFilters,
   filters,
   currentData,
-}: VarietyFilterProps) => {
+}: VarietyFilterProps) {
   const filteredData = filterCategoryPageData(currentData, filters);
 
   const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
     updateFilters({ variety: value });
 
+  // display different wine varietys and the number of each available
   const varietys: KeyNumberProps = filteredData.reduce(
     (acc, { category, variety }) => {
       if (!filters.category || filters.category === category)
@@ -71,6 +64,4 @@ const VarietyFilter = ({
       )}
     </>
   );
-};
-
-export default VarietyFilter;
+}

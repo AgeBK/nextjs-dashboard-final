@@ -1,13 +1,7 @@
 'use client';
 
-import { authenticate, updateProduct } from '@/app/lib/actions';
-// import { lusitana } from '@/app/ui/fonts';
+import { authenticate, } from '@/app/lib/actions';
 import Img from '@/app/ui/image';
-// import {
-//   AtSymbolIcon,
-//   KeyIcon,
-//   ExclamationCircleIcon,
-// } from '@heroicons/react/24/outline';
 import Button from '@/app/ui/button';
 import { useFormState, useFormStatus } from 'react-dom';
 import styles from '@/app/assets/css/LoginForm.module.css';
@@ -19,7 +13,6 @@ export default function LoginForm() {
     <article className={styles.login}>
       <div className={styles.formCont}>
         <form action={dispatch}>
-          {/* <img src="http://localhost:8080/assets/img/icons/wineSil.png" /> */}
           <Img
             imgSrc="icons/wineSil.png"
             imgAlt="AK Fine Wines"

@@ -6,7 +6,7 @@ import styles from '@/app/assets/css/Footer.module.css';
 
 export default function Footer() {
   const yr = new Date().getFullYear();
-  const { paymentArr } = data;
+  const { paymentArr, paymentImgWidths } = data;
 
   return (
     <footer className={styles.container}>
@@ -32,7 +32,7 @@ export default function Footer() {
             <Img
               imgSrc={`payment/${val}.jpg`}
               imgAlt={val}
-              imgWidth={48}
+              imgWidth={paymentImgWidths[ind]}
               imgHeight={44}
             />
           </li>

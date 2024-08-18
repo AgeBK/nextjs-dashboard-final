@@ -11,7 +11,6 @@ export const authConfig = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     // TODO: check this process at end
-    // TODO: product id 7168277_pack4, 4 pack looks ordinary?
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isAdminPage = nextUrl.pathname.startsWith('/manage');

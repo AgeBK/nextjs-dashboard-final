@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { hyphenate } from '../../lib/utils';
+import { ProductInfoProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/product/ProductInfo.module.css';
 
 export default function ProductInfo({
