@@ -235,6 +235,32 @@ const validImage = async (url: string) => {
   }
 };
 
+const uploadImg = async (file: Blob, productId: string) => {
+  const fileName: string = `${productId}.jpg`;
+  const formData = new FormData();
+  formData.append('file', file, fileName);
+  console.log('ManageUpload uploadImg - elem');
+
+  const response = await fetch('/api/upload', {
+    method: 'POST',
+    body: formData,
+  });
+
+  const result = await response.json();
+  console.log(result);
+
+  if (result.success) {
+    console.log('ManageUpload image uploaded SUCCESS');
+    // window.location.href = '/manage';
+    console.log('Upload ok : ' + result.name);
+    return true;
+  } else {
+    console.log('ManageUpload image uploaded FAILED');
+    return false;
+    // alert('Upload failed');
+  }
+};
+
 export {
   capitalizeFirstLetter,
   hyphenate,
@@ -245,4 +271,5 @@ export {
   filterCategoryPageData,
   fetchCarouselData,
   validImage,
+  uploadImg,
 };

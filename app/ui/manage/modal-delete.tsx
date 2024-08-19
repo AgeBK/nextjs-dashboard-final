@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Button from '../button';
 import Img from '../image';
-import ExclamationCircle from '@/app/svg/exclamation-circle';
+import ImgFill from '../image-fill';
 import { ModalDeleteProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/manage/ModalDelete.module.css';
 
@@ -13,7 +13,12 @@ export default function ModalDelete({ id, name }: ModalDeleteProps) {
     <div className={styles.modalCont}>
       <div className={styles.modal}>
         <div className={styles.exclamation}>
-          <ExclamationCircle css="exclamation" />
+          <ImgFill
+            imgSrc={`icons/trash.svg`}
+            imgAlt="trash"
+            imgStyle="product130h"
+            imgPriority={true}
+          />
         </div>
         <h3 className={styles.hdr}>Are you sure?</h3>
         <div className={styles.confirm}>

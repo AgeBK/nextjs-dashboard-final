@@ -6,16 +6,17 @@ import { validImage } from '@/app/lib/utils';
 import ImgFill from '../image-fill';
 import ManageUpload from './manage-upload';
 import data from '@/app/lib/appData.json';
+import styles from '@/app/assets/css/manage/Form.module.css';
 
 export default function ManageImage({
   productId,
   packaging,
-  productAdded,
   action,
   isDelete,
 }: ManageImageProps) {
-  console.log(productId, packaging, productAdded, action);
+  console.log(productId, packaging, action);
   const [isImageFound, setIsImageFound] = useState(false);
+  const [isNewImage, setIsNewImage] = useState(false);
   const { imgWinePath } = data;
   const imgURL = `${imgWinePath}${productId}.jpg`;
 
@@ -26,13 +27,24 @@ export default function ManageImage({
   return (
     <div>
       {!isDelete && (
-        <ManageUpload productId={productId} productAdded={productAdded} />
+        <ManageUpload productId={productId} setIsNewImage={setIsNewImage} />
       )}
-      {productId && isImageFound && (
-        <ImgFill
-          imgSrc={`wine/${productId}.jpg`}
-          imgAlt=""
-          imgStyle="product130h"
+      {productId && isImageFound && !isNewImage && (
+        <div>
+          <ImgFill
+            imgSrc={`wine/${productId}.jpg`}
+            imgAlt=""
+            imgStyle="product130h"
+            imgPriority={true}
+          />
+        </div>
+      )}
+      {/* Next.js image caching stops new uploaded images being shown so using standard img element */}
+      {productId && isNewImage && (
+        <img
+          src={`/assets/img/wine/${productId}.jpg`}
+          alt="wine"
+          className={styles.uploadImg}
         />
       )}
     </div>

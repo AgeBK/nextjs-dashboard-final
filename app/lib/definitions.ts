@@ -189,7 +189,8 @@ export interface WineFilterProps {
 
 export type FormStateProps = {
   message: string | null;
-  errors: Record<string, any>;
+  // errors: Record<string, any>;
+  errors: KeyStringProps;
   success: boolean | null;
 };
 
@@ -353,11 +354,6 @@ export type InputFieldsProps = {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export type UploadProps = {
-  productId: string;
-  productAdded: boolean | null;
-};
-
 export type ManageProductActionsProps = {
   enableModal: (e: React.MouseEvent<Element, MouseEvent>) => void;
   isDelete: boolean;
@@ -366,7 +362,7 @@ export type ManageProductActionsProps = {
 export type ModalDeleteProps = {
   id: string;
   name: string;
-  initialState: any;
+  initialState: FormStateProps;
   setShowModal: (show: boolean) => void;
 };
 
@@ -388,7 +384,14 @@ export type ManagePageProps = {
   };
 };
 
-export interface ManageImageProps extends UploadProps {
+export type ManageUploadProps = {
+  productId: string;
+  setIsNewImage: (isNewImage: boolean) => void;
+};
+
+// export interface ManageImageProps extends ManageUploadProps {
+export interface ManageImageProps {
+  productId: string;
   action: string;
   packaging: string;
   isDelete: boolean;
@@ -453,6 +456,7 @@ export type SchemaProps = z.ZodObject<
   'strip',
   z.ZodTypeAny,
   {
+    id: string;
     brand: string;
     name: string;
     short_name: string;
@@ -493,6 +497,12 @@ export type SchemaProps = z.ZodObject<
     unit_of_measure_label: string;
   }
 >;
+
+export type validatedFieldsProps = {
+  success: boolean;
+  error?: { flatten: () => { fieldErrors: Record<string, string[]> } };
+  data?: any;
+};
 
 //RTK slice
 export type CartState = {

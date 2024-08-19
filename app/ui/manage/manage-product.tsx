@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 import { FormStateProps, ManageProductProps } from '@/app/lib/definitions';
@@ -16,7 +16,10 @@ import styles from '@/app/assets/css/manage/Form.module.css';
 // TODO: edit product, update image check?
 // TODO: finish running lint
 // TODO: wave / console / terminal all pages
-// TODO: checked to modal
+// TODO: checked to modal?
+// TODO: update readme
+// TODO: http://localhost:3000/red/shiraz/1234567 (if product doesn't exist, should display message)
+// TODO: product page 2 for in product cart doesn't auto adjust to special price?
 
 const initialState: FormStateProps = {
   message: null,
@@ -34,6 +37,8 @@ export default function ManageProduct({
   const [productId, setProductId] = useState<string>('');
   const { id, name } = product;
   const isDelete = action === 'delete';
+
+  // eslint-disable-next-line
   let currentActionFn: any = null;
 
   switch (action) {
@@ -51,6 +56,12 @@ export default function ManageProduct({
   }
 
   const [state, dispatch] = useFormState(currentActionFn, initialState);
+
+  useEffect(() => {
+    if (state.success) {
+      window.location.href = '/manage';
+    } 
+  }, [state]);
 
   // product id used for image name when adding product
   const handleChange = ({
@@ -86,7 +97,6 @@ export default function ManageProduct({
         <ManageImage
           productId={productId || id}
           packaging={ddlItems.packaging as string}
-          productAdded={state.success}
           action={action}
           isDelete={isDelete}
         />
