@@ -12,10 +12,10 @@ export default function ManageProducts({ props }: ManageProductsProps) {
   return (
     <div key={id} className={styles.row}>
       <div className={styles.col}>{id}</div>
-      <div className={styles.col}>{name}</div>
-      <div className={styles.col}>{brand}</div>
-      <div className={styles.col}>{category}</div>
-      <div className={styles.col}>{variety}</div>
+      <div className={`${styles.col} ${styles.name}`}>{name}</div>
+      <div className={`${styles.col} ${styles.brand}`}>{brand}</div>
+      <div className={`${styles.col} ${styles.category}`}>{category}</div>
+      <div className={`${styles.col} ${styles.variety}`}>{variety}</div>
       <div className={`${styles.col} ${styles.price}`}>
         {price_normal} / <span> {price_current}</span>
       </div>

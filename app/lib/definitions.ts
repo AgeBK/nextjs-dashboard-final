@@ -456,7 +456,7 @@ export type SchemaProps = z.ZodObject<
   'strip',
   z.ZodTypeAny,
   {
-    id: string;
+    id?: string;
     brand: string;
     name: string;
     short_name: string;
@@ -498,11 +498,11 @@ export type SchemaProps = z.ZodObject<
   }
 >;
 
-export type validatedFieldsProps = {
-  success: boolean;
-  error?: { flatten: () => { fieldErrors: Record<string, string[]> } };
-  data?: any;
-};
+// export type validatedFieldsProps = {
+//   success: boolean;
+//   error?: { flatten: () => { fieldErrors: Record<string, string[]> } };
+//   data?: any;
+// };
 
 //RTK slice
 export type CartState = {

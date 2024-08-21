@@ -1,4 +1,6 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
+
 import { fetchProductById } from '@/app/lib/data';
 import BreadCrumb from '@/app/ui/bread-crumb';
 import ProductCart from '@/app/ui/product/product-cart';
@@ -102,5 +104,5 @@ export default async function Product({
       </article>
     );
   }
-  return null;
+  notFound();
 }

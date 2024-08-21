@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import data from '../lib/appData.json';
-import Img from './image';
-import { CampainMiniProps } from '../lib/definitions';
+import data from '../../lib/appData.json';
+import Img from '../image';
+import { CampainMiniProps } from '../../lib/definitions';
 import styles from '@/app/assets/css/Home.module.css';
 
 export default function HomeCampaignMini() {

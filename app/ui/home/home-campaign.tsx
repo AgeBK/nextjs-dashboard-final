@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { HomeCampaignProps } from '../lib/definitions';
+import { HomeCampaignProps } from '../../lib/definitions';
 import styles from '@/app/assets/css/Home.module.css';
 
 export default function HomeCampaign({

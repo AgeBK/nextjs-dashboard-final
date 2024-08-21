@@ -13,11 +13,6 @@
   display: inline-block;
 }
 
-.brand,
-.short_name {
-  font-size: 14px;
-}
-
 .info {
   display: inline-block;
 }
@@ -68,6 +63,23 @@
   padding: 5px;
 }
 
+.actions {
+  white-space: nowrap;
+}
+
 .actions > * {
   display: inline-block;
+}
+
+@media screen and (max-width: 1150px) {
+  .category,
+  .variety {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 150px) {
+  .brand {
+    display: none;
+  }
 }

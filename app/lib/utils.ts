@@ -29,7 +29,7 @@ const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
 
   if (arg2) {
     switch (arg1) {
-      case 'search': // TODO:
+      case 'search':
         arr = await fetchProductsBySearchTerm(capitalizeFirstLetter(arg1));
         break;
       case 'white':
@@ -54,7 +54,7 @@ const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
       const price = Number(arg1.split('-')[2]);
       arr = await fetchProductsPriceTwoFor(price);
     } else if (arg1.startsWith('search')) {
-      const searchTerm = arg1.replace('search%3D', ''); // TODO: search%3Dpenf
+      const searchTerm = arg1.replace('search%3D', '');
       arr = await fetchProductsBySearchTerm(searchTerm);
     } else {
       switch (arg1) {

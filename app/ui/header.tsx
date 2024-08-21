@@ -5,12 +5,10 @@ import Img from './image';
 import HeaderUserCart from './header-user-cart';
 import getUser from '@/getUser';
 import { fetchProducts } from '../lib/data';
-import { DataProps } from '../lib/definitions';
 import styles from '@/app/assets/css/Header.module.css';
 
 export default async function Header() {
-  const products: DataProps[] = await fetchProducts();
-  const user = await getUser();
+  const [products, user] = await Promise.all([fetchProducts(), getUser()]);
 
   return (
     <header className={styles.header}>

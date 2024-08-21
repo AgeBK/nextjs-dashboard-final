@@ -12,7 +12,7 @@
   border-radius: 6px;
 }
 
-.table header {
+div.table header:nth-of-type(odd) {
   background-color: #000;
   color: #fff;
 }

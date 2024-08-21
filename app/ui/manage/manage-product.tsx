@@ -13,10 +13,8 @@ import ModalDelete from './modal-delete';
 import ManageImage from './manage-image';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
-// TODO: edit product, update image check?
 // TODO: finish running lint
 // TODO: wave / console / terminal all pages
-// TODO: checked to modal?
 // TODO: update readme
 // TODO: http://localhost:3000/red/shiraz/1234567 (if product doesn't exist, should display message)
 // TODO: product page 2 for in product cart doesn't auto adjust to special price?
@@ -55,12 +53,17 @@ export default function ManageProduct({
       break;
   }
 
+  // useFormState first arg expects a function that takes 2 arguments (state, formdata)
+  // state is the initial state, formData is automatically added
   const [state, dispatch] = useFormState(currentActionFn, initialState);
 
   useEffect(() => {
+    console.log('UE');
+    console.log(state);
+
     if (state.success) {
       window.location.href = '/manage';
-    } 
+    }
   }, [state]);
 
   // product id used for image name when adding product
@@ -74,43 +77,30 @@ export default function ManageProduct({
   };
 
   return (
-    <>
-      {/* {!isAdd && (
-        // TODO: component?
-        <Link
-          href={`/${String(category).toLowerCase()}/${hyphenate(
-            String(variety).toLowerCase(),
-          )}/${id}`}
-          target="_blank"
-        >
-          View product
-        </Link>
-      )} */}
-      <form action={dispatch} className={styles.container}>
-        <InputFields
-          product={product}
-          isDelete={isDelete}
-          handleChange={handleChange}
+    <form action={dispatch} className={styles.container}>
+      <InputFields
+        product={product}
+        isDelete={isDelete}
+        handleChange={handleChange}
+      />
+      <SelectWine ddlWineItems={ddlWineItems} isDelete={isDelete} />
+      <SelectLists ddlWineItems={ddlItems} isDelete={isDelete} />
+      <ManageImage
+        productId={productId || id}
+        packaging={ddlItems.packaging as string}
+        action={action}
+        isDelete={isDelete}
+      />
+      <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
+      <ManageDBMessages errorMessages={state} />
+      {showModal && (
+        <ModalDelete
+          id={id}
+          name={name}
+          initialState={initialState}
+          setShowModal={setShowModal}
         />
-        <SelectWine ddlWineItems={ddlWineItems} isDelete={isDelete} />
-        <SelectLists ddlWineItems={ddlItems} isDelete={isDelete} />
-        <ManageImage
-          productId={productId || id}
-          packaging={ddlItems.packaging as string}
-          action={action}
-          isDelete={isDelete}
-        />
-        <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
-        <ManageDBMessages errorMessages={state} />
-        {showModal && (
-          <ModalDelete
-            id={id}
-            name={name}
-            initialState={initialState}
-            setShowModal={setShowModal}
-          />
-        )}
-      </form>
-    </>
+      )}
+    </form>
   );
 }

@@ -41,11 +41,13 @@ export default function ManageImage({
       )}
       {/* Next.js image caching stops new uploaded images being shown so using standard img element */}
       {productId && isNewImage && (
-        <img
-          src={`/assets/img/wine/${productId}.jpg`}
-          alt="wine"
-          className={styles.uploadImg}
-        />
+        <div className={styles.newImage}>
+          <img
+            src={`/assets/img/wine/${productId}.jpg`}
+            alt="wine"
+            className={styles.uploadImg}
+          />
+        </div>
       )}
     </div>
   );

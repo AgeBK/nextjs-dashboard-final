@@ -13,31 +13,33 @@ export default function InputFields({
   const { isRequired } = data;
   return (
     <>
-      {Object.entries(product).map(([key, value]: [string, any]) => {
-        const isReq = isRequired.includes(key);
-        const dataType = typeof value === 'number' ? 'number' : 'text';
-        return (
-          <div key={key}>
-            <label htmlFor={key} id={`lbl${key}`}>
-              <span className={styles.key}>
-                {key.replaceAll('_', ' ')}
-                {isReq && <span className={styles.required}>*</span>}
-              </span>
-            </label>
-            <input
-              id={key}
-              name={key}
-              onChange={handleChange}
-              className={styles.input}
-              type={dataType}
-              defaultValue={value}
-              aria-labelledby={`lbl${key}`}
-              disabled={(key === 'id' && value) || isDelete}
-              required={isReq}
-            />
-          </div>
-        );
-      })}
+      {Object.entries(product).map(
+        ([key, value]: [string, string | number]) => {
+          const isReq = isRequired.includes(key);
+          const dataType = typeof value === 'number' ? 'number' : 'text';
+          return (
+            <div key={key}>
+              <label htmlFor={key} id={`lbl${key}`}>
+                <span className={styles.key}>
+                  {key.replaceAll('_', ' ')}
+                  {isReq && <span className={styles.required}>*</span>}
+                </span>
+              </label>
+              <input
+                id={key}
+                name={key}
+                onChange={handleChange}
+                className={styles.input}
+                type={dataType}
+                defaultValue={value}
+                aria-labelledby={`lbl${key}`}
+                disabled={(key === 'id' && value) || isDelete}
+                required={isReq}
+              />
+            </div>
+          );
+        },
+      )}
     </>
   );
 }

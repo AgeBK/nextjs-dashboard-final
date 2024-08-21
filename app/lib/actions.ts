@@ -4,9 +4,7 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
-import { SchemaProps } from './definitions';
+import { FormStateProps, SchemaProps } from './definitions';
 
 const minStr1 = z
   .string()
@@ -40,10 +38,7 @@ const FormSchema = z.object({
 
 const UpdateSchema = FormSchema.omit({ id: true });
 
-
-
 const validateFormData = (Schema: SchemaProps, formData: FormData) => {
-  // const Schema = isEdit ? UpdateSchema : FormSchema;
   return Schema.safeParse({
     id: formData.get('id'),
     brand: formData.get('brand'),
@@ -68,7 +63,7 @@ const validateFormData = (Schema: SchemaProps, formData: FormData) => {
 };
 
 export async function addProduct(
-  prevState: { message: any; errors: any },
+  prevState: FormStateProps,
   formData: FormData,
 ) {
   const validatedFields = validateFormData(FormSchema, formData);
@@ -153,18 +148,11 @@ export async function addProduct(
     return {
       message: 'Database Error - Failed to add new product:' + error,
       errors: JSON.parse(JSON.stringify(error)),
-      // success: false,
     };
   }
-
   return {
-    // message: 'Successfully added product',
-    // errors: {},
     success: true,
   };
-
-  // revalidatePath('/manage');
-  // redirect('/manage');
 }
 
 export async function updateProduct(
@@ -231,14 +219,17 @@ export async function updateProduct(
       errors: JSON.parse(JSON.stringify(error)),
     };
   }
-
-  revalidatePath('/manage');
-  redirect('/manage');
+  return {
+    success: true,
+  };
 }
 
-export async function deleteProduct(id: string, prevState: { message: any }) {
+export async function deleteProduct(id: string) {
   try {
     await sql`DELETE FROM products WHERE id = ${id}`;
+    return {
+      success: true,
+    };
   } catch (error) {
     console.log('Failed to delete product: ' + error);
     return {
@@ -246,16 +237,15 @@ export async function deleteProduct(id: string, prevState: { message: any }) {
       errors: JSON.parse(JSON.stringify(error)),
     };
   }
-  revalidatePath('/manage');
-  redirect('/manage');
 }
 
 export async function authenticate(
-  // prevState: string | undefined,
+  prevState: string | undefined,
   formData: FormData,
 ) {
   try {
     await signIn('credentials', formData);
+    return 'success';
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

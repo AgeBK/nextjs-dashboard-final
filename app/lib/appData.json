@@ -9,6 +9,7 @@
   "ONE_CAROUSEL_ITEM": 1,
   "PRIORITY": 5,
   "errorMsg": "Something has gone wrong",
+  "notFoundMsg": "Could not find the requested product",
   "imgPath": "/assets/img/",
   "imgWinePath": "/assets/img/wine/",
   "blurb": {
