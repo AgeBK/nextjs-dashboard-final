@@ -11,7 +11,7 @@ export default function ManageProductActions({
   isDelete,
 }: ManageProductActionsProps) {
   return (
-    <>
+    <div className={styles.container}>
       <Link href="/manage" className={styles.cancel}>
         <span>Cancel </span>
         <Img
@@ -42,6 +42,6 @@ export default function ManageProductActions({
           />
         </Button>
       )}
-    </>
+    </div>
   );
 }

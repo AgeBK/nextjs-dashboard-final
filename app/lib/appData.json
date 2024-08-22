@@ -12,6 +12,7 @@
   "notFoundMsg": "Could not find the requested product",
   "imgPath": "/assets/img/",
   "imgWinePath": "/assets/img/wine/",
+  "imgWineUploadPath": "public/assets/img/wine/",
   "blurb": {
     "white": "Feeling like a crisp white wine, but not sure where to start? There are many different white wine styles and labels to pick from in Australia and further abroad. We're sure you'll find your next favourite among our carefully curated selection.",
     "red": "Traditional winemaking techniques and an eye to modern styles allow us to create wines that are synonymous with the regions they are from. Rich, honest wines that showcase the regions in their most natural light. Rich red in colour with purple hues. ",

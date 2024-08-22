@@ -24,8 +24,8 @@ export default function ErrorMain({ message }: { message: string }) {
       <div>Sorry for the inconvenience</div>
       <Link href={pathname} className={styles.navigate}>
         Reload page
-      </Link>{' '}
-      <Link href={pathname} className={styles.navigate}>
+      </Link>
+      <Link href="/" className={styles.navigate}>
         Go home
       </Link>
     </section>

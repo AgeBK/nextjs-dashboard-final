@@ -18,6 +18,7 @@ import styles from '@/app/assets/css/manage/Form.module.css';
 // TODO: update readme
 // TODO: http://localhost:3000/red/shiraz/1234567 (if product doesn't exist, should display message)
 // TODO: product page 2 for in product cart doesn't auto adjust to special price?
+// TODO: manage mobile view
 
 const initialState: FormStateProps = {
   message: null,
