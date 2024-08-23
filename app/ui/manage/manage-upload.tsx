@@ -11,19 +11,15 @@ export default function ManageUpload({
   isDelete,
 }: ManageUploadProps) {
   const onChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    console.log('ManageUpload - onChange:' + productId);
     const { files } = event.target;
     if (files) {
       const validImg = files[0].type === 'image/jpeg';
 
       if (productId && validImg) {
-        console.log('ManageUpload - onChange good');
         const isSuccess = await uploadImg(files[0], productId);
-        console.log('isSuccess: ' + isSuccess);
 
         setIsNewImage(isSuccess);
       } else {
-        console.log('ManageUpload - onChange Error');
         console.log(productId, validImg);
       }
     }

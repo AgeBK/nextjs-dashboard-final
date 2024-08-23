@@ -1,5 +1,5 @@
 import { sql } from '@vercel/postgres';
-import {  DataProps } from './definitions';
+import { DataProps } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 
 export async function fetchProducts() {

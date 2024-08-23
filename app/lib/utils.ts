@@ -23,9 +23,6 @@ export const formatCurrency = (amount: number) => {
 const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
   let arr: DataProps[] = [];
   // TODO: netlify version
-  console.log('fetchCategoryPageData');
-  console.log(arg1);
-  console.log(arg2);
 
   if (arg2) {
     switch (arg1) {
@@ -98,17 +95,18 @@ const fetchCarouselData = async (variety?: string) => {
 };
 
 const capitalizeFirstLetter = (string: string) => {
-  const words = string
+  // string can be multiple words
+  const wordsArr = string
     .split(' ')
-    .map((val) => val.charAt(0).toUpperCase() + string.slice(1));
-  return words.join('');
+    .map((val) => val.charAt(0).toUpperCase() + val.slice(1));
+  return wordsArr.join(' ');
 };
 
 const hyphenate = (text: string | undefined) =>
   typeof text === 'string' ? text.toLowerCase().replace(/ /gi, '-') : undefined;
 
 const deHyphenate = (text: string) =>
-  typeof text === 'string' && text.toLowerCase().replace(/-/gi, ' ');
+  typeof text === 'string' ? text.toLowerCase().replace(/-/gi, ' ') : undefined;
 
 const checkDeals = (
   price_two_for: number,

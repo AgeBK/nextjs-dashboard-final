@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { fetchCategoryPageData } from '@/app/lib/utils';
+import { deHyphenate, fetchCategoryPageData } from '@/app/lib/utils';
 import { CategoryParamsProps, DataProps } from '@/app/lib/definitions';
 import CategoryMain from '@/app/ui/category/category-main';
 import Loading from '@/app/ui/loading';
@@ -7,7 +7,7 @@ import Loading from '@/app/ui/loading';
 export default async function Page({
   params: { urlCategory, urlVariety }, // TODO: why urlVariety array
 }: CategoryParamsProps) {
-  const variety = urlVariety ? urlVariety[0] : undefined;
+  const variety = urlVariety ? deHyphenate(urlVariety[0]) : undefined;
   const products: DataProps[] = await fetchCategoryPageData(
     urlCategory,
     variety,
