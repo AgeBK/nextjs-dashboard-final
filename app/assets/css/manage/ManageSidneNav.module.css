@@ -27,9 +27,8 @@
 }
 
 .burger {
-  /* font-size: 30px; */
   cursor: pointer;
   position: absolute;
   background-color: #555;
-  padding: 2px 15px;
+  padding: 2px 32px;
 }

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Img from '../image';
-// import Logout from '../logout'; TODO
 import Button from '../button';
 import styles from '@/app/assets/css/manage/ManageSidneNav.module.css';
 
@@ -53,7 +52,7 @@ export default function ManageSideNav() {
           role="button"
           tabIndex={0}
         >
-          ☰ Menu
+          ☰ Admin Menu
         </span>
       )}
     </>

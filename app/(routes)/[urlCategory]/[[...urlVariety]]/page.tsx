@@ -5,7 +5,7 @@ import CategoryMain from '@/app/ui/category/category-main';
 import Loading from '@/app/ui/loading';
 
 export default async function Page({
-  params: { urlCategory, urlVariety }, // TODO: why urlVariety array
+  params: { urlCategory, urlVariety }, // urlVariety optional passed as array
 }: CategoryParamsProps) {
   const variety = urlVariety ? deHyphenate(urlVariety[0]) : undefined;
   const products: DataProps[] = await fetchCategoryPageData(
@@ -14,6 +14,9 @@ export default async function Page({
   ); // various db calls based on URL
   // TODO: check every file for unused import etc
   // TODO: check mobile (header) / mobile category page, filter button doesn't load/ text in autoComplete doesn't change sometimes
+  console.log('Category Page');
+  console.log(urlCategory);
+  console.log(urlVariety);
 
   return (
     <article>

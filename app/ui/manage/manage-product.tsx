@@ -16,8 +16,6 @@ import styles from '@/app/assets/css/manage/Form.module.css';
 // TODO: finish running lint
 // TODO: wave / console / terminal all pages
 // TODO: update readme
-// TODO: product page 2 for in product cart doesn't auto adjust to special price?
-// TODO: home page not resizing
 
 const initialState: FormStateProps = {
   message: null,

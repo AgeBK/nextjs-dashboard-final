@@ -39,20 +39,20 @@ export default function ProductCart({
     <div className={styles.cartTableCont}>
       <div className={styles.cartTable}>
         <div className={styles.cartBottle}>
-          <div className={styles.price}>
-            ${price_current}/{packaging}
-          </div>
           <div className={styles.packImg}>
             <Img
               imgSrc={isCask ? `icons/barrelSil.png` : `icons/wineSil.png`}
               imgAlt=""
-              imgWidth={22}
-              imgHeight={50}
+              imgWidth={18}
+              imgHeight={40}
             />
+          </div>
+          <div className={styles.price}>
+            ${price_current}/{packaging}
           </div>
         </div>
         <div className={styles.cartAmt}>
-          <div className={styles.totalPrice}>${price_current * count}</div>
+          {/* <div className={styles.totalPrice}>${price_current * count}</div> */}
           <Button css="cartLge" onClick={handleCount} disabled={count < 2}>
             -
           </Button>

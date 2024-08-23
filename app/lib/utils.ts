@@ -22,7 +22,6 @@ export const formatCurrency = (amount: number) => {
 
 const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
   let arr: DataProps[] = [];
-  // TODO: netlify version
 
   if (arg2) {
     switch (arg1) {
