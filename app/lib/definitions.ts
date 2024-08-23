@@ -387,6 +387,7 @@ export type ManagePageProps = {
 export type ManageUploadProps = {
   productId: string;
   setIsNewImage: (isNewImage: boolean) => void;
+  isDelete: boolean;
 };
 
 // export interface ManageImageProps extends ManageUploadProps {

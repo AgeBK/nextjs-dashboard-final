@@ -6,7 +6,7 @@
 .sideNav {
   min-width: 140px;
   background-color: #555;
-  padding: 30px 20px;
+  padding: 5px 20px;
 }
 
 .sideNav h1 {
@@ -24,4 +24,12 @@
 
 .sideNav li a:hover {
   color: #fff;
+}
+
+.burger {
+  /* font-size: 30px; */
+  cursor: pointer;
+  position: absolute;
+  background-color: #555;
+  padding: 2px 15px;
 }

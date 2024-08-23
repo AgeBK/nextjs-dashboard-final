@@ -26,9 +26,11 @@ export default function ManageImage({
 
   return (
     <div>
-      {!isDelete && (
-        <ManageUpload productId={productId} setIsNewImage={setIsNewImage} />
-      )}
+      <ManageUpload
+        productId={productId}
+        setIsNewImage={setIsNewImage}
+        isDelete={isDelete}
+      />
       {productId && isImageFound && !isNewImage && (
         <div>
           <ImgFill

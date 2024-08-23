@@ -78,7 +78,7 @@
   }
 }
 
-@media screen and (max-width: 150px) {
+@media screen and (max-width: 550px) {
   .brand {
     display: none;
   }

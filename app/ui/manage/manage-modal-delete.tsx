@@ -6,7 +6,7 @@ import Button from '../button';
 import Img from '../image';
 import ImgFill from '../image-fill';
 import { ModalDeleteProps } from '@/app/lib/definitions';
-import styles from '@/app/assets/css/manage/ModalDelete.module.css';
+import styles from '@/app/assets/css/manage/ManageDBMessages.module.css';
 
 export default function ModalDelete({ id, name }: ModalDeleteProps) {
   return (

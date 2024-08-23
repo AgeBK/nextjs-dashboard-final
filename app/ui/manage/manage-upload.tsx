@@ -8,6 +8,7 @@ import styles from '@/app/assets/css/manage/Form.module.css';
 export default function ManageUpload({
   productId,
   setIsNewImage,
+  isDelete,
 }: ManageUploadProps) {
   const onChange = async (event: ChangeEvent<HTMLInputElement>) => {
     console.log('ManageUpload - onChange:' + productId);
@@ -28,11 +29,6 @@ export default function ManageUpload({
     }
   };
 
-  // if (productAdded && productId && elemRef.current) {
-  //   console.log('Upload Img valid');
-  //   uploadImg();
-  // }
-
   return (
     <div>
       <label htmlFor="upload">
@@ -46,6 +42,7 @@ export default function ManageUpload({
         name="file"
         accept="image/jpeg"
         onChange={onChange}
+        disabled={isDelete}
       />
     </div>
   );

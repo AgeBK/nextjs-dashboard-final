@@ -9,16 +9,15 @@ import SelectLists from '@/app/ui/manage/select-list';
 import InputFields from './input-fields';
 import ManageProductActions from './manage-product-actions';
 import ManageDBMessages from './manage-db-messages';
-import ModalDelete from './modal-delete';
+import ModalDelete from './manage-modal-delete';
 import ManageImage from './manage-image';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
 // TODO: finish running lint
 // TODO: wave / console / terminal all pages
 // TODO: update readme
-// TODO: http://localhost:3000/red/shiraz/1234567 (if product doesn't exist, should display message)
 // TODO: product page 2 for in product cart doesn't auto adjust to special price?
-// TODO: manage mobile view
+// TODO: home page not resizing
 
 const initialState: FormStateProps = {
   message: null,
