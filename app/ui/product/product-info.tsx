@@ -9,12 +9,16 @@ export default function ProductInfo({
   variety,
   brand,
   packaging,
+  region,
   unitOfMeasureLabel,
   current,
   normal,
-  short_name,
+  shortName,
   urlCategory,
 }: ProductInfoProps) {
+  console.log('shortName');
+  console.log(shortName);
+
   return (
     <section className={styles.info}>
       <h2 className={styles.infoHdr}>Product Information:</h2>
@@ -64,7 +68,7 @@ export default function ProductInfo({
         <li>
           <span>Organic</span>
           <span>
-            {short_name.toLowerCase().includes('organic') ? 'Yes' : 'No'}
+            {shortName.toLowerCase().includes('organic') ? 'Yes' : 'No'}
           </span>
         </li>
         <li>
@@ -73,7 +77,7 @@ export default function ProductInfo({
         </li>
         <li>
           <span>Region</span>
-          <span>South Eastern Australia, Australia</span>
+          <span>{region}</span>
         </li>
         <li>
           <span>Origin</span>

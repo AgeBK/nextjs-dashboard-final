@@ -1,15 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  checkDiscountCode,
-  checkMultiBuys,
-  storeCart,
-} from './cartUtils';
+import { checkDiscountCode, checkMultiBuys, storeCart } from './cartUtils';
 import { AddToCartProps, CartProps, CartState } from '../lib/definitions';
 
 const initialState: CartState = {
   cart: {},
-  price_two_forDeals: [],
-  price_ten_forDeals: 0,
+  priceTwoForDeals: [],
+  priceTenForDeals: 0,
   promotionCode: '',
 };
 
@@ -22,14 +18,14 @@ export const cartSlice = createSlice({
         id,
         name,
         brand,
-        short_name,
+        shortName,
         price,
         quantity,
         deal,
-        promotion_discount_code,
+        promotionDiscountCode,
       } = action.payload;
 
-      const { cart, price_two_forDeals, promotionCode } = state;
+      const { cart, priceTwoForDeals, promotionCode } = state;
 
       if (cart[id]) {
         state.cart[id].quantity += quantity;
@@ -37,33 +33,31 @@ export const cartSlice = createSlice({
         state.cart[id] = {
           name,
           brand,
-          short_name,
+          shortName,
           price,
           quantity,
           deal,
-          promotion_discount_code,
+          promotionDiscountCode,
         };
       }
 
       // monitor products in multibuy deals
       if (deal && quantity) {
-        if (deal.price_two_for || deal.price_ten_for) {
-          const price_two_forDeal = deal.price_two_for;
-          const price_ten_forDeal = deal.price_ten_for;
+        if (deal.priceTwoFor || deal.priceTenFor) {
+          const priceTwoForDeal = deal.priceTwoFor;
+          const priceTenForDeal = deal.priceTenFor;
 
           for (let i = 0; i < quantity; i++) {
-            if (price_two_forDeal)
-              price_two_forDeals.push(Number(price_two_forDeal));
-            if (price_ten_forDeal) state.price_ten_forDeals += 1;
+            if (priceTwoForDeal) priceTwoForDeals.push(Number(priceTwoForDeal));
+            if (priceTenForDeal) state.priceTenForDeals += 1;
           }
 
           if (
-            price_two_forDeal &&
-            price_two_forDeals.filter((val) => val === price_two_forDeal)
-              .length > 1
+            priceTwoForDeal &&
+            priceTwoForDeals.filter((val) => val === priceTwoForDeal).length > 1
           ) {
             state.cart = checkMultiBuys(state.cart, deal, false, 2);
-          } else if (price_ten_forDeal && state.price_ten_forDeals > 9) {
+          } else if (priceTenForDeal && state.priceTenForDeals > 9) {
             state.cart = checkMultiBuys(state.cart, deal, false, 10);
           }
         }
@@ -76,7 +70,7 @@ export const cartSlice = createSlice({
     },
     decrement: (state, action: PayloadAction<{ id: string; all: boolean }>) => {
       const { id, all } = action.payload;
-      const { price_two_forDeals } = state;
+      const { priceTwoForDeals } = state;
       const item = state.cart[id];
       const { quantity, deal } = item;
 
@@ -88,22 +82,22 @@ export const cartSlice = createSlice({
 
       //  check if existing products in cart still qualify for any multibuys
       if (deal) {
-        const { price_two_for, price_ten_for } = deal;
-        if (price_two_for || price_ten_for) {
+        const { priceTwoFor, priceTenFor } = deal;
+        if (priceTwoFor || priceTenFor) {
           const qty = all ? quantity : 1;
-          if (price_two_for) {
+          if (priceTwoFor) {
             for (let i = 0; i < qty; i++) {
-              const ind = price_two_forDeals.indexOf(price_two_for);
-              price_two_forDeals.splice(ind, 1);
+              const ind = priceTwoForDeals.indexOf(priceTwoFor);
+              priceTwoForDeals.splice(ind, 1);
             }
           } else {
-            state.price_ten_forDeals -= all ? quantity : 1;
+            state.priceTenForDeals -= all ? quantity : 1;
           }
           if (
-            (price_two_for &&
-              price_two_forDeals.filter((val) => val === price_two_for).length <
+            (priceTwoFor &&
+              priceTwoForDeals.filter((val) => val === priceTwoFor).length <
                 2) ||
-            (price_ten_for && state.price_ten_forDeals < 10)
+            (priceTenFor && state.priceTenForDeals < 10)
           ) {
             state.cart = checkMultiBuys(state.cart, deal, true, 0);
           }

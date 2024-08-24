@@ -6,7 +6,7 @@ import styles from '@/app/assets/css/manage/ManageProducts.module.css';
 
 // list of products main manage page
 export default function ManageProducts({ props }: ManageProductsProps) {
-  const { id, category, variety, name, brand, price_normal, price_current } =
+  const { id, category, variety, name, brand, priceNormal, priceCurrent } =
     props;
 
   return (
@@ -17,7 +17,7 @@ export default function ManageProducts({ props }: ManageProductsProps) {
       <div className={`${styles.col} ${styles.category}`}>{category}</div>
       <div className={`${styles.col} ${styles.variety}`}>{variety}</div>
       <div className={`${styles.col} ${styles.price}`}>
-        {price_normal} / <span> {price_current}</span>
+        {priceNormal} / <span> {priceCurrent}</span>
       </div>
       <div className={`${styles.col} ${styles.actions}`}>
         <Link

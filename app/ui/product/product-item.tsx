@@ -15,31 +15,27 @@ export default function ProductItem({ props, ind, css }: ProductItemProps) {
     category,
     variety,
     name,
-    short_name,
+    shortName,
     brand,
-    ratings_average,
-    price_normal,
-    price_ten_for,
-    price_two_for,
-    price_current,
-    price_percent_off,
-    promotion_callout_text,
-    promotion_discount_code,
+    ratingsAverage,
+    priceNormal,
+    priceTenFor,
+    priceTwoFor,
+    priceCurrent,
+    pricePercentOff,
+    promotionCalloutText,
+    promotionDiscountCode,
   } = props;
 
-  const deal: DealProps = checkDeals(
-    price_two_for,
-    price_ten_for,
-    price_percent_off,
-  );
-  const onSpecial = price_current !== price_normal;
-  const avg = Math.round(ratings_average);
+  const deal: DealProps = checkDeals(priceTwoFor, priceTenFor, pricePercentOff);
+  const onSpecial = priceCurrent !== priceNormal;
+  const avg = Math.round(ratingsAverage);
   const { PRIORITY } = data;
 
   return (
     <div className={`${styles.product} ${css ? styles[css] : ''}`} key={id}>
-      {promotion_callout_text || onSpecial ? (
-        <PriceDrop promotion_callout_text={promotion_callout_text} />
+      {promotionCalloutText || onSpecial ? (
+        <PriceDrop promotionCalloutText={promotionCalloutText} />
       ) : null}
       <Link
         href={`/${category.toLowerCase()}/${hyphenate(
@@ -55,7 +51,7 @@ export default function ProductItem({ props, ind, css }: ProductItemProps) {
         />
         <div className={styles.productMeta}>
           <h2 className={styles.brand}>{brand}</h2>
-          <h3 className={styles.short_name}>{short_name}</h3>
+          <h3 className={styles.shortName}>{shortName}</h3>
           {avg && avg > 2 ? (
             <Img
               imgSrc={`bg/${avg}star.jpg`}
@@ -67,17 +63,17 @@ export default function ProductItem({ props, ind, css }: ProductItemProps) {
           ) : null}
         </div>
       </Link>
-      <Price current={price_current} normal={price_normal} />
+      <Price current={priceCurrent} normal={priceNormal} />
       <div className={styles.addCont}>
         <AddToCart
           id={id}
           name={name}
           brand={brand}
-          short_name={short_name}
-          price={price_current}
+          shortName={shortName}
+          price={priceCurrent}
           quantity={1}
           deal={deal}
-          promotion_discount_code={promotion_discount_code}
+          promotionDiscountCode={promotionDiscountCode}
         />
       </div>
     </div>

@@ -14,9 +14,6 @@ export default async function Page({
   ); // various db calls based on URL
   // TODO: check every file for unused import etc
   // TODO: check mobile (header) / mobile category page, filter button doesn't load/ text in autoComplete doesn't change sometimes
-  console.log('Category Page');
-  console.log(urlCategory);
-  console.log(urlVariety);
 
   return (
     <article>

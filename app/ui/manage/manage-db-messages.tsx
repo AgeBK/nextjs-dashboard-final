@@ -1,5 +1,6 @@
 import React from 'react';
 import { ManageDBMessagesProps } from '@/app/lib/definitions';
+import { deCamelise } from '@/app/lib/utils';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
 // displays database errors add/edit/delete
@@ -13,7 +14,7 @@ export default function ManageDBMessages({
         {errorMessages.errors &&
           Object.entries(errorMessages.errors).map(([key, val], i) => (
             <li key={i} className={styles.messageList}>
-              <b>{key.replaceAll('_', ' ')}</b> - {val?.toString()}
+              <b>{deCamelise(key)}</b> - {val?.toString()}
             </li>
           ))}
       </ul>

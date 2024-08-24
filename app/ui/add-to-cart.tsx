@@ -11,11 +11,11 @@ export default function AddToCart({
   id,
   name,
   brand,
-  short_name,
+  shortName,
   price,
   quantity,
   deal,
-  promotion_discount_code,
+  promotionDiscountCode,
 }: AddToCartProps) {
   const [itemId, setItemId] = useState('');
   const dispatch = useDispatch();
@@ -29,11 +29,11 @@ export default function AddToCart({
         id,
         name,
         brand,
-        short_name,
+        shortName,
         price,
         quantity,
         deal,
-        promotion_discount_code,
+        promotionDiscountCode,
       }),
     );
   };

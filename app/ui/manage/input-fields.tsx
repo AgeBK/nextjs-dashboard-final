@@ -1,6 +1,7 @@
 'use client';
 
 import { InputFieldsProps } from '@/app/lib/definitions';
+import { deCamelise } from '@/app/lib/utils';
 import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
@@ -21,7 +22,8 @@ export default function InputFields({
             <div key={key}>
               <label htmlFor={key} id={`lbl${key}`}>
                 <span className={styles.key}>
-                  {key.replaceAll('_', ' ')}
+                  {/* {key.replaceAll('_', ' ')} */}
+                  {deCamelise(key)}
                   {isReq && <span className={styles.required}>*</span>}
                 </span>
               </label>
@@ -33,7 +35,7 @@ export default function InputFields({
                 type={dataType}
                 defaultValue={value}
                 aria-labelledby={`lbl${key}`}
-                disabled={(key === 'id' && value) || isDelete}
+                disabled={(key === 'id' && !!value) || isDelete}
                 required={isReq}
               />
             </div>

@@ -10,25 +10,25 @@ export type DataProps = {
   variety: string;
   category: string;
   region: string;
-  volume_ml: number;
+  volumeMl: number;
   packaging: string;
-  short_name: string;
-  unit_of_measure_label: string;
-  ratings_average: number;
-  ratings_total: number;
-  price_normal: number;
-  price_ten_for: number;
-  price_two_for: number;
-  price_current: number;
-  price_percent_off: number;
-  promotion_callout_text: string;
-  promotion_discount_code: string;
+  shortName: string;
+  unitOfMeasureLabel: string;
+  ratingsAverage: number;
+  ratingsTotal: number;
+  priceNormal: number;
+  priceTenFor: number;
+  priceTwoFor: number;
+  priceCurrent: number;
+  pricePercentOff: number;
+  promotionCalloutText: string;
+  promotionDiscountCode: string;
 };
 
 export type DealProps = {
-  price_two_for?: number;
-  price_ten_for?: number;
-  price_percent_off?: number;
+  priceTwoFor?: number;
+  priceTenFor?: number;
+  pricePercentOff?: number;
 };
 
 export type CategoryParamsProps = {
@@ -40,25 +40,25 @@ export type AddToCartProps = {
   id: string;
   name: string;
   brand: string;
-  short_name: string;
+  shortName: string;
   price: number;
   quantity: number;
   deal?: DealProps;
-  promotion_discount_code?: string;
+  promotionDiscountCode?: string;
 };
 
 export type CartItemProps = {
   name: string;
   brand: string;
-  short_name: string;
+  shortName: string;
   price: number;
   quantity: number;
   deal?: {
-    price_two_for?: number;
-    price_ten_for?: number;
-    price_percent_off?: number;
+    priceTwoFor?: number;
+    priceTenFor?: number;
+    pricePercentOff?: number;
   };
-  promotion_discount_code?: string;
+  promotionDiscountCode?: string;
   dealPrice?: number;
 };
 
@@ -112,14 +112,14 @@ export type ProductCartProps = {
   id: string;
   name: string;
   brand: string;
-  price_current: number;
-  short_name: string;
-  price_two_for: number;
-  price_ten_for: number;
-  price_percent_off: number;
+  priceCurrent: number;
+  shortName: string;
+  priceTwoFor: number;
+  priceTenFor: number;
+  pricePercentOff: number;
   packaging: string;
-  promotion_callout_text?: string;
-  promotion_discount_code?: string;
+  promotionCalloutText?: string;
+  promotionDiscountCode?: string;
   isCask: boolean;
 };
 
@@ -139,10 +139,11 @@ export type ProductInfoProps = {
   variety: string;
   brand: string;
   packaging: string;
+  region: string;
   unitOfMeasureLabel: string;
   current: number;
   normal: number;
-  short_name: string;
+  shortName: string;
   urlCategory?: string;
 };
 
@@ -285,16 +286,16 @@ export type ProductDetailsProps = {
   id: string;
   name: string;
   brand: string;
-  short_name: string;
+  shortName: string;
   average: number;
   total: number;
-  price_current: number;
-  price_two_for: number;
-  price_ten_for: number;
-  price_percent_off: number;
+  priceCurrent: number;
+  priceTwoFor: number;
+  priceTenFor: number;
+  pricePercentOff: number;
   packaging: string;
-  promotion_callout_text?: string;
-  promotion_discount_code?: string;
+  promotionCalloutText?: string;
+  promotionDiscountCode?: string;
   urlCategory?: string;
   urlVariety?: string;
   isCask: boolean;
@@ -306,17 +307,17 @@ export type ProductItemProps = {
     category: string;
     variety: string;
     name: string;
-    short_name: string;
+    shortName: string;
     brand: string;
     packaging: string;
-    ratings_average: number;
-    price_current: number;
-    price_normal: number;
-    price_two_for: number;
-    price_percent_off: number;
-    price_ten_for: number;
-    promotion_callout_text?: string;
-    promotion_discount_code?: string;
+    ratingsAverage: number;
+    priceCurrent: number;
+    priceNormal: number;
+    priceTwoFor: number;
+    pricePercentOff: number;
+    priceTenFor: number;
+    promotionCalloutText?: string;
+    promotionDiscountCode?: string;
   };
   ind: number;
   css?: string;
@@ -405,8 +406,8 @@ export type ManageProductsProps = {
     variety: string;
     name: string;
     brand: string;
-    price_current: number;
-    price_normal: number;
+    priceCurrent: number;
+    priceNormal: number;
   };
 };
 
@@ -435,22 +436,22 @@ export type SchemaProps = z.ZodObject<
       id: z.ZodString;
       brand: z.ZodString;
       name: z.ZodString;
-      short_name: z.ZodString;
+      shortName: z.ZodString;
       category: z.ZodString;
       variety: z.ZodString;
       region: z.ZodString;
       packaging: z.ZodString;
-      promotion_callout_text: z.ZodString;
-      promotion_discount_code: z.ZodString;
-      price_normal: z.ZodNumber;
-      price_current: z.ZodNumber;
-      volume_ml: z.ZodNumber;
-      price_two_for: z.ZodNumber;
-      price_ten_for: z.ZodNumber;
-      price_percent_off: z.ZodNumber;
-      ratings_total: z.ZodNumber;
-      ratings_average: z.ZodNumber;
-      unit_of_measure_label: z.ZodString;
+      promotionCalloutText: z.ZodString;
+      promotionDiscountCode: z.ZodString;
+      priceNormal: z.ZodNumber;
+      priceCurrent: z.ZodNumber;
+      volumeMl: z.ZodNumber;
+      priceTwoFor: z.ZodNumber;
+      priceTenFor: z.ZodNumber;
+      pricePercentOff: z.ZodNumber;
+      ratingsTotal: z.ZodNumber;
+      ratingsAverage: z.ZodNumber;
+      unitOfMeasureLabel: z.ZodString;
     },
     'id'
   >,
@@ -460,42 +461,42 @@ export type SchemaProps = z.ZodObject<
     id?: string;
     brand: string;
     name: string;
-    short_name: string;
+    shortName: string;
     category: string;
     variety: string;
     region: string;
     packaging: string;
-    promotion_callout_text: string;
-    promotion_discount_code: string;
-    price_normal: number;
-    price_current: number;
-    volume_ml: number;
-    price_two_for: number;
-    price_ten_for: number;
-    price_percent_off: number;
-    ratings_total: number;
-    ratings_average: number;
-    unit_of_measure_label: string;
+    promotionCalloutText: string;
+    promotionDiscountCode: string;
+    priceNormal: number;
+    priceCurrent: number;
+    volumeMl: number;
+    priceTwoFor: number;
+    priceTenFor: number;
+    pricePercentOff: number;
+    ratingsTotal: number;
+    ratingsAverage: number;
+    unitOfMeasureLabel: string;
   },
   {
     brand: string;
     name: string;
-    short_name: string;
+    shortName: string;
     category: string;
     variety: string;
     region: string;
     packaging: string;
-    promotion_callout_text: string;
-    promotion_discount_code: string;
-    price_normal: number;
-    price_current: number;
-    volume_ml: number;
-    price_two_for: number;
-    price_ten_for: number;
-    price_percent_off: number;
-    ratings_total: number;
-    ratings_average: number;
-    unit_of_measure_label: string;
+    promotionCalloutText: string;
+    promotionDiscountCode: string;
+    priceNormal: number;
+    priceCurrent: number;
+    volumeMl: number;
+    priceTwoFor: number;
+    priceTenFor: number;
+    pricePercentOff: number;
+    ratingsTotal: number;
+    ratingsAverage: number;
+    unitOfMeasureLabel: string;
   }
 >;
 
@@ -508,7 +509,7 @@ export type SchemaProps = z.ZodObject<
 //RTK slice
 export type CartState = {
   cart: CartProps;
-  price_two_forDeals: number[];
-  price_ten_forDeals: number;
+  priceTwoForDeals: number[];
+  priceTenForDeals: number;
   promotionCode: string;
 };

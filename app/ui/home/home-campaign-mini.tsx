@@ -21,8 +21,8 @@ export default function HomeCampaignMini() {
           <div className={styles.offer} key={id}>
             <Link href={link}>
               <h3 className={styles.hdr}>{hdr}</h3>
-              <div className={styles.price_two_forBlurb}>{blurb1}</div>
-              <div className={styles.price_two_forBlurb}>{blurb2}</div>
+              <div className={styles.priceTwoForBlurb}>{blurb1}</div>
+              <div className={styles.priceTwoForBlurb}>{blurb2}</div>
               <Img
                 imgSrc={imgSrc}
                 imgAlt={imgAlt}

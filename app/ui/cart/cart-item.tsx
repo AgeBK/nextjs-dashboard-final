@@ -15,22 +15,22 @@ export default function CartItem() {
     id,
     name,
     brand,
-    short_name,
+    shortName,
     price,
     quantity,
     deal,
-    promotion_discount_code,
+    promotionDiscountCode,
   }: AddToCartProps) => {
     dispatch(
       increment({
         id,
         name,
         brand,
-        short_name,
+        shortName,
         price,
         quantity,
         deal,
-        promotion_discount_code,
+        promotionDiscountCode,
       }),
     );
   };
@@ -46,12 +46,12 @@ export default function CartItem() {
           {
             name,
             brand,
-            short_name,
+            shortName,
             quantity,
             price,
             deal,
             dealPrice,
-            promotion_discount_code,
+            promotionDiscountCode,
           },
         ]) => (
           <li className={styles.itemCont} key={id} value={name}>
@@ -66,7 +66,7 @@ export default function CartItem() {
               </div>
               <div className={styles.cartProd}>
                 <h3 className={styles.hdr}>{brand}</h3>
-                <div className={styles.short_name}>{short_name}</div>
+                <div className={styles.shortName}>{shortName}</div>
                 <div className={styles.buttons}>
                   <span className={styles.oneItem}>
                     <Button
@@ -82,11 +82,11 @@ export default function CartItem() {
                           id,
                           name,
                           brand,
-                          short_name,
+                          shortName,
                           price,
                           quantity: 1,
                           deal,
-                          promotion_discount_code,
+                          promotionDiscountCode,
                         });
                       }}
                       css="cartAdd"

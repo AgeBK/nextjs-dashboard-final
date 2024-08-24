@@ -101,27 +101,27 @@ const capitalizeFirstLetter = (string: string) => {
   return wordsArr.join(' ');
 };
 
-const hyphenate = (text: string | undefined) =>
-  typeof text === 'string' ? text.toLowerCase().replace(/ /gi, '-') : undefined;
+const hyphenate = (str: string | undefined) =>
+  typeof str === 'string' ? str.toLowerCase().replace(/ /gi, '-') : undefined;
 
-const deHyphenate = (text: string) =>
-  typeof text === 'string' ? text.toLowerCase().replace(/-/gi, ' ') : undefined;
+const deHyphenate = (str: string) =>
+  typeof str === 'string' ? str.toLowerCase().replace(/-/gi, ' ') : undefined;
 
 const checkDeals = (
-  price_two_for: number,
-  price_ten_for: number,
-  price_percent_off: number,
+  priceTwoFor: number,
+  priceTenFor: number,
+  pricePercentOff: number,
 ) => {
-  const twoFor = Number(price_two_for);
-  const tenFor = Number(price_ten_for);
-  const percentOff = Number(price_percent_off);
+  const twoFor = Number(priceTwoFor);
+  const tenFor = Number(priceTenFor);
+  const percentOff = Number(pricePercentOff);
   let deal = {};
   if (twoFor) {
-    deal = { price_two_for: twoFor };
+    deal = { priceTwoFor: twoFor };
   } else if (tenFor) {
-    deal = { price_ten_for: tenFor };
+    deal = { priceTenFor: tenFor };
   } else if (percentOff) {
-    deal = { price_percent_off: percentOff };
+    deal = { pricePercentOff: percentOff };
   }
   return deal;
 };
@@ -133,14 +133,14 @@ const alphabetically = (arr: DataProps[], reverseOrder: boolean) => {
 };
 
 const financially = (arr: DataProps[], reverseOrder: boolean) => {
-  arr.sort((a, b) => (a.price_current < b.price_current ? -1 : 1));
+  arr.sort((a, b) => (a.priceCurrent < b.priceCurrent ? -1 : 1));
   if (reverseOrder) arr.reverse();
   return arr;
 };
 
 const saleItemsFirst = (arr: DataProps[]) => {
-  arr.sort(({ price_current, price_normal }) =>
-    price_current < price_normal ? -1 : 1,
+  arr.sort(({ priceCurrent, priceNormal }) =>
+    priceCurrent < priceNormal ? -1 : 1,
   );
   return arr;
 };
@@ -196,14 +196,14 @@ const filterCategoryPageData = (arr: DataProps[], filters: FilterProps) => {
   if (price) {
     const [min, max] = price.split('-');
     arr = arr.filter(
-      ({ price_current }) =>
-        price_current >= Number(min) && price_current < Number(max),
+      ({ priceCurrent }) =>
+        priceCurrent >= Number(min) && priceCurrent < Number(max),
     );
   }
 
   if (rating) {
     arr = arr.filter(
-      ({ ratings_average }) => Math.round(ratings_average) === Number(rating),
+      ({ ratingsAverage }) => Math.round(ratingsAverage) === Number(rating),
     );
   }
 
@@ -216,12 +216,12 @@ const filterCategoryPageData = (arr: DataProps[], filters: FilterProps) => {
   return arr;
 };
 
-const validImage = async (url: string) => {
+const validImage = async (strUrl: string) => {
   try {
     await new Promise((resolve, reject) => {
       const img = new Image();
-      img.src = url;
-      img.onload = () => resolve(url);
+      img.src = strUrl;
+      img.onload = () => resolve(strUrl);
       img.onerror = () => {
         reject();
       };
@@ -248,14 +248,33 @@ const uploadImg = async (file: Blob, productId: string) => {
 
   if (result.success) {
     console.log('ManageUpload image uploaded SUCCESS');
-    // window.location.href = '/manage';
     console.log('Upload ok : ' + result.name);
     return true;
   } else {
     console.log('ManageUpload image uploaded FAILED');
     return false;
-    // alert('Upload failed');
   }
+};
+
+const camelise = (product: DataProps) => {
+  // convert underscore words to camel case
+  const camelCased = Object.entries(product).reduce((acc, val) => {
+    const value = val[1];
+    const key = val[0].replace(/_([a-z])/g, (g) => {
+      return g[1].toUpperCase();
+    });
+    acc = { ...acc, [key]: value };
+    return acc;
+  }, {} as DataProps);
+  return camelCased;
+};
+
+const cameliseArr = (products: DataProps[]) =>
+  products.map((val) => camelise(val));
+
+const deCamelise = (s: string) => {
+  const result = s.replace(/([A-Z])/g, ' $1'); // note: space before $
+  return result.charAt(0).toUpperCase() + result.slice(1);
 };
 
 export {
@@ -269,4 +288,7 @@ export {
   fetchCarouselData,
   validImage,
   uploadImg,
+  camelise,
+  cameliseArr,
+  deCamelise,
 };

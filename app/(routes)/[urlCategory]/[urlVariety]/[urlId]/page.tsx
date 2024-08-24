@@ -1,6 +1,5 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-
 import { fetchProductById } from '@/app/lib/data';
 import BreadCrumb from '@/app/ui/bread-crumb';
 import ProductCart from '@/app/ui/product/product-cart';
@@ -23,19 +22,20 @@ export default async function Product({
       category,
       variety,
       name,
-      short_name,
+      shortName,
       brand,
       packaging,
-      ratings_average,
-      ratings_total,
-      price_normal,
-      price_ten_for,
-      price_two_for,
-      price_current,
-      price_percent_off,
-      promotion_callout_text,
-      promotion_discount_code,
-      unit_of_measure_label,
+      ratingsAverage,
+      ratingsTotal,
+      region,
+      priceNormal,
+      priceTenFor,
+      priceTwoFor,
+      priceCurrent,
+      pricePercentOff,
+      promotionCalloutText,
+      promotionDiscountCode,
+      unitOfMeasureLabel,
     } = product;
 
     const isCask = packaging === 'Cask';
@@ -52,17 +52,17 @@ export default async function Product({
           <ProductDetails
             id={id}
             name={name}
-            short_name={short_name}
+            shortName={shortName}
             brand={brand}
             packaging={packaging}
-            price_current={price_current}
-            price_two_for={price_two_for}
-            price_ten_for={price_ten_for}
-            price_percent_off={price_percent_off}
-            promotion_callout_text={promotion_callout_text}
-            promotion_discount_code={promotion_discount_code}
-            average={ratings_average}
-            total={ratings_total}
+            priceCurrent={priceCurrent}
+            priceTwoFor={priceTwoFor}
+            priceTenFor={priceTenFor}
+            pricePercentOff={pricePercentOff}
+            promotionCalloutText={promotionCalloutText}
+            promotionDiscountCode={promotionDiscountCode}
+            average={ratingsAverage}
+            total={ratingsTotal}
             urlCategory={urlCategory}
             urlVariety={urlVariety}
             isCask={isCask}
@@ -72,14 +72,14 @@ export default async function Product({
               id={id}
               name={name}
               brand={brand}
-              short_name={short_name}
-              price_current={price_current}
-              price_two_for={price_two_for}
-              price_ten_for={price_ten_for}
-              price_percent_off={price_percent_off}
+              shortName={shortName}
+              priceCurrent={priceCurrent}
+              priceTwoFor={priceTwoFor}
+              priceTenFor={priceTenFor}
+              pricePercentOff={pricePercentOff}
               packaging={packaging}
-              promotion_callout_text={promotion_callout_text}
-              promotion_discount_code={promotion_discount_code}
+              promotionCalloutText={promotionCalloutText}
+              promotionDiscountCode={promotionDiscountCode}
               isCask={isCask}
             />
           </div>
@@ -89,10 +89,11 @@ export default async function Product({
             variety={variety}
             brand={brand}
             packaging={packaging}
-            unitOfMeasureLabel={unit_of_measure_label}
-            current={price_current}
-            normal={price_normal}
-            short_name={short_name}
+            region={region}
+            unitOfMeasureLabel={unitOfMeasureLabel}
+            current={priceCurrent}
+            normal={priceNormal}
+            shortName={shortName}
             urlCategory={urlCategory}
           />
           <ProductReview urlCategory={urlCategory} variety={variety} />

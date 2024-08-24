@@ -4,18 +4,18 @@ import { CartProps, KeyNumberProps } from '../lib/definitions';
 
 const checkDiscountCode = (cart: CartProps, promotionCode: string) => {
   Object.values(cart).forEach((cartItem) => {
-    const { price, promotion_discount_code, deal } = cartItem;
-    if (promotion_discount_code && deal) {
-      const { price_percent_off } = deal;
+    const { price, promotionDiscountCode, deal } = cartItem;
+    if (promotionDiscountCode && deal) {
+      const { pricePercentOff } = deal;
       if (
-        price_percent_off &&
-        promotion_discount_code.toLowerCase() === promotionCode.toLowerCase()
+        pricePercentOff &&
+        promotionDiscountCode.toLowerCase() === promotionCode.toLowerCase()
       ) {
         cartItem.dealPrice = Number(
-          ((price / 100) * (100 - price_percent_off)).toFixed(2),
+          ((price / 100) * (100 - pricePercentOff)).toFixed(2),
         );
       } else if (
-        promotion_discount_code.toLowerCase() !== promotionCode.toLowerCase() &&
+        promotionDiscountCode.toLowerCase() !== promotionCode.toLowerCase() &&
         cartItem.dealPrice
       ) {
         delete cartItem.dealPrice;

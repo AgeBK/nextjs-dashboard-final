@@ -16,7 +16,7 @@ import styles from '@/app/assets/css/manage/Form.module.css';
 // TODO: finish running lint
 // TODO: wave / console / terminal all pages
 // TODO: update readme
-
+// TODO: delete modal?
 const initialState: FormStateProps = {
   message: null,
   errors: {},
@@ -56,9 +56,6 @@ export default function ManageProduct({
   const [state, dispatch] = useFormState(currentActionFn, initialState);
 
   useEffect(() => {
-    console.log('UE');
-    console.log(state);
-
     if (state.success) {
       window.location.href = '/manage';
     }

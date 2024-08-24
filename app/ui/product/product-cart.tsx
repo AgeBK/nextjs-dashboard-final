@@ -12,14 +12,14 @@ export default function ProductCart({
   id,
   name,
   brand,
-  short_name,
-  price_current,
-  price_two_for,
-  price_ten_for,
-  price_percent_off,
+  shortName,
+  priceCurrent,
+  priceTwoFor,
+  priceTenFor,
+  pricePercentOff,
   packaging,
-  promotion_callout_text,
-  promotion_discount_code,
+  promotionCalloutText,
+  promotionDiscountCode,
   isCask,
 }: ProductCartProps) {
   const [count, setCount] = useState<number>(1);
@@ -33,7 +33,7 @@ export default function ProductCart({
     }
   };
 
-  const deal = checkDeals(price_two_for, price_ten_for, price_percent_off);
+  const deal = checkDeals(priceTwoFor, priceTenFor, pricePercentOff);
 
   return (
     <div className={styles.cartTableCont}>
@@ -48,11 +48,11 @@ export default function ProductCart({
             />
           </div>
           <div className={styles.price}>
-            ${price_current}/{packaging}
+            ${priceCurrent}/{packaging}
           </div>
         </div>
         <div className={styles.cartAmt}>
-          {/* <div className={styles.totalPrice}>${price_current * count}</div> */}
+          {/* <div className={styles.totalPrice}>${priceCurrent * count}</div> */}
           <Button css="cartLge" onClick={handleCount} disabled={count < 2}>
             -
           </Button>
@@ -66,16 +66,16 @@ export default function ProductCart({
             id={id}
             name={name}
             brand={brand}
-            short_name={short_name}
-            price={price_current}
+            shortName={shortName}
+            price={priceCurrent}
             quantity={count}
             deal={deal}
-            promotion_discount_code={promotion_discount_code}
+            promotionDiscountCode={promotionDiscountCode}
           />
         </div>
       </div>
-      {price_two_for || price_ten_for || price_percent_off ? (
-        <div className={styles.cartprice_two_for}>{promotion_callout_text}</div>
+      {priceTwoFor || priceTenFor || pricePercentOff ? (
+        <div className={styles.cartpriceTwoFor}>{promotionCalloutText}</div>
       ) : null}
     </div>
   );

@@ -9,16 +9,16 @@ export default function ProductDetails({
   id,
   brand,
   name,
-  short_name,
+  shortName,
   average,
   total,
-  price_current,
-  price_two_for,
-  price_ten_for,
-  price_percent_off,
+  priceCurrent,
+  priceTwoFor,
+  priceTenFor,
+  pricePercentOff,
   packaging,
-  promotion_callout_text,
-  promotion_discount_code,
+  promotionCalloutText,
+  promotionDiscountCode,
   urlCategory,
   urlVariety,
   isCask,
@@ -35,7 +35,7 @@ export default function ProductDetails({
       </div>
       <div className={styles.productMeta}>
         <h1 className={styles.brand}>{brand}</h1>
-        <h2 className={styles.short_name}>{short_name}</h2>
+        <h2 className={styles.shortName}>{shortName}</h2>
         <WineBlurb urlCategory={urlCategory} urlVariety={urlVariety} />
         <ProductRating average={average} total={total} />
         <div className={styles.cartCont}>
@@ -43,14 +43,14 @@ export default function ProductDetails({
             id={id}
             name={name}
             brand={brand}
-            short_name={short_name}
-            price_two_for={price_two_for}
-            price_ten_for={price_ten_for}
-            price_percent_off={price_percent_off}
-            price_current={price_current}
+            shortName={shortName}
+            priceTwoFor={priceTwoFor}
+            priceTenFor={priceTenFor}
+            pricePercentOff={pricePercentOff}
+            priceCurrent={priceCurrent}
             packaging={packaging}
-            promotion_callout_text={promotion_callout_text}
-            promotion_discount_code={promotion_discount_code}
+            promotionCalloutText={promotionCalloutText}
+            promotionDiscountCode={promotionDiscountCode}
             isCask={isCask}
           />
         </div>

@@ -1,6 +1,7 @@
 import { sql } from '@vercel/postgres';
 import { DataProps } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
+import { camelise, cameliseArr } from './utils';
 
 export async function fetchProducts() {
   // Add noStore() here to prevent the response from being cached. (I think caching is good for AK Wines)
@@ -16,7 +17,7 @@ export async function fetchProducts() {
 
     const products = data.rows;
     products.reverse();
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products by category.');
@@ -35,7 +36,7 @@ export async function fetchProductsByCat(query: string) {
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products by category.');
@@ -50,12 +51,12 @@ export async function fetchProductsByCatAndPrice(query: string, price: number) {
       SELECT *        
       FROM products
       WHERE category=${query}
-      AND price_current<=${price}
+      AND priceCurrent<=${price}
       ORDER BY ratings_average DESC
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products by category.');
@@ -67,32 +68,13 @@ export async function fetchProductById(query: string) {
 
   try {
     const data = await sql<DataProps>`
-      SELECT 
-        id,
-        name,
-        brand,
-        short_name,
-        promotion_callout_text,
-        promotion_discount_code,        
-        unit_of_measure_label,
-        price_normal,
-        price_current,
-        price_ten_for,
-        price_two_for,
-        price_percent_off,
-        volume_ml,
-        ratings_total,
-        ratings_average, 
-        category,     
-        variety,
-        region,
-        packaging     
+      SELECT *        
       FROM products
       WHERE id=${query}
       `;
 
     const product = data.rows[0];
-    return product;
+    return camelise(product);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products by category.');
@@ -106,12 +88,12 @@ export async function fetchProductsPriceTwoFor(price: number) {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE price_two_for=${price}
+      WHERE priceTwoFor=${price}
       ORDER BY ratings_average DESC
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products by deal and price.');
@@ -125,12 +107,12 @@ export async function fetchProductsOnSpecial() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE price_current < price_normal
+      WHERE priceCurrent < priceNormal
       ORDER BY ratings_average DESC
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products on special.');
@@ -150,7 +132,7 @@ export async function fetchProductsBySearchTerm(query: string) {
     const products = data.rows;
     console.log(products);
 
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products on special.');
@@ -172,7 +154,7 @@ export async function fetchProductsByVariety(
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products on special.');
@@ -186,12 +168,12 @@ export async function fetchProductsPriceTwoForDeals() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE price_two_for > 0
+      WHERE priceTwoFor > 0
       ORDER BY ratings_average DESC
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products two for deals.');
@@ -205,11 +187,11 @@ export async function fetchProductsPriceTenPercentOff() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE price_percent_off = 10
+      WHERE pricePercentOff = 10
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products ten percent off.');
@@ -223,11 +205,11 @@ export async function fetchProductsTenAndLess() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE price_current <= 10 OR price_normal <= 10
+      WHERE priceCurrent <= 10 OR priceNormal <= 10
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products ten and less.');
@@ -241,11 +223,11 @@ export async function fetchProductsPriceTenFor100() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE price_ten_for = 100
+      WHERE priceTenFor = 100
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products ten for 100.');
@@ -258,11 +240,11 @@ export async function fetchProductsPriceDrop() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE price_current < price_normal
+      WHERE priceCurrent < priceNormal
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products price drop.');
@@ -281,7 +263,7 @@ export async function fetchCarouselProducts() {
       `;
 
     const products = data.rows;
-    return products;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch carousel products.');
@@ -298,8 +280,8 @@ export async function fetchCarouselProductsByVariety(query: string) {
       LIMIT 12
       `;
 
-    const carouselProducts = data.rows;
-    return carouselProducts;
+    const products = data.rows;
+    return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch carousel products by variety.');

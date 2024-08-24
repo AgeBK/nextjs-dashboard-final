@@ -52,7 +52,6 @@ const validateFormData = (Schema: SchemaProps, formData: FormData) => {
     promotionDiscountCode: formData.get('promotionDiscountCode'),
     volumeMl: Number(formData.get('volumeMl')),
     priceCurrent: Number(formData.get('priceCurrent')),
-    priceNormal: Number(formData.get('priceNormal')),
     priceTwoFor: Number(formData.get('priceTwoFor')),
     priceTenFor: Number(formData.get('priceTenFor')),
     pricePercentOff: Number(formData.get('pricePercentOff')),
@@ -66,9 +65,6 @@ export async function addProduct(
   prevState: FormStateProps,
   formData: FormData,
 ) {
-  console.log('addProduct');
-  console.log(formData);
-
   const validatedFields = validateFormData(FormSchema, formData);
 
   if (!validatedFields.success) {
@@ -100,28 +96,6 @@ export async function addProduct(
     unitOfMeasureLabel,
   } = validatedFields.data;
 
-  console.log(
-    id,
-    brand,
-    name,
-    shortName,
-    category,
-    variety,
-    region,
-    packaging,
-    volumeMl,
-    promotionCalloutText,
-    promotionDiscountCode,
-    priceNormal,
-    priceCurrent,
-    priceTwoFor,
-    priceTenFor,
-    pricePercentOff,
-    ratingsTotal,
-    ratingsAverage,
-    unitOfMeasureLabel,
-  );
-
   // Insert data into the database
   try {
     await sql`
@@ -130,21 +104,21 @@ export async function addProduct(
         "category",
         "variety",
         "name",
-        "short_name",
+        "shortName",
         "brand",       
         "region",     
         "packaging",
-        "promotion_callout_text" ,
-        "promotion_discount_code",
-        "volume_ml" ,
-        "price_normal",
-        "price_current",
-        "price_two_for",
-        "price_ten_for",
-        "price_percent_off",
-        "ratings_total",
-        "ratings_average",        
-        "unit_of_measure_label" )
+        "promotionCalloutText" ,
+        "promotionDiscountCode",
+        "volumeMl" ,
+        "priceNormal",
+        "priceCurrent",
+        "priceTwoFor",
+        "priceTenFor",
+        "pricePercentOff",
+        "ratingsTotal",
+        "ratingsAverage",        
+        "unitOfMeasureLabel" )
 
         VALUES(
           ${id}, 
@@ -219,22 +193,22 @@ export async function updateProduct(
       UPDATE products
         SET brand = ${brand},
         name = ${name},
-        short_name = ${shortName},
+        shortName = ${shortName},
         category = ${category},
         variety = ${variety},
         region = ${region},
         packaging = ${packaging},
-        volume_ml = ${volumeMl},
-        promotion_callout_text = ${promotionCalloutText},
-        promotion_discount_code = ${promotionDiscountCode} ,
-        price_normal = ${priceNormal},
-        price_current = ${priceCurrent},
-        price_two_for = ${priceTwoFor},
-        price_ten_for = ${priceTenFor},
-        price_percent_off = ${pricePercentOff},
-        ratings_total = ${ratingsTotal},
-        ratings_average = ${ratingsAverage},
-        unit_of_measure_label = ${unitOfMeasureLabel}
+        volumeMl = ${volumeMl},
+        promotionCalloutText = ${promotionCalloutText},
+        promotionDiscountCode = ${promotionDiscountCode} ,
+        priceNormal = ${priceNormal},
+        priceCurrent = ${priceCurrent},
+        priceTwoFor = ${priceTwoFor},
+        priceTenFor = ${priceTenFor},
+        pricePercentOff = ${pricePercentOff},
+        ratingsTotal = ${ratingsTotal},
+        ratingsAverage = ${ratingsAverage},
+        unitOfMeasureLabel = ${unitOfMeasureLabel}
       WHERE id = ${id}
     `;
   } catch (error) {

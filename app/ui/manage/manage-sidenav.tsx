@@ -52,7 +52,7 @@ export default function ManageSideNav() {
           role="button"
           tabIndex={0}
         >
-          ☰ Admin Menu
+          ☰ Admin Panel
         </span>
       )}
     </>

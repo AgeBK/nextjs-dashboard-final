@@ -3,10 +3,10 @@ import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/PriceDrop.module.css';
 
 type PriceDropProps = {
-  promotion_callout_text: string | undefined;
+  promotionCalloutText: string | undefined;
 };
 
-const PriceDrop = ({ promotion_callout_text }: PriceDropProps) => {
+const PriceDrop = ({ promotionCalloutText }: PriceDropProps) => {
   const { numberToWord } = data;
   const numToWord: { [key: number]: string } = numberToWord;
   let arr: string[] = [];
@@ -15,13 +15,13 @@ const PriceDrop = ({ promotion_callout_text }: PriceDropProps) => {
   let isTenPercent: boolean = false;
   let priceDropLink: JSX.Element | null = null;
 
-  if (promotion_callout_text) {
-    if (promotion_callout_text.includes('for')) {
+  if (promotionCalloutText) {
+    if (promotionCalloutText.includes('for')) {
       // 2 for and 10 for deals
-      arr = promotion_callout_text.split(' ');
+      arr = promotionCalloutText.split(' ');
       amount = numToWord[Number(arr[0])];
       price = parseInt(arr[2].replace('$', ''), 10);
-    } else if (promotion_callout_text.startsWith('10%')) {
+    } else if (promotionCalloutText.startsWith('10%')) {
       isTenPercent = true;
     }
   }
@@ -30,7 +30,7 @@ const PriceDrop = ({ promotion_callout_text }: PriceDropProps) => {
     priceDropLink = (
       <Link
         href={`/${amount}-for-${price}`}
-        className={`${styles.sale} ${styles.price_two_for}`}
+        className={`${styles.sale} ${styles.priceTwoFor}`}
       >
         <>
           <span className={`${styles.priceDrop}`}>
@@ -51,7 +51,7 @@ const PriceDrop = ({ promotion_callout_text }: PriceDropProps) => {
   } else if (isTenPercent) {
     priceDropLink = (
       <div className={styles.special}>
-        <Link href="/ten-percent-off">{promotion_callout_text} </Link>
+        <Link href="/ten-percent-off">{promotionCalloutText} </Link>
       </div>
     );
   } else {
