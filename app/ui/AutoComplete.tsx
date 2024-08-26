@@ -15,7 +15,7 @@ import match from 'autosuggest-highlight/match';
 import Img from './image';
 import styles from '../assets/css/AutoComplete.module.css';
 
-export default function AutoComplete  ({ products }: ProductProps) {
+export default function AutoComplete({ products }: ProductProps) {
   const [overlay, setOverlay] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -157,4 +157,3 @@ export default function AutoComplete  ({ products }: ProductProps) {
   }
   return null;
 }
-

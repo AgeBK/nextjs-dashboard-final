@@ -66,7 +66,7 @@ module.exports = {
     yoda: 'error',
 
     // stylistic
-    // camelcase: 'warn', TODO
+    camelcase: 'warn',
     'consistent-this': ['warn', 'that'],
     'func-name-matching': 'error',
     'func-style': ['warn', 'declaration', { allowArrowFunctions: true }],

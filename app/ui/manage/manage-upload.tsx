@@ -10,6 +10,8 @@ export default function ManageUpload({
   setIsNewImage,
   isDelete,
 }: ManageUploadProps) {
+  console.log('ManageUpload');
+
   const onChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
     if (files) {
@@ -17,10 +19,13 @@ export default function ManageUpload({
 
       if (productId && validImg) {
         const isSuccess = await uploadImg(files[0], productId);
-
         setIsNewImage(isSuccess);
       } else {
-        console.log(productId, validImg);
+        console.log(
+          'ManageUpload error: Invalid id or image: ',
+          productId,
+          validImg,
+        );
       }
     }
   };

@@ -23,6 +23,7 @@ import usePageWidth from '@/app/hooks/usePageWidth';
 import Blurb from '../blurb';
 import styles from '@/app/assets/css/category/Category.module.css';
 
+// ui for category and manage products pages
 export default function CategoryMain({
   arr,
   urlCategory,

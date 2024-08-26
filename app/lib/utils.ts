@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { DataProps, FilterProps } from './definitions';
 import {
   fetchProductsByCat,
@@ -277,6 +278,15 @@ const deCamelise = (s: string) => {
   return result.charAt(0).toUpperCase() + result.slice(1);
 };
 
+const metadata: Metadata = {
+  title: ' AK Fine Wines - The biggest range at the best prices guaranteed!!',
+  description:
+    'AK Fine Wines - All of your fine wine needs at the best prices guaranteed!! Extensive range of White/Red/Sparking wines from around Australia and New Zealand',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
+
 export {
   capitalizeFirstLetter,
   hyphenate,
@@ -291,4 +301,5 @@ export {
   camelise,
   cameliseArr,
   deCamelise,
+  metadata,
 };

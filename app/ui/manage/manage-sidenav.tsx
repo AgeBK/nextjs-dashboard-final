@@ -12,7 +12,7 @@ export default function ManageSideNav() {
   return (
     <>
       {isShow ? (
-        <div className={styles.sideNav}>
+        <nav className={styles.sideNav}>
           <Button css="" onClick={() => setIsShow(false)}>
             <span className={styles.close}>X</span>
           </Button>
@@ -43,7 +43,7 @@ export default function ManageSideNav() {
             </ul>
             {/* <Logout /> */}
           </div>
-        </div>
+        </nav>
       ) : (
         <span
           className={styles.burger}
