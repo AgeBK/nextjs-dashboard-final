@@ -43,7 +43,7 @@ export default function ManageProducts({ props }: ManageProductsProps) {
         <Link href={`/manage/delete/${id}`}>
           <Img
             imgSrc={`icons/trash.svg`}
-            imgAlt="edit"
+            imgAlt="trash"
             imgWidth={24}
             imgHeight={24}
           />

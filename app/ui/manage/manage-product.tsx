@@ -15,6 +15,7 @@ import styles from '@/app/assets/css/manage/Form.module.css';
 
 // TODO: finish running lint
 // TODO: wave / console / terminal all pages
+// TODO: Lighthouse
 // TODO: update readme
 const initialState: FormStateProps = {
   message: null,

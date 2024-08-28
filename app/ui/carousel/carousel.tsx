@@ -15,7 +15,6 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
     FOUR_CAROUSEL_ITEMS,
     THREE_CAROUSEL_ITEMS,
     TWO_CAROUSEL_ITEMS,
-    ONE_CAROUSEL_ITEM,
   } = data;
 
   const [pageIndex, setPageIndex] = useState<number>(0);
@@ -39,10 +38,8 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
         currentItems = FOUR_CAROUSEL_ITEMS;
       } else if (offsetWidth >= 650) {
         currentItems = THREE_CAROUSEL_ITEMS;
-      } else if (offsetWidth >= 380) {
-        currentItems = TWO_CAROUSEL_ITEMS;
       } else {
-        currentItems = ONE_CAROUSEL_ITEM;
+        currentItems = TWO_CAROUSEL_ITEMS;
       }
       if (currentItems !== items) setItems(currentItems);
     }
@@ -52,7 +49,6 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
     FOUR_CAROUSEL_ITEMS,
     THREE_CAROUSEL_ITEMS,
     TWO_CAROUSEL_ITEMS,
-    ONE_CAROUSEL_ITEM,
   ]);
 
   useEffect(() => {

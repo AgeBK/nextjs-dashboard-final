@@ -16,7 +16,7 @@ export default function ManageProductActions({
         <span>Cancel </span>
         <Img
           imgSrc={`icons/xCircle.svg`}
-          imgAlt="cancel"
+          imgAlt=""
           imgWidth={24}
           imgHeight={24}
         />
@@ -26,7 +26,7 @@ export default function ManageProductActions({
           <span>Delete </span>
           <Img
             imgSrc={`icons/trash.svg`}
-            imgAlt="save"
+            imgAlt=""
             imgWidth={24}
             imgHeight={24}
           />
@@ -36,7 +36,7 @@ export default function ManageProductActions({
           <span>Save </span>
           <Img
             imgSrc={`icons/save.svg`}
-            imgAlt="save"
+            imgAlt=""
             imgWidth={24}
             imgHeight={24}
           />

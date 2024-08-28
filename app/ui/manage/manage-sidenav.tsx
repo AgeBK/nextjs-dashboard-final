@@ -34,9 +34,7 @@ export default function ManageSideNav() {
               <li>
                 <Link href="/manage">Sales Data</Link>
               </li>
-              <li>
-                <Link href="/manage">Reports</Link>
-              </li>
+
               <li>
                 <Link href="/">Home</Link>
               </li>
@@ -45,15 +43,17 @@ export default function ManageSideNav() {
           </div>
         </nav>
       ) : (
-        <span
-          className={styles.burger}
-          onClick={() => setIsShow(!isShow)}
-          onKeyDown={() => setIsShow(!isShow)}
-          role="button"
-          tabIndex={0}
-        >
-          ☰ Admin Panel
-        </span>
+        <h1>
+          <span
+            className={styles.burger}
+            onClick={() => setIsShow(!isShow)}
+            onKeyDown={() => setIsShow(!isShow)}
+            role="button"
+            tabIndex={0}
+          >
+            ☰
+          </span>
+        </h1>
       )}
     </>
   );

@@ -279,7 +279,7 @@ export type CategoryPagingProps = {
 
 export type CategoryToggleItemsProps = {
   togglePageItems: () => void;
-  isItems: boolean;
+  isSmallScreenShowItems: boolean | undefined;
 };
 
 export type ProductDetailsProps = {

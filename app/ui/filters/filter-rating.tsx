@@ -28,15 +28,8 @@ export default function FilterRating({
               checked={filters.rating === value}
               className={styles.radio}
               onChange={handleChange}
+              aria-label={text}
             />
-            <label
-              htmlFor={`rating${value}`}
-              className={`${styles[`rating${value}`]} ${styles.rating} ${
-                isManage && styles.ratingManage
-              }`}
-            >
-              {text}
-            </label>
           </li>
         ))}
       </ul>

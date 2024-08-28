@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styles from '@/app/assets/css/HomeHero.module.css';
 
 export default function HomeHero() {
+  // show landscape/portrait image based on screen width
   return (
     <>
       <h2 className={styles.slogan}>

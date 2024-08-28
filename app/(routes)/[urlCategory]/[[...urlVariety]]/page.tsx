@@ -13,7 +13,6 @@ export default async function Page({
     variety,
   ); // various db calls based on URL
   // TODO: check every file for unused import etc
-  // TODO: check mobile (header) / mobile category page, filter button doesn't load/ text in autoComplete doesn't change sometimes
 
   return (
     <article>

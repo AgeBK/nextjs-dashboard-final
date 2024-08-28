@@ -12,6 +12,7 @@ import {
   FilterProps,
   PagingProps,
 } from '@/app/lib/definitions';
+import usePageWidth from '@/app/hooks/usePageWidth';
 import data from '@/app/lib/appData.json';
 import CategoryList from './category-list';
 import CategoryHeader from './category-header';
@@ -19,11 +20,10 @@ import CategoryToggleItems from './category-toggle-items';
 import CategoryPaging from './category-paging';
 import CategoryNoResults from './category-no-results';
 import FilterList from '../filters/filter-list';
-import usePageWidth from '@/app/hooks/usePageWidth';
 import Blurb from '../blurb';
 import styles from '@/app/assets/css/category/Category.module.css';
 
-// ui for category and manage products pages
+// ui/components for category and manage products pages
 export default function CategoryMain({
   arr,
   urlCategory,
@@ -35,13 +35,16 @@ export default function CategoryMain({
   const [filters, setFilters] = useState<FilterProps>({});
   const [paging, setPaging] = useState<PagingProps>(pagingSettings);
   const [isShowItems, setIsShowItems] = useState<boolean>(false);
-  const isSmallScreen: boolean = usePageWidth(MAX_SMALLSCREEN);
+  const isSmallScreen: boolean | undefined = usePageWidth(MAX_SMALLSCREEN);
   const dataRef = useRef<DataProps[]>([]);
   const didMount = useRef<boolean>(false);
   const isSmallScreenShowItems = isSmallScreen && isShowItems;
   dataRef.current = arr;
 
+  console.log('CategoryMain');
+
   useEffect(() => {
+    console.log('CategoryMain UE');
     if (didMount.current) {
       // reset page variables if URL changes, not on first load
       setSortName('');
@@ -53,7 +56,9 @@ export default function CategoryMain({
   }, [urlCategory, urlVariety]);
 
   const currentData = useMemo(() => {
-    setPaging(pagingSettings);
+    console.log('currentData');
+
+    setPaging(pagingSettings); // reset paging if datasource changes
     let arr = [...dataRef.current];
     if (arr.length) {
       if (Object.keys(filters).length) {
@@ -71,6 +76,7 @@ export default function CategoryMain({
     paging.page * paging.pageSize,
   );
 
+  // all data filters managed in filters state object
   const updateFilters = (filter: FilterProps) =>
     setFilters({ ...filters, ...filter });
 
@@ -91,7 +97,7 @@ export default function CategoryMain({
   };
 
   const togglePageItems = () => {
-    // either show filters or items on small screen
+    // either show filters or products on small screen
     setIsShowItems((prev) => !prev);
   };
 
@@ -107,7 +113,7 @@ export default function CategoryMain({
       {isSmallScreen && (
         <CategoryToggleItems
           togglePageItems={togglePageItems}
-          isItems={isSmallScreenShowItems}
+          isSmallScreenShowItems={isSmallScreenShowItems}
         />
       )}
       <div className={styles.category}>

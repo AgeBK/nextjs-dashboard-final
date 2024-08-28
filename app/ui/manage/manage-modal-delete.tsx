@@ -20,7 +20,7 @@ export default function ModalDelete({ id, name }: ModalDeleteProps) {
             imgPriority={true}
           />
         </div>
-        <h3 className={styles.hdr}>Are you sure?</h3>
+        <h2 className={styles.hdr}>Are you sure?</h2>
         <div className={styles.confirm}>
           This will permanently delete the following product
           <div className={styles.details}>
@@ -40,7 +40,7 @@ export default function ModalDelete({ id, name }: ModalDeleteProps) {
               <span>Cancel </span>
               <Img
                 imgSrc={`icons/xCircle.svg`}
-                imgAlt="cancel"
+                imgAlt=""
                 imgWidth={24}
                 imgHeight={24}
               />
@@ -49,7 +49,7 @@ export default function ModalDelete({ id, name }: ModalDeleteProps) {
               <span>Delete </span>
               <Img
                 imgSrc={`icons/trash.svg`}
-                imgAlt="save"
+                imgAlt=""
                 imgWidth={24}
                 imgHeight={24}
               />

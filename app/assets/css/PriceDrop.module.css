@@ -2,7 +2,7 @@
   background-color: #000;
   color: #fff;
   display: inline-block;
-  padding: 5px;
+  padding: 3px;
   text-align: left;
   cursor: pointer;
   position: absolute;
@@ -37,7 +37,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  z-index: 2;
 }
 
 .special a {

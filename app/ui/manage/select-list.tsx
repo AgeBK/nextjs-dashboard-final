@@ -4,7 +4,10 @@ import stylesForm from '@/app/assets/css/manage/Form.module.css';
 import { ddlWineItemsProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/Select.module.css';
 
-export default function SelectLists({ ddlWineItems, isDelete }: ddlWineItemsProps) {
+export default function SelectLists({
+  ddlWineItems,
+  isDelete,
+}: ddlWineItemsProps) {
   const { region, packaging } = data;
   const arrList = [region, packaging];
 
@@ -22,7 +25,6 @@ export default function SelectLists({ ddlWineItems, isDelete }: ddlWineItemsProp
                 id={key}
                 name={key}
                 className={styles.select}
-                aria-labelledby="lblSort"
                 defaultValue={value}
                 required
                 disabled={isDelete}

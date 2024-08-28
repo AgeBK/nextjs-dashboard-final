@@ -1,12 +1,13 @@
 'use client';
 
-import { authenticate, } from '@/app/lib/actions';
+import { authenticate } from '@/app/lib/actions';
 import Img from '@/app/ui/image';
 import Button from '@/app/ui/button';
 import { useFormState, useFormStatus } from 'react-dom';
 import styles from '@/app/assets/css/LoginForm.module.css';
 
 export default function LoginForm() {
+  const { pending } = useFormStatus();
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (
@@ -65,7 +66,9 @@ export default function LoginForm() {
               />
             </div>
           </div>
-          <LoginButton />
+          <Button css="loginBtn" disabled={pending}>
+            Sign in
+          </Button>
           <div aria-live="polite" aria-atomic="true">
             {errorMessage && (
               <>
@@ -82,15 +85,5 @@ export default function LoginForm() {
         </form>
       </div>
     </article>
-  );
-}
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button css={styles.loginBtn} aria-disabled={pending}>
-      Sign in
-    </Button>
   );
 }

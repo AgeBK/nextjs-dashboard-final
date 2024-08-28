@@ -5,8 +5,8 @@ export default function CartImage({ itemAdded }: { itemAdded: boolean }) {
     <Img
       imgSrc={`icons/${itemAdded ? 'cartNotEmpty' : 'cartEmpty'}.svg`}
       imgAlt=""
-      imgWidth={16}
-      imgHeight={16}
+      imgWidth={24}
+      imgHeight={24}
     />
   );
 }

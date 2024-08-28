@@ -6,7 +6,6 @@
   "FOUR_CAROUSEL_ITEMS": 4,
   "THREE_CAROUSEL_ITEMS": 3,
   "TWO_CAROUSEL_ITEMS": 2,
-  "ONE_CAROUSEL_ITEM": 1,
   "PRIORITY": 5,
   "errorMsg": "Something has gone wrong",
   "notFoundMsg": "Could not find the requested product",
