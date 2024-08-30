@@ -4,7 +4,7 @@
 }
 
 .sideNav {
-  min-width: 140px;
+  min-width: 200px;
   background-color: #777;
   padding: 5px 20px;
 }
@@ -33,6 +33,6 @@
   padding: 2px;
   font-size: 1rem;
   font-weight: normal;
-  width: 175px;
+  width: 235px;
   text-align: center;
 }

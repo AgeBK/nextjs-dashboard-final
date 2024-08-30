@@ -4,20 +4,19 @@
 
 .rating {
   background-repeat: no-repeat;
-  color: transparent;
-  background-position-y: center;
+  background-position: 20px 3px;
 }
 
 .rating3 {
-  background-image: url(/assets/img/bg/3star.jpg);
+  background-image: url(/assets/img/rating/3star.jpg);
 }
 
 .rating4 {
-  background-image: url(/assets/img/bg/4star.jpg);
+  background-image: url(/assets/img/rating/4star.jpg);
 }
 
 .rating5 {
-  background-image: url(/assets/img/bg/5star.jpg);
+  background-image: url(/assets/img/rating/5star.jpg);
 }
 
 .ratingManage {

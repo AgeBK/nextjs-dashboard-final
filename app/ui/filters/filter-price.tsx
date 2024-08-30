@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
-import data from '@/app/lib/appData.json';
 import { WineFilterProps, TextValueArrProps } from '@/app/lib/definitions';
+import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/filter/FilterPrice.module.css';
 
 export default function FilterPrice({
@@ -8,15 +8,15 @@ export default function FilterPrice({
   filters,
 }: WineFilterProps) {
   const { priceArr } = data;
+  const arr: TextValueArrProps[] = priceArr;
 
   const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
     updateFilters({ price: value });
-  const arr: TextValueArrProps[] = priceArr;
 
   return (
     <>
       <h3 className={styles.hdr}>Price:</h3>
-      <ul role="radiogroup">
+      <ul>
         {arr.map(({ text, value }) => (
           <li key={value}>
             <input

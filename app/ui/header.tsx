@@ -16,7 +16,7 @@ export default async function Header() {
         <div className={styles.logo}>
           <Link href="/">
             <Img
-              imgSrc={'logos/AK.png'}
+              imgSrc={'logos/AK.webp'}
               imgAlt="AK Fine Wines"
               imgWidth={80}
               imgHeight={80}

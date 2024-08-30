@@ -7,3 +7,4 @@ For more information, see the [course curriculum](https://nextjs.org/learn) on t
 not found
 error
 manage/CRUD/upload
+webp format images

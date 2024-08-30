@@ -58,7 +58,7 @@ export default function CartItem() {
             <div className={styles.item}>
               <div className={styles.cartImg}>
                 <Img
-                  imgSrc={`wine/${id}.jpg`}
+                  imgSrc={`wine/${id}.webp`}
                   imgAlt={name}
                   imgWidth={20}
                   imgHeight={80}

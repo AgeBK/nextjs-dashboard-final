@@ -30,7 +30,7 @@ export default function Footer() {
         {paymentArr.map((val, ind) => (
           <li key={ind}>
             <Img
-              imgSrc={`payment/${val}.jpg`}
+              imgSrc={`payment/${val}.webp`}
               imgAlt={val}
               imgWidth={paymentImgWidths[ind]}
               imgHeight={44}

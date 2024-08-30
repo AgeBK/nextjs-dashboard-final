@@ -17,9 +17,14 @@ export default function FilterRating({
   return (
     <>
       <h3 className={styles.hdr}>Rating:</h3>
-      <ul role="radiogroup">
+      <ul>
         {arr.map(({ text, value }) => (
-          <li key={value}>
+          <li
+            key={value}
+            className={`${!isManage && styles[`rating${value}`]} ${
+              styles.rating
+            } `}
+          >
             <input
               type="radio"
               id={`rating${value}`}
@@ -30,6 +35,7 @@ export default function FilterRating({
               onChange={handleChange}
               aria-label={text}
             />
+            {isManage && <span className={styles.XX}>{text}</span>}
           </li>
         ))}
       </ul>

@@ -14,9 +14,11 @@ import ManageImage from './manage-image';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
 // TODO: finish running lint
-// TODO: wave / console / terminal all pages
 // TODO: Lighthouse
 // TODO: update readme
+// TODO: netlify (rating stars / webp format images)
+// TODO: robots.txt
+// TODO: gifs are large in nav?
 const initialState: FormStateProps = {
   message: null,
   errors: {},

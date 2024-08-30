@@ -27,7 +27,7 @@ export default function ProductDetails({
     <section className={styles.productCont}>
       <div className={styles.productImg}>
         <ImgFill
-          imgSrc={`wine/${id}.jpg`}
+          imgSrc={`wine/${id}.webp`}
           imgAlt={name}
           imgStyle="product520h"
           imgPriority={true}

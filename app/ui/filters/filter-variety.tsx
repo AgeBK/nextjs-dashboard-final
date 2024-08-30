@@ -30,7 +30,7 @@ export default function FilterVariety({
     <>
       <h3 className={styles.hdr}>Variety:</h3>
       {sortedArr.length > 0 ? (
-        <ul role="radiogroup">
+        <ul>
           {sortedArr.map(([variety, amount]) => (
             <li key={variety}>
               <input

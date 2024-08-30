@@ -9,7 +9,7 @@ export default function ProductRating({ average, total }: ProductRatingProps) {
       {avg > 2 ? (
         <>
           <Img
-            imgSrc={`bg/${avg}starLge.png`}
+            imgSrc={`rating/${avg}starLge.png`}
             imgAlt={`${avg} star rating`}
             imgHeight={32}
             imgWidth={avg * 32}

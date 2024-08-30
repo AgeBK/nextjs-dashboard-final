@@ -16,7 +16,7 @@ export default function FilterCategory({
   return (
     <>
       <h3 className={styles.hdr}>Category:</h3>
-      <ul role="radiogroup">
+      <ul>
         {categoryArr.map((value) => (
           <li key={value}>
             <input

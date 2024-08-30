@@ -11,9 +11,10 @@
   margin-right: 20px;
 }
 
+/* strike through normal */
 .normal::before {
   background: rgb(145, 143, 143);
-  content: "";
+  content: '';
   display: block;
   height: 2px;
   left: 50%;
@@ -22,14 +23,4 @@
   -webkit-transform: translate(-50%, -50%) rotate(-15deg);
   transform: translate(-50%, -50%) rotate(-15deg);
   width: 35px;
-}
-
-.product .current {
-  font-size: 2.5rem;
-  border: 1px solid red;
-}
-
-.product .normal {
-  font-size: 2rem;
-  border: 1px solid red;
 }

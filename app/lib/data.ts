@@ -4,8 +4,7 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { camelise, cameliseArr } from './utils';
 
 export async function fetchProducts() {
-  // Add noStore() here to prevent the response from being cached. (I think caching is good for AK Wines)
-  // If you add new product and want it to show straight away, use noStore()
+  // noStore() prevents the response from being cached. (I think caching is good for AK Wines) TODO:
   noStore();
   console.log(fetch);
 

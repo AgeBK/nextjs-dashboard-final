@@ -12,7 +12,7 @@ export default function ErrorMain({ message }: { message: string }) {
   return (
     <section className={styles.container}>
       <Img
-        imgSrc={'error/sad.png'}
+        imgSrc={'error/sad.webp'}
         imgAlt="error"
         imgHeight={100}
         imgWidth={100}

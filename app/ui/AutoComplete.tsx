@@ -98,7 +98,7 @@ export default function AutoComplete({ products }: ProductProps) {
                 <div className={styles.itemCont}>
                   <div className={styles.itemImg}>
                     <Img
-                      imgSrc={`wine/${id}.jpg`}
+                      imgSrc={`wine/${id}.webp`}
                       imgAlt={name}
                       imgWidth={packaging === 'Cask' ? 40 : 20}
                       imgHeight={60}

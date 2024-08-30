@@ -234,7 +234,7 @@ const validImage = async (strUrl: string) => {
 };
 
 const uploadImg = async (file: Blob, productId: string) => {
-  const fileName: string = `${productId}.jpg`;
+  const fileName: string = `${productId}.webp`;
   const formData = new FormData();
   formData.append('file', file, fileName);
   console.log('ManageUpload uploadImg - elem');

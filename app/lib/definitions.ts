@@ -323,6 +323,11 @@ export type ProductItemProps = {
   css?: string;
 };
 
+export type PriceProps = {
+  current: number;
+  normal: number;
+};
+
 export type WineBlurbProps = {
   urlCategory: string | undefined;
   urlVariety: string | undefined;

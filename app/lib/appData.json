@@ -122,7 +122,7 @@
       "hdr": "2 for Deals",
       "blurb1": "2 great bottles",
       "blurb2": "1 amazing price",
-      "imgSrc": "promotion/twoBotBlk1.jpg",
+      "imgSrc": "promotion/twoBotBlk1.webp",
       "imgAlt": "Two for Deals"
     },
     {
@@ -131,7 +131,7 @@
       "hdr": "Get Down",
       "blurb1": "$10 and less",
       "blurb2": "Don't miss out on these",
-      "imgSrc": "promotion/multiBot.jpg",
+      "imgSrc": "promotion/multiBot.webp",
       "imgAlt": "$10 and Less"
     }
   ],

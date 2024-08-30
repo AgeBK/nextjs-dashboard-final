@@ -9,6 +9,7 @@ import PriceDrop from '../price-drop';
 import Price from '../price';
 import styles from '@/app/assets/css/product/ProductItem.module.css';
 
+// used on category page & carousel
 export default function ProductItem({ props, ind, css }: ProductItemProps) {
   const {
     id,
@@ -44,7 +45,7 @@ export default function ProductItem({ props, ind, css }: ProductItemProps) {
         className={styles.itemCont}
       >
         <ImgFill
-          imgSrc={`wine/${id}.jpg`}
+          imgSrc={`wine/${id}.webp`}
           imgAlt=""
           imgStyle="product130h"
           imgPriority={ind < PRIORITY} // priority = max in view onload
@@ -54,7 +55,7 @@ export default function ProductItem({ props, ind, css }: ProductItemProps) {
           <h3 className={styles.shortName}>{shortName}</h3>
           {avg && avg > 2 ? (
             <Img
-              imgSrc={`bg/${avg}star.jpg`}
+              imgSrc={`rating/${avg}star.jpg`}
               imgAlt={`${avg} star`}
               imgWidth={avg * 15}
               imgHeight={15}

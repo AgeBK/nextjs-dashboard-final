@@ -18,7 +18,7 @@ export default function ManageImage({
   const [isImageFound, setIsImageFound] = useState(false);
   const [isNewImage, setIsNewImage] = useState(false);
   const { imgWinePath } = data;
-  const imgURL = `${imgWinePath}${productId}.jpg`;
+  const imgURL = `${imgWinePath}${productId}.webp`;
 
   validImage(imgURL).then((isValid) => {
     setIsImageFound(isValid);
@@ -34,7 +34,7 @@ export default function ManageImage({
       {productId && isImageFound && !isNewImage && (
         <div>
           <ImgFill
-            imgSrc={`wine/${productId}.jpg`}
+            imgSrc={`wine/${productId}.webp`}
             imgAlt=""
             imgStyle="product130h"
             imgPriority={true}
@@ -45,7 +45,7 @@ export default function ManageImage({
       {productId && isNewImage && (
         <div className={styles.newImage}>
           <img
-            src={`/assets/img/wine/${productId}.jpg`}
+            src={`/assets/img/wine/${productId}.webp`}
             alt="wine"
             className={styles.uploadImg}
           />

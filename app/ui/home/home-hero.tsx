@@ -14,10 +14,10 @@ export default function HomeHero() {
           <picture>
             <source
               media="(max-width: 768px)"
-              srcSet="/assets/img/promotion/tenFor100Sml1.jpg"
+              srcSet="/assets/img/promotion/tenFor100Sml1.webp"
             />
             <Image
-              src="/assets/img/promotion/tenFor100.jpg"
+              src="/assets/img/promotion/tenFor100.webp"
               alt="Ten for $100"
               width={1400}
               height={420}

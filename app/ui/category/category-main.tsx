@@ -41,10 +41,7 @@ export default function CategoryMain({
   const isSmallScreenShowItems = isSmallScreen && isShowItems;
   dataRef.current = arr;
 
-  console.log('CategoryMain');
-
   useEffect(() => {
-    console.log('CategoryMain UE');
     if (didMount.current) {
       // reset page variables if URL changes, not on first load
       setSortName('');
@@ -56,9 +53,8 @@ export default function CategoryMain({
   }, [urlCategory, urlVariety]);
 
   const currentData = useMemo(() => {
-    console.log('currentData');
-
-    setPaging(pagingSettings); // reset paging if datasource changes
+    // reset paging if datasource changes
+    setPaging(pagingSettings);
     let arr = [...dataRef.current];
     if (arr.length) {
       if (Object.keys(filters).length) {
@@ -76,7 +72,7 @@ export default function CategoryMain({
     paging.page * paging.pageSize,
   );
 
-  // all data filters managed in filters state object
+  // data filters managed in filters state object
   const updateFilters = (filter: FilterProps) =>
     setFilters({ ...filters, ...filter });
 
