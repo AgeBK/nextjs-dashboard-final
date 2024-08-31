@@ -12,22 +12,20 @@ export default function Sort({ sortName, setSortName }: SortProps) {
 
   return (
     <div className={styles.container}>
-      <label htmlFor="sort" id="lblSort">
-        <select
-          id="sort"
-          name="filters"
-          onChange={(e) => handleSelect(e)}
-          className={styles.select}
-          aria-labelledby="lblSort"
-          value={sortName}
-        >
-          {sortNameArr.map((val: string) => (
-            <option value={val.toLowerCase()} key={val}>
-              {val}
-            </option>
-          ))}
-        </select>
-      </label>
+      <label htmlFor="sort">Sort:</label>
+      <select
+        id="sort"
+        name="filters"
+        onChange={(e) => handleSelect(e)}
+        className={styles.select}
+        value={sortName}
+      >
+        {sortNameArr.map((val: string) => (
+          <option value={val.toLowerCase()} key={val}>
+            {val}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
