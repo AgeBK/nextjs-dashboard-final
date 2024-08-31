@@ -1,16 +1,17 @@
 import React from 'react';
+import { SelectListsProps } from '../lib/definitions';
 import styles from '@/app/assets/css/Select.module.css';
 
-const SelectLists = ({ arr, key, value, handleChange }) => {
+const SelectLists = ({ arr, key, value, handleChange }: SelectListsProps) => {
+  // TODO: lighthouse again
   return (
     <section className={styles.container}>
-      <label htmlFor="sort" id="lblSort">
+      <label htmlFor="sort">
         <select
-          id={key}
+          id="sort"
           name={key}
           onChange={() => handleChange(key, value)}
           className={styles.select}
-          aria-labelledby="lblSort"
           value={value}
         >
           {arr.map((val: string) => (

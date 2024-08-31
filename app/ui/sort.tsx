@@ -1,11 +1,7 @@
 import { ChangeEvent } from 'react';
+import { SortProps } from '../lib/definitions';
 import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/Sort.module.css';
-
-type SortProps = {
-  sortName: string;
-  setSortName: (name: string) => void;
-};
 
 export default function Sort({ sortName, setSortName }: SortProps) {
   const { sortNameArr } = data;
@@ -35,4 +31,3 @@ export default function Sort({ sortName, setSortName }: SortProps) {
     </div>
   );
 }
-

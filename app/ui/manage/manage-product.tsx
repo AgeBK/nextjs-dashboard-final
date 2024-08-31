@@ -4,6 +4,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 import { FormStateProps, ManageProductProps } from '@/app/lib/definitions';
+import data from '@/app/lib/appData.json';
 import SelectWine from '@/app/ui/manage/select-wine';
 import SelectLists from '@/app/ui/manage/select-list';
 import InputFields from './manage-input-fields';
@@ -14,11 +15,8 @@ import ManageImage from './manage-image';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
 // TODO: finish running lint
-// TODO: Lighthouse
 // TODO: update readme
 // TODO: netlify (rating stars / webp format images)
-// TODO: robots.txt
-// TODO: gifs are large in nav?
 const initialState: FormStateProps = {
   message: null,
   errors: {},
@@ -35,6 +33,7 @@ export default function ManageProduct({
   const [productId, setProductId] = useState<string>('');
   const { id, name } = product;
   const isDelete = action === 'delete';
+  const { MIN_PRODUCT_ID_LENGTH } = data;
 
   // eslint-disable-next-line
   let currentActionFn: any = null;
@@ -66,8 +65,13 @@ export default function ManageProduct({
   // product id used for image name when adding product
   const handleChange = ({
     target: { value, id },
-  }: ChangeEvent<HTMLInputElement>) =>
-    id === 'id' && value.length > 5 && setProductId(value);
+  }: ChangeEvent<HTMLInputElement>) => {
+    if (id === 'id' && value.length >= MIN_PRODUCT_ID_LENGTH) {
+      setProductId(value);
+    } else {
+      setProductId('');
+    }
+  };
 
   const enableModal = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();

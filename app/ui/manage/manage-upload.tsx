@@ -10,41 +10,46 @@ export default function ManageUpload({
   setIsNewImage,
   isDelete,
 }: ManageUploadProps) {
-  console.log('ManageUpload');
-
   const onChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
-    if (files) {
-      const validImg = files[0].type === 'image/jpeg';
+    if (productId) {
+      const { files } = event.target;
 
-      if (productId && validImg) {
-        const isSuccess = await uploadImg(files[0], productId);
-        setIsNewImage(isSuccess);
-      } else {
-        console.log(
-          'ManageUpload error: Invalid id or image: ',
-          productId,
-          validImg,
-        );
+      if (files) {
+        const file = files[0];
+        const validImg = file.type === 'image/webp';
+
+        if (validImg) {
+          const isSuccess = await uploadImg(file, productId);
+          setIsNewImage(isSuccess);
+        } else {
+          console.log('ManageUpload error: Invalid image: ', file.type);
+        }
       }
+    } else {
+      console.log('ManageUpload error: Invalid id: ', productId);
     }
   };
 
   return (
     <div>
-      <label htmlFor="upload">
-        <span className={styles.key}>
-          Upload image <div className={styles.webp}>(.webp format only)</div>
-        </span>
-      </label>
-      <input
-        id="upload"
-        type="file"
-        name="file"
-        accept="image/jpeg"
-        onChange={onChange}
-        disabled={isDelete}
-      />
+      {productId && (
+        <>
+          <label htmlFor="upload">
+            <span className={styles.key}>
+              Upload image{' '}
+              <div className={styles.webp}>(.webp format only)</div>
+            </span>
+          </label>
+          <input
+            id="upload"
+            type="file"
+            name="file"
+            accept="image/webp"
+            onChange={onChange}
+            disabled={isDelete}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -264,6 +264,10 @@
   width: 100%;
 }
 
+.closeNav {
+  width: 100%;
+}
+
 @media screen and (max-width: 500px) {
   .cartLge {
     width: 20px;

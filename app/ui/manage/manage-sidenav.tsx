@@ -13,7 +13,7 @@ export default function ManageSideNav() {
     <>
       {isShow ? (
         <nav className={styles.sideNav}>
-          <Button css="" onClick={() => setIsShow(false)}>
+          <Button css="closeNav" onClick={() => setIsShow(false)}>
             <span className={styles.close}>X</span>
           </Button>
           <Link href="/manage">

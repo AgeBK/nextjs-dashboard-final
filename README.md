@@ -8,3 +8,4 @@ not found
 error
 manage/CRUD/upload
 webp format images
+lighthouse 90's

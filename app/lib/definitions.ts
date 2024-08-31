@@ -435,6 +435,18 @@ export type HomeCampaignProps = {
   finePrint: string;
 };
 
+export type SelectListsProps = {
+  arr: string[];
+  key: string;
+  value: string;
+  handleChange: (key: string, value: string) => void;
+};
+
+export type SortProps = {
+  sortName: string;
+  setSortName: (name: string) => void;
+};
+
 export type SchemaProps = z.ZodObject<
   Omit<
     {

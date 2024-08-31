@@ -4,7 +4,7 @@ import { ManageProductsProps } from '@/app/lib/definitions';
 import Img from '@/app/ui/image';
 import styles from '@/app/assets/css/manage/ManageProducts.module.css';
 
-// list of products main manage page
+// lists products main manage page
 export default function ManageProducts({ props }: ManageProductsProps) {
   const { id, category, variety, name, brand, priceNormal, priceCurrent } =
     props;
