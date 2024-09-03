@@ -10,7 +10,6 @@ import CarouselMain from '@/app/ui/carousel/carousel-main';
 import styles from '@/app/assets/css/product/Product.module.css';
 
 export default async function Product({
-  // TODO: Main?
   params: { urlCategory, urlVariety, urlId },
 }: {
   params: { urlCategory: string; urlVariety: string; urlId: string };

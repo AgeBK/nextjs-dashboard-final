@@ -6,7 +6,7 @@ import HomeCampaignMini from './home-campaign-mini';
 import Loading from '../loading';
 import styles from '@/app/assets/css/Home.module.css';
 
-export default function HomeMain() {
+export default function Home() {
   return (
     <article>
       <HomeHero />

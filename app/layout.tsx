@@ -2,6 +2,7 @@ import { Providers } from './providers';
 import type { Metadata } from 'next';
 import '@/app/assets/css/global.css';
 
+  // eslint-disable-next-line
 export const metadata: Metadata = {
   title: ' AK Fine Wines - The biggest range at the best prices guaranteed!!',
   description:

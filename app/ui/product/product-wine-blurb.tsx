@@ -3,7 +3,7 @@ import { KeyStringProps, WineBlurbProps } from '../../lib/definitions';
 import styles from '@/app/assets/css/product/ProductWineBlurb.module.css';
 
 const ProductWineBlurb = ({ urlCategory, urlVariety }: WineBlurbProps) => {
-  // TODO: http://localhost:3000/red/pinot-noir/3901656 blurb on product, not category??
+  // loads info about the wine beneath the product title, may be variety specific or category generic
   const { blurb }: { blurb: KeyStringProps } = data;
   let synopsis = '';
   if (urlVariety && blurb[urlVariety]) {

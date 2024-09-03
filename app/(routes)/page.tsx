@@ -1,5 +1,5 @@
-import HomeMain from '../ui/home/home-main';
+import Home from '../ui/home/home-main';
 
 export default function Page() {
-  return <HomeMain />;
+  return <Home />;
 }

@@ -90,7 +90,7 @@ export async function fetchProductsPriceTwoFor(price: number) {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE priceTwoFor=${price}
+      WHERE price_two_for=${price}
       ORDER BY ratings_average DESC
       `;
 
@@ -109,7 +109,7 @@ export async function fetchProductsOnSpecial() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE priceCurrent < priceNormal
+      WHERE price_current < price_normal
       ORDER BY ratings_average DESC
       `;
 
@@ -146,7 +146,7 @@ export async function fetchProductsPriceTwoForDeals() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE priceTwoFor > 0
+      WHERE price_two_for > 0
       ORDER BY ratings_average DESC
       `;
 
@@ -165,7 +165,7 @@ export async function fetchProductsPriceTenPercentOff() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE pricePercentOff = 10
+      WHERE price_percent_off = 10
       `;
 
     const products = data.rows;
@@ -183,7 +183,7 @@ export async function fetchProductsTenAndLess() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE priceCurrent <= 10 OR priceNormal <= 10
+      WHERE price_current <= 10 OR price_normal <= 10
       `;
 
     const products = data.rows;
@@ -201,7 +201,7 @@ export async function fetchProductsPriceTenFor100() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE priceTenFor = 100
+      WHERE price_ten_for = 100
       `;
 
     const products = data.rows;
@@ -218,7 +218,7 @@ export async function fetchProductsPriceDrop() {
     const data = await sql<DataProps>`
       SELECT *        
       FROM products
-      WHERE priceCurrent < priceNormal
+      WHERE price_current < price_normal
       `;
 
     const products = data.rows;
