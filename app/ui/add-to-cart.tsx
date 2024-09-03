@@ -17,6 +17,7 @@ export default function AddToCart({
   deal,
   promotionDiscountCode,
 }: AddToCartProps) {
+  // add to cart button shared across the site / uses Redux
   const [itemId, setItemId] = useState('');
   const dispatch = useDispatch();
   const isAdded = itemId === id;

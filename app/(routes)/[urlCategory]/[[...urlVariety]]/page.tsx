@@ -12,8 +12,6 @@ export default async function Page({
     urlCategory,
     variety,
   ); // various db calls based on URL
-  // TODO: check every file for unused import etc
-  // TODO: check image folder (unused)
 
   return (
     <article>

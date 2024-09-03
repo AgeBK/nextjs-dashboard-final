@@ -1,5 +1,5 @@
-import CategoryMain from '@/app/ui/category/category-main';
 import { fetchProducts } from '@/app/lib/data';
+import CategoryMain from '@/app/ui/category/category-main';
 import ManageSideNav from '@/app/ui/manage/manage-sidenav';
 import styles from '@/app/assets/css/manage/ManageLayout.module.css';
 

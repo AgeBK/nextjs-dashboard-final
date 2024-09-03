@@ -9,6 +9,7 @@ export default function Img({
   imgHeight,
   imgPriority,
 }: ImgProps) {
+  // main image component used across site
   const { imgPath } = data;
   return (
     <Image

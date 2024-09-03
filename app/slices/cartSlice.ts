@@ -9,6 +9,7 @@ const initialState: CartState = {
   promotionCode: '',
 };
 
+// Redux methods to keep track of the users cart
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,

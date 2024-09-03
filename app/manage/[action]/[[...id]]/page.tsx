@@ -9,10 +9,9 @@ export default async function ManagePage({
   params: { action, id },
 }: ManagePageProps) {
   const { selectItems, selectWineItems, productKeys } = data;
-
-  const product: DataProps = id
+  const product: DataProps | undefined = id
     ? await fetchProductById(id[0])
-    : { ...productKeys };
+    : { ...productKeys }; // fetch product or product shape
 
   if (product) {
     // remove properties from product obj for other components
@@ -31,9 +30,9 @@ export default async function ManagePage({
     const ddlItems = pickObjItems(product, selectItems);
 
     return (
-      <>
+      <div className={styles.container}>
         <h1 className={styles.hdr}> {`${action} Product`}</h1>
-        <div className={styles.prodCont}>
+        <div className={styles.product}>
           <ManageProduct
             product={product}
             action={action}
@@ -41,7 +40,7 @@ export default async function ManagePage({
             ddlItems={ddlItems}
           />
         </div>
-      </>
+      </div>
     );
   }
   return <Error />;

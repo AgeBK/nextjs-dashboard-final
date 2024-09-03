@@ -8,6 +8,7 @@ export default function HomeCampaign({
   text,
   finePrint,
 }: HomeCampaignProps) {
+  // Banner style add on home page
   return (
     <div className={styles.campaign}>
       <Link href={`/${link}`}>

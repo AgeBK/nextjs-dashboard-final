@@ -36,7 +36,7 @@ export default function ManageUpload({
         <>
           <label htmlFor="upload">
             <span className={styles.key}>
-              Upload image{' '}
+              Upload image
               <div className={styles.webp}>(.webp format only)</div>
             </span>
           </label>

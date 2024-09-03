@@ -5,6 +5,7 @@ import { CampainMiniProps } from '../../lib/definitions';
 import styles from '@/app/assets/css/Home.module.css';
 
 export default function HomeCampaignMini() {
+  // 2 small adverts on the home page
   const { campaingMini } = data;
   return (
     <div className={styles.campaignMini}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { fetchProductById } from '@/app/lib/data';
-import BreadCrumb from '@/app/ui/bread-crumb';
+import BreadCrumb from '@/app/ui/product/product-bread-crumb';
 import ProductCart from '@/app/ui/product/product-cart';
 import ProductDetails from '@/app/ui/product/product-details';
 import ProductInfo from '@/app/ui/product/product-info';
@@ -10,6 +10,7 @@ import CarouselMain from '@/app/ui/carousel/carousel-main';
 import styles from '@/app/assets/css/product/Product.module.css';
 
 export default async function Product({
+  // TODO: Main?
   params: { urlCategory, urlVariety, urlId },
 }: {
   params: { urlCategory: string; urlVariety: string; urlId: string };

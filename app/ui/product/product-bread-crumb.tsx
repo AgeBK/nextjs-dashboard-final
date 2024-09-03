@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Img from '@/app/ui/image';
-import { BreadCrumbProps } from '../lib/definitions';
+import { ProductBreadCrumbProps } from '../../lib/definitions';
 import styles from '@/app/assets/css/BreadCrumb.module.css';
 
 const Chevron = () => (
@@ -10,12 +10,13 @@ const Chevron = () => (
   </span>
 );
 
-export default function BreadCrumb({
+export default function ProductBreadCrumb({
   urlCategory,
   urlVariety,
   category,
   variety,
-}: BreadCrumbProps) {
+}: ProductBreadCrumbProps) {
+  // bread crumb displayed on the product page
   return (
     <div className={styles.breadCrumb}>
       <Link href="/" className={styles.category}>

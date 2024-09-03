@@ -1,10 +1,9 @@
-import { Metadata } from 'next';
 import { DataProps, FilterProps } from './definitions';
 import {
-  fetchProductsByCat,
+  fetchProductsByCategory,
   fetchProductsPriceTwoFor,
   fetchProductsBySearchTerm,
-  fetchProductsByVariety,
+  fetchProductsByCategoryAndVariety,
   fetchProductsPriceTwoForDeals,
   fetchProductsPriceTenPercentOff,
   fetchProductsTenAndLess,
@@ -32,7 +31,7 @@ const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
       case 'white':
       case 'red':
       case 'sparkling':
-        arr = await fetchProductsByVariety(
+        arr = await fetchProductsByCategoryAndVariety(
           capitalizeFirstLetter(arg1),
           capitalizeFirstLetter(arg2),
         );
@@ -40,47 +39,42 @@ const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
       default:
         break;
     }
+  } else if (
+    // filter by 2 for XX deals
+    arg1.startsWith('two-for') &&
+    arg1 !== 'two-for-deals'
+  ) {
+    const price = Number(arg1.split('-')[2]);
+    arr = await fetchProductsPriceTwoFor(price);
+  } else if (arg1.startsWith('search')) {
+    const searchTerm = arg1.replace('search%3D', '');
+    arr = await fetchProductsBySearchTerm(searchTerm);
   } else {
-    console.log('else');
-
-    if (
-      // filter by 2 for XX deals
-      arg1.startsWith('two-for') &&
-      arg1 !== 'two-for-deals'
-    ) {
-      const price = Number(arg1.split('-')[2]);
-      arr = await fetchProductsPriceTwoFor(price);
-    } else if (arg1.startsWith('search')) {
-      const searchTerm = arg1.replace('search%3D', '');
-      arr = await fetchProductsBySearchTerm(searchTerm);
-    } else {
-      switch (arg1) {
-        case 'two-for-deals':
-          arr = await fetchProductsPriceTwoForDeals();
-          break;
-        case 'ten-percent-off':
-          arr = await fetchProductsPriceTenPercentOff();
-          break;
-        case 'ten-and-less':
-          arr = await fetchProductsTenAndLess();
-          break;
-        case 'ten-for-100':
-          arr = await fetchProductsPriceTenFor100();
-          break;
-        case 'price-drop':
-          arr = await fetchProductsPriceDrop();
-          break;
-        case 'white':
-        case 'red':
-        case 'sparkling':
-          arr = await fetchProductsByCat(capitalizeFirstLetter(arg1));
-          break;
-        default:
-          break;
-      }
+    switch (arg1) {
+      case 'two-for-deals':
+        arr = await fetchProductsPriceTwoForDeals();
+        break;
+      case 'ten-percent-off':
+        arr = await fetchProductsPriceTenPercentOff();
+        break;
+      case 'ten-and-less':
+        arr = await fetchProductsTenAndLess();
+        break;
+      case 'ten-for-100':
+        arr = await fetchProductsPriceTenFor100();
+        break;
+      case 'price-drop':
+        arr = await fetchProductsPriceDrop();
+        break;
+      case 'white':
+      case 'red':
+      case 'sparkling':
+        arr = await fetchProductsByCategory(capitalizeFirstLetter(arg1));
+        break;
+      default:
+        break;
     }
   }
-
   return arr;
 };
 
@@ -217,7 +211,7 @@ const filterCategoryPageData = (arr: DataProps[], filters: FilterProps) => {
   return arr;
 };
 
-const validImage = async (strUrl: string) => {
+const validateImage = async (strUrl: string) => {
   try {
     await new Promise((resolve, reject) => {
       const img = new Image();
@@ -245,11 +239,8 @@ const uploadImg = async (file: Blob, productId: string) => {
   });
 
   const result = await response.json();
-  console.log(result);
 
   if (result.success) {
-    console.log('ManageUpload image uploaded SUCCESS');
-    console.log('Upload ok : ' + result.name);
     return true;
   } else {
     console.log('ManageUpload image uploaded FAILED');
@@ -258,7 +249,7 @@ const uploadImg = async (file: Blob, productId: string) => {
 };
 
 const camelise = (product: DataProps) => {
-  // convert underscore words to camel case
+  // convert keys names in object from underscore to camel case (from db to React friendly)
   const camelCased = Object.entries(product).reduce((acc, val) => {
     const value = val[1];
     const key = val[0].replace(/_([a-z])/g, (g) => {
@@ -278,15 +269,6 @@ const deCamelise = (s: string) => {
   return result.charAt(0).toUpperCase() + result.slice(1);
 };
 
-const metadata: Metadata = {
-  title: ' AK Fine Wines - The biggest range at the best prices guaranteed!!',
-  description:
-    'AK Fine Wines - All of your fine wine needs at the best prices guaranteed!! Extensive range of White/Red/Sparking wines from around Australia and New Zealand',
-  icons: {
-    icon: '/favicon.ico',
-  },
-};
-
 export {
   capitalizeFirstLetter,
   hyphenate,
@@ -296,10 +278,9 @@ export {
   sortCategoryPageData,
   filterCategoryPageData,
   fetchCarouselData,
-  validImage,
+  validateImage,
   uploadImg,
   camelise,
   cameliseArr,
   deCamelise,
-  metadata,
 };

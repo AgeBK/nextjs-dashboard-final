@@ -8,6 +8,7 @@ export default function SelectLists({
   ddlWineItems,
   isDelete,
 }: ddlWineItemsProps) {
+  // region / packaging drop downs on add/edit/delete manage product page
   const { region, packaging } = data;
   const arrList = [region, packaging];
 

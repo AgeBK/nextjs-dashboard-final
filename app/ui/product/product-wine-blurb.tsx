@@ -1,8 +1,9 @@
 import data from '@/app/lib/appData.json';
-import { KeyStringProps, WineBlurbProps } from '../lib/definitions';
-import styles from '@/app/assets/css/WineBlurb.module.css';
+import { KeyStringProps, WineBlurbProps } from '../../lib/definitions';
+import styles from '@/app/assets/css/product/ProductWineBlurb.module.css';
 
-const WineBlurb = ({ urlCategory, urlVariety }: WineBlurbProps) => {
+const ProductWineBlurb = ({ urlCategory, urlVariety }: WineBlurbProps) => {
+  // TODO: http://localhost:3000/red/pinot-noir/3901656 blurb on product, not category??
   const { blurb }: { blurb: KeyStringProps } = data;
   let synopsis = '';
   if (urlVariety && blurb[urlVariety]) {
@@ -16,4 +17,4 @@ const WineBlurb = ({ urlCategory, urlVariety }: WineBlurbProps) => {
   ) : null;
 };
 
-export default WineBlurb;
+export default ProductWineBlurb;

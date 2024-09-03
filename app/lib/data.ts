@@ -4,9 +4,8 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { camelise, cameliseArr } from './utils';
 
 export async function fetchProducts() {
-  // noStore() prevents the response from being cached. (I think caching is good for AK Wines) TODO:
+  // noStore() prevents the response from being cached. (good for dev) TODO
   noStore();
-  console.log(fetch);
 
   try {
     const data = await sql<DataProps>`
@@ -19,46 +18,7 @@ export async function fetchProducts() {
     return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
-    throw new Error('Failed to fetch products by category.');
-  }
-}
-
-export async function fetchProductsByCat(query: string) {
-  noStore();
-
-  try {
-    const data = await sql<DataProps>`
-      SELECT *        
-      FROM products
-      WHERE category=${query}
-      ORDER BY ratings_average DESC
-      `;
-
-    const products = data.rows;
-    return cameliseArr(products);
-  } catch (err) {
-    console.error('Database Error:', err);
-    throw new Error('Failed to fetch products by category.');
-  }
-}
-
-export async function fetchProductsByCatAndPrice(query: string, price: number) {
-  noStore();
-
-  try {
-    const data = await sql<DataProps>`
-      SELECT *        
-      FROM products
-      WHERE category=${query}
-      AND priceCurrent<=${price}
-      ORDER BY ratings_average DESC
-      `;
-
-    const products = data.rows;
-    return cameliseArr(products);
-  } catch (err) {
-    console.error('Database Error:', err);
-    throw new Error('Failed to fetch products by category.');
+    throw new Error('Failed to fetch products.');
   }
 }
 
@@ -73,7 +33,50 @@ export async function fetchProductById(query: string) {
       `;
 
     const product = data.rows[0];
-    return camelise(product);
+    return product ? camelise(product) : undefined; // convert db column names to camel case (price_normal > priceNormal)
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch product by id.');
+  }
+}
+
+export async function fetchProductsByCategoryAndVariety(
+  category: string,
+  variety: string,
+) {
+  noStore();
+
+  console.log('fetchProductsByCategoryAndVariety');
+
+  try {
+    const data = await sql<DataProps>`
+      SELECT *        
+      FROM products
+      WHERE category=${category} AND variety=${variety}
+      ORDER BY ratings_average DESC
+      `;
+
+    const products = data.rows;
+    return cameliseArr(products); // convert db column names to camel case (price_normal > priceNormal)
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch products by category and variety.');
+  }
+}
+
+export async function fetchProductsByCategory(query: string) {
+  noStore();
+
+  try {
+    const data = await sql<DataProps>`
+      SELECT *        
+      FROM products
+      WHERE category=${query}
+      ORDER BY ratings_average DESC
+      `;
+
+    const products = data.rows;
+    return cameliseArr(products); // convert db column names to camel case (price_normal > priceNormal)
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products by category.');
@@ -95,7 +98,7 @@ export async function fetchProductsPriceTwoFor(price: number) {
     return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
-    throw new Error('Failed to fetch products by deal and price.');
+    throw new Error('Failed to fetch products price 2 for.');
   }
 }
 
@@ -129,34 +132,10 @@ export async function fetchProductsBySearchTerm(query: string) {
     `;
 
     const products = data.rows;
-    console.log(products);
-
     return cameliseArr(products);
   } catch (err) {
     console.error('Database Error:', err);
-    throw new Error('Failed to fetch products on special.');
-  }
-}
-
-export async function fetchProductsByVariety(
-  category: string,
-  variety: string,
-) {
-  noStore();
-
-  try {
-    const data = await sql<DataProps>`
-      SELECT *        
-      FROM products
-      WHERE category=${category} AND variety=${variety}
-      ORDER BY ratings_average DESC
-      `;
-
-    const products = data.rows;
-    return cameliseArr(products);
-  } catch (err) {
-    console.error('Database Error:', err);
-    throw new Error('Failed to fetch products on special.');
+    throw new Error('Failed to fetch products by search term.');
   }
 }
 

@@ -4,7 +4,6 @@ import path from 'path';
 import fs from 'fs';
 
 export const POST = async (req: NextRequest) => {
-  // TODO: only run this if product id is supplied?
   const { imgWineUploadPath } = data;
   const formData = await req.formData();
   const body = Object.fromEntries(formData);

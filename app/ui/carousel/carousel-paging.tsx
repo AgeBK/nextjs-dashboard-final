@@ -10,7 +10,8 @@ export default function CarouselPaging({
   handleClick,
 }: CarouselPagingProps) {
   if (items) {
-    const { MAX_CAROUSEL_PRODUCTS } = data;
+    // items is the number of carousel items to display based on width of screen
+    const { MAX_CAROUSEL_PRODUCTS } = data; // 12
     const html: Array<JSX.Element> = [];
     const totalPages = Math.ceil(MAX_CAROUSEL_PRODUCTS / items);
     for (let i = 0; i < totalPages; i++) {

@@ -16,9 +16,7 @@ export default function ProductInfo({
   shortName,
   urlCategory,
 }: ProductInfoProps) {
-  console.log('shortName');
-  console.log(shortName);
-
+  // detailed list of the products information
   return (
     <section className={styles.info}>
       <h2 className={styles.infoHdr}>Product Information:</h2>

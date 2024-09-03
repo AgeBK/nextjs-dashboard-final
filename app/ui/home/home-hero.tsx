@@ -9,22 +9,27 @@ export default function HomeHero() {
       <h2 className={styles.slogan}>
         All of your fine wine needs at the best prices guaranteed!!
       </h2>
+      <h3 className={styles.eos}>
+        ENDS SUNDAY<span className={styles.divider}>|</span>
+        ONLINE ONLY
+      </h3>
       <div className={styles.hero}>
         <Link href="/ten-for-100">
           <picture>
             <source
-              media="(max-width: 768px)"
-              srcSet="/assets/img/promotion/tenFor100Sml1.webp"
+              media="(max-width: 500px)"
+              srcSet="/assets/img/promotion/heroSml.webp"
             />
             <Image
-              src="/assets/img/promotion/tenFor100.webp"
+              src="/assets/img/promotion/hero.webp"
               alt="Ten for $100"
               width={1400}
-              height={420}
+              height={381}
               className={styles.img}
               priority={true}
             />
           </picture>
+          <div className={styles.shopNow}>SHOP NOW</div>
         </Link>
       </div>
     </>

@@ -1,4 +1,9 @@
-.prodCont {
+.container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.product {
   padding: 20px;
 }
 

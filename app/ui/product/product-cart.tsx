@@ -22,6 +22,7 @@ export default function ProductCart({
   promotionDiscountCode,
   isCask,
 }: ProductCartProps) {
+  // product page cart
   const [count, setCount] = useState<number>(1);
 
   const handleCount = (e: React.MouseEvent<Element, MouseEvent>) => {
@@ -52,7 +53,6 @@ export default function ProductCart({
           </div>
         </div>
         <div className={styles.cartAmt}>
-          {/* <div className={styles.totalPrice}>${priceCurrent * count}</div> */}
           <Button css="cartLge" onClick={handleCount} disabled={count < 2}>
             -
           </Button>

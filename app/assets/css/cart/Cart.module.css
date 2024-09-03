@@ -1,6 +1,3 @@
-.cartOuterContainer {
-}
-
 .container {
   background-color: #fff;
   width: auto;
@@ -13,8 +10,6 @@
   display: inline-block;
   margin-right: 10px;
 }
-
-
 
 @media screen and (max-width: 500px) {
   .container {

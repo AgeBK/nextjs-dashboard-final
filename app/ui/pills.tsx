@@ -1,14 +1,11 @@
 import Button from '@/app/ui/button';
 import data from '@/app/lib/appData.json';
-import { FilterProps, KeyBooleanProps } from '../lib/definitions';
+import { FilterProps, KeyBooleanProps, PillsProps } from '../lib/definitions';
 import styles from '@/app/assets/css/Pills.module.css';
 
-type PillsProps = {
-  filters: FilterProps;
-  removeFilters: (val: string) => void;
-};
-
 export default function Pills({ filters, removeFilters }: PillsProps) {
+  // when filters are applied to data on the Category page
+  // buttons will appear at the top of the category pages so the filters can be removed
   const { pillsArr } = data;
   const isRegionChecked = (regionObj: KeyBooleanProps) =>
     Object.values(regionObj).some((val) => val);

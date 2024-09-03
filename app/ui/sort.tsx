@@ -4,6 +4,7 @@ import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/Sort.module.css';
 
 export default function Sort({ sortName, setSortName }: SortProps) {
+  // sort drop down on category page
   const { sortNameArr } = data;
 
   const handleSelect = ({

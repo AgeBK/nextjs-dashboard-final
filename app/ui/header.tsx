@@ -8,6 +8,7 @@ import { fetchProducts } from '../lib/data';
 import styles from '@/app/assets/css/Header.module.css';
 
 export default async function Header() {
+  // loads site header / calls to fetch all products and check if current user has a session
   const [products, user] = await Promise.all([fetchProducts(), getUser()]);
 
   return (

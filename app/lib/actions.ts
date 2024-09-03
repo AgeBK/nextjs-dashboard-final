@@ -66,9 +66,6 @@ export async function addProduct(
   prevState: FormStateProps,
   formData: FormData,
 ) {
-  console.log('addProduct');
-  console.log(formData);
-
   const validatedFields = validateFormData(FormSchema, formData);
 
   if (!validatedFields.success) {
@@ -99,28 +96,6 @@ export async function addProduct(
     ratingsAverage,
     unitOfMeasureLabel,
   } = validatedFields.data;
-
-  console.log(
-    id,
-    brand,
-    name,
-    shortName,
-    category,
-    variety,
-    region,
-    packaging,
-    volumeMl,
-    promotionCalloutText,
-    promotionDiscountCode,
-    priceNormal,
-    priceCurrent,
-    priceTwoFor,
-    priceTenFor,
-    pricePercentOff,
-    ratingsTotal,
-    ratingsAverage,
-    unitOfMeasureLabel,
-  );
 
   // Insert data into the database
   try {

@@ -7,7 +7,7 @@ import styles from '@/app/assets/css/Error.module.css';
 
 export default function ErrorMain({ message }: { message: string }) {
   const pathname = usePathname();
-  console.log(`error - ${message}`);
+  console.log(`ErrorMain - ${message}`);
 
   return (
     <section className={styles.container}>

@@ -9,6 +9,7 @@ import { ModalDeleteProps } from '@/app/lib/definitions';
 import styles from '@/app/assets/css/manage/ManageModalDelete.module.css';
 
 export default function ModalDelete({ id, name }: ModalDeleteProps) {
+  // loads pop up to confirm product deletion
   return (
     <div className={styles.modalCont}>
       <div className={styles.modal}>

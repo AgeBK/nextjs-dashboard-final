@@ -14,9 +14,6 @@ import ModalDelete from './manage-modal-delete';
 import ManageImage from './manage-image';
 import styles from '@/app/assets/css/manage/Form.module.css';
 
-// TODO: finish running lint
-// TODO: update readme
-// TODO: netlify (rating stars / webp format images)
 const initialState: FormStateProps = {
   message: null,
   errors: {},

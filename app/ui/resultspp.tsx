@@ -1,14 +1,10 @@
 import Button from '@/app/ui/button';
 import data from '@/app/lib/appData.json';
-import { PagingProps } from '../lib/definitions';
+import { ReslutPPProps } from '../lib/definitions';
 import styles from '@/app/assets/css/ResultsPP.module.css';
 
-type ReslutPPProps = {
-  paging: PagingProps;
-  updatePaging: (paging: PagingProps) => void;
-};
-
 const ResultsPP = ({ paging, updatePaging }: ReslutPPProps) => {
+  // results per page can be changed (20,40,60,80)
   const { pageSizes } = data;
 
   const handleClick = ({

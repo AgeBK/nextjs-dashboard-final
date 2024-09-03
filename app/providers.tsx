@@ -1,4 +1,5 @@
 // https://stackoverflow.com/questions/77400272/setting-up-redux-toolkit-with-next-js-14-0-1
+// required for Redux to work with next correctly
 'use client';
 import { Provider } from "react-redux";
 import { store } from "./store";

@@ -3,6 +3,7 @@ import Img from '@/app/ui/image';
 import styles from '@/app/assets/css/product/ProductRating.module.css';
 
 export default function ProductRating({ average, total }: ProductRatingProps) {
+  // star rating on product page
   const avg = Math.round(average);
   return (
     <>

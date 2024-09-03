@@ -6,7 +6,7 @@ export default function CartItemSaving({
   dealPrice,
   quantity,
 }: ItemSavingsProps) {
-  // show savings when discount code or 2 for deals
+  // show saving per product when discount code or 2 for deals
   return dealPrice ? (
     <div className={styles.savings}>
       <span className={styles.triangle}></span>

@@ -2,17 +2,19 @@ import Link from 'next/link';
 import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/PriceDrop.module.css';
 
-type PriceDropProps = {
+const PriceDrop = ({
+  promotionCalloutText,
+}: {
   promotionCalloutText: string | undefined;
-};
-
-const PriceDrop = ({ promotionCalloutText }: PriceDropProps) => {
+}) => {
+  // if item has a deal or is on special
+  // a link to that category is displayed in product item component
   const { numberToWord } = data;
   const numToWord: { [key: number]: string } = numberToWord;
   let arr: string[] = [];
-  let amount: string = '';
-  let price: number = 0;
-  let isTenPercent: boolean = false;
+  let amount = '';
+  let price = 0;
+  let isTenPercent = false;
   let priceDropLink: JSX.Element | null = null;
 
   if (promotionCalloutText) {

@@ -1,6 +1,6 @@
 // data definitions
 
-import { ChangeEvent, ReactNode } from 'react';
+import { ChangeEvent, ReactNode, RefObject } from 'react';
 import { z } from 'zod';
 
 export type DataProps = {
@@ -195,7 +195,7 @@ export type FormStateProps = {
   success: boolean | null;
 };
 
-export type BlurbProps = {
+export type CategoryBlurbProps = {
   urlCategory: string;
   variety?: string;
 };
@@ -265,13 +265,13 @@ export type CategoryHeaderProps = {
   setSortName: (name: string) => void;
 };
 
-export type CategoryPageNumberProps = {
+export type CategoryPagingProps = {
   currentData: DataProps[];
   paging: PagingProps;
   updatePaging: (paging: PagingProps) => void;
 };
 
-export type CategoryPagingProps = {
+export type CategoryFooterProps = {
   currentData: DataProps[];
   paging: PagingProps;
   updatePaging: (paging: PagingProps) => void;
@@ -421,7 +421,7 @@ export type ManageFilterProps = {
   isManage?: boolean;
 };
 
-export type BreadCrumbProps = {
+export type ProductBreadCrumbProps = {
   urlCategory?: string;
   urlVariety?: string;
   category: string;
@@ -445,6 +445,22 @@ export type SelectListsProps = {
 export type SortProps = {
   sortName: string;
   setSortName: (name: string) => void;
+};
+
+export type UseCartStateProps = [
+  RefObject<HTMLInputElement>,
+  boolean,
+  () => void,
+];
+
+export type PillsProps = {
+  filters: FilterProps;
+  removeFilters: (val: string) => void;
+};
+
+export type ReslutPPProps = {
+  paging: PagingProps;
+  updatePaging: (paging: PagingProps) => void;
 };
 
 export type SchemaProps = z.ZodObject<

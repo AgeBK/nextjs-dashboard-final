@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 
 const usePageWidth = (threshold: number) => {
+  // returns true/false based on number passed (threshold)/manages different states of UI in the app
   const [isPageWidth, setIsPageWidth] = useState<boolean | undefined>(
     undefined,
   );

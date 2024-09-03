@@ -20,20 +20,20 @@ export default function AutoComplete({ products }: ProductProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const { MAX_SMALLSCREEN } = data;
-  const isPageWidth: boolean = usePageWidth(MAX_SMALLSCREEN);
-
+  const isPageWidth: boolean | undefined = usePageWidth(MAX_SMALLSCREEN);
   const { replace } = useRouter();
 
   if (products) {
+    // data used by the auto complete component
     const ACData = products.map(
       ({ name, id, category, variety, packaging }: ACDataProps) => {
         return { name, id, category, variety, packaging };
       },
     );
 
-    const handleClick = (): void => setOverlay(true);
+    const handleClick = (): void => setOverlay(true); // apply overlay when auto complete is focused
 
-    const handleBlur = (): void => setOverlay(false);
+    const handleBlur = (): void => setOverlay(false); // remove overlay
 
     const handleChange = (
       _: SyntheticEvent<Element, Event>,
@@ -53,8 +53,8 @@ export default function AutoComplete({ products }: ProductProps) {
       },
     ): void => {
       const { key } = e;
-
       if (key === 'Enter' && searchTerm) {
+        // if entered press, display results on category page
         setOverlay(false);
         setOpen(false);
         replace(`/search=${searchTerm}`);
@@ -65,6 +65,8 @@ export default function AutoComplete({ products }: ProductProps) {
       _: SyntheticEvent<Element, Event>,
       val: string,
     ): void => {
+      // store user input in searchTerm state var
+      // only show results if 2 or more characters are entered
       setSearchTerm(val);
       if (val.length <= 1) {
         if (open) setOpen(false);
@@ -75,7 +77,7 @@ export default function AutoComplete({ products }: ProductProps) {
       <section className={styles.container}>
         <div className={overlay ? styles.overlay : ''}></div>
         <Autocomplete
-          open={open}
+          open={open} // list of results below input box
           onChange={(e, value) => handleChange(e, value)}
           onInputChange={(_, value) => handleInputChange(_, value)}
           onKeyDown={(e) => handleKeyDown(e)}

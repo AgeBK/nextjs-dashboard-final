@@ -33,7 +33,7 @@ export default function Cart() {
   const { totalPrice, totalQty } = CartQtyPrice;
 
   return (
-    <div className={styles.cartOuterContainer} ref={ref}>
+    <div ref={ref}>
       <div className={styles.container}>
         {isOpen && totalQty && totalPrice ? (
           <CartOpen

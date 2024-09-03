@@ -6,6 +6,7 @@ export default function CategoryToggleItems({
   togglePageItems,
   isSmallScreenShowItems,
 }: CategoryToggleItemsProps) {
+  // on small screen switch between category and filter view
   return (
     <div className={styles.smlScreen}>
       <Button css="filters" onClick={togglePageItems}>

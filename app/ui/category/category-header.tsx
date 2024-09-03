@@ -10,6 +10,7 @@ export default function CategoryHeader({
   sortName,
   setSortName,
 }: CategoryHeaderProps) {
+  // loads ui to remove applied filters / sort drop down list
   return (
     <div className={styles.detailsCont}>
       <Pills filters={filters} removeFilters={removeFilters} />

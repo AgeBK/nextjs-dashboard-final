@@ -11,6 +11,7 @@ import Cart from './cart/cart';
 import styles from '@/app/assets/css/Header.module.css';
 
 export default function HeaderUserCart({ user }: { user: string | null }) {
+  // loads cart and user status (login in or not)
   const dispatch = useDispatch();
   const pathname = usePathname().substring(1);
   const loginUrl = '/login';

@@ -10,6 +10,7 @@ export default function SelectWine({
   ddlWineItems,
   isDelete,
 }: ddlWineItemsProps) {
+  // category / variety drop downs on add/edit/delete manage product page
   const { category } = ddlWineItems;
   const [wineCategory, setWineCategory] = useState(category);
   const { categoryArr, red, white, sparkling } = data;

@@ -17,10 +17,10 @@ import data from '@/app/lib/appData.json';
 import CategoryList from './category-list';
 import CategoryHeader from './category-header';
 import CategoryToggleItems from './category-toggle-items';
-import CategoryPaging from './category-paging';
+import CategoryFooter from './category-footer';
 import CategoryNoResults from './category-no-results';
 import FilterList from '../filters/filter-list';
-import Blurb from '../blurb';
+import Blurb from './category-blurb';
 import styles from '@/app/assets/css/category/Category.module.css';
 
 // ui/components for category and manage products pages
@@ -142,7 +142,7 @@ export default function CategoryMain({
             {currentData.length > 0 ? (
               <>
                 <CategoryList arr={pagedData} isManage={isManage} />
-                <CategoryPaging
+                <CategoryFooter
                   currentData={currentData}
                   paging={paging}
                   updatePaging={updatePaging}

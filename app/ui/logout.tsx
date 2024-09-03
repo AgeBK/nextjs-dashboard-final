@@ -3,6 +3,7 @@ import { auth } from '../../auth';
 import styles from '@/app/assets/css/Logout.module.css';
 
 export default async function Logout() {
+  // loads if user is logged in
   const session = await auth();
 
   return (

@@ -1,5 +1,5 @@
 import { ProductDetailsProps } from '../../lib/definitions';
-import WineBlurb from '../wine-blurb';
+import ProductWineBlurb from './product-wine-blurb';
 import ProductRating from './product-rating';
 import ProductCart from './product-cart';
 import ImgFill from './../image-fill';
@@ -23,6 +23,7 @@ export default function ProductDetails({
   urlVariety,
   isCask,
 }: ProductDetailsProps) {
+  // displays product image, main details, product rating and cart on product page
   return (
     <section className={styles.productCont}>
       <div className={styles.productImg}>
@@ -36,7 +37,7 @@ export default function ProductDetails({
       <div className={styles.productMeta}>
         <h1 className={styles.brand}>{brand}</h1>
         <h2 className={styles.shortName}>{shortName}</h2>
-        <WineBlurb urlCategory={urlCategory} urlVariety={urlVariety} />
+        <ProductWineBlurb urlCategory={urlCategory} urlVariety={urlVariety} />
         <ProductRating average={average} total={total} />
         <div className={styles.cartCont}>
           <ProductCart

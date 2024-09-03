@@ -26,6 +26,7 @@ export default function Carousel({ arr }: { arr: DataProps[] }) {
     setPageIndex((prev: number) => prev + val);
 
   const calculateItems = useCallback((): void => {
+    // calculates the number of carousel items to display based on width of screen
     if (ref.current && ref.current.offsetWidth) {
       const {
         current: { offsetWidth },

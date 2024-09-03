@@ -3,8 +3,8 @@
 import ErrorMain from '../ui/error-main';
 import data from '@/app/lib/appData.json';
 
-// if db error occurs
 export default function Error() {
+  // if db error occurs
   const { errorMsg } = data;
   return <ErrorMain message={errorMsg} />;
 }

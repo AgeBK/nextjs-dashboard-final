@@ -6,6 +6,7 @@ export default function ProductReview({
   urlCategory,
   variety,
 }: ProductReviewProps) {
+  // 'expert' style review of the product on the product page
   const {
     reviews,
     productSource,

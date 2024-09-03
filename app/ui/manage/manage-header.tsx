@@ -3,6 +3,7 @@ import React from 'react';
 import styles from '@/app/assets/css/manage/ManageProducts.module.css';
 
 export default function ManageHeader() {
+  // column names on main manage page
   return (
     <header className={styles.row}>
       <div className={styles.col}>Id</div>

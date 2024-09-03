@@ -1,11 +1,19 @@
 'use client';
 
-import { BlurbProps, KeyStringProps } from '@/app/lib/definitions';
+import { CategoryBlurbProps, KeyStringProps } from '@/app/lib/definitions';
 import { deHyphenate } from '@/app/lib/utils';
 import data from '@/app/lib/appData.json';
 import styles from '@/app/assets/css/Blurb.module.css';
 
-export default function Blurb({ urlCategory, variety }: BlurbProps) {
+export default function CategoryBlurb({
+  urlCategory,
+  variety,
+}: CategoryBlurbProps) {
+  console.log('CategoryBlurb');
+  console.log(urlCategory);
+  console.log(variety);
+
+  // displays heading/info about the wine or deal based on the URL
   const { blurb } = data;
   const synopsis: KeyStringProps = blurb;
 

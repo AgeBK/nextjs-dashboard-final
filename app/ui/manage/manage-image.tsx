@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { ManageImageProps } from '@/app/lib/definitions';
-import { validImage } from '@/app/lib/utils';
+import { validateImage } from '@/app/lib/utils';
 import ImgFill from '../image-fill';
 import ManageUpload from './manage-upload';
 import data from '@/app/lib/appData.json';
@@ -10,17 +10,15 @@ import styles from '@/app/assets/css/manage/Form.module.css';
 
 export default function ManageImage({
   productId,
-  packaging,
-  action,
   isDelete,
 }: ManageImageProps) {
-  console.log(productId, packaging, action);
   const [isImageFound, setIsImageFound] = useState(false);
   const [isNewImage, setIsNewImage] = useState(false);
   const { imgWinePath } = data;
   const imgURL = `${imgWinePath}${productId}.webp`;
 
-  validImage(imgURL).then((isValid) => {
+  validateImage(imgURL).then((isValid) => {
+    // check if image exists 
     setIsImageFound(isValid);
   });
 

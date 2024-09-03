@@ -9,9 +9,9 @@ import PriceDrop from '../price-drop';
 import Price from '../price';
 import styles from '@/app/assets/css/product/ProductItem.module.css';
 
-// used on category page & carousel
 export default function ProductItem({ props, ind, css }: ProductItemProps) {
-  const {
+ // used when rendering array of products on category page & carousel
+ const {
     id,
     category,
     variety,
