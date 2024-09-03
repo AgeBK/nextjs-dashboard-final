@@ -33,10 +33,29 @@ export async function fetchProductById(query: string) {
       `;
 
     const product = data.rows[0];
-    return product ? camelise(product) : undefined; // convert db column names to camel case (price_normal > priceNormal)
+    return product ? camelise(product) : undefined; // convert db column names to camel case (eg: price_normal to priceNormal)
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch product by id.');
+  }
+}
+
+export async function fetchProductsByCategory(query: string) {
+  noStore();
+
+  try {
+    const data = await sql<DataProps>`
+      SELECT *        
+      FROM products
+      WHERE category=${query}
+      ORDER BY ratings_average DESC
+      `;
+
+    const products = data.rows;
+    return cameliseArr(products); // convert db column names to camel case (eg: price_normal to priceNormal)
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch products by category.');
   }
 }
 
@@ -57,29 +76,10 @@ export async function fetchProductsByCategoryAndVariety(
       `;
 
     const products = data.rows;
-    return cameliseArr(products); // convert db column names to camel case (price_normal > priceNormal)
+    return cameliseArr(products); // convert db column names to camel case (eg: price_normal to priceNormal)
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products by category and variety.');
-  }
-}
-
-export async function fetchProductsByCategory(query: string) {
-  noStore();
-
-  try {
-    const data = await sql<DataProps>`
-      SELECT *        
-      FROM products
-      WHERE category=${query}
-      ORDER BY ratings_average DESC
-      `;
-
-    const products = data.rows;
-    return cameliseArr(products); // convert db column names to camel case (price_normal > priceNormal)
-  } catch (err) {
-    console.error('Database Error:', err);
-    throw new Error('Failed to fetch products by category.');
   }
 }
 
@@ -136,6 +136,24 @@ export async function fetchProductsBySearchTerm(query: string) {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch products by search term.');
+  }
+}
+
+export async function fetchProductsByBrand(query: string) {
+  noStore();
+
+  try {
+    const data = await sql<DataProps>`
+      SELECT *        
+      FROM products
+      WHERE brand=${query}
+      `;
+
+    const products = data.rows;
+    return cameliseArr(products); // convert db column names to camel case (eg: price_normal to priceNormal)
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch products by brand.');
   }
 }
 

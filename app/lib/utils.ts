@@ -3,6 +3,7 @@ import {
   fetchProductsByCategory,
   fetchProductsPriceTwoFor,
   fetchProductsBySearchTerm,
+  fetchProductsByBrand,
   fetchProductsByCategoryAndVariety,
   fetchProductsPriceTwoForDeals,
   fetchProductsPriceTenPercentOff,
@@ -22,10 +23,13 @@ export const formatCurrency = (amount: number) => {
 
 const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
   let arr: DataProps[] = [];
+  console.log('fetchCategoryPageData');
+  console.log(arg1);
+  console.log(arg2);
 
   if (arg2) {
     switch (arg1) {
-      case 'search':
+      case 'search': // TODO: isn't search below?
         arr = await fetchProductsBySearchTerm(capitalizeFirstLetter(arg1));
         break;
       case 'white':
@@ -49,6 +53,11 @@ const fetchCategoryPageData = async (arg1: string, arg2?: string) => {
   } else if (arg1.startsWith('search')) {
     const searchTerm = arg1.replace('search%3D', '');
     arr = await fetchProductsBySearchTerm(searchTerm);
+  } else if (arg1.startsWith('brand')) {
+    const brandName = capitalizeFirstLetter(
+      deHyphenate(arg1.replace('brand%3D', '')) as string,
+    );
+    arr = await fetchProductsByBrand(brandName);
   } else {
     switch (arg1) {
       case 'two-for-deals':

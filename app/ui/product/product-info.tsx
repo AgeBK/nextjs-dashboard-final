@@ -92,7 +92,7 @@ export default function ProductInfo({
         <li>
           <span>Brand</span>
           <span>
-            <Link href={`/${urlCategory}/${hyphenate(brand)}`}>{brand}</Link>
+            <Link href={`/brand=${hyphenate(brand)}`}>{brand}</Link>
           </span>
         </li>
       </ul>
